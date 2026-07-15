@@ -1,0 +1,165 @@
+/* ==========================================================================
+   AI総合戦略研究所 — global tokens + base + shared component classes
+   Ported from the static build's design system. Fonts are provided by
+   next/font (Inter + Noto Sans JP) as CSS variables set on <html>.
+   ========================================================================== */
+
+:root {
+  /* ---- Base neutrals (light) ---- */
+  --white: #FFFFFF;
+  --ink-900: #F6F8FB;
+  --ink-850: #FFFFFF;
+  --ink-800: #FFFFFF;
+  --ink-750: #F3F6FB;
+  --ink-700: #FFFFFF;
+  --line-strong: #E4E8EF;
+  --line-soft: #EEF1F6;
+  --line-faint: #F3F5F9;
+
+  /* ---- Foreground ---- */
+  --fg-0: #0C1524;
+  --fg-1: #28324A;
+  --fg-2: #586277;
+  --fg-3: #8A93A4;
+  --fg-4: #B6BCC8;
+
+  /* ---- Blue accent (from the brand mark) ---- */
+  --blue-050: #EEF4FF;
+  --blue-100: #D7E4FE;
+  --blue-300: #7FA8FB;
+  --blue-500: #2B7CFF;
+  --blue-600: #1E63E6;
+  --blue-700: #1A50BF;
+  --blue-900: #12326B;
+  --blue-tint: rgba(43,124,255,0.07);
+  --blue-tint-strong: rgba(43,124,255,0.13);
+  --blue-glow: rgba(43,124,255,0.26);
+
+  --gold-tint: var(--blue-tint);
+  --gold-tint-strong: var(--blue-tint-strong);
+
+  --success: #1F9D57;
+  --warning: #C9820E;
+  --danger: #DC4436;
+  --info: #1E63E6;
+
+  --surface-card: var(--ink-800);
+  --surface-card-hover: var(--ink-750);
+  --surface-field: var(--ink-700);
+
+  --accent: var(--blue-600);
+  --accent-hover: var(--blue-500);
+  --accent-pressed: var(--blue-700);
+  --accent-fill-text: #FFFFFF;
+
+  --panel-grad: linear-gradient(120deg, #F4F8FF, #E9F1FF);
+  --panel-border: var(--blue-100);
+
+  /* ---- Typography (families come from next/font variables) ---- */
+  --font-sans: var(--font-inter, "Inter"), var(--font-noto, "Noto Sans JP"), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-jp: var(--font-noto, "Noto Sans JP"), "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  --font-en: var(--font-inter, "Inter"), "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --fs-h2: 32px;
+  --fs-lead: 18px;
+  --fs-body: 16px;
+  --fs-overline: 12px;
+
+  --lh-relaxed: 1.8;
+  --ls-overline: 0.18em;
+
+  /* ---- Spacing / radius ---- */
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  /* ---- Motion ---- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 200ms;
+}
+
+/* ================= Base ================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0; color: var(--fg-0); font-weight: var(--fw-bold); line-height: 1.15; letter-spacing: -0.02em; }
+p { margin: 0; text-wrap: pretty; }
+
+a { color: var(--fg-2); text-decoration: none; transition: color var(--dur) var(--ease-standard); }
+a:hover { color: var(--fg-0); }
+
+img { max-width: 100%; }
+
+::selection { background: var(--blue-tint-strong); color: var(--fg-0); }
+:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--blue-glow); border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* ================= Shared component classes ================= */
+
+/* Header nav (over dark backgrounds) */
+.navlink { font-size: 13px; font-weight: 400; letter-spacing: .02em; color: rgba(255,255,255,.72); white-space: nowrap; transition: color .2s; }
+.navlink:hover { color: #fff; }
+.glassBtn { font-size: 13px; font-weight: 400; color: rgba(255,255,255,.92); background: rgba(255,255,255,.08); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.28); border-radius: 999px; padding: 9px 20px; transition: background .2s, border-color .2s; }
+.glassBtn:hover { background: rgba(255,255,255,.16); color: #fff; border-color: rgba(255,255,255,.45); }
+
+/* Hero CTAs */
+.whiteCta { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: #0C1524; padding: 14px 30px; border-radius: 999px; font-size: 15px; font-weight: 500; transition: transform .2s, box-shadow .2s; box-shadow: 0 8px 30px rgba(0,0,0,.25); }
+.whiteCta:hover { color: #0C1524; transform: translateY(-1px); box-shadow: 0 12px 36px rgba(0,0,0,.32); }
+.ghostCta { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 15px; font-weight: 600; transition: opacity .2s; }
+.ghostCta:hover { color: #fff; opacity: .75; }
+
+/* Lift card */
+.liftCard { transition: border-color .25s var(--ease-standard), transform .25s var(--ease-standard), background-color .25s; }
+.liftCard:hover { transform: translateY(-3px); border-color: var(--panel-border); background-color: var(--surface-card-hover); }
+
+/* Hover: hairline warms to blue */
+.hover-panel { transition: border-color var(--dur) var(--ease-standard); }
+.hover-panel:hover { border-color: var(--panel-border); }
+
+/* Icon (lucide-react) — size set via width/height on the wrapper */
+.dc-icon { display: inline-flex; align-items: center; justify-content: center; flex: none; line-height: 0; }
+.dc-icon > svg { width: 100%; height: 100%; display: block; }
+
+/* SectionHeading */
+.section-heading { display: flex; flex-direction: column; gap: var(--space-4); align-items: center; text-align: center; max-width: 720px; margin-inline: auto; }
+.section-heading.left { align-items: flex-start; text-align: left; max-width: none; margin-inline: 0; }
+.section-heading .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: var(--fs-overline); font-weight: var(--fw-semibold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--accent); }
+.section-heading .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent); display: inline-block; }
+.section-heading h2 { font: var(--fw-bold) var(--fs-h2)/1.25 var(--font-sans); font-size: clamp(24px, 3.6vw, 32px); color: var(--fg-0); letter-spacing: -0.01em; }
+.section-heading .lead { margin: 0; font-size: var(--fs-lead); line-height: var(--lh-relaxed); color: var(--fg-2); }
+
+/* Button */
+.btn { display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-pill); font-family: var(--font-sans); font-weight: var(--fw-semibold); letter-spacing: 0.01em; line-height: 1; cursor: pointer; border: 0.5px solid transparent; white-space: nowrap; transition: background var(--dur) var(--ease-standard), color var(--dur) var(--ease-standard), border-color var(--dur) var(--ease-standard); }
+.btn-sm { height: 36px; padding: 0 16px; font-size: 13px; gap: 8px; }
+.btn-md { height: 44px; padding: 0 24px; font-size: 15px; gap: 10px; }
+.btn-lg { height: 52px; padding: 0 32px; font-size: 16px; gap: 12px; }
+.btn-primary { background: var(--accent); color: var(--accent-fill-text); border-color: var(--accent); }
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--accent-fill-text); }
+.btn-secondary { background: transparent; color: var(--fg-0); border-color: var(--line-strong); }
+.btn-secondary:hover { border-color: var(--fg-2); background: rgba(12,21,36,0.03); color: var(--fg-0); }
+.btn-ghost { background: transparent; color: var(--fg-2); border-color: transparent; }
+.btn-ghost:hover { color: var(--fg-0); background: rgba(12,21,36,0.04); }
