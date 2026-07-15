@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Icon from "@/components/Icon";
 import Button from "@/components/Button";
+import CountUp from "@/components/CountUp";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -96,6 +97,8 @@ export default function Page() {
                   key={s.title}
                   delay={i * 0.08}
                   style={{
+                    position: "relative",
+                    overflow: "hidden",
                     background: "var(--surface-card)",
                     border: "0.5px solid var(--line-strong)",
                     borderRadius: "12px",
@@ -105,7 +108,21 @@ export default function Page() {
                     gap: "16px",
                   }}
                 >
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      top: "-16px",
+                      right: "-12px",
+                      color: "var(--accent)",
+                      opacity: 0.07,
+                      zIndex: 0,
+                      pointerEvents: "none",
+                    }}
+                  >
+                    <Icon name={s.icon} size={128} />
+                  </span>
+                  <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", gap: "12px" }}>
                     <span
                       style={{
                         display: "inline-flex",
@@ -127,6 +144,8 @@ export default function Page() {
                   </div>
                   <p
                     style={{
+                      position: "relative",
+                      zIndex: 1,
                       margin: 0,
                       fontSize: "13px",
                       lineHeight: 1.85,
@@ -137,6 +156,8 @@ export default function Page() {
                   </p>
                   <div
                     style={{
+                      position: "relative",
+                      zIndex: 1,
                       display: "flex",
                       gap: "24px",
                       paddingTop: "14px",
@@ -152,7 +173,7 @@ export default function Page() {
                             color: "var(--accent)",
                           }}
                         >
-                          {stat.value}
+                          <CountUp value={stat.value} />
                         </div>
                         <div style={{ fontSize: "11.5px", color: "var(--fg-3)" }}>
                           {stat.label}
