@@ -1,0 +1,243 @@
+/* ==========================================================================
+   AI総合戦略研究所 — Design tokens + base
+   Consolidated from the Claude Design handoff design-system
+   (fonts / colors / typography / spacing / effects / base).
+   White canvas, single blue accent drawn from the brand mark, hairline
+   borders, no drop shadows.
+   ========================================================================== */
+
+/* --- Webfonts. Latin: Inter, Japanese: Noto Sans JP. Swap for licensed
+       files if provided. --- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap");
+
+:root {
+  /* ---- Base neutrals (light) ---- */
+  --white: #FFFFFF;
+  --black: #FFFFFF;            /* canvas (legacy name kept) */
+  --ink-900: #F6F8FB;          /* section-alt / footer surface */
+  --ink-850: #FFFFFF;          /* raised surface */
+  --ink-800: #FFFFFF;          /* card / panel */
+  --ink-750: #F3F6FB;          /* card hover */
+  --ink-700: #FFFFFF;          /* input field */
+  --line-strong: #E4E8EF;      /* hairline border */
+  --line-soft: #EEF1F6;        /* subtle divider */
+  --line-faint: #F3F5F9;
+
+  /* ---- Foreground (dark on light) ---- */
+  --fg-0: #0C1524;             /* headings */
+  --fg-1: #28324A;             /* strong body */
+  --fg-2: #586277;             /* secondary text */
+  --fg-3: #8A93A4;             /* muted / captions */
+  --fg-4: #B6BCC8;             /* disabled / faint */
+
+  /* ---- Blue accent (brand, from the logo mark) ---- */
+  --blue-050: #EEF4FF;
+  --blue-100: #D7E4FE;
+  --blue-300: #7FA8FB;
+  --blue-500: #2B7CFF;         /* brand bright */
+  --blue-600: #1E63E6;         /* PRIMARY accent / CTA */
+  --blue-700: #1A50BF;         /* pressed */
+  --blue-900: #12326B;
+  --blue-tint: rgba(43,124,255,0.07);
+  --blue-tint-strong: rgba(43,124,255,0.13);
+  --blue-glow: rgba(43,124,255,0.26);   /* focus ring */
+  --brand-blue: #2B7CFF;
+  --brand-blue-bright: #4C9BFF;
+  --brand-blue-deep: #1546E0;
+
+  /* ---- Legacy gold aliases → mapped to blue for back-compat ---- */
+  --gold-050: var(--blue-050);
+  --gold-100: var(--blue-100);
+  --gold-300: var(--blue-300);
+  --gold-500: var(--blue-500);
+  --gold-600: var(--blue-600);
+  --gold-700: var(--blue-700);
+  --gold-900: var(--blue-900);
+  --gold-tint: var(--blue-tint);
+  --gold-tint-strong: var(--blue-tint-strong);
+  --gold-glow: var(--blue-glow);
+
+  /* ---- Semantic status (readable on white) ---- */
+  --success: #1F9D57;
+  --warning: #C9820E;
+  --danger: #DC4436;
+  --info: #1E63E6;
+
+  /* ---- Semantic aliases ---- */
+  --bg-canvas: var(--black);
+  --bg-raised: var(--ink-850);
+  --surface-card: var(--ink-800);
+  --surface-card-hover: var(--ink-750);
+  --surface-field: var(--ink-700);
+  --surface-inverse: var(--fg-0);
+
+  --border-color: var(--line-strong);
+
+  --text-heading: var(--fg-0);
+  --text-body: var(--fg-1);
+  --text-secondary: var(--fg-2);
+  --text-muted: var(--fg-3);
+  --text-disabled: var(--fg-4);
+  --text-on-gold: #FFFFFF;
+  --text-on-accent: #FFFFFF;
+
+  --accent: var(--blue-600);
+  --accent-hover: var(--blue-500);
+  --accent-pressed: var(--blue-700);
+  --accent-fill-text: #FFFFFF;
+  --focus-ring: var(--blue-glow);
+
+  /* ---- Theme-aware compound surfaces (flip in dark) ---- */
+  --header-bg: rgba(255,255,255,0.82);
+  --panel-grad: linear-gradient(120deg, #F4F8FF, #E9F1FF);
+  --panel-border: var(--blue-100);
+
+  /* ---- Typography ---- */
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, "Noto Sans JP", sans-serif;
+  --font-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  --font-en: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --fs-display: 60px;
+  --fs-h1: 44px;
+  --fs-h2: 32px;
+  --fs-h3: 24px;
+  --fs-h4: 20px;
+  --fs-lead: 18px;
+  --fs-body: 16px;
+  --fs-sm: 14px;
+  --fs-caption: 13px;
+  --fs-overline: 12px;
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.35;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.8;
+
+  --ls-tight: -0.02em;
+  --ls-normal: 0;
+  --ls-wide: 0.04em;
+  --ls-overline: 0.18em;
+
+  /* ---- Spacing / radius / layout (4px base grid) ---- */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  --section-y: 96px;
+  --container-max: 1200px;
+  --container-pad: 24px;
+
+  --control-sm: 36px;
+  --control-md: 44px;
+  --control-lg: 52px;
+
+  /* ---- Borders / shadows / motion ---- */
+  --border-width: 0.5px;
+  --border-hairline: 0.5px solid var(--line-strong);
+  --border-divider: 0.5px solid var(--line-soft);
+  --border-accent: 1px solid var(--gold-500);
+
+  --shadow-none: none;
+  --ring-focus: 0 0 0 3px var(--gold-glow);
+  --ring-focus-tight: 0 0 0 2px var(--gold-glow);
+
+  --gradient-gold-hairline: linear-gradient(90deg, transparent, var(--blue-500), transparent);
+  --gradient-canvas-fade: linear-gradient(180deg, #FFFFFF 0%, #F6F8FB 100%);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 320ms;
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================= DARK THEME (optional, opt-in via [data-theme="dark"]) ===== */
+[data-theme="dark"] {
+  --black: #080808;
+  --ink-900: #0C0C0C;
+  --ink-850: #101010;
+  --ink-800: #141414;
+  --ink-750: #191919;
+  --ink-700: #161616;
+  --line-strong: #2A2A2A;
+  --line-soft: #202020;
+  --line-faint: #171717;
+
+  --fg-0: #F6F4EF;
+  --fg-1: #E7E4DD;
+  --fg-2: #A6A39B;
+  --fg-3: #6E6B64;
+  --fg-4: #48453F;
+
+  --blue-tint: rgba(43,124,255,0.12);
+  --blue-tint-strong: rgba(43,124,255,0.20);
+
+  --accent: var(--blue-500);
+  --accent-hover: var(--blue-300);
+  --accent-pressed: var(--blue-600);
+
+  --header-bg: rgba(8,8,8,0.82);
+  --panel-grad: linear-gradient(120deg, #0F1116, #0A0B0E);
+  --panel-border: #223250;
+}
+
+/* ================= Base element styles + resets ================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--text-heading);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+p { margin: 0; text-wrap: pretty; }
+
+a {
+  color: var(--fg-2);
+  text-decoration: none;
+  transition: color var(--dur) var(--ease-standard);
+}
+a:hover { color: var(--fg-0); }
+
+::selection { background: var(--gold-tint-strong); color: var(--fg-0); }
+
+:focus-visible { outline: none; box-shadow: var(--ring-focus); border-radius: var(--radius-xs); }
+
+img { max-width: 100%; }
