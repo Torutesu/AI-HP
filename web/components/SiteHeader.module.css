@@ -93,14 +93,15 @@
 
 .mobilePanel {
   overflow: hidden;
-  margin-top: 18px;
+  background: #05070c;
+  margin: 18px -22px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 .mobileInner {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 18px 0 22px;
+  padding: 18px 22px 24px;
 }
 .mobileLink {
   font-size: 16px;
