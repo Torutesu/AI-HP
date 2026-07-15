@@ -6,24 +6,43 @@
 
 ## 実装済みページ
 
-| ページ | ファイル | 状態 |
-| --- | --- | --- |
-| トップページ | `index.html` | ✅ 実装済み |
-| サービス / 導入事例 / 会社概要 / マガジン / お問い合わせ / 資料ダウンロード / AI経営基盤 / コンサルティング | `service.html` ほか | ⏳ 未実装（ハンドオフに設計あり） |
+全ページ実装済みです。ハンドオフ同梱の各 `*.dc.html` プロトタイプを、共通の
+デザインシステム上で本番向け静的ページとして再現しています。
 
-> 現在のスコープは **トップページ** です。ヘッダー・フッターのナビゲーションは
-> 上記スラッグ（`service.html`, `cases.html`, `company.html`, `magazine.html`,
-> `contact.html`, `download.html`, `ai-os.html`, `consulting.html`）へリンクしています。
-> これらのページは今後、同じデザインシステム上で追加予定です。
+| ページ | ファイル | 元プロトタイプ |
+| --- | --- | --- |
+| トップページ | `index.html` | トップページ.dc.html |
+| サービス | `service.html` | サービス.dc.html |
+| 導入事例 | `cases.html` | 導入事例.dc.html |
+| AI経営基盤 | `ai-os.html` | AI経営基盤.dc.html |
+| コンサルティング | `consulting.html` | コンサルティング.dc.html |
+| 会社概要 | `company.html` | 会社概要.dc.html |
+| マガジン | `magazine.html` | マガジン.dc.html |
+| お問い合わせ・無料相談 | `contact.html` | お問い合わせ.dc.html |
+| 資料ダウンロード | `download.html` | 資料ダウンロード.dc.html |
+
+- 共通のヘッダー／フッター（元 `サイトヘッダー.dc.html` / `サイトフッター.dc.html`）は
+  各インテリアページに組み込んでいます。
+- **お問い合わせ**・**資料ダウンロード** のフォームは、プロトタイプの状態管理ロジック
+  （必須チェック＋メール形式チェック＋送信完了ステート）をバニラJSで実装しています。
+  実際の送信先バックエンドは未接続です（`form` の submit をフックして完了画面を表示）。
 
 ## 構成
 
 ```
 index.html              トップページ
+service.html            サービス
+cases.html              導入事例
+ai-os.html              AI経営基盤
+consulting.html         コンサルティング
+company.html            会社概要
+magazine.html           マガジン
+contact.html            お問い合わせ・無料相談（動作するフォーム）
+download.html           資料ダウンロード（動作するフォーム）
 assets/
   css/
     tokens.css          デザイントークン（色・タイポ・余白・効果）＋ベースリセット
-    main.css            ページ用スタイル＋コンポーネント（Icon/SectionHeading/StatCard/Button）＋レスポンシブ
+    main.css            共通コンポーネント（Icon/SectionHeading/StatCard/Button/共通ヘッダー）＋レスポンシブ
   js/
     main.js             Lucideアイコン描画＋スクロールリビール
   img/
