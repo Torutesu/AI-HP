@@ -74,19 +74,40 @@ npm run build      # outputs to web/out/
 
 ## Deploy to Cloudflare Pages
 
-1. **Create a Pages project** connected to this repo.
+### Option A — connect to Git (recommended; auto-deploys on every push)
+
+1. Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** →
+   **Connect to Git** → pick this repo and the branch you want to deploy.
 2. Build settings:
-   - **Root directory:** `web`
+   - **Root directory (Project root):** `web`
    - **Build command:** `npm run build`
    - **Build output directory:** `out`
-3. **Environment variables** (Settings → Environment variables) — used by the
-   form Functions (see `.env.example`):
-   - `NOTIFY_WEBHOOK_URL` — Slack or Discord incoming webhook (required)
-   - `RESEND_API_KEY` — for the auto-reply (optional)
-   - `AUTOREPLY_FROM_EMAIL` — a domain verified in Resend (optional)
-   - `DOC_DOWNLOAD_URL` — PDF link included in the download auto-reply (optional)
-4. **Domain:** add your Cloudflare-registered domain under the Pages project's
-   *Custom domains* tab (DNS is automatic since the domain is on Cloudflare).
+   (These also live in `web/wrangler.toml`.)
+3. Add the environment variables below, then **Save and Deploy**. Every later
+   push to the connected branch triggers a new deploy automatically.
+
+### Option B — deploy from the CLI with an API token
+
+```bash
+cd web
+export CLOUDFLARE_API_TOKEN=...   # token with "Cloudflare Pages: Edit"
+export CLOUDFLARE_ACCOUNT_ID=...
+npm run deploy                    # = next build && wrangler pages deploy out
+```
+
+### Environment variables (both options)
+
+Set under Pages → **Settings → Environment variables** (see `.env.example`):
+
+- `NOTIFY_WEBHOOK_URL` — Slack or Discord incoming webhook (required)
+- `RESEND_API_KEY` — for the auto-reply (optional)
+- `AUTOREPLY_FROM_EMAIL` — a domain verified in Resend (optional)
+- `DOC_DOWNLOAD_URL` — PDF link included in the download auto-reply (optional)
+
+### Custom domain
+
+Add your Cloudflare-registered domain under the Pages project's *Custom domains*
+tab (DNS is automatic since the domain is on Cloudflare).
 
 The `functions/` directory is picked up automatically by Cloudflare Pages and
 deployed as serverless Functions alongside the static export — so `/api/contact`
