@@ -58,8 +58,8 @@ export default function Home() {
 
         <div className={styles.heroBody}>
           <Reveal immediate delay={0.2} className={styles.badge} y={20}>
-            <span className={styles.badgeTag}>NEW</span>
-            <span className={styles.badgeLabel}>AI経営基盤 — 提供開始</span>
+            <span className={styles.badgeIcon}><Icon name="badge-check" size={13} /></span>
+            <span className={styles.badgeLabel}>汎用SaaSの<strong>約1/3のコスト</strong>で、AIを内製化</span>
           </Reveal>
           <Reveal immediate delay={0.32} y={20}>
             <h1 className={styles.heroTitle}>AIを、<br />たしかな経営成果へ。</h1>
@@ -76,7 +76,6 @@ export default function Home() {
             <a className="whiteCta" href="/download">
               資料をダウンロード<Icon name="arrow-right" size={17} />
             </a>
-            <a className="ghostCta" href="/service">サービスを見る</a>
           </Reveal>
         </div>
 
