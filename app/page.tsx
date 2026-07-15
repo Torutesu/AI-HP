@@ -4,6 +4,8 @@ import Reveal from "@/components/Reveal";
 import Icon from "@/components/Icon";
 import Button from "@/components/Button";
 import SectionHeading from "@/components/SectionHeading";
+import HeroVideo from "@/components/HeroVideo";
+import CountUp from "@/components/CountUp";
 import styles from "./page.module.css";
 
 const PARTNERS = [
@@ -49,9 +51,10 @@ export default function Home() {
     <>
       {/* ===================== HERO ===================== */}
       <div className={styles.hero}>
-        <video className={styles.heroVideo} autoPlay loop muted playsInline>
-          <source src="https://cdn.sceneai.art/Hero Section Video/c0429648-6382-40e5-977a-be50ff2af8d5.mp4" type="video/mp4" />
-        </video>
+        <HeroVideo
+          className={styles.heroVideo}
+          src="https://cdn.sceneai.art/Hero Section Video/c0429648-6382-40e5-977a-be50ff2af8d5.mp4"
+        />
         <div className={styles.heroOverlay} />
 
         <SiteHeader />
@@ -250,7 +253,7 @@ export default function Home() {
                     <span className={styles.statCat}>{s.cat}</span>
                   </div>
                   <div className={styles.statNote}>{s.note}</div>
-                  <div className={styles.statValue}>{s.value}</div>
+                  <div className={styles.statValue}><CountUp value={s.value} /></div>
                   <div className={styles.statLabel}>{s.label}</div>
                 </div>
               </Reveal>
