@@ -14,11 +14,15 @@ const NAV = [
   { label: "マガジン", href: "/magazine" },
 ];
 
-export default function SiteHeader() {
+export default function SiteHeader({
+  variant = "overlay",
+}: {
+  variant?: "overlay" | "solid";
+}) {
   const [open, setOpen] = useState(false);
 
-  return (
-    <header className={styles.header}>
+  const content = (
+    <>
       <div className={styles.bar}>
         <Link href="/" className={styles.brand} onClick={() => setOpen(false)}>
           <Image src={logoMark} alt="AI総合戦略研究所" className={styles.brandMark} height={32} priority />
@@ -75,6 +79,15 @@ export default function SiteHeader() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
+
+  if (variant === "solid") {
+    return (
+      <header className={`${styles.header} ${styles.solid}`}>
+        <div className={styles.inner}>{content}</div>
+      </header>
+    );
+  }
+  return <header className={styles.header}>{content}</header>;
 }

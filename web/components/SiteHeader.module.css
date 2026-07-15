@@ -7,6 +7,18 @@
   padding: 26px 44px 0;
 }
 
+/* Solid variant — interior pages (non-hero). Dark bar, centered container. */
+.solid {
+  position: relative;
+  padding: 0;
+  background: #05070c;
+}
+.solid .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
 .bar {
   display: flex;
   align-items: center;
@@ -107,6 +119,8 @@
 /* ---- responsive ---- */
 @media (max-width: 880px) {
   .header { padding: 18px 22px 0; }
+  .solid { padding: 0; }
+  .solid .inner { padding: 18px 22px; }
   .nav, .actions { display: none; }
   .burger { display: flex; }
 }

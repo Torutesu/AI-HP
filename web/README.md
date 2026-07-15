@@ -6,10 +6,35 @@ exported for **Cloudflare Pages**. Styling keeps the original design tokens
 use **Framer Motion**; icons are **lucide-react** (bundled, no CDN). Fonts
 (Inter + Noto Sans JP) are self-hosted via `next/font`.
 
-> This is the in-progress migration. The plain static HTML site still lives at
-> the repo root as reference. Current scope: **shared components + top page**
-> (`/`), fully responsive with a mobile menu. Remaining pages (service, cases,
-> ai-os, consulting, company, magazine, contact, download) come next.
+> The plain static HTML site still lives at the repo root as reference. This
+> Next.js app is the active version — **all 9 pages migrated**, fully
+> responsive with a mobile menu and Framer Motion animations.
+
+## Pages
+
+| Route | Page | Notes |
+| --- | --- | --- |
+| `/` | トップページ | hero video + scroll reveals |
+| `/service` | サービス | |
+| `/cases` | 導入事例 | |
+| `/ai-os` | AI経営基盤 | |
+| `/consulting` | コンサルティング | |
+| `/company` | 会社概要 | |
+| `/magazine` | マガジン | |
+| `/contact` | お問い合わせ・無料相談 | working form → `/api/contact` |
+| `/download` | 資料ダウンロード | working form → `/api/download` |
+
+## Forms
+
+`contact` and `download` are client components that POST JSON to Cloudflare
+Pages Functions (`functions/api/*`). Each Function:
+
+1. **Notifies the team** via a **Slack or Discord** incoming webhook
+   (`NOTIFY_WEBHOOK_URL`, auto-detected by URL).
+2. **Auto-replies (自動返信) to the submitter** via **Resend** — the contact
+   form sends a thank-you; the download form sends the material link.
+   (Auto-reply is optional: if the Resend vars are unset, the form still works
+   and only the webhook notification fires.)
 
 ## Structure
 
@@ -54,11 +79,12 @@ npm run build      # outputs to web/out/
    - **Root directory:** `web`
    - **Build command:** `npm run build`
    - **Build output directory:** `out`
-3. **Environment variables** (Settings → Environment variables) — needed by the
-   contact form Function:
-   - `RESEND_API_KEY`
-   - `CONTACT_TO_EMAIL`
-   - `CONTACT_FROM_EMAIL` (a domain verified in Resend)
+3. **Environment variables** (Settings → Environment variables) — used by the
+   form Functions (see `.env.example`):
+   - `NOTIFY_WEBHOOK_URL` — Slack or Discord incoming webhook (required)
+   - `RESEND_API_KEY` — for the auto-reply (optional)
+   - `AUTOREPLY_FROM_EMAIL` — a domain verified in Resend (optional)
+   - `DOC_DOWNLOAD_URL` — PDF link included in the download auto-reply (optional)
 4. **Domain:** add your Cloudflare-registered domain under the Pages project's
    *Custom domains* tab (DNS is automatic since the domain is on Cloudflare).
 
@@ -78,5 +104,5 @@ npx wrangler pages dev out          # after `npm run build`
 - The hero background video and partner logos currently load from
   `cdn.sceneai.art` (the design's assets). Consider self-hosting them under
   `public/` for full independence and offline resilience.
-- Contact/download form pages are not migrated yet; when built they will POST
-  to `/api/contact` (and a sibling `/api/download`).
+- Form submissions are not persisted anywhere beyond the Slack/Discord
+  notification + auto-reply. Add a datastore (KV/D1/sheet) if you want a record.
