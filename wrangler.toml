@@ -1,0 +1,8 @@
+# Cloudflare Pages configuration (lives at the repo root — the Next.js app).
+# Lets both the dashboard Git integration and `wrangler pages deploy` pick up
+# the build output + Functions without manual setup. The Cloudflare project's
+# root directory is the repository root (leave the "Root directory" field empty).
+
+name = "ai-hp"
+compatibility_date = "2025-06-01"
+pages_build_output_dir = "out"

@@ -1,79 +1,115 @@
 # AI総合戦略研究所 — コーポレートサイト
 
-エンタープライズ向けAIコンサルティング「AI総合戦略研究所 (AI Strategy Institute)」の
-コーポレートサイトです。Claude Design のハンドオフ（HTML/CSS/JS プロトタイプ）をもとに、
-本番向けの静的サイトとして実装しています。
+**Next.js (App Router, TypeScript)** で構築したコーポレートサイト。**Cloudflare
+Pages** 向けに静的エクスポート（`output: 'export'`）します。デザイントークンは
+CSS変数（`app/globals.css`）＋コンポーネントごとのCSS Modules、アニメーションは
+**Framer Motion**、アイコンは **lucide-react**（バンドル）、フォント（Inter + Noto
+Sans JP）は `next/font` でセルフホストしています。
 
-## 実装済みページ
+> これが本番の実装です。（初期に作った素のHTML版は本コミットで撤去し、Next.js版に
+> 一本化しました。履歴には残っています。）
 
-全ページ実装済みです。ハンドオフ同梱の各 `*.dc.html` プロトタイプを、共通の
-デザインシステム上で本番向け静的ページとして再現しています。
+## ページ
 
-| ページ | ファイル | 元プロトタイプ |
+| Route | ページ | 備考 |
 | --- | --- | --- |
-| トップページ | `index.html` | トップページ.dc.html |
-| サービス | `service.html` | サービス.dc.html |
-| 導入事例 | `cases.html` | 導入事例.dc.html |
-| AI経営基盤 | `ai-os.html` | AI経営基盤.dc.html |
-| コンサルティング | `consulting.html` | コンサルティング.dc.html |
-| 会社概要 | `company.html` | 会社概要.dc.html |
-| マガジン | `magazine.html` | マガジン.dc.html |
-| お問い合わせ・無料相談 | `contact.html` | お問い合わせ.dc.html |
-| 資料ダウンロード | `download.html` | 資料ダウンロード.dc.html |
+| `/` | トップページ | ヒーロー動画 + スクロールリビール |
+| `/service` | サービス | |
+| `/cases` | 導入事例 | |
+| `/ai-os` | AI経営基盤 | |
+| `/consulting` | コンサルティング | |
+| `/company` | 会社概要 | |
+| `/magazine` | マガジン | |
+| `/contact` | お問い合わせ・無料相談 | 動作フォーム → `/api/contact` |
+| `/download` | 資料ダウンロード | 動作フォーム → `/api/download` |
 
-- 共通のヘッダー／フッター（元 `サイトヘッダー.dc.html` / `サイトフッター.dc.html`）は
-  各インテリアページに組み込んでいます。
-- **お問い合わせ**・**資料ダウンロード** のフォームは、プロトタイプの状態管理ロジック
-  （必須チェック＋メール形式チェック＋送信完了ステート）をバニラJSで実装しています。
-  実際の送信先バックエンドは未接続です（`form` の submit をフックして完了画面を表示）。
+## フォーム
+
+`contact` / `download` はクライアントコンポーネントで、Cloudflare Pages Functions
+（`functions/api/*`）へJSONをPOSTします。各Functionは:
+
+1. **社内通知** — Slack または Discord の incoming webhook（`NOTIFY_WEBHOOK_URL`、
+   URLで自動判別）へ送信。
+2. **自動返信** — 送信者へ **Resend** で返信（お問い合わせ＝お礼、資料DL＝資料リンク）。
+   Resendの環境変数が未設定でもフォームは動作し、通知のみ行います。
 
 ## 構成
 
 ```
-index.html              トップページ
-service.html            サービス
-cases.html              導入事例
-ai-os.html              AI経営基盤
-consulting.html         コンサルティング
-company.html            会社概要
-magazine.html           マガジン
-contact.html            お問い合わせ・無料相談（動作するフォーム）
-download.html           資料ダウンロード（動作するフォーム）
-assets/
-  css/
-    tokens.css          デザイントークン（色・タイポ・余白・効果）＋ベースリセット
-    main.css            共通コンポーネント（Icon/SectionHeading/StatCard/Button/共通ヘッダー）＋レスポンシブ
-  js/
-    main.js             Lucideアイコン描画＋スクロールリビール
-  img/
-    logo-mark.png       ブランドロゴマーク
+app/
+  layout.tsx        ルートレイアウト、next/font、metadata
+  globals.css       デザイントークン + base + 共通クラス
+  page.tsx          トップページ
+  page.module.css   トップページのセクションスタイル
+  service/ … download/   各ページ
+components/          SiteHeader / SiteFooter / PageHero / Icon / Button /
+                    SectionHeading / Reveal / ContactForm / DownloadForm
+functions/
+  api/contact.ts    Cloudflare Pages Function — POST /api/contact
+  api/download.ts   POST /api/download
+public/logo-mark.png
+next.config.mjs     output: 'export' + images.unoptimized
+wrangler.toml       Cloudflare Pages 設定（出力先 = out/）
 ```
 
-## デザインシステム
-
-ハンドオフ同梱のデザインシステム（`design-system-c8d7bd`）に忠実です。
-
-- **配色**: 白キャンバス＋ブランドマーク由来のブルーアクセント1色。0.5px のヘアライン
-  ボーダーで奥行きを表現し、ドロップシャドウは使いません。
-- **タイポグラフィ**: 和文 Noto Sans JP / 欧文 Inter（Google Fonts）。行間は和文本文で 1.8。
-- **アイコン**: [Lucide](https://lucide.dev) のライン系アイコン（stroke-width 1.75）を
-  CDN 経由で使用。プロトタイプ／デザインシステムと同じ substitution 方針です。
-  ライセンス済みアイコンセットがあれば差し替え可能です。
-- **ダークテーマ**: `tokens.css` に定義済み（`<html data-theme="dark">` で有効化）。既定はライト。
-
-## 外部依存
-
-トップページは以下の外部リソースを読み込みます（デザイン指定のアセット）。
-
-- Google Fonts（Inter / Noto Sans JP）
-- Lucide アイコン CDN（`https://unpkg.com/lucide@latest`）
-- ヒーロー動画・パートナーロゴ（`cdn.sceneai.art`）
-
-## ローカルでの確認
-
-ビルド不要の静的サイトです。任意の静的サーバーで配信できます。
+## ローカル開発
 
 ```bash
-python3 -m http.server 8000
-# → http://localhost:8000/
+npm install
+npm run dev        # http://localhost:3000
 ```
+
+## ビルド（静的エクスポート）
+
+```bash
+npm run build      # out/ に出力
+```
+
+## Cloudflare Pages へデプロイ
+
+### 方法A — GitHub連携（推奨・pushごとに自動デプロイ）
+
+1. Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** →
+   **Connect to Git** → 本リポジトリとデプロイするブランチを選択。
+2. ビルド設定（リポジトリ直下がNext.jsなので Root は変更不要）:
+   - **Root directory（プロジェクトルート）:** リポジトリ直下（空欄のまま）
+   - **Build command:** `npm run build`
+   - **Build output directory:** `out`
+   （`wrangler.toml` にも記載済み）
+3. 下記の環境変数を追加して **Save and Deploy**。以降、連携ブランチへのpushで自動再デプロイ。
+
+### 方法B — CLI（APIトークン）でデプロイ
+
+```bash
+export CLOUDFLARE_API_TOKEN=...   # 権限「Cloudflare Pages: Edit」
+export CLOUDFLARE_ACCOUNT_ID=...
+npm run deploy                    # = next build && wrangler pages deploy out
+```
+
+### 環境変数（共通）
+
+Pages → **Settings → Environment variables**（`.env.example` 参照）:
+
+- `NOTIFY_WEBHOOK_URL` — Slack または Discord の incoming webhook（必須）
+- `RESEND_API_KEY` — 自動返信用（任意）
+- `AUTOREPLY_FROM_EMAIL` — Resendで検証済みの送信元（任意）
+- `DOC_DOWNLOAD_URL` — 資料DL自動返信に載せるPDFリンク（任意）
+
+### カスタムドメイン
+
+Pagesプロジェクトの *Custom domains* から、Cloudflareで取得したドメインを追加
+（ドメインがCloudflare管理下ならDNSは自動）。
+
+### ローカルでFunctionを試す
+
+```bash
+npm run preview     # = next build && wrangler pages dev out
+# シークレットは .dev.vars に（.env.example 参照）
+```
+
+## Notes / TODO
+
+- ヒーロー背景動画とパートナーロゴは現在 `cdn.sceneai.art`（デザインのアセット）から
+  読み込みます。完全な独立性のため `public/` へのセルフホストを推奨。
+- フォーム送信はSlack/Discord通知＋自動返信のみで、どこにも保存していません。記録を残す
+  なら KV / D1 / スプレッドシート等の追加を。
