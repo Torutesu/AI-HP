@@ -28,6 +28,19 @@ export default function RoiSimulator() {
   const annualYen = emp * salaryMan * 10000 * (rate / 100) * 12;
   const monthlyHours = emp * 160 * (rate / 100);
 
+  // Stash the estimate so the contact form can attach it to the lead
+  // (internal tracking only — never shown to the visitor).
+  function stashEstimate() {
+    try {
+      sessionStorage.setItem(
+        "roiEstimate",
+        JSON.stringify({ emp, salaryMan, rate, annualYen, monthlyHours }),
+      );
+    } catch {
+      /* private mode / storage disabled — tracking is best-effort */
+    }
+  }
+
   return (
     <div className={styles.card}>
       <span className={styles.eyebrow}>ROI SIMULATOR</span>
@@ -92,7 +105,7 @@ export default function RoiSimulator() {
         ※ 一般的な前提に基づく概算であり、効果を保証するものではありません。実際の試算は無料相談で詳細にご提示します。
       </p>
 
-      <a className={styles.btn} href="/contact">
+      <a className={styles.btn} href="/contact" onClick={stashEstimate}>
         この試算をもとに相談する<Icon name="arrow-right" size={17} />
       </a>
     </div>

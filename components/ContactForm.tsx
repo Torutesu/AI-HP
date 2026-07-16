@@ -1,9 +1,25 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import Icon from "./Icon";
 import Button from "./Button";
 import styles from "./form.module.css";
+
+/** Reads any ROI estimate stashed by the simulator into a short summary. */
+function readRoiEstimate(): string {
+  try {
+    const raw = sessionStorage.getItem("roiEstimate");
+    if (!raw) return "";
+    const e = JSON.parse(raw) as {
+      emp: number; salaryMan: number; rate: number; annualYen: number; monthlyHours: number;
+    };
+    const man = Math.round(e.annualYen / 10000).toLocaleString("ja-JP");
+    const hrs = Math.round(e.monthlyHours).toLocaleString("ja-JP");
+    return `対象${e.emp}人 / 平均月給${e.salaryMan}万円 / 代替率${e.rate}% → 年間創出価値 約${man}万円・月${hrs}時間`;
+  } catch {
+    return "";
+  }
+}
 
 const REQUIRED = [
   "company", "pref", "size", "role", "title",
@@ -17,12 +33,16 @@ export default function ContactForm() {
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const roiRef = useRef<string>("");
+
+  useEffect(() => { roiRef.current = readRoiEstimate(); }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data: Record<string, string> = {};
     REQUIRED.forEach((k) => { data[k] = val(form, k); });
+    if (roiRef.current) data.roi = roiRef.current;
 
     if (REQUIRED.some((k) => !data[k])) {
       setError("必須項目（*）をすべてご入力ください。");
@@ -41,7 +61,10 @@ export default function ContactForm() {
         body: JSON.stringify(data),
       });
       const j = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
-      if (res.ok && j.ok) setSubmitted(true);
+      if (res.ok && j.ok) {
+        try { sessionStorage.removeItem("roiEstimate"); } catch {}
+        setSubmitted(true);
+      }
       else setError(j.error || "送信に失敗しました。時間をおいて再度お試しください。");
     } catch {
       setError("通信エラーが発生しました。時間をおいて再度お試しください。");

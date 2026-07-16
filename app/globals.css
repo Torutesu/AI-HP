@@ -66,11 +66,11 @@
   --fw-bold: 700;
 
   --fs-h2: 32px;
-  --fs-lead: 18px;
-  --fs-body: 16px;
+  --fs-lead: 16px;
+  --fs-body: 15px;
   --fs-overline: 12px;
 
-  --lh-relaxed: 1.8;
+  --lh-relaxed: 1.74;
   --ls-overline: 0.18em;
 
   /* ---- Spacing / radius ---- */

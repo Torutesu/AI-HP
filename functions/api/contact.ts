@@ -95,7 +95,11 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
   }
 
   const fields = REQUIRED.map((k) => `• ${LABELS[k]}: ${String(data[k]).trim()}`).join("\n");
-  const message = `:mailbox_with_mail: *新しいお問い合わせ*\n${fields}`;
+  // ROI estimate carried over from the simulator (internal tracking only).
+  const roiLine = data.roi && String(data.roi).trim()
+    ? `\n\n:bar_chart: *ROI試算あり*: ${String(data.roi).trim()}`
+    : "";
+  const message = `:mailbox_with_mail: *新しいお問い合わせ*\n${fields}${roiLine}`;
 
   const ok = await notify(env.NOTIFY_WEBHOOK_URL, message);
   if (!ok) {
