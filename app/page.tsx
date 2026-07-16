@@ -55,6 +55,10 @@ const STRENGTHS: {
   title: string;
   href?: string;
   presenter?: string;
+  /** When set, the badge renders this image instead of the CSS layout.
+   *  AI事例 / ROI will get their own images later; drop the files in
+   *  public/img/badge/ and set `image` here to swap them in. */
+  image?: string;
 }[] = [
   {
     color: "#F26522",
@@ -63,6 +67,7 @@ const STRENGTHS: {
     title: "YC RFS Hackathon 2026",
     href: "https://x.com/KyosukeTogami/status/2075136867461460299",
     presenter: "Transpose",
+    image: "/img/badge/yc-transparent.png",
   },
   {
     color: "#2B7CFF",
@@ -193,6 +198,19 @@ export default function Home() {
           </Reveal>
           <Reveal immediate delay={0.62} y={20} className={styles.fvBadges}>
             {STRENGTHS.map((b) => {
+              if (b.image) {
+                const img = (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img className={styles.fvImg} src={b.image} alt={b.title} />
+                );
+                return b.href ? (
+                  <a key={b.title} className={styles.fvImgBadge} href={b.href} target="_blank" rel="noopener noreferrer">
+                    {img}
+                  </a>
+                ) : (
+                  <span key={b.title} className={styles.fvImgBadge}>{img}</span>
+                );
+              }
               const inner = (
                 <>
                   <span className={styles.fvMark} style={{ background: b.color }}>

@@ -84,6 +84,17 @@
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 a.fvBadge:hover { background: rgba(255, 255, 255, 0.11); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
+/* image-based badge (self-contained artwork, no card frame) */
+.fvImgBadge { display: flex; align-items: center; justify-content: flex-start; }
+.fvImg {
+  width: 100%;
+  height: auto;
+  max-height: 118px;
+  object-fit: contain;
+  object-position: left center;
+  transition: transform 0.2s ease;
+}
+a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
 .fvMark {
   display: inline-flex;
   align-items: center;
