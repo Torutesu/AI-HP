@@ -6,6 +6,7 @@ import Icon from "@/components/Icon";
 import Button from "@/components/Button";
 import CountUp from "@/components/CountUp";
 import type { Metadata } from "next";
+import cx from "./cases.module.css";
 
 export const metadata: Metadata = {
   title: "導入事例",
@@ -95,141 +96,33 @@ export default function Page() {
 
         <section style={{ padding: "96px 0" }}>
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-            <div
-              className="dc-collapse-2"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "20px",
-              }}
-            >
+            <div className={cx.grid}>
               {scenarios.map((s, i) => (
-                <Reveal
-                  key={s.title}
-                  delay={i * 0.08}
-                  style={{
-                    position: "relative",
-                    overflow: "hidden",
-                    background: "var(--surface-card)",
-                    border: "0.5px solid var(--line-strong)",
-                    borderRadius: "12px",
-                    padding: "34px 32px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "16px",
-                  }}
-                >
-                  {/* background illustration (right-anchored) */}
-                  {s.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={s.image}
-                      alt=""
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        right: 0,
-                        height: "100%",
-                        width: "64%",
-                        objectFit: "cover",
-                        objectPosition: "right center",
-                        opacity: 0.18,
-                        zIndex: 0,
-                        pointerEvents: "none",
-                      }}
-                    />
-                  ) : (
-                    <span
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        right: "-6px",
-                        bottom: 0,
-                        width: "58%",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "flex-end",
-                        color: "var(--accent)",
-                        opacity: 0.1,
-                        zIndex: 0,
-                        pointerEvents: "none",
-                      }}
-                    >
-                      <Icon name={s.icon} size={188} />
-                    </span>
-                  )}
-                  {/* fade so text stays readable over the illustration */}
-                  <span
-                    aria-hidden="true"
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      zIndex: 0,
-                      pointerEvents: "none",
-                      background:
-                        "linear-gradient(90deg, var(--surface-card) 24%, rgba(255,255,255,0) 82%)",
-                    }}
-                  />
-                  <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", gap: "12px" }}>
-                    <span
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: "44px",
-                        height: "44px",
-                        borderRadius: "8px",
-                        border: "0.5px solid var(--line-strong)",
-                        background: "var(--blue-tint)",
-                        color: "var(--accent)",
-                      }}
-                    >
-                      <Icon name={s.icon} size={22} />
-                    </span>
-                    <div style={{ fontSize: "18px", fontWeight: 700, color: "var(--fg-0)" }}>
-                      {s.title}
-                    </div>
-                  </div>
-                  <p
-                    style={{
-                      position: "relative",
-                      zIndex: 1,
-                      margin: 0,
-                      fontSize: "13px",
-                      lineHeight: 1.85,
-                      color: "var(--fg-2)",
-                    }}
-                  >
-                    {s.body}
-                  </p>
-                  <div
-                    style={{
-                      position: "relative",
-                      zIndex: 1,
-                      display: "flex",
-                      gap: "24px",
-                      paddingTop: "14px",
-                      borderTop: "0.5px solid var(--line-soft)",
-                    }}
-                  >
-                    {s.stats.map((stat) => (
-                      <div key={stat.label}>
-                        <div
-                          style={{
-                            fontSize: "24px",
-                            fontWeight: 700,
-                            color: "var(--accent)",
-                          }}
-                        >
-                          <CountUp value={stat.value} />
-                        </div>
-                        <div style={{ fontSize: "11.5px", color: "var(--fg-3)" }}>
-                          {stat.label}
-                        </div>
+                <Reveal key={s.title} delay={i * 0.08} className={cx.card}>
+                  <div className={cx.media}>
+                    {s.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={s.image} alt={`${s.title}のイメージ`} />
+                    ) : (
+                      <div className={cx.mediaFallback}>
+                        <Icon name={s.icon} size={64} />
                       </div>
-                    ))}
+                    )}
+                  </div>
+                  <div className={cx.body}>
+                    <div className={cx.head}>
+                      <span className={cx.badge}><Icon name={s.icon} size={22} /></span>
+                      <div className={cx.title}>{s.title}</div>
+                    </div>
+                    <p className={cx.desc}>{s.body}</p>
+                    <div className={cx.stats}>
+                      {s.stats.map((stat) => (
+                        <div key={stat.label}>
+                          <div className={cx.statValue}><CountUp value={stat.value} /></div>
+                          <div className={cx.statLabel}>{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </Reveal>
               ))}
