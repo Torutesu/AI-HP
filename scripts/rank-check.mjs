@@ -17,7 +17,7 @@
  */
 
 import crypto from "node:crypto";
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -122,6 +122,7 @@ async function main() {
     queryPositions(token, siteUrl, ymd(prevStart), ymd(prevEnd)),
   ]);
 
+  const results = [];
   const alerts = [];
   for (const kw of keywords) {
     const key = String(kw).toLowerCase();
@@ -129,10 +130,30 @@ async function main() {
     if (prevPos == null) continue; // no baseline last week — nothing to compare
     const curPos = cur.get(key) ?? DROPPED_OUT_POSITION;
     const diff = curPos - prevPos; // positive = dropped (worse)
+    const droppedOut = !cur.has(key);
+    results.push({ keyword: kw, prevPos, curPos, diff, droppedOut });
     if (diff >= DROP_THRESHOLD) {
-      alerts.push({ kw, prevPos, curPos, diff, droppedOut: !cur.has(key) });
+      alerts.push({ kw, prevPos, curPos, diff, droppedOut });
     }
   }
+
+  // Always emit a results file for CI (issue creation + artifact history).
+  const outPath = process.env.RESULTS_PATH || "rank-results.json";
+  await writeFile(
+    outPath,
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        siteUrl,
+        range: { current: [ymd(curStart), ymd(end)], previous: [ymd(prevStart), ymd(prevEnd)] },
+        slackThreshold: DROP_THRESHOLD,
+        results,
+      },
+      null,
+      2,
+    ),
+  );
+  console.log(`Wrote ${results.length} comparison(s) to ${outPath}`);
 
   const range = `${ymd(curStart)}〜${ymd(end)}（前週: ${ymd(prevStart)}〜${ymd(prevEnd)}）`;
   if (alerts.length === 0) {

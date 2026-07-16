@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Icon from "@/components/Icon";
@@ -79,7 +80,9 @@ export default function DownloadPage() {
           </div>
 
           {/* Right — form */}
-          <DownloadForm />
+          <Suspense fallback={null}>
+            <DownloadForm />
+          </Suspense>
         </div>
       </section>
       <SiteFooter />

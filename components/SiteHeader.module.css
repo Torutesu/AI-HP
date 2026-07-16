@@ -33,14 +33,14 @@
 .solid.scrolled {
   border-bottom-color: rgba(255, 255, 255, 0.12);
 }
+/* Match the top-page (overlay) layout exactly: full-width bar, logo pinned to
+   the same 44px gutter — no centered max-width container that would inset it. */
 .solid .inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px 24px;
+  padding: 18px 44px;
   transition: padding 0.25s ease;
 }
 .solid.scrolled .inner {
-  padding: 12px 24px;
+  padding: 12px 44px;
 }
 
 .bar {

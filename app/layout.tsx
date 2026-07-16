@@ -57,6 +57,16 @@ const orgJsonLd = {
   url: SITE_URL,
   logo: `${SITE_URL}/logo-mark.png`,
   description: SITE_DESCRIPTION,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "JP",
+    addressRegion: "東京都",
+    addressLocality: "渋谷区",
+    streetAddress: "恵比寿西1-16-11",
+  },
+  knowsAbout: ["AI導入支援", "AI戦略策定", "内製AI開発", "業務自動化", "生成AI活用"],
+  // TODO: 確定したら公式プロフィールURLを追加（X / PR TIMES / Wantedly 等）
+  sameAs: [] as string[],
   parentOrganization: { "@type": "Organization", name: "株式会社Select" },
 };
 
@@ -76,6 +86,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={`${inter.variable} ${notoSansJP.variable}`}>
+      <head>
+        {/* RSS discovery — declared here (not via metadata.alternates) because
+            each page's alternates.canonical shallow-replaces the layout's. */}
+        <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} マガジン`} href="/feed.xml" />
+      </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }} />

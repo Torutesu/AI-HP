@@ -18,6 +18,7 @@ const STATIC_LASTMOD: Record<string, string> = {
   "/contact": "2026-07-15",
   "/download": "2026-07-15",
   "/privacy": "2026-07-15",
+  "/editorial-policy": "2026-07-16",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {

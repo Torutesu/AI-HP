@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Icon from "./Icon";
 import Button from "./Button";
+import { DEFAULT_ASSET_ID, getAsset } from "@/lib/assets";
 import styles from "./form.module.css";
 
 const REQUIRED = ["company", "name", "email", "size"];
@@ -17,11 +19,17 @@ export default function DownloadForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  // Which asset to distribute — from ?asset=<id> (article deep-links), else the
+  // default service guide. Unknown ids fall back to the default.
+  const requested = useSearchParams().get("asset");
+  const assetId = getAsset(requested) ? (requested as string) : DEFAULT_ASSET_ID;
+
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data: Record<string, string | string[]> = {};
     REQUIRED.forEach((k) => { data[k] = val(form, k); });
+    data.asset = assetId;
     data.themes = Array.from(
       form.querySelectorAll<HTMLInputElement>('input[name="theme"]:checked')
     ).map((el) => el.value);
@@ -71,6 +79,7 @@ export default function DownloadForm() {
     <div className={styles.card}>
       <div className={styles.cardTitle}>ご提案資料をリクエスト</div>
       <form className={styles.form} onSubmit={onSubmit} noValidate style={{ gap: "18px" }}>
+        <input type="hidden" name="asset" value={assetId} readOnly />
         <div>
           <label className={styles.lbl} htmlFor="company">会社名 <span className={styles.req}>*</span></label>
           <input id="company" name="company" className={styles.fld} type="text" placeholder="株式会社〇〇" />

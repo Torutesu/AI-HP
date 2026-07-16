@@ -17,6 +17,7 @@ export function GET() {
     ["マガジン", "/magazine/", "経営とAIの実装知に関する記事"],
     ["お問い合わせ", "/contact/", "無料相談・AI経営診断の受付"],
     ["資料ダウンロード", "/download/", "サービス資料（PDF）"],
+    ["編集方針", "/editorial-policy/", "編集部の方針・一次情報主義・訂正方針（E-E-A-T）"],
   ];
 
   const body = `# ${SITE_NAME} (${SITE_NAME_EN})
@@ -34,6 +35,9 @@ ${articles.map((a) => `- [${a.title}](${SITE_URL}/magazine/${a.slug}/): ${a.exce
 ## コンテンツのテーマ・対象読者
 - テーマ: AI導入支援 / コスト削減 / 売上向上 / 内製AI開発 / AI経営基盤（AI OS）/ 業務自動化 / ROI可視化
 - 対象読者: 従業員50名以上の企業の経営者・役員・情報システム/事業の意思決定者
+
+## 更新情報
+- RSSフィード: ${SITE_URL}/feed.xml
 
 ## 連絡先
 - お問い合わせ・無料相談: ${SITE_URL}/contact/

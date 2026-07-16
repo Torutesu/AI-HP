@@ -67,7 +67,7 @@ export default async function ArticlePage({
     articleSection: a.category,
     inLanguage: "ja",
     mainEntityOfPage: url,
-    author: { "@type": "Organization", name: "AI総合戦略研究所", url: SITE },
+    author: { "@type": "Organization", name: "AI総合戦略研究所 編集部", url: `${SITE}/editorial-policy/` },
     publisher: {
       "@type": "Organization",
       name: "AI総合戦略研究所",
@@ -80,8 +80,8 @@ export default async function ArticlePage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "ホーム", item: SITE },
-      { "@type": "ListItem", position: 2, name: "マガジン", item: `${SITE}/magazine` },
+      { "@type": "ListItem", position: 1, name: "ホーム", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: "マガジン", item: `${SITE}/magazine/` },
       { "@type": "ListItem", position: 3, name: a.title, item: url },
     ],
   };
@@ -111,7 +111,7 @@ export default async function ArticlePage({
               {" ／ "}
               <Link href="/magazine" style={{ color: "rgba(255,255,255,.62)" }}>マガジン</Link>
               {" ／ "}
-              {a.category}
+              <span style={{ color: "rgba(255,255,255,.75)" }}>{a.title}</span>
             </nav>
             <div
               style={{
@@ -139,9 +139,18 @@ export default async function ArticlePage({
             >
               {a.title}
             </h1>
-            <time dateTime={iso} style={{ fontSize: "13px", color: "rgba(255,255,255,.6)" }}>
-              {a.date}
-            </time>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+              <Link
+                href="/editorial-policy/"
+                style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,.85)" }}
+              >
+                AI総戦研 編集部
+              </Link>
+              <span style={{ color: "rgba(255,255,255,.3)" }}>·</span>
+              <time dateTime={iso} style={{ fontSize: "13px", color: "rgba(255,255,255,.6)" }}>
+                {a.updatedAt ? `${a.updatedAt} 更新` : a.date}
+              </time>
+            </div>
           </div>
         </section>
 

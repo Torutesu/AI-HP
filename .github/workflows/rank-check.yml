@@ -1,0 +1,73 @@
+name: rank check
+
+on:
+  schedule:
+    # 09:00 JST every Monday (00:00 UTC)
+    - cron: "0 0 * * 1"
+  workflow_dispatch: {}
+
+# Supersedes seo-rank-check.yml: runs the same GSC comparison + Slack alert, and
+# additionally opens issues for week-over-week drops and archives the results.
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  rank-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run keyword rank check
+        run: node scripts/rank-check.mjs
+        env:
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+          GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          RESULTS_PATH: rank-results.json
+
+      - name: Open issues for rank drops (>= 3 places)
+        if: ${{ hashFiles('rank-results.json') != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          THRESHOLD=3
+          count=$(jq "[.results[] | select(.diff >= $THRESHOLD)] | length" rank-results.json)
+          echo "Keywords dropped >= $THRESHOLD places: $count"
+          if [ "$count" -eq 0 ]; then exit 0; fi
+
+          # ensure the label exists (ignore if already present)
+          gh label create rank --color FBCA04 --description "検索順位の下落" 2>/dev/null || true
+
+          # existing open [rank] issue titles (for dedup)
+          mapfile -t existing < <(gh issue list --state open --limit 200 --json title --jq '.[].title')
+
+          site=$(jq -r '.siteUrl' rank-results.json)
+          jq -c ".results[] | select(.diff >= $THRESHOLD)" rank-results.json | while read -r row; do
+            kw=$(echo "$row"   | jq -r '.keyword')
+            prev=$(echo "$row" | jq -r '(.prevPos*10|round)/10')
+            diff=$(echo "$row" | jq -r '(.diff*10|round)/10')
+            cur=$(echo "$row"  | jq -r 'if .droppedOut then "圏外" else ((.curPos*10|round)/10|tostring) + "位" end')
+            title="[rank] ${kw}"
+
+            skip=0
+            for t in "${existing[@]:-}"; do [ "$t" = "$title" ] && skip=1 && break; done
+            if [ "$skip" -eq 1 ]; then echo "skip (already open): $title"; continue; fi
+
+            q=$(jq -rn --arg s "$kw" '$s|@uri')
+            body=$(printf '検索順位が前週比で下落しました。\n\n- キーワード: %s\n- 前回 → 今回: %s位 → %s（-%s位）\n- SERP確認: https://www.google.com/search?q=%s\n- GSCプロパティ: %s\n\n（週次 rank-check により自動起票）' "$kw" "$prev" "$cur" "$diff" "$q" "$site")
+            gh issue create --title "$title" --body "$body" --label rank || echo "issue create failed: $kw"
+          done
+
+      - name: Archive results
+        if: ${{ always() && hashFiles('rank-results.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: rank-results-${{ github.run_id }}
+          path: rank-results.json
+          retention-days: 90

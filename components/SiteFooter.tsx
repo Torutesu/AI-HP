@@ -45,6 +45,7 @@ export default function SiteFooter() {
         <div className={styles.bottomInner}>
           <div className={styles.legal}>
             <Link href="/privacy">プライバシーポリシー</Link>
+            <Link href="/editorial-policy">編集方針</Link>
           </div>
           <span className={styles.copy}>© AI Strategy Institute All Rights Reserved.</span>
         </div>

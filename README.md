@@ -93,7 +93,22 @@ Pages → **Settings → Environment variables**（`.env.example` 参照）:
 - `NOTIFY_WEBHOOK_URL` — Slack または Discord の incoming webhook（必須）
 - `RESEND_API_KEY` — 自動返信用（任意）
 - `AUTOREPLY_FROM_EMAIL` — Resendで検証済みの送信元（任意）
-- `DOC_DOWNLOAD_URL` — 資料DL自動返信に載せるPDFリンク（任意）
+- `ASSETS_BASE_URL` — 配布アセット（`lib/assets.ts`）の相対パスに前置するベースURL（R2等・任意）
+- `DOC_DOWNLOAD_URL` — `service-guide` の後方互換フォールバックリンク（任意）
+
+配布物を増やす場合は `lib/assets.ts` の `ASSETS` に `{ id, label, path }` を追加。
+フォームは `?asset=<id>` を hidden で受け取り、`download.ts` が id を検証して返信メール／通知に載せます。
+
+### GitHub Actions（検索順位モニタ）
+
+`.github/workflows/rank-check.yml` が毎週月曜 09:00 JST に `scripts/rank-check.mjs` を実行し、
+前週比で順位が下落したキーワードを検知します（5位以上→Slack通知 / 3位以上→Issue自動起票、
+結果JSONはartifactに保存）。**Settings → Secrets and variables → Actions** に登録:
+
+- `GOOGLE_SERVICE_ACCOUNT_KEY` — GSC閲覧権限を持つサービスアカウントのJSON（文字列）
+- `GSC_SITE_URL` — GSCプロパティ（例 `sc-domain:example.com` / `https://example.com/`）
+- `SLACK_WEBHOOK_URL` — Slack Incoming Webhook
+- `GITHUB_TOKEN` — Issue起票用（Actionsが自動付与するため設定不要）
 
 ### カスタムドメイン
 
@@ -109,7 +124,8 @@ npm run preview     # = next build && wrangler pages dev out
 
 ## Notes / TODO
 
-- ヒーロー背景動画とパートナーロゴは現在 `cdn.sceneai.art`（デザインのアセット）から
-  読み込みます。完全な独立性のため `public/` へのセルフホストを推奨。
+- ヒーロー背景動画とパートナーロゴのURLは `lib/site.ts`（`HERO_VIDEO_URL` / `PARTNER_LOGOS`）に
+  集約済み。現状は `cdn.sceneai.art`（ホットリンク保護）。完全な独立性のため実ファイルを
+  `public/` に置き、定数のURLをローカルパスに差し替え推奨（1箇所）。
 - フォーム送信はSlack/Discord通知＋自動返信のみで、どこにも保存していません。記録を残す
   なら KV / D1 / スプレッドシート等の追加を。
