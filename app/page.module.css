@@ -219,22 +219,19 @@
   gap: 28px;
   align-items: stretch;
 }
-/* Left: rich panel with the ascending-stairs photo behind a light veil */
+/* Left: rich brand-tinted panel */
 .philLeft {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 36px;
-  border: 0.5px solid var(--line-strong);
+  border: 0.5px solid var(--panel-border);
   border-radius: 16px;
   padding: 44px 40px;
-  background-color: var(--white);
   background-image:
-    linear-gradient(158deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.86) 44%, rgba(255, 255, 255, 0.60) 100%),
-    url(/img/philosophy/ascend.jpg);
-  background-size: cover;
-  background-position: center;
+    radial-gradient(120% 90% at 100% 0%, rgba(43, 124, 255, 0.10), transparent 60%),
+    linear-gradient(158deg, #f6f9ff 0%, #ffffff 58%);
   overflow: hidden;
 }
 .philosophyTitle {
@@ -282,36 +279,36 @@
 .philStatValue { font-size: 18px; font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; }
 .philStatLabel { font-size: 11.5px; line-height: 1.5; color: var(--fg-2); }
 
-/* Right: three numbered photo cards */
+/* Right: three numbered cards */
 .cardStack { display: flex; flex-direction: column; gap: 16px; }
 .philCard {
   position: relative;
   overflow: hidden;
   border-radius: 14px;
-  border: 0.5px solid rgba(255, 255, 255, 0.10);
-  min-height: 168px;
-  display: flex;
-}
-.philCardBg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.5s var(--ease-out);
-}
-.philCard:hover .philCardBg { transform: scale(1.06); }
-.philCardScrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, rgba(8, 12, 22, 0.92) 0%, rgba(8, 12, 22, 0.78) 46%, rgba(8, 12, 22, 0.42) 100%);
-}
-.philCardInner {
-  position: relative;
-  z-index: 1;
+  border: 0.5px solid var(--line-strong);
+  background: var(--white);
+  min-height: 150px;
   display: flex;
   gap: 18px;
   align-items: flex-start;
   padding: 26px 28px;
+}
+/* blue accent rail on the left edge */
+.philCard::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent), rgba(43, 124, 255, 0.3));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.philCard:hover::before { opacity: 1; }
+.philCardHi {
+  border: 0.5px solid var(--panel-border);
+  background-image: linear-gradient(120deg, #f4f8ff, #ffffff 72%);
 }
 .philCardIcon {
   flex: none;
@@ -321,21 +318,34 @@
   width: 46px;
   height: 46px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(6px);
-  color: #fff;
+  border: 0.5px solid var(--line-strong);
+  background: var(--blue-tint);
+  color: var(--accent);
 }
+.philCardBodyText { position: relative; z-index: 1; }
 .philCardHead { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
 .philCardNo {
   font-family: var(--font-en);
   font-size: 15px;
   font-weight: 700;
-  color: var(--blue-300);
+  color: var(--accent);
   letter-spacing: 0.02em;
 }
-.philCardTitle { font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
-.philCardText { margin: 0; font-size: 13px; line-height: 1.8; color: rgba(255, 255, 255, 0.78); }
+.philCardTitle { font-size: 17px; font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; }
+.philCardText { margin: 0; font-size: 13.5px; line-height: 1.85; color: var(--fg-2); max-width: 92%; }
+/* faint oversized number watermark */
+.philCardWm {
+  position: absolute;
+  right: 20px;
+  bottom: -10px;
+  font-family: var(--font-en);
+  font-size: 78px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--blue-tint-strong);
+  pointer-events: none;
+  z-index: 0;
+}
 
 /* ---------------- Card grids (pain / why) ---------------- */
 .grid4 {

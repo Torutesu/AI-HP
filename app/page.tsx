@@ -196,9 +196,9 @@ export default function Home() {
               </div>
               <div className={styles.philStats}>
                 {[
-                  { icon: "users", value: "200名以上", label: "の業務削減を支援" },
-                  { icon: "target", value: "平均ROI 340%", label: "導入企業の実績" },
-                  { icon: "badge-check", value: "継続率 95%", label: "伴走支援の満足度" },
+                  { icon: "route", value: "一気通貫", label: "戦略から実装・改善まで" },
+                  { icon: "cpu", value: "内製で構築", label: "貴社の資産として残す" },
+                  { icon: "handshake", value: "伴走型", label: "成果が出るまで、伴走" },
                 ].map((s) => (
                   <div key={s.value} className={styles.philStat}>
                     <span className={styles.philStatIcon}><Icon name={s.icon} size={18} /></span>
@@ -214,38 +214,37 @@ export default function Home() {
                 {
                   no: "01",
                   icon: "compass",
-                  image: "/img/philosophy/discover.jpg",
                   title: "事業の理解から、始める。",
                   text: "戦略コンサルティングの視点で、貴社がどのように価値を生み、どこで稼ぐのかを丁寧に紐解きます。すべては、ここから始まります。",
                 },
                 {
                   no: "02",
                   icon: "workflow",
-                  image: "/img/philosophy/build.jpg",
                   title: "貴社専属の、開発チーム。",
                   text: "改善策とシステム構成をともに描き、現場で確かに使える内製AIを開発します。業績につながる仕組みを、伴走しながら形にします。",
                 },
                 {
                   no: "03",
                   icon: "trending-up",
-                  image: "/img/philosophy/results.jpg",
                   title: "投資に、成果で応える。",
                   text: "まずコスト削減から、次に売上向上へ。人員計画の見直しにまで踏み込み、投資対効果にこだわってご支援します。",
+                  highlight: true,
                 },
               ].map((c, i) => (
-                <Reveal key={c.no} delay={0.05 + i * 0.08} className={`${styles.philCard} liftCard`}>
-                  <div className={styles.philCardBg} style={{ backgroundImage: `url(${c.image})` }} />
-                  <div className={styles.philCardScrim} />
-                  <div className={styles.philCardInner}>
-                    <span className={styles.philCardIcon}><Icon name={c.icon} size={22} /></span>
-                    <div className={styles.philCardBodyText}>
-                      <div className={styles.philCardHead}>
-                        <span className={styles.philCardNo}>{c.no}</span>
-                        <span className={styles.philCardTitle}>{c.title}</span>
-                      </div>
-                      <p className={styles.philCardText}>{c.text}</p>
+                <Reveal
+                  key={c.no}
+                  delay={0.05 + i * 0.08}
+                  className={`${styles.philCard}${c.highlight ? ` ${styles.philCardHi}` : ""} liftCard`}
+                >
+                  <span className={styles.philCardIcon}><Icon name={c.icon} size={22} /></span>
+                  <div className={styles.philCardBodyText}>
+                    <div className={styles.philCardHead}>
+                      <span className={styles.philCardNo}>{c.no}</span>
+                      <span className={styles.philCardTitle}>{c.title}</span>
                     </div>
+                    <p className={styles.philCardText}>{c.text}</p>
                   </div>
+                  <span className={styles.philCardWm} aria-hidden>{c.no}</span>
                 </Reveal>
               ))}
             </div>
