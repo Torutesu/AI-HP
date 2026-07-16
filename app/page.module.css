@@ -215,9 +215,27 @@
 .philosophy { padding: 88px 0 104px; }
 .philosophyGrid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 56px;
-  align-items: start;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 28px;
+  align-items: stretch;
+}
+/* Left: rich panel with the ascending-stairs photo behind a light veil */
+.philLeft {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 36px;
+  border: 0.5px solid var(--line-strong);
+  border-radius: 16px;
+  padding: 44px 40px;
+  background-color: var(--white);
+  background-image:
+    linear-gradient(158deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.86) 44%, rgba(255, 255, 255, 0.60) 100%),
+    url(/img/philosophy/ascend.jpg);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 .philosophyTitle {
   font-size: clamp(28px, 4vw, 40px);
@@ -225,47 +243,99 @@
   line-height: 1.35;
   letter-spacing: -0.02em;
   color: var(--fg-0);
-  margin: 0 0 24px;
+  margin: 0 0 14px;
+}
+.philLead {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+  margin: 0 0 22px;
 }
 .philosophyText {
-  font-size: 15px;
-  line-height: 2;
-  color: var(--fg-2);
-  margin: 0 0 20px;
+  font-size: 14.5px;
+  line-height: 1.95;
+  color: var(--fg-1);
+  margin: 0 0 18px;
 }
 .philosophyText:last-child { margin: 0; }
+/* Left panel stats */
+.philStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding-top: 26px;
+  border-top: 0.5px solid var(--line-strong);
+}
+.philStat { display: flex; flex-direction: column; gap: 4px; }
+.philStatIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--blue-tint);
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.philStatValue { font-size: 18px; font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; }
+.philStatLabel { font-size: 11.5px; line-height: 1.5; color: var(--fg-2); }
+
+/* Right: three numbered photo cards */
 .cardStack { display: flex; flex-direction: column; gap: 16px; }
-.rowCard {
-  background: var(--surface-card);
-  border: 0.5px solid var(--line-strong);
-  border-radius: 12px;
-  padding: 28px 30px;
+.philCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 0.5px solid rgba(255, 255, 255, 0.10);
+  min-height: 168px;
+  display: flex;
+}
+.philCardBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s var(--ease-out);
+}
+.philCard:hover .philCardBg { transform: scale(1.06); }
+.philCardScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(8, 12, 22, 0.92) 0%, rgba(8, 12, 22, 0.78) 46%, rgba(8, 12, 22, 0.42) 100%);
+}
+.philCardInner {
+  position: relative;
+  z-index: 1;
   display: flex;
   gap: 18px;
   align-items: flex-start;
+  padding: 26px 28px;
 }
-.rowCardHighlight {
-  border: 0.5px solid var(--panel-border);
-  background-image: linear-gradient(120deg, #f4f8ff, #ffffff);
-}
-.iconTile {
+.philCardIcon {
   flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 46px;
   height: 46px;
-  border-radius: 8px;
-  border: 0.5px solid var(--line-strong);
-  background: var(--blue-tint);
-  color: var(--accent);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  color: #fff;
 }
-.iconTileWhite {
-  border-color: var(--panel-border);
-  background: var(--white);
+.philCardHead { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+.philCardNo {
+  font-family: var(--font-en);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue-300);
+  letter-spacing: 0.02em;
 }
-.rowCardTitle { font-size: 17px; font-weight: 700; color: var(--fg-0); margin-bottom: 8px; }
-.rowCardText { margin: 0; font-size: 13.5px; line-height: 1.85; color: var(--fg-2); }
+.philCardTitle { font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
+.philCardText { margin: 0; font-size: 13px; line-height: 1.8; color: rgba(255, 255, 255, 0.78); }
 
 /* ---------------- Card grids (pain / why) ---------------- */
 .grid4 {

@@ -116,34 +116,68 @@ export default function Home() {
       <section className={`${styles.section} ${styles.philosophy}`}>
         <div className={styles.container}>
           <div className={styles.philosophyGrid}>
-            <Reveal>
-              <span className={styles.eyebrowRule}><span />PHILOSOPHY</span>
-              <h2 className={styles.philosophyTitle}>「学ぶ」だけでは、<br />成果は動きません。</h2>
-              <p className={styles.philosophyText}>研修や講座を受けるだけでは、現場も数字も変わりません。知識は、貴社の事業に結びついて、はじめて成果になります。</p>
-              <p className={styles.philosophyText}>AIモデルも活用の手法も、日進月歩で進化しています。私たちは常に最新の打ち手を取り入れ、貴社に最適な形で実装し続けます。</p>
+            <Reveal className={styles.philLeft}>
+              <div className={styles.philLeftBody}>
+                <span className={styles.eyebrowRule}><span />PHILOSOPHY</span>
+                <h2 className={styles.philosophyTitle}>「学ぶ」だけでは、<br />成果は動きません。</h2>
+                <p className={styles.philLead}>戦略から実装、成果までを一気通貫で。</p>
+                <p className={styles.philosophyText}>研修や講座を受けるだけでは、現場も数字も変わりません。知識は、貴社の事業に結びついて、はじめて成果になります。</p>
+                <p className={styles.philosophyText}>AIモデルも活用の手法も、日進月歩で進化しています。私たちは常に最新の打ち手を取り入れ、貴社に最適な形で実装し続けます。</p>
+              </div>
+              <div className={styles.philStats}>
+                {[
+                  { icon: "users", value: "200名以上", label: "の業務削減を支援" },
+                  { icon: "target", value: "平均ROI 340%", label: "導入企業の実績" },
+                  { icon: "badge-check", value: "継続率 95%", label: "伴走支援の満足度" },
+                ].map((s) => (
+                  <div key={s.value} className={styles.philStat}>
+                    <span className={styles.philStatIcon}><Icon name={s.icon} size={18} /></span>
+                    <div className={styles.philStatValue}>{s.value}</div>
+                    <div className={styles.philStatLabel}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
             </Reveal>
+
             <div className={styles.cardStack}>
-              <Reveal delay={0.05} className={`${styles.rowCard} liftCard`}>
-                <div className={styles.iconTile}><Icon name="search" size={22} /></div>
-                <div>
-                  <div className={styles.rowCardTitle}>事業の理解から、始める。</div>
-                  <p className={styles.rowCardText}>戦略コンサルティングの視点で、貴社がどのように価値を生み、どこで稼ぐのかを丁寧に紐解きます。すべては、ここから始まります。</p>
-                </div>
-              </Reveal>
-              <Reveal delay={0.13} className={`${styles.rowCard} liftCard`}>
-                <div className={styles.iconTile}><Icon name="wrench" size={22} /></div>
-                <div>
-                  <div className={styles.rowCardTitle}>貴社専属の、開発チーム。</div>
-                  <p className={styles.rowCardText}>改善策とシステム構成をともに描き、現場で確かに使える内製AIを開発します。業績につながる仕組みを、伴走しながら形にします。</p>
-                </div>
-              </Reveal>
-              <Reveal delay={0.21} className={`${styles.rowCard} ${styles.rowCardHighlight} liftCard`}>
-                <div className={`${styles.iconTile} ${styles.iconTileWhite}`}><Icon name="badge-check" size={22} /></div>
-                <div>
-                  <div className={styles.rowCardTitle}>投資に、成果で応える。</div>
-                  <p className={styles.rowCardText}>まずコスト削減から、次に売上向上へ。人員計画の見直しにまで踏み込み、投資対効果にこだわってご支援します。</p>
-                </div>
-              </Reveal>
+              {[
+                {
+                  no: "01",
+                  icon: "compass",
+                  image: "/img/philosophy/discover.jpg",
+                  title: "事業の理解から、始める。",
+                  text: "戦略コンサルティングの視点で、貴社がどのように価値を生み、どこで稼ぐのかを丁寧に紐解きます。すべては、ここから始まります。",
+                },
+                {
+                  no: "02",
+                  icon: "workflow",
+                  image: "/img/philosophy/build.jpg",
+                  title: "貴社専属の、開発チーム。",
+                  text: "改善策とシステム構成をともに描き、現場で確かに使える内製AIを開発します。業績につながる仕組みを、伴走しながら形にします。",
+                },
+                {
+                  no: "03",
+                  icon: "trending-up",
+                  image: "/img/philosophy/results.jpg",
+                  title: "投資に、成果で応える。",
+                  text: "まずコスト削減から、次に売上向上へ。人員計画の見直しにまで踏み込み、投資対効果にこだわってご支援します。",
+                },
+              ].map((c, i) => (
+                <Reveal key={c.no} delay={0.05 + i * 0.08} className={`${styles.philCard} liftCard`}>
+                  <div className={styles.philCardBg} style={{ backgroundImage: `url(${c.image})` }} />
+                  <div className={styles.philCardScrim} />
+                  <div className={styles.philCardInner}>
+                    <span className={styles.philCardIcon}><Icon name={c.icon} size={22} /></span>
+                    <div className={styles.philCardBodyText}>
+                      <div className={styles.philCardHead}>
+                        <span className={styles.philCardNo}>{c.no}</span>
+                        <span className={styles.philCardTitle}>{c.title}</span>
+                      </div>
+                      <p className={styles.philCardText}>{c.text}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
         </div>
