@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import { SITE_URL, SITE_NAME, SITE_NAME_EN, SITE_DESCRIPTION } from "@/lib/site";
+import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 
 const inter = Inter({
@@ -79,6 +80,7 @@ export default function RootLayout({
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }} />
+        <CustomCursor />
         {children}
       </body>
     </html>

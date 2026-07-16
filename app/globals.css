@@ -112,6 +112,11 @@ a:hover { color: var(--fg-0); }
 img { max-width: 100%; }
 
 ::selection { background: var(--blue-tint-strong); color: var(--fg-0); }
+
+/* Custom cursor: hide the native pointer only once JS has enabled the overlay
+   (fine-pointer desktops). Text carets in inputs are unaffected. */
+html.cursor-custom,
+html.cursor-custom * { cursor: none !important; }
 :focus-visible { outline: none; box-shadow: 0 0 0 3px var(--blue-glow); border-radius: 4px; }
 
 @media (prefers-reduced-motion: reduce) {

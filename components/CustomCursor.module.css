@@ -1,0 +1,50 @@
+.dot,
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+
+/* precise position marker */
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffffff;
+  mix-blend-mode: difference;
+  transition: opacity 0.25s ease;
+}
+
+/* trailing ring — 0-size anchor, the visible circle is the inner span */
+.ring {
+  transition: opacity 0.25s ease;
+}
+.ringInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  border: 1.5px solid #ffffff;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.22s ease;
+}
+
+/* over interactive elements the ring swells and fills faintly */
+.ring.hover .ringInner {
+  transform: scale(1.7);
+  background: rgba(255, 255, 255, 0.14);
+}
+/* press feedback */
+.ring.down .ringInner {
+  transform: scale(0.82);
+}
+.ring.hover.down .ringInner {
+  transform: scale(1.45);
+}
