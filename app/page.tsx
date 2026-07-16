@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import SectionHeading from "@/components/SectionHeading";
 import HeroVideo from "@/components/HeroVideo";
 import CountUp from "@/components/CountUp";
+import RoiSimulator from "@/components/RoiSimulator";
 import styles from "./page.module.css";
 
 const PARTNERS = [
@@ -243,14 +244,8 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.1} className={styles.roiCta}>
-              <div className={styles.roiCtaGlow} />
-              <span className={styles.roiCtaEyebrow}>ROI SIMULATOR</span>
-              <h3 className={styles.roiCtaTitle}>貴社の投資対効果を、その場で試算。</h3>
-              <p className={styles.roiCtaText}>数分の入力で、コスト削減と売上の伸びしろを、具体的な数字でご提示します。</p>
-              <a className={styles.roiCtaBtn} href="/contact">
-                あなたの会社のROIを試算する<Icon name="arrow-right" size={17} />
-              </a>
+            <Reveal delay={0.1} className={styles.roiSimCol}>
+              <RoiSimulator />
             </Reveal>
           </div>
         </div>

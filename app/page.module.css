@@ -415,51 +415,7 @@
 .roiItemTitle { font-size: 16px; font-weight: 700; color: var(--fg-0); margin-bottom: 6px; }
 .roiItemText { margin: 0; font-size: 13.5px; line-height: 1.85; color: var(--fg-2); }
 
-.roiCta {
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  padding: 44px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: linear-gradient(140deg, #0b1e46 0%, #1a49c9 100%);
-  color: #fff;
-}
-.roiCtaGlow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(70% 90% at 100% 0%, rgba(120, 170, 255, 0.35), transparent 60%);
-}
-.roiCtaEyebrow {
-  position: relative;
-  font-family: var(--font-en);
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: rgba(180, 205, 255, 0.9);
-  margin-bottom: 14px;
-}
-.roiCtaTitle { position: relative; font-size: clamp(21px, 2.4vw, 25px); font-weight: 700; color: #fff; letter-spacing: -0.02em; margin: 0 0 12px; }
-.roiCtaText { position: relative; margin: 0 0 26px; font-size: 14px; line-height: 1.85; color: rgba(255, 255, 255, 0.82); }
-.roiCtaBtn {
-  position: relative;
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14.5px;
-  font-weight: 700;
-  color: #0b1e46;
-  background: #fff;
-  border-radius: 999px;
-  padding: 14px 26px;
-  transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
-}
-.roiCtaBtn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28); }
-.roiCtaBtn .dc-icon { transition: transform 0.2s var(--ease-out); }
-.roiCtaBtn:hover .dc-icon { transform: translateX(3px); }
+.roiSimCol { display: flex; }
 
 /* ---------------- Card grids (pain / why) ---------------- */
 .grid4 {
