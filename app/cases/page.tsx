@@ -28,6 +28,7 @@ type Scenario = {
 const scenarios: Scenario[] = [
   {
     icon: "factory",
+    image: "/img/industries/manufacturing.jpg",
     title: "製造業",
     body: "見積・図面対応や問い合わせ処理をAIに置換。属人化した工程知識を、全社で使える形にする。",
     stats: [
@@ -37,6 +38,7 @@ const scenarios: Scenario[] = [
   },
   {
     icon: "stethoscope",
+    image: "/img/industries/healthcare.jpg",
     title: "医療・ヘルスケア",
     body: "予約・問い合わせ・記録作成を自動化。専門職の時間を、人にしかできない業務へ戻す。",
     stats: [
@@ -46,6 +48,7 @@ const scenarios: Scenario[] = [
   },
   {
     icon: "shopping-bag",
+    image: "/img/industries/retail.jpg",
     title: "小売・EC",
     body: "商品説明・接客・レコメンドをAI化。制作量を増やし、CS対応を軽くしながら売上を伸ばす。",
     stats: [
@@ -55,6 +58,7 @@ const scenarios: Scenario[] = [
   },
   {
     icon: "landmark",
+    image: "/img/industries/finance.jpg",
     title: "金融・保険",
     body: "書類審査・レポート作成・照会対応を自動化。分析精度を上げ、意思決定を速くする。",
     stats: [
@@ -64,6 +68,7 @@ const scenarios: Scenario[] = [
   },
   {
     icon: "building-2",
+    image: "/img/industries/realestate.jpg",
     title: "不動産・建設",
     body: "物件・案件情報の整理と提案書作成をAI化。反響対応を速め、成約までの距離を縮める。",
     stats: [
@@ -73,6 +78,7 @@ const scenarios: Scenario[] = [
   },
   {
     icon: "briefcase",
+    image: "/img/industries/professional.jpg",
     title: "士業・専門サービス",
     body: "調査・ドラフト作成・照会対応をAIで加速。専門家の時間単価を、より高い業務に集中させる。",
     stats: [
@@ -100,14 +106,17 @@ export default function Page() {
               {scenarios.map((s, i) => (
                 <Reveal key={s.title} delay={i * 0.08} className={cx.card}>
                   <div className={cx.media}>
+                    <div className={cx.mediaFallback}>
+                      <Icon name={s.icon} size={64} />
+                    </div>
                     {s.image ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={s.image} alt={`${s.title}のイメージ`} />
-                    ) : (
-                      <div className={cx.mediaFallback}>
-                        <Icon name={s.icon} size={64} />
-                      </div>
-                    )}
+                      <div
+                        className={cx.photo}
+                        style={{ backgroundImage: `url(${s.image})` }}
+                        role="img"
+                        aria-label={`${s.title}のイメージ`}
+                      />
+                    ) : null}
                   </div>
                   <div className={cx.body}>
                     <div className={cx.head}>

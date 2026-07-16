@@ -21,27 +21,30 @@
 
 /* top image banner */
 .media {
+  position: relative;
   height: 178px;
   overflow: hidden;
   background: linear-gradient(135deg, #eaf1ff, #d7e4fe);
 }
-.media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s var(--ease-standard);
-}
-.card:hover .media img {
-  transform: scale(1.05);
-}
 .mediaFallback {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   color: rgba(43, 124, 255, 0.3);
+}
+/* photo layer — a missing file simply reveals the fallback below (no broken img) */
+.photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.5s var(--ease-standard);
+}
+.card:hover .photo {
+  transform: scale(1.05);
 }
 
 /* content */
