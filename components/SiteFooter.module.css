@@ -13,7 +13,10 @@
   flex-wrap: wrap;
 }
 .brandCol { max-width: 320px; }
-.brand { display: flex; align-items: center; gap: 12px; }
+.brand { display: inline-flex; align-items: center; gap: 12px; }
+.brandMark { display: block; height: 30px; width: auto; transition: transform 0.25s ease; }
+/* same playful tilt as the header logo */
+.brand:hover .brandMark { transform: rotate(-6deg) scale(1.05); }
 .brandText { display: flex; flex-direction: column; line-height: 1.12; }
 .brandName { font-size: 16px; font-weight: 700; color: var(--fg-0); }
 .brandSub { font-size: 8px; font-weight: 600; letter-spacing: 0.22em; color: var(--accent); }

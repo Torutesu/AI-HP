@@ -32,11 +32,20 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     type: "website",
     url: SITE_URL,
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} | AIを、たしかな経営成果へ。`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} | AIを、たしかな経営成果へ。`,
     description: "AI Native企業を、産み出す。試すだけで終わらせず、経営の数字が動く形で実装します。",
+    images: ["/og.png"],
   },
 };
 

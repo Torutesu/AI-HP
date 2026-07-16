@@ -14,6 +14,25 @@ export const metadata: Metadata = {
     "AI Nativeといえば、AI総戦研。試すだけで終わらせず、経営の数字が動く形で企業に実装します。",
 };
 
+// Light scrim over each photo so the aspirational imagery reads softly behind
+// the card while the dark text on top stays crisp.
+const cardScrim =
+  "linear-gradient(165deg, rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.80) 52%, rgba(255,255,255,0.94) 100%)";
+
+const cardStyle = (image: string) => ({
+  border: "0.5px solid var(--line-strong)",
+  borderRadius: "12px",
+  padding: "34px 32px",
+  display: "flex",
+  flexDirection: "column" as const,
+  gap: "12px",
+  backgroundColor: "#fff",
+  backgroundImage: `${cardScrim}, url(${image})`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+});
+
 const cards = [
   {
     icon: "flag",
@@ -21,15 +40,7 @@ const cards = [
     title: "AI Native企業を産み出す",
     body: "実験で止めない。経営の数字が動く企業へと、実装で押し上げる。",
     bodyColor: "var(--fg-2)",
-    style: {
-      background: "var(--surface-card)",
-      border: "0.5px solid var(--line-strong)",
-      borderRadius: "12px",
-      padding: "34px 32px",
-      display: "flex",
-      flexDirection: "column" as const,
-      gap: "12px",
-    },
+    style: cardStyle("/img/company/mission.jpg"),
   },
   {
     icon: "crosshair",
@@ -37,15 +48,7 @@ const cards = [
     title: "実装型AIパートナー",
     body: "戦略から内製AIまで、貴社専属のSIerとして汗をかく。",
     bodyColor: "var(--fg-2)",
-    style: {
-      background: "var(--surface-card)",
-      border: "0.5px solid var(--line-strong)",
-      borderRadius: "12px",
-      padding: "34px 32px",
-      display: "flex",
-      flexDirection: "column" as const,
-      gap: "12px",
-    },
+    style: cardStyle("/img/company/position.jpg"),
   },
   {
     icon: "handshake",
@@ -53,15 +56,7 @@ const cards = [
     title: "投資に、成果で応える",
     body: "まず削減から、次に売上へ。投資対効果にこだわり抜く。",
     bodyColor: "var(--fg-1)",
-    style: {
-      border: "0.5px solid var(--panel-border)",
-      borderRadius: "12px",
-      padding: "34px 32px",
-      display: "flex",
-      flexDirection: "column" as const,
-      gap: "12px",
-      backgroundImage: "linear-gradient(120deg, #F4F8FF, #FFFFFF)",
-    },
+    style: cardStyle("/img/company/promise.jpg"),
   },
 ];
 

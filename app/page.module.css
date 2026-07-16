@@ -47,8 +47,7 @@
   height: auto;
   max-width: 340px;
   margin-bottom: 30px;
-  /* the badge art already carries its own rounded border on a dark panel */
-  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+  /* background is keyed out, so the badge floats and blends into the hero */
   transition: transform 0.25s ease;
 }
 .ycBadge:hover {

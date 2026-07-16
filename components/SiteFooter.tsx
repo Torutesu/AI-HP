@@ -8,13 +8,13 @@ export default function SiteFooter() {
     <footer className={styles.footer}>
       <div className={styles.top}>
         <div className={styles.brandCol}>
-          <div className={styles.brand}>
-            <Image src={logoMark} alt="AI総合戦略研究所" height={30} />
+          <Link href="/" className={styles.brand} aria-label="AI総合戦略研究所 ホーム">
+            <Image src={logoMark} alt="AI総合戦略研究所" height={30} className={styles.brandMark} />
             <span className={styles.brandText}>
               <span className={styles.brandName}>AI総合戦略研究所</span>
               <span className={styles.brandSub}>AI STRATEGY INSTITUTE</span>
             </span>
-          </div>
+          </Link>
           <p className={styles.tagline}>
             AI Native企業を、産み出す。試すだけで終わらせず、経営の数字が動く形で実装する。
           </p>

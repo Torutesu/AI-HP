@@ -63,7 +63,7 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className={styles.ycBadge}
-              src="/img/badge/yc-dark.png"
+              src="/img/badge/yc-transparent.png"
               alt="Winner of YC RFS Hackathon 2026 — Presented by Transpose"
               width={720}
               height={256}
