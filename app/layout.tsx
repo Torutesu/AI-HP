@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
+import { SITE_URL, SITE_NAME, SITE_NAME_EN, SITE_DESCRIPTION } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,19 +18,46 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ai-strategy-institute.example"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "AI総合戦略研究所 | AIを、たしかな経営成果へ。",
-    template: "%s | AI総合戦略研究所",
+    default: `${SITE_NAME} | AIを、たしかな経営成果へ。`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "AIを「試して終わり」にさせません。貴社の事業に深く根ざす形でコストのムダを整え、売上の芽を育て、AIが経営の数字を動かすところまで伴走してご支援します。",
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "AI総合戦略研究所 | AIを、たしかな経営成果へ。",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | AIを、たしかな経営成果へ。`,
     description: "AI Native企業を、産み出す。試すだけで終わらせず、経営の数字が動く形で実装します。",
     locale: "ja_JP",
     type: "website",
+    url: SITE_URL,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} | AIを、たしかな経営成果へ。`,
+    description: "AI Native企業を、産み出す。試すだけで終わらせず、経営の数字が動く形で実装します。",
+  },
+};
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  alternateName: SITE_NAME_EN,
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo-mark.png`,
+  description: SITE_DESCRIPTION,
+  parentOrganization: { "@type": "Organization", name: "株式会社Select" },
+};
+
+const siteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  alternateName: SITE_NAME_EN,
+  url: SITE_URL,
+  inLanguage: "ja",
 };
 
 export default function RootLayout({
@@ -39,7 +67,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={`${inter.variable} ${notoSansJP.variable}`}>
-      <body>{children}</body>
+      <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }} />
+        {children}
+      </body>
     </html>
   );
 }

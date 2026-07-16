@@ -6,6 +6,7 @@ import Icon from "@/components/Icon";
 import Button from "@/components/Button";
 import SectionHeading from "@/components/SectionHeading";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "会社概要",
@@ -64,18 +65,33 @@ const cards = [
   },
 ];
 
-const companyRows = [
-  { label: "会社名", value: "AI総合戦略研究所（略称：AI総戦研）", valueColor: "var(--fg-1)", lineHeight: undefined },
-  { label: "英名", value: "AI Strategy Institute", valueColor: "var(--fg-1)", lineHeight: undefined },
+const companyRows: {
+  label: string;
+  value: ReactNode;
+  valueColor: string;
+  lineHeight?: string;
+}[] = [
+  { label: "会社名", value: "株式会社Select", valueColor: "var(--fg-1)" },
+  { label: "英名", value: "Select, Inc.", valueColor: "var(--fg-1)" },
   {
     label: "事業内容",
-    value: "AI経営基盤（AI OS）の提供、AI活用コンサルティング、内製AIの設計・開発",
+    value: "ShogunAI（海外向けToC SaaS）の企画・開発・運営、AI総合戦略研究所（日本国内向け事業）",
     valueColor: "var(--fg-1)",
     lineHeight: "1.8",
   },
-  { label: "設立", value: "（記載準備中）", valueColor: "var(--fg-3)", lineHeight: undefined },
-  { label: "代表者", value: "（記載準備中）", valueColor: "var(--fg-3)", lineHeight: undefined },
-  { label: "所在地", value: "（記載準備中）", valueColor: "var(--fg-3)", lineHeight: undefined },
+  { label: "設立", value: "2021年8月", valueColor: "var(--fg-1)" },
+  { label: "代表者", value: "田野徹", valueColor: "var(--fg-1)" },
+  { label: "所在地", value: "東京都渋谷区恵比寿西1-16-11", valueColor: "var(--fg-1)" },
+  { label: "主要取引銀行", value: "三井住友銀行", valueColor: "var(--fg-1)" },
+  {
+    label: "株主",
+    value: (
+      <a href="https://theseed.vc/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>
+        THESEED
+      </a>
+    ),
+    valueColor: "var(--fg-1)",
+  },
 ];
 
 export default function Page() {
@@ -179,9 +195,6 @@ export default function Page() {
                 ))}
               </div>
             </Reveal>
-            <p style={{ marginTop: "20px", fontSize: "12px", color: "var(--fg-3)" }}>
-              ※ 設立・代表者・所在地などは、確定情報をいただき次第反映します。
-            </p>
           </div>
         </section>
 

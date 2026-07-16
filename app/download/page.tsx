@@ -84,15 +84,6 @@ export default function DownloadPage() {
                 <div style={{ width: "1px", height: "16px", background: "var(--line-strong)" }} />
                 <div style={{ display: "flex", alignItems: "center", gap: "7px", fontSize: "12.5px", color: "var(--fg-2)" }}>PDF・無料</div>
               </div>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                <div style={{ display: "flex", gap: "12px", alignItems: "center", fontSize: "13px", color: "var(--fg-2)" }}>
-                  <span style={{ color: "var(--accent)" }}><Icon name="shield-check" size={17} /></span>無理な営業は行いません
-                </div>
-                <div style={{ display: "flex", gap: "12px", alignItems: "center", fontSize: "13px", color: "var(--fg-2)" }}>
-                  <span style={{ color: "var(--accent)" }}><Icon name="lock" size={17} /></span>いただいた情報は厳重に管理します
-                </div>
-              </div>
             </div>
 
             <DownloadForm />
