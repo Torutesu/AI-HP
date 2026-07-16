@@ -63,30 +63,35 @@
     max-width: 280px;
   }
 }
-/* compact strength chips inside the hero */
-.heroBadges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-self: flex-start;
-  margin-bottom: 26px;
+/* three strength badges under the hero CTA */
+.fvBadges {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-self: stretch;
+  max-width: 760px;
+  margin-top: 36px;
 }
-.heroBadge {
-  display: inline-flex;
-  align-items: center;
+.fvBadge {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  padding: 8px 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 18px;
   backdrop-filter: blur(10px);
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
-.heroBadgeEmoji { font-size: 15px; line-height: 1; }
-a.heroBadge:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-1px); }
+.fvBadgeTop { display: flex; align-items: center; gap: 9px; }
+.fvBadgeEmoji { font-size: 20px; line-height: 1; }
+.fvBadgeTitle { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
+.fvBadgeText { font-size: 11.5px; line-height: 1.6; color: rgba(255, 255, 255, 0.62); }
+a.fvBadge:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.28); transform: translateY(-2px); }
+
+@media (max-width: 620px) {
+  .fvBadges { grid-template-columns: 1fr; max-width: none; }
+}
 .heroTitle {
   font-size: clamp(34px, 6vw, 60px);
   font-weight: 500;

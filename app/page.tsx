@@ -47,12 +47,19 @@ const STATS = [
 
 const SALES_TAGS = ["リード獲得AI", "提案書自動生成", "顧客分析・ランキング付け", "コンテンツ生成", "営業支援AI", "価格最適化", "マーケ最適化AI"];
 
-const STRENGTHS = [
+const STRENGTHS: {
+  emoji: string;
+  accent: string;
+  title: string;
+  text: string;
+  href?: string;
+}[] = [
   {
     emoji: "🏆",
     accent: "#F26522",
     title: "YCハッカソン優勝",
     text: "世界トップの技術力を、実戦の舞台で証明。",
+    href: "https://x.com/KyosukeTogami/status/2075136867461460299",
   },
   {
     emoji: "🌐",
@@ -165,47 +172,41 @@ export default function Home() {
 
         <div className={styles.heroBody}>
           <Reveal immediate delay={0.2} y={20}>
-            <a
-              className={styles.ycBadgeLink}
-              href="https://x.com/KyosukeTogami/status/2075136867461460299"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Winner of YC RFS Hackathon 2026 — 投稿を見る（X）"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className={styles.ycBadge}
-                src="/img/badge/yc-transparent.png"
-                alt="Winner of YC RFS Hackathon 2026 — Presented by Transpose"
-                width={720}
-                height={256}
-              />
-            </a>
-          </Reveal>
-          <Reveal immediate delay={0.28} y={20} className={styles.heroBadges}>
-            {STRENGTHS.slice(1).map((b) => (
-              <span key={b.title} className={styles.heroBadge}>
-                <span className={styles.heroBadgeEmoji}>{b.emoji}</span>
-                {b.title}
-              </span>
-            ))}
-          </Reveal>
-          <Reveal immediate delay={0.32} y={20}>
             <h1 className={styles.heroTitle}>AIを、<br />たしかな経営成果へ。</h1>
           </Reveal>
-          <Reveal immediate delay={0.32} y={20}>
+          <Reveal immediate delay={0.28} y={20}>
             <div className={styles.heroSub}>「試して終わり」に、させません。</div>
           </Reveal>
-          <Reveal immediate delay={0.44} y={20}>
+          <Reveal immediate delay={0.4} y={20}>
             <p className={styles.heroLead}>
               貴社の事業に深く根ざす形で、コストのムダを整え、売上の芽を育てる。<br />
               AIが経営の数字を動かすところまで、伴走してご支援します。
             </p>
           </Reveal>
-          <Reveal immediate delay={0.58} y={20} className={styles.heroCtas}>
+          <Reveal immediate delay={0.52} y={20} className={styles.heroCtas}>
             <a className="whiteCta" href="/download">
               資料をダウンロード<Icon name="arrow-right" size={17} />
             </a>
+          </Reveal>
+          <Reveal immediate delay={0.62} y={20} className={styles.fvBadges}>
+            {STRENGTHS.map((b) => {
+              const inner = (
+                <>
+                  <span className={styles.fvBadgeTop}>
+                    <span className={styles.fvBadgeEmoji}>{b.emoji}</span>
+                    <span className={styles.fvBadgeTitle}>{b.title}</span>
+                  </span>
+                  <span className={styles.fvBadgeText}>{b.text}</span>
+                </>
+              );
+              return b.href ? (
+                <a key={b.title} className={styles.fvBadge} href={b.href} target="_blank" rel="noopener noreferrer">
+                  {inner}
+                </a>
+              ) : (
+                <span key={b.title} className={styles.fvBadge}>{inner}</span>
+              );
+            })}
           </Reveal>
         </div>
 
