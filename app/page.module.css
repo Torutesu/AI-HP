@@ -352,6 +352,115 @@
   z-index: 0;
 }
 
+/* ---------------- STRENGTHS / ROI ---------------- */
+.strengths { padding: 84px 0 96px; }
+.badgeRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.badge {
+  background: var(--white);
+  border: 0.5px solid var(--line-strong);
+  border-radius: 16px;
+  padding: 36px 30px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+.badgeEmoji {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 66px;
+  height: 66px;
+  border-radius: 18px;
+  border: 1px solid transparent;
+  font-size: 32px;
+  line-height: 1;
+}
+.badgeTitle { font-size: 20px; font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; }
+.badgeText { margin: 0; font-size: 13px; line-height: 1.75; color: var(--fg-2); max-width: 260px; }
+
+.roiWrap {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 20px;
+  margin-top: 20px;
+  align-items: stretch;
+}
+.roiReasons {
+  border: 0.5px solid var(--line-strong);
+  border-radius: 16px;
+  padding: 40px 38px;
+  background: var(--ink-900);
+}
+.roiHeading { font-size: clamp(21px, 2.4vw, 25px); font-weight: 700; color: var(--fg-0); letter-spacing: -0.02em; margin: 14px 0 0; }
+.roiList { display: flex; flex-direction: column; gap: 22px; margin-top: 26px; }
+.roiItem { display: flex; gap: 16px; align-items: flex-start; }
+.roiIcon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 0.5px solid var(--line-strong);
+  background: var(--blue-tint);
+  color: var(--accent);
+}
+.roiItemTitle { font-size: 16px; font-weight: 700; color: var(--fg-0); margin-bottom: 6px; }
+.roiItemText { margin: 0; font-size: 13.5px; line-height: 1.85; color: var(--fg-2); }
+
+.roiCta {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(140deg, #0b1e46 0%, #1a49c9 100%);
+  color: #fff;
+}
+.roiCtaGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(70% 90% at 100% 0%, rgba(120, 170, 255, 0.35), transparent 60%);
+}
+.roiCtaEyebrow {
+  position: relative;
+  font-family: var(--font-en);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(180, 205, 255, 0.9);
+  margin-bottom: 14px;
+}
+.roiCtaTitle { position: relative; font-size: clamp(21px, 2.4vw, 25px); font-weight: 700; color: #fff; letter-spacing: -0.02em; margin: 0 0 12px; }
+.roiCtaText { position: relative; margin: 0 0 26px; font-size: 14px; line-height: 1.85; color: rgba(255, 255, 255, 0.82); }
+.roiCtaBtn {
+  position: relative;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0b1e46;
+  background: #fff;
+  border-radius: 999px;
+  padding: 14px 26px;
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+}
+.roiCtaBtn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28); }
+.roiCtaBtn .dc-icon { transition: transform 0.2s var(--ease-out); }
+.roiCtaBtn:hover .dc-icon { transform: translateX(3px); }
+
 /* ---------------- Card grids (pain / why) ---------------- */
 .grid4 {
   display: grid;
@@ -592,6 +701,7 @@
    ============================================================ */
 @media (max-width: 1024px) {
   .philosophyGrid { grid-template-columns: 1fr; gap: 40px; }
+  .roiWrap { grid-template-columns: 1fr; }
   .osSplit { grid-template-columns: 1fr; }
   .grid4 { grid-template-columns: repeat(2, 1fr); }
   .osTop { grid-template-columns: 1fr; }
@@ -606,6 +716,7 @@
 @media (max-width: 640px) {
   .grid4 { grid-template-columns: 1fr; }
   .casesGrid { grid-template-columns: 1fr; }
+  .badgeRow { grid-template-columns: 1fr; }
   .ctaBand { padding: 40px 28px; }
   .rowCard, .osPanel { padding: 26px 24px; }
 }

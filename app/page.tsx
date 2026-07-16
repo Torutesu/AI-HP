@@ -46,6 +46,40 @@ const STATS = [
 
 const SALES_TAGS = ["リード獲得AI", "提案書自動生成", "顧客分析・ランキング付け", "コンテンツ生成", "営業支援AI", "価格最適化", "マーケ最適化AI"];
 
+const STRENGTHS = [
+  {
+    emoji: "🏆",
+    accent: "#F26522",
+    title: "YCハッカソン優勝",
+    text: "世界トップの技術力を、実戦の舞台で証明。",
+  },
+  {
+    emoji: "🌐",
+    accent: "#2B7CFF",
+    title: "AI事例 5万件",
+    text: "世界最先端の活用事例を継続収集。打ち手の質が違う。",
+  },
+  {
+    emoji: "📈",
+    accent: "#1F9D62",
+    title: "ROI起点の設計",
+    text: "コストとリターンから逆算し、投資対効果にこだわり抜く。",
+  },
+];
+
+const ROI_REASONS = [
+  {
+    icon: "blocks",
+    title: "最速で、実装する。",
+    text: "ゼロから作りません。開発済みの自社モジュール群を組み合わせるから、圧倒的に速く、無駄なく形にします。",
+  },
+  {
+    icon: "globe",
+    title: "最適な人材を、世界から。",
+    text: "国境にはこだわりません。案件ごとに世界の複数国から最適なエンジニアをアサインし、品質とコストを両立します。",
+  },
+];
+
 const OS_TOP = [
   {
     icon: "trending-down",
@@ -176,6 +210,51 @@ export default function Home() {
           </div>
         </Reveal>
       </div>
+
+      {/* ===================== STRENGTHS ===================== */}
+      <section className={`${styles.section} ${styles.strengths}`}>
+        <div className={styles.container}>
+          <div className={styles.badgeRow}>
+            {STRENGTHS.map((b, i) => (
+              <Reveal key={b.title} delay={i * 0.08} className={`${styles.badge} liftCard`}>
+                <span className={styles.badgeEmoji} style={{ background: `${b.accent}14`, borderColor: `${b.accent}33` }}>
+                  {b.emoji}
+                </span>
+                <div className={styles.badgeTitle}>{b.title}</div>
+                <p className={styles.badgeText}>{b.text}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className={styles.roiWrap}>
+            <Reveal className={styles.roiReasons}>
+              <span className={styles.eyebrowRule}><span />WHY ROI</span>
+              <h2 className={styles.roiHeading}>ROIにこだわり抜ける、2つの理由。</h2>
+              <div className={styles.roiList}>
+                {ROI_REASONS.map((r) => (
+                  <div key={r.title} className={styles.roiItem}>
+                    <span className={styles.roiIcon}><Icon name={r.icon} size={20} /></span>
+                    <div>
+                      <div className={styles.roiItemTitle}>{r.title}</div>
+                      <p className={styles.roiItemText}>{r.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1} className={styles.roiCta}>
+              <div className={styles.roiCtaGlow} />
+              <span className={styles.roiCtaEyebrow}>ROI SIMULATOR</span>
+              <h3 className={styles.roiCtaTitle}>貴社の投資対効果を、その場で試算。</h3>
+              <p className={styles.roiCtaText}>数分の入力で、コスト削減と売上の伸びしろを、具体的な数字でご提示します。</p>
+              <a className={styles.roiCtaBtn} href="/contact">
+                あなたの会社のROIを試算する<Icon name="arrow-right" size={17} />
+              </a>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       {/* ===================== OUR BELIEF ===================== */}
       <section className={styles.belief}>
