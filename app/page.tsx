@@ -46,6 +46,76 @@ const STATS = [
 
 const SALES_TAGS = ["リード獲得AI", "提案書自動生成", "顧客分析・ランキング付け", "コンテンツ生成", "営業支援AI", "価格最適化", "マーケ最適化AI"];
 
+const OS_TOP = [
+  {
+    icon: "trending-down",
+    label: "コスト DOWN",
+    color: "#2B7CFF",
+    sub: "削減の起点をつくる",
+    text: "汎用SaaSの代替と業務の自動化により、余分な固定費・外注費を構造から見直します。",
+    kind: "cost" as const,
+  },
+  {
+    icon: "trending-up",
+    label: "売上 UP",
+    color: "#1F9D62",
+    sub: "人的リソースを解放する",
+    text: "自動化で生まれた人的リソースを、本来注力すべき事業へと振り向けます。",
+    kind: "sales" as const,
+  },
+  {
+    icon: "percent",
+    label: "利益率 UP",
+    color: "#7C5CFF",
+    sub: "結果として高まる",
+    text: "削減と向上の両方が効くことで、結果として利益率が高まっていきます。",
+    kind: "profit" as const,
+    highlight: true,
+  },
+];
+
+/** Small trend sparkline: descending for cost, ascending for sales/profit. */
+function OsTrend({ kind, color }: { kind: "cost" | "sales" | "profit"; color: string }) {
+  const up = kind !== "cost";
+  const bars = up ? [10, 15, 21, 28, 36, 45, 54] : [54, 45, 36, 28, 21, 15, 10];
+  const line = up
+    ? "M6,54 C46,50 74,40 116,31 S182,13 214,8"
+    : "M6,8 C46,12 74,22 116,31 S182,49 214,54";
+  const tip = up ? { x: 214, y: 8, rot: -33 } : { x: 214, y: 54, rot: 33 };
+  return (
+    <svg className={styles.osChart} viewBox="0 0 220 64" fill="none" preserveAspectRatio="none">
+      {bars.map((h, i) => (
+        <rect key={i} x={6 + i * 30} y={60 - h} width="15" height={h} rx="3" fill={color} opacity="0.13" />
+      ))}
+      <path d={line} stroke={color} strokeWidth="2.5" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+      <path
+        d="M0,-4 L5,0 L0,4 Z"
+        fill={color}
+        transform={`translate(${tip.x},${tip.y}) rotate(${tip.rot})`}
+      />
+    </svg>
+  );
+}
+
+/** Stacked-disk motif for the COST DOWN layer panel. */
+function LayerStack() {
+  return (
+    <svg className={styles.osLayerArt} viewBox="0 0 180 158" fill="none" aria-hidden>
+      <defs>
+        <linearGradient id="osDisk" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#7FB2FF" />
+          <stop offset="1" stopColor="#2A6BEF" />
+        </linearGradient>
+      </defs>
+      <path d="M90,16 L90,58" stroke="#9CC3FF" strokeWidth="13" strokeLinecap="round" opacity="0.55" />
+      <path d="M71,52 L90,76 L109,52 Z" fill="#9CC3FF" opacity="0.7" />
+      <g opacity="0.78"><ellipse cx="90" cy="120" rx="54" ry="17" fill="url(#osDisk)" /></g>
+      <g opacity="0.88"><ellipse cx="90" cy="106" rx="54" ry="17" fill="url(#osDisk)" /></g>
+      <g><ellipse cx="90" cy="92" rx="54" ry="17" fill="url(#osDisk)" /></g>
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -211,18 +281,26 @@ export default function Home() {
           </Reveal>
 
           <div className={styles.osTop}>
-            <Reveal className={`${styles.osTopCard} liftCard`}>
-              <span className={styles.osTopLabel}><Icon name="trending-down" size={22} />コスト DOWN</span>
-              <p className={styles.osTopText}>汎用SaaSの代替と業務の自動化により、余分な固定費・外注費を構造から見直します。</p>
-            </Reveal>
-            <Reveal delay={0.1} className={`${styles.osTopCard} liftCard`}>
-              <span className={styles.osTopLabel}><Icon name="trending-up" size={22} />売上 UP</span>
-              <p className={styles.osTopText}>自動化で生まれた人的リソースを、本来注力すべき事業へと振り向けます。</p>
-            </Reveal>
-            <Reveal delay={0.2} className={`${styles.osTopCard} ${styles.osTopCardHighlight} liftCard`}>
-              <span className={styles.osTopLabel}><Icon name="percent" size={20} />利益率 UP</span>
-              <p className={styles.osTopText} style={{ color: "var(--fg-1)" }}>削減と向上の両方が効くことで、結果として利益率が高まっていきます。</p>
-            </Reveal>
+            {OS_TOP.map((c, i) => (
+              <Reveal
+                key={c.label}
+                delay={i * 0.1}
+                className={`${styles.osTopCard}${c.highlight ? ` ${styles.osTopCardHighlight}` : ""} liftCard`}
+              >
+                <span className={styles.osTopLabel} style={{ color: c.color }}>
+                  <span className={styles.osTopIcon} style={{ background: `${c.color}14`, color: c.color }}>
+                    <Icon name={c.icon} size={20} />
+                  </span>
+                  {c.label}
+                </span>
+                <div className={styles.osTopSub}>{c.sub}</div>
+                <p className={styles.osTopText}>{c.text}</p>
+                <div className={styles.osChartWrap}>
+                  <span className={styles.osChartLabel} style={{ color: c.color }}>{c.kind.toUpperCase()}</span>
+                  <OsTrend kind={c.kind} color={c.color} />
+                </div>
+              </Reveal>
+            ))}
           </div>
 
           <div className={styles.osSplit}>
@@ -230,6 +308,7 @@ export default function Home() {
               <span className={styles.osPanelEyebrow}><span />COST DOWN LAYER</span>
               <div className={styles.osPanelTitle}>削減の層</div>
               <p className={styles.osPanelText}>余分な工数・人件費・外注費・汎用SaaS費を削減する層です。業務そのものを、AIへと置き換えていきます。</p>
+              <LayerStack />
               <div className={styles.osPanelFoot}>業務置換 — Replacement</div>
             </Reveal>
             <Reveal delay={0.1} className={`${styles.osPanel} ${styles.osPanelHighlight}`}>
