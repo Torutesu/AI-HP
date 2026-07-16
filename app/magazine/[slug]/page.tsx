@@ -105,7 +105,7 @@ export default async function ArticlePage({
               background: "radial-gradient(64% 82% at 78% -6%, rgba(43,124,255,0.20), transparent 58%)",
             }}
           />
-          <div style={{ position: "relative", maxWidth: "820px", margin: "0 auto", padding: "56px 24px 88px" }}>
+          <div style={{ position: "relative", maxWidth: "820px", margin: "0 auto", padding: "108px 24px 72px" }}>
             <nav style={{ fontSize: "12.5px", color: "rgba(255,255,255,.5)", marginBottom: "24px" }}>
               <Link href="/" style={{ color: "rgba(255,255,255,.62)" }}>ホーム</Link>
               {" ／ "}

@@ -410,7 +410,11 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--accent);
+  transition: color 0.2s var(--ease-standard);
 }
+.detailLink .dc-icon { transition: transform 0.2s var(--ease-standard); }
+.detailLink:hover { color: var(--accent-hover); }
+.detailLink:hover .dc-icon { transform: translateX(3px); }
 .centerRow { display: flex; justify-content: center; }
 
 /* ---------------- PROCESS ---------------- */
@@ -481,7 +485,17 @@
   pointer-events: none;
   background: radial-gradient(90% 120% at 100% 0%, rgba(43, 124, 255, 0.1), transparent 60%);
 }
-.ctaTitle { font-size: clamp(24px, 3.4vw, 32px); font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; margin: 0 0 12px; }
+.ctaCopy { position: relative; max-width: 560px; }
+.ctaEyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.ctaTitle { font-size: clamp(24px, 3.4vw, 32px); font-weight: 700; line-height: 1.32; color: var(--fg-0); letter-spacing: -0.01em; margin: 0 0 14px; }
 .ctaText { font-size: 15px; color: var(--fg-2); line-height: 1.85; margin: 0; }
 .ctaActions { position: relative; display: flex; gap: 14px; flex-wrap: wrap; }
 

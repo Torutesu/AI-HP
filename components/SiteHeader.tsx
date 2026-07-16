@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
@@ -20,6 +20,14 @@ export default function SiteHeader({
   variant?: "overlay" | "solid";
 }) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const content = (
     <>
@@ -82,12 +90,19 @@ export default function SiteHeader({
     </>
   );
 
+  const scrolledClass = scrolled ? ` ${styles.scrolled}` : "";
+  const openClass = open ? ` ${styles.menuOpen}` : "";
+
   if (variant === "solid") {
     return (
-      <header className={`${styles.header} ${styles.solid}`}>
+      <header className={`${styles.header} ${styles.solid}${scrolledClass}${openClass}`}>
         <div className={styles.inner}>{content}</div>
       </header>
     );
   }
-  return <header className={styles.header}>{content}</header>;
+  return (
+    <header className={`${styles.header} ${styles.overlay}${scrolledClass}${openClass}`}>
+      {content}
+    </header>
+  );
 }

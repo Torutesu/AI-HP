@@ -50,8 +50,8 @@ const cards = [
   {
     icon: "handshake",
     eyebrow: "PROMISE",
-    title: "絶対に、元を取ってもらう",
-    body: "まず削減から、次に売上へ。投資に必ずリターンを返す。",
+    title: "投資に、成果で応える",
+    body: "まず削減から、次に売上へ。投資対効果にこだわり抜く。",
     bodyColor: "var(--fg-1)",
     style: {
       border: "0.5px solid var(--panel-border)",

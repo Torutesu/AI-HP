@@ -49,6 +49,7 @@ const SALES_TAGS = ["リード獲得AI", "提案書自動生成", "顧客分析�
 export default function Home() {
   return (
     <>
+      <SiteHeader />
       {/* ===================== HERO ===================== */}
       <div className={styles.hero}>
         <HeroVideo
@@ -56,8 +57,6 @@ export default function Home() {
           src="https://cdn.sceneai.art/Hero Section Video/c0429648-6382-40e5-977a-be50ff2af8d5.mp4"
         />
         <div className={styles.heroOverlay} />
-
-        <SiteHeader />
 
         <div className={styles.heroBody}>
           <Reveal immediate delay={0.2} className={styles.badge} y={20}>
@@ -135,7 +134,7 @@ export default function Home() {
                 <div className={`${styles.iconTile} ${styles.iconTileWhite}`}><Icon name="badge-check" size={22} /></div>
                 <div>
                   <div className={styles.rowCardTitle}>投資に、成果で応える。</div>
-                  <p className={styles.rowCardText}>まずコスト削減から、次に売上向上へ。人員計画の見直しにまで踏み込み、投資に見合うリターンを必ずお返しします。</p>
+                  <p className={styles.rowCardText}>まずコスト削減から、次に売上向上へ。人員計画の見直しにまで踏み込み、投資対効果にこだわってご支援します。</p>
                 </div>
               </Reveal>
             </div>
@@ -271,13 +270,18 @@ export default function Home() {
         <div className={styles.container}>
           <Reveal className={styles.ctaBand}>
             <div className={styles.ctaGlow} />
-            <div style={{ position: "relative" }}>
-              <h2 className={styles.ctaTitle}>AI Nativeへ、はじめの一歩を。</h2>
-              <p className={styles.ctaText}>サービス概要・事例・進め方を一冊にまとめました。3分でお読みいただけます。</p>
+            <div className={styles.ctaCopy}>
+              <span className={styles.ctaEyebrow}>FREE AI ASSESSMENT</span>
+              <h2 className={styles.ctaTitle}>“試して終わり”を、<br />成果に変える。</h2>
+              <p className={styles.ctaText}>
+                まずは無料のAI経営診断から。コスト削減と売上の伸びしろを、数字でご提示します。サービス資料は3分でお読みいただけます。
+              </p>
             </div>
             <div className={styles.ctaActions}>
-              <Button href="/contact" variant="secondary" size="lg">無料相談する</Button>
-              <Button href="/download" variant="primary" size="lg">資料をダウンロード</Button>
+              <Button href="/contact" variant="primary" size="lg">
+                無料でAI経営診断を受ける<Icon name="arrow-right" size={17} />
+              </Button>
+              <Button href="/download" variant="secondary" size="lg">資料をダウンロード</Button>
             </div>
           </Reveal>
         </div>

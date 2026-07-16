@@ -13,7 +13,8 @@
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 64px 24px 140px;
+  /* extra top padding clears the fixed header */
+  padding: 116px 24px 140px;
 }
 .breadcrumb {
   font-size: 12.5px;
@@ -67,5 +68,5 @@
 }
 
 @media (max-width: 860px) {
-  .inner { padding: 48px 22px 120px; }
+  .inner { padding: 92px 22px 110px; }
 }
