@@ -63,6 +63,30 @@
     max-width: 280px;
   }
 }
+/* compact strength chips inside the hero */
+.heroBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-self: flex-start;
+  margin-bottom: 26px;
+}
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 8px 15px;
+  backdrop-filter: blur(10px);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.heroBadgeEmoji { font-size: 15px; line-height: 1; }
+a.heroBadge:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-1px); }
 .heroTitle {
   font-size: clamp(34px, 6vw, 60px);
   font-weight: 500;
@@ -354,36 +378,6 @@
 
 /* ---------------- STRENGTHS / ROI ---------------- */
 .strengths { padding: 84px 0 96px; }
-.badgeRow {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-.badge {
-  background: var(--white);
-  border: 0.5px solid var(--line-strong);
-  border-radius: 16px;
-  padding: 36px 30px 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 14px;
-}
-.badgeEmoji {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 66px;
-  height: 66px;
-  border-radius: 18px;
-  border: 1px solid transparent;
-  font-size: 32px;
-  line-height: 1;
-}
-.badgeTitle { font-size: 20px; font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; }
-.badgeText { margin: 0; font-size: 13px; line-height: 1.75; color: var(--fg-2); max-width: 260px; }
-
 .roiWrap {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -672,7 +666,6 @@
 @media (max-width: 640px) {
   .grid4 { grid-template-columns: 1fr; }
   .casesGrid { grid-template-columns: 1fr; }
-  .badgeRow { grid-template-columns: 1fr; }
   .ctaBand { padding: 40px 28px; }
   .rowCard, .osPanel { padding: 26px 24px; }
 }

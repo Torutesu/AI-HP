@@ -182,6 +182,14 @@ export default function Home() {
               />
             </a>
           </Reveal>
+          <Reveal immediate delay={0.28} y={20} className={styles.heroBadges}>
+            {STRENGTHS.slice(1).map((b) => (
+              <span key={b.title} className={styles.heroBadge}>
+                <span className={styles.heroBadgeEmoji}>{b.emoji}</span>
+                {b.title}
+              </span>
+            ))}
+          </Reveal>
           <Reveal immediate delay={0.32} y={20}>
             <h1 className={styles.heroTitle}>AIを、<br />たしかな経営成果へ。</h1>
           </Reveal>
@@ -215,18 +223,6 @@ export default function Home() {
       {/* ===================== STRENGTHS ===================== */}
       <section className={`${styles.section} ${styles.strengths}`}>
         <div className={styles.container}>
-          <div className={styles.badgeRow}>
-            {STRENGTHS.map((b, i) => (
-              <Reveal key={b.title} delay={i * 0.08} className={`${styles.badge} liftCard`}>
-                <span className={styles.badgeEmoji} style={{ background: `${b.accent}14`, borderColor: `${b.accent}33` }}>
-                  {b.emoji}
-                </span>
-                <div className={styles.badgeTitle}>{b.title}</div>
-                <p className={styles.badgeText}>{b.text}</p>
-              </Reveal>
-            ))}
-          </div>
-
           <div className={styles.roiWrap}>
             <Reveal className={styles.roiReasons}>
               <span className={styles.eyebrowRule}><span />WHY ROI</span>
