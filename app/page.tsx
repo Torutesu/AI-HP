@@ -77,7 +77,8 @@ export default function Home() {
           </Reveal>
           <Reveal immediate delay={0.44} y={20}>
             <p className={styles.heroLead}>
-              貴社の事業に深く根ざす形で、コストのムダを整え、売上の芽を育てる。AIが経営の数字を動かすところまで、伴走してご支援します。
+              貴社の事業に深く根ざす形で、コストのムダを整え、売上の芽を育てる。<br />
+              AIが経営の数字を動かすところまで、伴走してご支援します。
             </p>
           </Reveal>
           <Reveal immediate delay={0.58} y={20} className={styles.heroCtas}>
