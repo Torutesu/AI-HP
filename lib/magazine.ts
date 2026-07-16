@@ -7,11 +7,21 @@ export type Article = {
   slug: string;
   category: string;
   title: string;
-  date: string; // "YYYY.MM.DD"
+  date: string; // published, "YYYY.MM.DD"
+  updatedAt?: string; // last updated, "YYYY.MM.DD"; falls back to `date`
   excerpt: string;
   featured?: boolean;
+  image?: string; // absolute or root-relative OG/Article image; falls back site-wide
   body: string[]; // paragraphs (plain text)
 };
+
+/** Published/updated date as an ISO (YYYY-MM-DD) string for schema + sitemap. */
+export function isoDate(a: Article): string {
+  return (a.updatedAt ?? a.date).replace(/\./g, "-");
+}
+export function isoPublished(a: Article): string {
+  return a.date.replace(/\./g, "-");
+}
 
 export const CATEGORIES = [
   "コスト削減",

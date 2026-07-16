@@ -5,8 +5,11 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Button from "@/components/Button";
 import Icon from "@/components/Icon";
-import { articles, getArticle } from "@/lib/magazine";
+import { articles, getArticle, isoDate, isoPublished } from "@/lib/magazine";
 import { SITE_URL as SITE } from "@/lib/site";
+
+const abs = (p: string) => (p.startsWith("http") ? p : `${SITE}${p.startsWith("/") ? "" : "/"}${p}`);
+const DEFAULT_IMAGE = `${SITE}/logo-mark.png`;
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -21,6 +24,7 @@ export async function generateMetadata({
   const a = getArticle(slug);
   if (!a) return {};
   const url = `${SITE}/magazine/${a.slug}`;
+  const image = a.image ? abs(a.image) : DEFAULT_IMAGE;
   return {
     title: a.title,
     description: a.excerpt,
@@ -30,9 +34,12 @@ export async function generateMetadata({
       title: a.title,
       description: a.excerpt,
       url,
-      publishedTime: a.date.replace(/\./g, "-"),
+      publishedTime: isoPublished(a),
+      modifiedTime: isoDate(a),
       section: a.category,
+      images: [image],
     },
+    twitter: { card: "summary_large_image", title: a.title, description: a.excerpt, images: [image] },
   };
 }
 
@@ -45,23 +52,26 @@ export default async function ArticlePage({
   const a = getArticle(slug);
   if (!a) notFound();
 
-  const iso = a.date.replace(/\./g, "-");
+  const iso = isoPublished(a);
   const url = `${SITE}/magazine/${a.slug}`;
+  const image = a.image ? abs(a.image) : DEFAULT_IMAGE;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: a.title,
     description: a.excerpt,
-    datePublished: iso,
-    dateModified: iso,
+    image: [image],
+    datePublished: isoPublished(a),
+    dateModified: isoDate(a),
     articleSection: a.category,
     inLanguage: "ja",
     mainEntityOfPage: url,
-    author: { "@type": "Organization", name: "AI総合戦略研究所" },
+    author: { "@type": "Organization", name: "AI総合戦略研究所", url: SITE },
     publisher: {
       "@type": "Organization",
       name: "AI総合戦略研究所",
+      url: SITE,
       logo: { "@type": "ImageObject", url: `${SITE}/logo-mark.png` },
     },
   };

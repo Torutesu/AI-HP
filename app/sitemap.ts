@@ -1,32 +1,36 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
-import { articles } from "@/lib/magazine";
+import { articles, isoDate } from "@/lib/magazine";
 
 export const dynamic = "force-static";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    "",
-    "/service",
-    "/cases",
-    "/ai-os",
-    "/consulting",
-    "/company",
-    "/magazine",
-    "/contact",
-    "/download",
-    "/privacy",
-  ];
+// Fixed dates — hard-coded on purpose so a deploy never stamps every page as
+// "updated today". Bump a page's date here only when its content actually
+// changes. Article pages derive lastModified from the article data instead.
+const STATIC_LASTMOD: Record<string, string> = {
+  "": "2026-07-16",
+  "/service": "2026-07-16",
+  "/cases": "2026-07-16",
+  "/ai-os": "2026-07-16",
+  "/consulting": "2026-07-16",
+  "/company": "2026-07-16",
+  "/magazine": "2026-07-16",
+  "/contact": "2026-07-15",
+  "/download": "2026-07-15",
+  "/privacy": "2026-07-15",
+};
 
-  const pages: MetadataRoute.Sitemap = routes.map((r) => ({
+export default function sitemap(): MetadataRoute.Sitemap {
+  const pages: MetadataRoute.Sitemap = Object.entries(STATIC_LASTMOD).map(([r, lastModified]) => ({
     url: `${SITE_URL}${r}/`,
+    lastModified,
     changeFrequency: "monthly",
     priority: r === "" ? 1 : 0.7,
   }));
 
   const posts: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${SITE_URL}/magazine/${a.slug}/`,
-    lastModified: a.date.replace(/\./g, "-"),
+    lastModified: isoDate(a), // article's updatedAt ?? date — never the deploy date
     changeFrequency: "monthly",
     priority: 0.6,
   }));

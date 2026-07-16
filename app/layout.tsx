@@ -44,7 +44,7 @@ const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: SITE_NAME,
-  alternateName: SITE_NAME_EN,
+  alternateName: ["AI総戦研", "AI Strategy Institute", "AI総合戦略研", "AISRI"],
   url: SITE_URL,
   logo: `${SITE_URL}/logo-mark.png`,
   description: SITE_DESCRIPTION,
