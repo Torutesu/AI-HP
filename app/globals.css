@@ -190,6 +190,12 @@ html.cursor-custom * { cursor: none !important; }
 @media (max-width: 1024px) {
   .dc-collapse-2 { grid-template-columns: repeat(2, 1fr) !important; }
 }
+/* Shared card padding so inline-styled cards share the common mobile rule. */
+.card-pad { padding: 34px 32px; }
+@media (max-width: 640px) {
+  .card-pad { padding: 22px !important; }
+}
+
 @media (max-width: 640px) {
   .dc-collapse-2 { grid-template-columns: 1fr !important; }
   /* Mobile-native heading scale */

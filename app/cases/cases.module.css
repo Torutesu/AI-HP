@@ -116,4 +116,6 @@
   }
   .grid::-webkit-scrollbar { display: none; }
   .grid > * { flex: 0 0 82%; scroll-snap-align: start; }
+  /* unified mobile card padding */
+  .body { padding: 22px; }
 }

@@ -22,7 +22,6 @@ const cardScrim =
 const cardStyle = (image: string) => ({
   border: "0.5px solid var(--line-strong)",
   borderRadius: "12px",
-  padding: "34px 32px",
   display: "flex",
   flexDirection: "column" as const,
   gap: "12px",
@@ -122,7 +121,7 @@ export default function Page() {
               }}
             >
               {cards.map((card, i) => (
-                <Reveal key={card.eyebrow} delay={i * 0.08} style={card.style}>
+                <Reveal key={card.eyebrow} delay={i * 0.08} className="card-pad" style={card.style}>
                   <span style={{ color: "var(--accent)" }}>
                     <Icon name={card.icon} size={26} />
                   </span>

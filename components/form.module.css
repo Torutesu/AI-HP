@@ -93,6 +93,10 @@ select.fld {
   border-color: var(--accent);
   background: var(--blue-tint);
 }
+@media (max-width: 640px) {
+  /* unified mobile card padding */
+  .card { padding: 22px; }
+}
 @media (max-width: 400px) {
   .checks { grid-template-columns: 1fr; }
 }

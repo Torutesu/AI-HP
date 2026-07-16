@@ -794,14 +794,12 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
   /* tighten the gap between a section heading and its content */
   .processGrid { margin-top: 24px; }
 
-  /* ---- Card paddings ---- */
-  .ctaBand { padding: 34px 22px; }
-  .rowCard, .osPanel { padding: 22px 20px; }
-  .osTopCard { padding: 24px 22px; min-height: 0; }
-  .philLeft { padding: 28px 20px; }
+  /* ---- Unified mobile card padding: common 22px everywhere ---- */
+  .featureCard, .osTopCard, .osPanel, .rowCard, .stepCard, .statcard,
+  .philCard, .philLeft, .roiReasons { padding: 22px; }
+  .osTopCard { min-height: 0; }
   .philStats { gap: 12px; }
-  .philCard { padding: 20px 20px; }
-  .stepCard { padding: 26px 24px; }
+  .ctaBand { padding: 28px 22px; }
 
   /* ---- (B) Card rows become swipeable carousels ---- */
   .grid4, .casesGrid, .osTop, .osSplit {
