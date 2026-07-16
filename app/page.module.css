@@ -313,7 +313,7 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
   gap: 36px;
   border: 0.5px solid var(--panel-border);
   border-radius: 16px;
-  padding: 44px 40px;
+  padding: 32px;
   background-image:
     radial-gradient(120% 90% at 100% 0%, rgba(43, 124, 255, 0.10), transparent 60%),
     linear-gradient(158deg, #f6f9ff 0%, #ffffff 58%);
@@ -376,7 +376,7 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
   display: flex;
   gap: 18px;
   align-items: flex-start;
-  padding: 26px 28px;
+  padding: 32px;
 }
 /* blue accent rail on the left edge */
 .philCard::before {
@@ -444,7 +444,7 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
 .roiReasons {
   border: 0.5px solid var(--line-strong);
   border-radius: 16px;
-  padding: 44px 40px;
+  padding: 32px;
   background: var(--ink-900);
   display: flex;
   flex-direction: column;
@@ -481,7 +481,7 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
   background: var(--surface-card);
   border: 0.5px solid var(--line-strong);
   border-radius: 8px;
-  padding: 28px 24px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -515,7 +515,7 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
   background: var(--surface-card);
   border: 0.5px solid var(--line-strong);
   border-radius: 12px;
-  padding: 32px 30px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -570,7 +570,7 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
   background: var(--surface-card);
   border: 0.5px solid var(--line-strong);
   border-radius: 12px;
-  padding: 40px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -636,7 +636,7 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
   background: var(--surface-card);
   border: 0.5px solid var(--line-strong);
   border-radius: 8px;
-  padding: 32px 30px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -657,7 +657,7 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
   background: var(--surface-card);
   border: 0.5px solid var(--line-strong);
   border-radius: var(--radius);
-  padding: 24px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 12px;

@@ -191,7 +191,7 @@ html.cursor-custom * { cursor: none !important; }
   .dc-collapse-2 { grid-template-columns: repeat(2, 1fr) !important; }
 }
 /* Shared card padding so inline-styled cards share the common mobile rule. */
-.card-pad { padding: 34px 32px; }
+.card-pad { padding: 32px; }
 @media (max-width: 640px) {
   .card-pad { padding: 22px !important; }
 }
