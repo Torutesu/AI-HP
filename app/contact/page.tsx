@@ -6,6 +6,7 @@ import Icon from "@/components/Icon";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact/" },
   title: "お問い合わせ・無料相談",
   description: "AI総合戦略研究所へのお問い合わせ・無料相談フォーム。サービス内容、費用感、無料のAI経営診断など、どんなご相談もお気軽にどうぞ。",
 };

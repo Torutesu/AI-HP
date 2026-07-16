@@ -6,6 +6,7 @@ import DownloadForm from "@/components/DownloadForm";
 import styles from "./download.module.css";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/download/" },
   title: "資料請求",
   description:
     "AI総合戦略研究所のご提案資料を無料でリクエスト。提供価値・導入効果の見込み・業界別の活用事例・導入までの進め方を一冊にまとめてお送りします。",

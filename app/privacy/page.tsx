@@ -5,6 +5,7 @@ import SiteFooter from "@/components/SiteFooter";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/privacy/" },
   title: "プライバシーポリシー",
   description:
     "株式会社Select（AI総合戦略研究所）の個人情報の取り扱いに関する方針（プライバシーポリシー）です。",

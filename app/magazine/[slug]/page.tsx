@@ -23,7 +23,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const a = getArticle(slug);
   if (!a) return {};
-  const url = `${SITE}/magazine/${a.slug}`;
+  const url = `${SITE}/magazine/${a.slug}/`;
   const image = a.image ? abs(a.image) : DEFAULT_IMAGE;
   return {
     title: a.title,
@@ -53,7 +53,7 @@ export default async function ArticlePage({
   if (!a) notFound();
 
   const iso = isoPublished(a);
-  const url = `${SITE}/magazine/${a.slug}`;
+  const url = `${SITE}/magazine/${a.slug}/`;
   const image = a.image ? abs(a.image) : DEFAULT_IMAGE;
 
   const jsonLd = {

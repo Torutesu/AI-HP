@@ -9,6 +9,7 @@ import MagazineList from "@/components/MagazineList";
 import { CATEGORIES, featuredArticle, listArticles } from "@/lib/magazine";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/magazine/" },
   title: "マガジン",
   description:
     "経営とAIの実装知。グローバル事例の解像度で、貴社の次の一手を、ともに考えます。",

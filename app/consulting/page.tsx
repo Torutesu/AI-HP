@@ -8,6 +8,7 @@ import SectionHeading from "@/components/SectionHeading";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/consulting/" },
   title: "コンサルティング",
   description:
     "戦略コンサルティングの視点で、貴社がどのように稼いでいるかを紐解く。可視化・診断から改善の伴走まで、成果に結びつく最適化を続けます。",

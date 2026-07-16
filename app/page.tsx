@@ -8,15 +8,13 @@ import HeroVideo from "@/components/HeroVideo";
 import CountUp from "@/components/CountUp";
 import RoiSimulator from "@/components/RoiSimulator";
 import MobileCarousel from "@/components/MobileCarousel";
+import { HERO_VIDEO_URL, PARTNER_LOGOS as PARTNERS } from "@/lib/site";
+import type { Metadata } from "next";
 import styles from "./page.module.css";
 
-const PARTNERS = [
-  { alt: "Tesla", src: "https://cdn.sceneai.art/logos/67179a5f-501b-48c1-a6b6-8f4f3c676ba4.png" },
-  { alt: "Perplexity", src: "https://cdn.sceneai.art/logos/5360e43f-332b-40b0-84de-db847c00fae6.png" },
-  { alt: "NASA", src: "https://cdn.sceneai.art/logos/9a17d5b4-0ad2-44b6-832f-b46153f7b156.png" },
-  { alt: "NVIDIA", src: "https://cdn.sceneai.art/logos/23385a15-55a1-405a-accd-51abf2f987cf.png" },
-  { alt: "Google", src: "https://cdn.sceneai.art/logos/bdb8a52e-00a4-4fb1-8ab2-c07977e5dc72.png" },
-];
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const ISSUES = [
   { icon: "eye-off", title: "活用状況が見えない", text: "誰が、どのツールを、どれだけ活用しているか。即座に把握できている企業は多くありません。" },
@@ -175,7 +173,7 @@ export default function Home() {
       <div className={styles.hero}>
         <HeroVideo
           className={styles.heroVideo}
-          src="https://cdn.sceneai.art/Hero Section Video/c0429648-6382-40e5-977a-be50ff2af8d5.mp4"
+          src={HERO_VIDEO_URL}
         />
         <div className={styles.heroOverlay} />
 

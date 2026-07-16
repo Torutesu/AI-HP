@@ -10,6 +10,7 @@ import type { Metadata } from "next";
 import cx from "./cases.module.css";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/cases/" },
   title: "導入事例",
   description:
     "貴社に近い業種で、どこにコストのムダがあり、どこに売上の伸びしろがあるか。代表的なシミュレーションをご紹介します。",

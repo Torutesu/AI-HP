@@ -7,6 +7,7 @@ import Button from "@/components/Button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/service/" },
   title: "サービス",
   description:
     "貴社の事業を紐解き、コストを整え、売上を伸ばす。診断・設計・開発・改善までを、一気通貫でご支援します。",

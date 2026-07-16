@@ -9,6 +9,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/company/" },
   title: "会社概要",
   description:
     "AI Nativeといえば、AI総戦研。試すだけで終わらせず、経営の数字が動く形で企業に実装します。",

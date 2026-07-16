@@ -8,6 +8,7 @@ import SectionHeading from "@/components/SectionHeading";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/ai-os/" },
   title: "AI経営基盤",
   description:
     "企業が儲かる = 売上UP × コストDOWN × 利益率UP。この式に、貴社専属のAIとして直接はたらきかける経営基盤です。",
