@@ -84,5 +84,14 @@
 }
 
 @media (max-width: 860px) {
-  .inner { padding: 92px 22px 110px; }
+  .inner { padding: 92px 22px 96px; }
+}
+@media (max-width: 640px) {
+  .inner { padding: 84px 20px 72px; }
+  .breadcrumb { margin-bottom: 18px; }
+  .eyebrow { margin-bottom: 16px; }
+  .lead { font-size: 15px; }
+}
+@media (max-width: 400px) {
+  .inner { padding: 80px 16px 64px; }
 }

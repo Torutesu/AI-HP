@@ -95,6 +95,7 @@ a.fvBadge:hover { background: rgba(255, 255, 255, 0.11); border-color: rgba(255,
   margin-bottom: 14px;
 }
 .fvMarkText { font-family: var(--font-en); font-weight: 800; font-size: 23px; line-height: 1; }
+.fvBody { display: flex; flex-direction: column; min-width: 0; }
 .fvLabel {
   font-size: 10.5px;
   font-weight: 600;
@@ -693,23 +694,80 @@ a.fvBadge:hover { background: rgba(255, 255, 255, 0.11); border-color: rgba(255,
 /* ============================================================
    Responsive
    ============================================================ */
+/* Tablet landscape / small laptop */
 @media (max-width: 1024px) {
-  .philosophyGrid { grid-template-columns: 1fr; gap: 40px; }
+  .philosophyGrid { grid-template-columns: 1fr; gap: 36px; }
   .roiWrap { grid-template-columns: 1fr; }
   .osSplit { grid-template-columns: 1fr; }
   .grid4 { grid-template-columns: repeat(2, 1fr); }
   .osTop { grid-template-columns: 1fr; }
   .processGrid { grid-template-columns: 1fr; }
   .casesGrid { grid-template-columns: repeat(3, 1fr); }
+  .os { padding: 88px 0; }
+  .pain, .why, .process, .cases { padding: 80px 0; }
 }
-@media (max-width: 860px) {
-  .heroBody { padding: 32px 22px; }
-  .partnerRow { margin: 0 22px; }
-  .belief { padding: 96px 22px 120px; }
+
+/* iPad portrait */
+@media (max-width: 834px) {
+  .heroBody { padding: 36px 28px; }
+  .partnerRow { margin: 0 28px; }
+  .belief { padding: 104px 28px 120px; }
+  .philosophy { padding: 72px 0 80px; }
+  .strengths { padding: 64px 0 76px; }
+  .os { padding: 76px 0; }
+  .pain, .why, .process, .cases { padding: 68px 0; }
+  .casesGrid { grid-template-columns: repeat(2, 1fr); }
+  .osTopCard { min-height: 0; }
 }
+
+/* Header already collapses to a hamburger at 880px */
+
+/* Large phone — hero flows from the top instead of forcing a centred 100vh */
 @media (max-width: 640px) {
-  .grid4 { grid-template-columns: 1fr; }
+  .container { padding: 0 20px; }
+
+  .heroBody {
+    padding: 104px 20px 30px;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .heroTitle { font-size: clamp(30px, 8.5vw, 40px); }
+  .heroSub { margin-bottom: 20px; }
+  .heroLead { margin-bottom: 28px; max-width: 100%; }
+  .heroCtas { gap: 14px; }
+  .partnerRow { margin: 0 20px; padding: 18px 0 22px; gap: 14px; }
+  .partnerNote { font-size: 12px; }
+  .partnerLogos { gap: 20px; }
+
+  /* badges become compact horizontal rows */
+  .fvBadges { grid-template-columns: 1fr; max-width: 100%; gap: 10px; margin-top: 26px; }
+  .fvBadge { flex-direction: row; align-items: center; gap: 14px; padding: 15px 16px; }
+  .fvMark { margin-bottom: 0; width: 38px; height: 38px; }
+
+  .belief { padding: 76px 20px 90px; }
+  .beliefEyebrow { margin-bottom: 18px; }
+  .beliefTitle { line-height: 1.45; }
+  .philosophy { padding: 56px 0 64px; }
+  .strengths { padding: 48px 0 60px; }
+  .os { padding: 60px 0; }
+  .pain, .why, .process, .cases { padding: 56px 0; }
+  .ctaSection { padding: 16px 0 64px; }
+
+  .grid4 { grid-template-columns: 1fr; gap: 12px; }
   .casesGrid { grid-template-columns: 1fr; }
-  .ctaBand { padding: 40px 28px; }
-  .rowCard, .osPanel { padding: 26px 24px; }
+  .ctaBand { padding: 36px 22px; }
+  .rowCard, .osPanel { padding: 24px 22px; }
+  .osTop { gap: 12px; }
+  .osTopCard { padding: 26px 24px; }
+  .philLeft { padding: 30px 22px; }
+  .philStats { gap: 12px; }
+  .philCard { padding: 22px 22px; }
+}
+
+/* Small phone (iPhone SE / mini) */
+@media (max-width: 400px) {
+  .container { padding: 0 16px; }
+  .heroBody { padding: 96px 16px 26px; }
+  .heroTitle { font-size: 29px; }
+  .partnerRow { margin: 0 16px; }
 }

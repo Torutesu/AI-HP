@@ -93,3 +93,10 @@
 .btn:hover { transform: translateY(-2px); background: var(--accent-hover); }
 .btn .dc-icon { transition: transform 0.2s var(--ease-out); }
 .btn:hover .dc-icon { transform: translateX(3px); }
+
+@media (max-width: 640px) {
+  .card { padding: 26px 20px; border-radius: 14px; }
+  .result { padding: 20px 18px; }
+  .resultRow { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .btn { align-self: stretch; justify-content: center; }
+}

@@ -202,20 +202,22 @@ export default function Home() {
                       <Icon name={b.markIcon as string} size={22} />
                     )}
                   </span>
-                  <span className={styles.fvLabel}>{b.label}</span>
-                  <span className={styles.fvTitle}>{b.title}</span>
-                  {b.presenter ? (
-                    <span className={styles.fvPresenter}>
-                      <span className={styles.fvPresenterLabel}>Presented by</span>
-                      <span className={styles.fvPresenterName}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden>
-                          <path d="M12 2L20 12L12 22L4 12Z" />
-                          <circle cx="12" cy="12" r="3" />
-                        </svg>
-                        {b.presenter}
+                  <span className={styles.fvBody}>
+                    <span className={styles.fvLabel}>{b.label}</span>
+                    <span className={styles.fvTitle}>{b.title}</span>
+                    {b.presenter ? (
+                      <span className={styles.fvPresenter}>
+                        <span className={styles.fvPresenterLabel}>Presented by</span>
+                        <span className={styles.fvPresenterName}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden>
+                            <path d="M12 2L20 12L12 22L4 12Z" />
+                            <circle cx="12" cy="12" r="3" />
+                          </svg>
+                          {b.presenter}
+                        </span>
                       </span>
-                    </span>
-                  ) : null}
+                    ) : null}
+                  </span>
                 </>
               );
               return b.href ? (
