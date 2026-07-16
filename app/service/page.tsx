@@ -45,6 +45,7 @@ export default function Page() {
             </>
           }
           lead="貴社の事業を紐解き、コストを整え、売上を伸ばす。診断・設計・開発・改善までを、一気通貫でご支援します。"
+          bgImage="/img/service/hero.jpg"
         />
 
         <section style={{ padding: "96px 0" }}>

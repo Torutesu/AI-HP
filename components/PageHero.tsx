@@ -13,14 +13,24 @@ export default function PageHero({
   eyebrow,
   title,
   lead,
+  bgImage,
 }: {
   crumbs: Crumb[];
   eyebrow: string;
   title: ReactNode;
   lead: ReactNode;
+  /** Optional background photo. A dark overlay keeps the white text readable;
+   *  a missing file simply reveals the dark base (no broken image). */
+  bgImage?: string;
 }) {
   return (
     <section className={styles.hero}>
+      {bgImage ? (
+        <>
+          <div className={styles.bg} style={{ backgroundImage: `url(${bgImage})` }} />
+          <div className={styles.bgOverlay} />
+        </>
+      ) : null}
       <div className={styles.glow} />
       <div className={styles.inner}>
         <div className={styles.breadcrumb}>
