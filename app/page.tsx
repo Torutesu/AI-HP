@@ -60,26 +60,14 @@ export default function Home() {
 
         <div className={styles.heroBody}>
           <Reveal immediate delay={0.2} y={20}>
-            <div className={styles.ycBadge}>
-              <span className={styles.ycMark}>Y</span>
-              <div className={styles.ycMid}>
-                <span className={styles.ycSmall}>Winner of</span>
-                <span className={styles.ycBig}>YC RFS Hackathon 2026</span>
-              </div>
-              <span className={styles.ycDivider} />
-              <div className={styles.ycRight}>
-                <span className={styles.ycSmall}>Presented by</span>
-                <span className={styles.ycTranspose}>
-                  <span className={styles.ycTransposeMark}>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
-                      <path d="M12 2L20 12L12 22L4 12Z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  </span>
-                  Transpose
-                </span>
-              </div>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className={styles.ycBadge}
+              src="/img/badge/yc-dark.png"
+              alt="Winner of YC RFS Hackathon 2026 — Presented by Transpose"
+              width={720}
+              height={256}
+            />
           </Reveal>
           <Reveal immediate delay={0.32} y={20}>
             <h1 className={styles.heroTitle}>AIを、<br />たしかな経営成果へ。</h1>

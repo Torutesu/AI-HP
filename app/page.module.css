@@ -41,75 +41,22 @@
 }
 /* YC hackathon winner credential (dark glass, over the hero) */
 .ycBadge {
-  display: inline-flex;
+  display: block;
   align-self: flex-start;
-  align-items: center;
-  gap: 14px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 14px;
-  padding: 10px 18px 10px 12px;
-  backdrop-filter: blur(10px);
+  width: auto;
+  height: auto;
+  max-width: 340px;
   margin-bottom: 30px;
+  /* the badge art already carries its own rounded border on a dark panel */
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+  transition: transform 0.25s ease;
 }
-.ycMark {
-  flex: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: #f26522;
-  color: #fff;
-  font-family: var(--font-en);
-  font-weight: 800;
-  font-size: 24px;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.ycMid,
-.ycRight {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.25;
-}
-.ycSmall {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
-}
-.ycBig {
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-}
-.ycDivider {
-  width: 1px;
-  align-self: stretch;
-  margin: 2px 4px;
-  background: rgba(255, 255, 255, 0.2);
-}
-.ycTranspose {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-}
-.ycTransposeMark {
-  display: inline-flex;
-  color: #fff;
+.ycBadge:hover {
+  transform: translateY(-2px);
 }
 @media (max-width: 560px) {
-  .ycDivider,
-  .ycRight {
-    display: none;
-  }
-  .ycBig {
-    font-size: 13px;
-    white-space: normal;
+  .ycBadge {
+    max-width: 280px;
   }
 }
 .heroTitle {
