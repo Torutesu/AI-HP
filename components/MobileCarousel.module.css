@@ -1,0 +1,25 @@
+/* the wrapper must not disturb the existing grid/section layout */
+.wrap { display: contents; }
+
+.dots { display: none; }
+
+@media (max-width: 640px) {
+  .dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(12, 21, 36, 0.18);
+    transition: width 0.25s ease, background 0.25s ease;
+  }
+  .dotOn {
+    width: 20px;
+    background: var(--accent);
+  }
+}

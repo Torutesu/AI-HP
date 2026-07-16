@@ -5,6 +5,7 @@ import Reveal from "@/components/Reveal";
 import Icon from "@/components/Icon";
 import Button from "@/components/Button";
 import CountUp from "@/components/CountUp";
+import MobileCarousel from "@/components/MobileCarousel";
 import type { Metadata } from "next";
 import cx from "./cases.module.css";
 
@@ -102,7 +103,7 @@ export default function Page() {
 
         <section style={{ padding: "96px 0" }}>
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-            <div className={cx.grid}>
+            <MobileCarousel className={cx.grid}>
               {scenarios.map((s, i) => (
                 <Reveal key={s.title} delay={i * 0.08} className={cx.card}>
                   <div className={cx.media}>
@@ -135,7 +136,7 @@ export default function Page() {
                   </div>
                 </Reveal>
               ))}
-            </div>
+            </MobileCarousel>
             <p
               style={{
                 textAlign: "center",

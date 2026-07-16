@@ -118,8 +118,10 @@ select.fld {
   line-height: 1.7;
   color: var(--fg-3);
   text-align: center;
+  text-wrap: pretty;
 }
-.consent a { color: var(--fg-2); text-decoration: underline; }
+/* keep the linked phrase from breaking across lines */
+.consent a { color: var(--fg-2); text-decoration: underline; white-space: nowrap; }
 .success {
   display: flex;
   flex-direction: column;

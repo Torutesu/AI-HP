@@ -7,6 +7,7 @@ import SectionHeading from "@/components/SectionHeading";
 import HeroVideo from "@/components/HeroVideo";
 import CountUp from "@/components/CountUp";
 import RoiSimulator from "@/components/RoiSimulator";
+import MobileCarousel from "@/components/MobileCarousel";
 import styles from "./page.module.css";
 
 const PARTNERS = [
@@ -374,7 +375,7 @@ export default function Home() {
       <section className={`${styles.sectionAlt} ${styles.pain}`}>
         <div className={styles.container}>
           <Reveal><SectionHeading eyebrow="ISSUES" title="なぜ、AIが経営の数字に結びつかないのか。" /></Reveal>
-          <div className={styles.grid4}>
+          <MobileCarousel className={styles.grid4}>
             {ISSUES.map((c, i) => (
               <Reveal key={c.title} delay={i * 0.08} className={`${styles.featureCard} liftCard`}>
                 <div className={styles.featureIcon}><Icon name={c.icon} size={24} /></div>
@@ -382,7 +383,7 @@ export default function Home() {
                 <p className={styles.featureText}>{c.text}</p>
               </Reveal>
             ))}
-          </div>
+          </MobileCarousel>
         </div>
       </section>
 
@@ -397,7 +398,7 @@ export default function Home() {
             />
           </Reveal>
 
-          <div className={styles.osTop}>
+          <MobileCarousel className={styles.osTop}>
             {OS_TOP.map((c, i) => (
               <Reveal
                 key={c.label}
@@ -418,7 +419,7 @@ export default function Home() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </MobileCarousel>
 
           <div className={styles.osSplit}>
             <Reveal className={styles.osPanel}>
@@ -448,7 +449,7 @@ export default function Home() {
       <section className={`${styles.section} ${styles.why}`}>
         <div className={styles.container}>
           <Reveal><SectionHeading eyebrow="WHY US" title="なぜ、1/3のコストで実現できるのか。" /></Reveal>
-          <div className={styles.grid4}>
+          <MobileCarousel className={styles.grid4}>
             {WHY.map((c, i) => (
               <Reveal key={c.title} delay={i * 0.08} className={`${styles.featureCard} liftCard`}>
                 <div className={styles.featureIcon}><Icon name={c.icon} size={24} /></div>
@@ -456,7 +457,7 @@ export default function Home() {
                 <p className={styles.featureText}>{c.text}</p>
               </Reveal>
             ))}
-          </div>
+          </MobileCarousel>
         </div>
       </section>
 
@@ -480,7 +481,7 @@ export default function Home() {
       <section className={styles.cases}>
         <div className={styles.container}>
           <Reveal><SectionHeading eyebrow="SIMULATION" title="活用領域とシミュレーション事例" /></Reveal>
-          <div className={styles.casesGrid}>
+          <MobileCarousel className={styles.casesGrid}>
             {STATS.map((s, i) => (
               <Reveal key={s.cat} delay={i * 0.08}>
                 <div className={styles.statcard}>
@@ -494,7 +495,7 @@ export default function Home() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </MobileCarousel>
           <p className={styles.disclaimer}>※ 上記は代表的なシミュレーション事例であり、効果を保証するものではありません。</p>
           <Reveal className={styles.centerRow} style={{ marginTop: 28 }}>
             <a className={styles.detailLink} href="/cases">業種別の活用シナリオを見る<Icon name="arrow-right" size={16} /></a>

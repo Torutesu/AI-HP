@@ -183,7 +183,9 @@ export default function ContactForm() {
           </button>
         </div>
         <p className={styles.consent}>
-          送信をもって<a href="#">プライバシーポリシー</a>に同意したものとみなします。
+          送信をもって
+          <a href="/privacy" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>
+          に同意したものとみなします。
         </p>
       </form>
     </div>
