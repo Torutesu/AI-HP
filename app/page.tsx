@@ -266,7 +266,6 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.roiWrap}>
             <Reveal className={styles.roiReasons}>
-              <span className={styles.eyebrowRule}><span />WHY ROI</span>
               <h2 className={styles.roiHeading}>ROIにこだわり抜ける、2つの理由。</h2>
               <div className={styles.roiList}>
                 {ROI_REASONS.map((r) => (
@@ -292,7 +291,6 @@ export default function Home() {
       <section className={styles.belief}>
         <div className={styles.beliefGlow} />
         <Reveal className={styles.beliefInner}>
-          <span className={styles.beliefEyebrow}><span />OUR BELIEF<span /></span>
           <h2 className={styles.beliefTitle}>テクノロジーの進化を、<br />経営の成果へと翻訳する。</h2>
           <p className={styles.beliefText}>
             日々生まれる最先端のAIを、貴社の事業に最適な形へ。実験で終わらせず、確かな数字の変化として届けます。
@@ -307,7 +305,6 @@ export default function Home() {
           <div className={styles.philosophyGrid}>
             <Reveal className={styles.philLeft}>
               <div className={styles.philLeftBody}>
-                <span className={styles.eyebrowRule}><span />PHILOSOPHY</span>
                 <h2 className={styles.philosophyTitle}>「学ぶ」だけでは、<br />成果は動きません。</h2>
                 <p className={styles.philLead}>戦略から実装、成果までを一気通貫で。</p>
                 <p className={styles.philosophyText}>研修や講座を受けるだけでは、現場も数字も変わりません。知識は、貴社の事業に結びついて、はじめて成果になります。</p>
@@ -374,7 +371,7 @@ export default function Home() {
       {/* ===================== ISSUES ===================== */}
       <section className={`${styles.sectionAlt} ${styles.pain}`}>
         <div className={styles.container}>
-          <Reveal><SectionHeading eyebrow="ISSUES" title="なぜ、AIが経営の数字に結びつかないのか。" /></Reveal>
+          <Reveal><SectionHeading title="なぜ、AIが経営の数字に結びつかないのか。" /></Reveal>
           <MobileCarousel className={styles.grid4}>
             {ISSUES.map((c, i) => (
               <Reveal key={c.title} delay={i * 0.08} className={`${styles.featureCard} liftCard`}>
@@ -392,7 +389,6 @@ export default function Home() {
         <div className={styles.container}>
           <Reveal>
             <SectionHeading
-              eyebrow="AI OS / AI経営基盤"
               title="利益を生む方程式を、実装する。"
               lead="コストを削り、売上を伸ばす。両輪がかみ合うことで、利益率が高まります。貴社専属のAI経営基盤です。"
             />
@@ -446,7 +442,7 @@ export default function Home() {
       {/* ===================== WHY US ===================== */}
       <section className={`${styles.section} ${styles.why}`}>
         <div className={styles.container}>
-          <Reveal><SectionHeading eyebrow="WHY US" title="なぜ、1/3のコストで実現できるのか。" /></Reveal>
+          <Reveal><SectionHeading title="なぜ、1/3のコストで実現できるのか。" /></Reveal>
           <MobileCarousel className={styles.grid4}>
             {WHY.map((c, i) => (
               <Reveal key={c.title} delay={i * 0.08} className={`${styles.featureCard} liftCard`}>
@@ -462,7 +458,7 @@ export default function Home() {
       {/* ===================== PROCESS ===================== */}
       <section className={`${styles.sectionAlt} ${styles.process}`}>
         <div className={styles.container}>
-          <Reveal><SectionHeading eyebrow="PROCESS" title="成果に至るまで、3つのステップ。" /></Reveal>
+          <Reveal><SectionHeading title="成果に至るまで、3つのステップ。" /></Reveal>
           <div className={styles.processGrid}>
             {STEPS.map((s, i) => (
               <Reveal key={s.no} delay={i * 0.1} className={`${styles.stepCard} liftCard`}>
@@ -478,7 +474,7 @@ export default function Home() {
       {/* ===================== SIMULATION / CASES ===================== */}
       <section className={styles.cases}>
         <div className={styles.container}>
-          <Reveal><SectionHeading eyebrow="SIMULATION" title="活用領域とシミュレーション事例" /></Reveal>
+          <Reveal><SectionHeading title="活用領域とシミュレーション事例" /></Reveal>
           <MobileCarousel className={styles.casesGrid}>
             {STATS.map((s, i) => (
               <Reveal key={s.cat} delay={i * 0.08}>

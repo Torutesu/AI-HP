@@ -8,14 +8,14 @@ export default function SectionHeading({
   lead,
   align = "center",
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: React.ReactNode;
   lead?: React.ReactNode;
   align?: "center" | "left";
 }) {
   return (
     <div className={`section-heading${align === "left" ? " left" : ""}`}>
-      <span className="eyebrow">{eyebrow}</span>
+      {eyebrow ? <span className="eyebrow">{eyebrow}</span> : null}
       <h2>{title}</h2>
       {lead ? <p className="lead">{lead}</p> : null}
     </div>

@@ -43,7 +43,6 @@ export default function RoiSimulator() {
 
   return (
     <div className={styles.card}>
-      <span className={styles.eyebrow}>ROI SIMULATOR</span>
       <h3 className={styles.title}>貴社の投資対効果を、その場で試算。</h3>
       <p className={styles.lead}>3項目を入力するだけで、AI活用で創出できる価値の概算をご提示します。</p>
 
