@@ -421,23 +421,21 @@ export default function Home() {
             ))}
           </MobileCarousel>
 
-          <div className={styles.osSplit}>
+          <MobileCarousel className={styles.osSplit}>
             <Reveal className={styles.osPanel}>
-              <span className={styles.osPanelEyebrow}><span />COST DOWN LAYER</span>
               <div className={styles.osPanelTitle}>削減の層</div>
               <p className={styles.osPanelText}>余分な工数・人件費・外注費・汎用SaaS費を削減する層です。業務そのものを、AIへと置き換えていきます。</p>
               <LayerStack />
               <div className={styles.osPanelFoot}>業務置換 — Replacement</div>
             </Reveal>
             <Reveal delay={0.1} className={`${styles.osPanel} ${styles.osPanelHighlight}`}>
-              <span className={styles.osPanelEyebrow}><span />SALES UP LAYER</span>
               <div className={styles.osPanelTitle}>向上の層</div>
               <p className={styles.osPanelText}>生まれた力を、売上へと変える層です。営業やマーケティングの現場で使えるAIを、貴社に内製します。</p>
               <div className={styles.chips}>
                 {SALES_TAGS.map((t) => <span key={t} className={styles.chip}>{t}</span>)}
               </div>
             </Reveal>
-          </div>
+          </MobileCarousel>
 
           <Reveal className={styles.centerRow} style={{ marginTop: 44 }}>
             <a className={styles.detailLink} href="/ai-os">AI経営基盤の詳細を見る<Icon name="arrow-right" size={16} /></a>
