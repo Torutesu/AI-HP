@@ -95,7 +95,6 @@ export default function Page() {
       <div style={{ background: "var(--white)" }}>
         <PageHero
           crumbs={[{ label: "ホーム", href: "/" }, { label: "会社概要" }]}
-          eyebrow="ABOUT"
           title={
             <>
               AI Native企業を、<br />産み出す。
@@ -125,16 +124,6 @@ export default function Page() {
                   <span style={{ color: "var(--accent)" }}>
                     <Icon name={card.icon} size={26} />
                   </span>
-                  <div
-                    style={{
-                      fontSize: "12px",
-                      fontWeight: 600,
-                      letterSpacing: "0.14em",
-                      color: "var(--accent)",
-                    }}
-                  >
-                    {card.eyebrow}
-                  </div>
                   <div style={{ fontSize: "19px", fontWeight: 700, color: "var(--fg-0)" }}>
                     {card.title}
                   </div>
@@ -157,7 +146,7 @@ export default function Page() {
         <section style={{ padding: "96px 0" }}>
           <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 24px" }}>
             <Reveal>
-              <SectionHeading eyebrow="COMPANY" title="会社情報" align="left" />
+              <SectionHeading title="会社情報" align="left" />
             </Reveal>
             <Reveal>
               <div style={{ marginTop: "40px", borderTop: "0.5px solid var(--line-strong)" }}>

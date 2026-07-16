@@ -78,7 +78,6 @@ export default function PrivacyPage() {
       <div style={{ background: "var(--white)" }}>
         <PageHero
           crumbs={[{ label: "ホーム", href: "/" }, { label: "プライバシーポリシー" }]}
-          eyebrow="PRIVACY POLICY"
           title="プライバシーポリシー"
           lead="株式会社Select（AI総合戦略研究所）は、お客様の個人情報を適切に取り扱い、その保護に努めます。"
         />

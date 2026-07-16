@@ -64,7 +64,6 @@ export default function Page() {
             { label: "サービス", href: "/service" },
             { label: "AI経営基盤" },
           ]}
-          eyebrow="AI OS / AI経営基盤"
           title={
             <>
               利益を生む方程式を、<br />そのまま実装する。
@@ -211,7 +210,6 @@ export default function Page() {
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
             <Reveal>
               <SectionHeading
-                eyebrow="LAYER 1"
                 title="Cost Down Layer — 削減の層"
                 lead="無駄な工数・人件費・外注費・汎用SaaS費を削減する層。業務そのものを、AIに置き換える。"
                 align="left"
@@ -275,7 +273,6 @@ export default function Page() {
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
             <Reveal>
               <SectionHeading
-                eyebrow="LAYER 2"
                 title="Sales Up Layer — 向上の層"
                 lead="削減で空いた力を、売上に変える層。現場で使えるAIを、貴社に内製する。"
                 align="left"
@@ -361,7 +358,7 @@ export default function Page() {
         <section style={{ padding: "96px 0" }}>
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
             <Reveal>
-              <SectionHeading eyebrow="WHY" title="なぜ、この値段で提供できるのか。" />
+              <SectionHeading title="なぜ、この値段で提供できるのか。" />
             </Reveal>
             <div
               className="dc-collapse-2"

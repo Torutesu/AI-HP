@@ -38,7 +38,6 @@ export default function Page() {
       <div style={{ background: "var(--white)" }}>
         <PageHero
           crumbs={[{ label: "ホーム", href: "/" }, { label: "サービス" }]}
-          eyebrow="SERVICES"
           title={
             <>
               戦略から、内製AIまで。<br />ひとつのチームで。
@@ -85,17 +84,6 @@ export default function Page() {
                     >
                       <Icon name={card.icon} size={28} />
                     </span>
-                    <div
-                      style={{
-                        fontSize: "12px",
-                        fontWeight: 600,
-                        letterSpacing: "0.16em",
-                        color: "var(--accent)",
-                        marginBottom: "10px",
-                      }}
-                    >
-                      {card.eyebrow}
-                    </div>
                     <h2
                       style={{
                         fontSize: "26px",

@@ -28,7 +28,6 @@ export default function DownloadPage() {
         <div className={styles.grid}>
           {/* Left — value */}
           <div>
-            <span className={styles.eyebrow}>AI STRATEGY PROPOSAL</span>
             <h1 className={styles.title}>
               AI経営の可能性を、<br />
               <em>具体的な戦略と事例</em>でご提案します。

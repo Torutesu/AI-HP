@@ -51,7 +51,6 @@ export default function Page() {
             { label: "サービス", href: "/service" },
             { label: "コンサルティング" },
           ]}
-          eyebrow="CONSULTING"
           title={
             <>
               事業の理解から、始める。<br />
@@ -182,7 +181,7 @@ export default function Page() {
 
         <section style={{ padding: "96px 0", borderBottom: "0.5px solid var(--line-strong)" }}>
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-            <SectionHeading eyebrow="FLOW" title="診断から、改善の伴走まで。" />
+            <SectionHeading title="診断から、改善の伴走まで。" />
             <div
               className="dc-collapse-2"
               style={{

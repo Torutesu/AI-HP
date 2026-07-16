@@ -96,7 +96,6 @@ export default function Page() {
       <div style={{ background: "var(--white)" }}>
         <PageHero
           crumbs={[{ label: "ホーム", href: "/" }, { label: "導入事例" }]}
-          eyebrow="SCENARIOS"
           title={<>業種別の、活用シナリオ。</>}
           lead="貴社に近い業種で、どこにコストのムダがあり、どこに売上の伸びしろがあるか。代表的なシミュレーションをご紹介します。"
         />

@@ -25,7 +25,6 @@ export default function ContactPage() {
       <div style={{ background: "var(--white)", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
         <PageHero
           crumbs={[{ label: "ホーム", href: "/" }, { label: "お問い合わせ" }]}
-          eyebrow="CONTACT"
           title="お問い合わせ・無料相談。"
           lead="フォームに必要事項とご相談内容をご記入ください。確認後、担当者よりご返信いたします。"
         />

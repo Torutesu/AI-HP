@@ -16,7 +16,7 @@ export default function PageHero({
   bgImage,
 }: {
   crumbs: Crumb[];
-  eyebrow: string;
+  eyebrow?: string;
   title: ReactNode;
   lead: ReactNode;
   /** Optional background photo. A dark overlay keeps the white text readable;
@@ -41,7 +41,7 @@ export default function PageHero({
             </span>
           ))}
         </div>
-        <span className={styles.eyebrow}><span />{eyebrow}</span>
+        {eyebrow ? <span className={styles.eyebrow}><span />{eyebrow}</span> : null}
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.lead}>{lead}</p>
       </div>

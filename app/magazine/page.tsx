@@ -22,7 +22,6 @@ export default function Page() {
       <div style={{ background: "var(--white)" }}>
         <PageHero
           crumbs={[{ label: "ホーム", href: "/" }, { label: "マガジン" }]}
-          eyebrow="MAGAZINE"
           title={<>AI総戦研マガジン</>}
           lead="経営とAIの実装知。グローバル事例の解像度で、貴社の次の一手を、ともに考えます。"
         />
