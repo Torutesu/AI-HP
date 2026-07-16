@@ -13,7 +13,18 @@ export const metadata: Metadata = {
     "貴社に近い業種で、どこにコストのムダがあり、どこに売上の伸びしろがあるか。代表的なシミュレーションをご紹介します。",
 };
 
-const scenarios = [
+type Scenario = {
+  icon: string;
+  title: string;
+  body: string;
+  // Background illustration. Drop files in public/img/industries/ and set the
+  // path here (e.g. "/img/industries/manufacturing.png") to replace the
+  // line-icon fallback with the real illustration.
+  image?: string;
+  stats: { value: string; label: string }[];
+};
+
+const scenarios: Scenario[] = [
   {
     icon: "factory",
     title: "製造業",
@@ -108,20 +119,59 @@ export default function Page() {
                     gap: "16px",
                   }}
                 >
+                  {/* background illustration (right-anchored) */}
+                  {s.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={s.image}
+                      alt=""
+                      aria-hidden="true"
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        right: 0,
+                        height: "100%",
+                        width: "64%",
+                        objectFit: "cover",
+                        objectPosition: "right center",
+                        opacity: 0.18,
+                        zIndex: 0,
+                        pointerEvents: "none",
+                      }}
+                    />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        right: "-6px",
+                        bottom: 0,
+                        width: "58%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-end",
+                        color: "var(--accent)",
+                        opacity: 0.1,
+                        zIndex: 0,
+                        pointerEvents: "none",
+                      }}
+                    >
+                      <Icon name={s.icon} size={188} />
+                    </span>
+                  )}
+                  {/* fade so text stays readable over the illustration */}
                   <span
                     aria-hidden="true"
                     style={{
                       position: "absolute",
-                      top: "-16px",
-                      right: "-12px",
-                      color: "var(--accent)",
-                      opacity: 0.07,
+                      inset: 0,
                       zIndex: 0,
                       pointerEvents: "none",
+                      background:
+                        "linear-gradient(90deg, var(--surface-card) 24%, rgba(255,255,255,0) 82%)",
                     }}
-                  >
-                    <Icon name={s.icon} size={128} />
-                  </span>
+                  />
                   <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", gap: "12px" }}>
                     <span
                       style={{
