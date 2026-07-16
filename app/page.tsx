@@ -130,14 +130,22 @@ export default function Home() {
 
         <div className={styles.heroBody}>
           <Reveal immediate delay={0.2} y={20}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className={styles.ycBadge}
-              src="/img/badge/yc-transparent.png"
-              alt="Winner of YC RFS Hackathon 2026 — Presented by Transpose"
-              width={720}
-              height={256}
-            />
+            <a
+              className={styles.ycBadgeLink}
+              href="https://x.com/KyosukeTogami/status/2075136867461460299"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Winner of YC RFS Hackathon 2026 — 投稿を見る（X）"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className={styles.ycBadge}
+                src="/img/badge/yc-transparent.png"
+                alt="Winner of YC RFS Hackathon 2026 — Presented by Transpose"
+                width={720}
+                height={256}
+              />
+            </a>
           </Reveal>
           <Reveal immediate delay={0.32} y={20}>
             <h1 className={styles.heroTitle}>AIを、<br />たしかな経営成果へ。</h1>

@@ -40,18 +40,23 @@
   max-width: 760px;
 }
 /* YC hackathon winner credential (dark glass, over the hero) */
+.ycBadgeLink {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 30px;
+  line-height: 0;
+}
 .ycBadge {
   display: block;
-  align-self: flex-start;
   width: auto;
   height: auto;
   max-width: 340px;
-  margin-bottom: 30px;
   /* background is keyed out, so the badge floats and blends into the hero */
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
-.ycBadge:hover {
+.ycBadgeLink:hover .ycBadge {
   transform: translateY(-2px);
+  filter: drop-shadow(0 6px 18px rgba(43, 124, 255, 0.28));
 }
 @media (max-width: 560px) {
   .ycBadge {
