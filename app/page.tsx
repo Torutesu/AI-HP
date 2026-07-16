@@ -48,30 +48,33 @@ const STATS = [
 const SALES_TAGS = ["リード獲得AI", "提案書自動生成", "顧客分析・ランキング付け", "コンテンツ生成", "営業支援AI", "価格最適化", "マーケ最適化AI"];
 
 const STRENGTHS: {
-  emoji: string;
-  accent: string;
+  color: string;
+  markText?: string;
+  markIcon?: string;
+  label: string;
   title: string;
-  text: string;
   href?: string;
+  presenter?: string;
 }[] = [
   {
-    emoji: "🏆",
-    accent: "#F26522",
-    title: "YCハッカソン優勝",
-    text: "世界トップの技術力を、実戦の舞台で証明。",
+    color: "#F26522",
+    markText: "Y",
+    label: "Winner of",
+    title: "YC RFS Hackathon 2026",
     href: "https://x.com/KyosukeTogami/status/2075136867461460299",
+    presenter: "Transpose",
   },
   {
-    emoji: "🌐",
-    accent: "#2B7CFF",
+    color: "#2B7CFF",
+    markIcon: "globe",
+    label: "Research DB",
     title: "AI事例 5万件",
-    text: "世界最先端の活用事例を継続収集。打ち手の質が違う。",
   },
   {
-    emoji: "📈",
-    accent: "#1F9D62",
+    color: "#1F9D62",
+    markIcon: "trending-up",
+    label: "Framework",
     title: "ROI起点の設計",
-    text: "コストとリターンから逆算し、投資対効果にこだわり抜く。",
   },
 ];
 
@@ -192,11 +195,27 @@ export default function Home() {
             {STRENGTHS.map((b) => {
               const inner = (
                 <>
-                  <span className={styles.fvBadgeTop}>
-                    <span className={styles.fvBadgeEmoji}>{b.emoji}</span>
-                    <span className={styles.fvBadgeTitle}>{b.title}</span>
+                  <span className={styles.fvMark} style={{ background: b.color }}>
+                    {b.markText ? (
+                      <span className={styles.fvMarkText}>{b.markText}</span>
+                    ) : (
+                      <Icon name={b.markIcon as string} size={22} />
+                    )}
                   </span>
-                  <span className={styles.fvBadgeText}>{b.text}</span>
+                  <span className={styles.fvLabel}>{b.label}</span>
+                  <span className={styles.fvTitle}>{b.title}</span>
+                  {b.presenter ? (
+                    <span className={styles.fvPresenter}>
+                      <span className={styles.fvPresenterLabel}>Presented by</span>
+                      <span className={styles.fvPresenterName}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden>
+                          <path d="M12 2L20 12L12 22L4 12Z" />
+                          <circle cx="12" cy="12" r="3" />
+                        </svg>
+                        {b.presenter}
+                      </span>
+                    </span>
+                  ) : null}
                 </>
               );
               return b.href ? (

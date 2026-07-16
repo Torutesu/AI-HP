@@ -63,31 +63,70 @@
     max-width: 280px;
   }
 }
-/* three strength badges under the hero CTA */
+/* three award-style strength badges under the hero CTA */
 .fvBadges {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   align-self: stretch;
-  max-width: 760px;
+  align-items: stretch;
+  max-width: 780px;
   margin-top: 36px;
 }
 .fvBadge {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 14px;
-  padding: 18px;
+  padding: 18px 18px 16px;
   backdrop-filter: blur(10px);
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
-.fvBadgeTop { display: flex; align-items: center; gap: 9px; }
-.fvBadgeEmoji { font-size: 20px; line-height: 1; }
-.fvBadgeTitle { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
-.fvBadgeText { font-size: 11.5px; line-height: 1.6; color: rgba(255, 255, 255, 0.62); }
-a.fvBadge:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.28); transform: translateY(-2px); }
+a.fvBadge:hover { background: rgba(255, 255, 255, 0.11); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
+.fvMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.fvMarkText { font-family: var(--font-en); font-weight: 800; font-size: 23px; line-height: 1; }
+.fvLabel {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 3px;
+}
+.fvTitle { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.01em; line-height: 1.3; }
+.fvPresenter {
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.fvPresenterLabel {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+.fvPresenterName {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #fff;
+}
 
 @media (max-width: 620px) {
   .fvBadges { grid-template-columns: 1fr; max-width: none; }
