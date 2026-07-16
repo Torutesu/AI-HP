@@ -76,9 +76,9 @@ async function sendMaterial(env: Env, to: string, name: string): Promise<void> {
 }
 
 export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> => {
-  let data: Record<string, string>;
+  let data: Record<string, unknown>;
   try {
-    data = (await request.json()) as Record<string, string>;
+    data = (await request.json()) as Record<string, unknown>;
   } catch {
     return json({ ok: false, error: "不正なリクエストです。" }, 400);
   }
@@ -92,7 +92,9 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
   }
 
   const fields = REQUIRED.map((k) => `• ${LABELS[k]}: ${String(data[k]).trim()}`).join("\n");
-  const message = `:page_facing_up: *資料ダウンロード申込*\n${fields}`;
+  const themes = Array.isArray(data.themes) ? data.themes.filter(Boolean) : [];
+  const themeLine = `\n• 関心テーマ: ${themes.length ? themes.join("、") : "—"}`;
+  const message = `:page_facing_up: *資料リクエスト*\n${fields}${themeLine}`;
 
   const ok = await notify(env.NOTIFY_WEBHOOK_URL, message);
   if (!ok) {

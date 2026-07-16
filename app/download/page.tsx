@@ -1,95 +1,87 @@
 import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import PageHero from "@/components/PageHero";
 import Icon from "@/components/Icon";
 import DownloadForm from "@/components/DownloadForm";
+import styles from "./download.module.css";
 
 export const metadata: Metadata = {
-  title: "資料ダウンロード",
-  description: "AI総合戦略研究所のサービス資料を無料でダウンロード。サービス概要・事例・進め方を一冊にまとめた全18ページ。約3分でお読みいただけます。",
+  title: "資料請求",
+  description:
+    "AI総合戦略研究所のご提案資料を無料でリクエスト。提供価値・導入効果の見込み・業界別の活用事例・導入までの進め方を一冊にまとめてお送りします。",
 };
 
-const CONTENTS = [
-  { icon: "layout-grid", text: "サービス全体像と、提供の流れ" },
-  { icon: "trending-down", text: "コスト削減・売上向上の考え方" },
-  { icon: "layers", text: "業種別のシミュレーション事例" },
-  { icon: "route", text: "導入までの進め方と体制" },
+const features = [
+  { icon: "target", title: "サービス全体のご紹介", text: "提供価値・特徴・体制を整理" },
+  { icon: "trending-up", title: "導入による効果の見込み", text: "コスト削減・売上向上の可能性" },
+  { icon: "building-2", title: "業界別の活用事例", text: "類似企業の成功パターンを掲載" },
+  { icon: "route", title: "導入までの進め方", text: "ステップ・体制・サポートを解説" },
 ];
+
+const bars = [40, 60, 50, 76, 66, 92];
 
 export default function DownloadPage() {
   return (
     <>
       <SiteHeader variant="solid" />
-      <div style={{ background: "var(--white)", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-        <PageHero
-          crumbs={[{ label: "ホーム", href: "/" }, { label: "資料ダウンロード" }]}
-          eyebrow="DOCUMENT"
-          title="サービス資料を、無料でダウンロード。"
-          lead="サービス概要・事例・進め方を一冊に。3分でお読みいただけます。ご入力のアドレスへPDFをお送りします。"
-        />
+      <section className={styles.section}>
+        <div className={styles.grid}>
+          {/* Left — value */}
+          <div>
+            <span className={styles.eyebrow}>AI STRATEGY PROPOSAL</span>
+            <h1 className={styles.title}>
+              AI経営の可能性を、<br />
+              <em>具体的な戦略と事例</em>でご提案します。
+            </h1>
+            <p className={styles.lead}>
+              貴社の課題解決に向けたアプローチや、導入メリット、他社事例などをまとめたご提案資料をお送りします。
+            </p>
 
-        <div style={{ flex: 1, position: "relative", overflow: "hidden", background: "var(--white)" }}>
-          <div
-            className="dc-collapse"
-            style={{
-              maxWidth: "1080px",
-              margin: "0 auto",
-              padding: "8px 24px 96px",
-              position: "relative",
-              display: "grid",
-              gridTemplateColumns: "0.85fr 1.15fr",
-              gap: "56px",
-              alignItems: "start",
-            }}
-          >
-            <div>
-              <div style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "14px" }}>
-                INSIDE THE MATERIAL
-              </div>
-              <div style={{ fontSize: "20px", fontWeight: 700, color: "var(--fg-0)", letterSpacing: "-0.01em", margin: "0 0 20px" }}>
-                お送りする資料の中身。
-              </div>
-
-              <div style={{ display: "flex", gap: "20px", alignItems: "flex-start", marginBottom: "28px" }}>
-                <div style={{ flex: "none", width: "132px", borderRadius: "8px", overflow: "hidden", border: "0.5px solid var(--line-strong)", boxShadow: "0 12px 30px rgba(12,21,36,0.12)" }}>
-                  <div style={{ position: "relative", aspectRatio: "3 / 4", background: "linear-gradient(150deg, #0B1B3A 0%, #123A86 55%, #1E63E6 100%)", padding: "16px 15px", display: "flex", flexDirection: "column" }}>
-                    <div style={{ position: "absolute", right: "-20px", top: "-20px", width: "96px", height: "96px", borderRadius: "999px", background: "radial-gradient(circle, rgba(255,255,255,0.22), transparent 68%)" }} />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/logo-mark.png" alt="" style={{ height: "20px", width: "auto", filter: "brightness(0) invert(1)", marginBottom: "auto" }} />
-                    <div style={{ fontSize: "8px", fontWeight: 600, letterSpacing: "0.14em", color: "rgba(255,255,255,.7)", marginBottom: "6px" }}>SERVICE GUIDE 2026</div>
-                    <div style={{ fontSize: "13px", fontWeight: 700, lineHeight: 1.5, color: "#fff" }}>AI経営基盤<br />サービスご紹介</div>
-                    <div style={{ marginTop: "10px", height: "1px", background: "rgba(255,255,255,.25)" }} />
-                    <div style={{ marginTop: "8px", fontSize: "7.5px", letterSpacing: "0.1em", color: "rgba(255,255,255,.6)" }}>AI総合戦略研究所</div>
-                  </div>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: "10px", paddingTop: "2px" }}>
-                  {CONTENTS.map((c) => (
-                    <div key={c.text} style={{ display: "flex", gap: "9px", alignItems: "flex-start", fontSize: "13px", lineHeight: 1.5, color: "var(--fg-1)" }}>
-                      <span style={{ flex: "none", color: "var(--accent)", marginTop: "1px" }}><Icon name={c.icon} size={15} /></span>
-                      {c.text}
-                    </div>
+            <div className={styles.deck}>
+              <div className={`${styles.deckCard} ${styles.deckChart}`}>
+                <div className={styles.chartTitle}>導入効果のイメージ</div>
+                <div className={styles.bars}>
+                  {bars.map((h, i) => (
+                    <span key={i} className={styles.bar} style={{ height: `${h}%` }} />
                   ))}
                 </div>
+                <div className={styles.chips}>
+                  <span className={styles.chip}>売上向上 +32%</span>
+                  <span className={styles.chip}>業務工数 -45%</span>
+                </div>
               </div>
-
-              <div style={{ display: "flex", alignItems: "center", gap: "18px", padding: "14px 18px", background: "var(--surface-card)", border: "0.5px solid var(--line-strong)", borderRadius: "8px", marginBottom: "24px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "7px", fontSize: "12.5px", color: "var(--fg-2)" }}>
-                  <span style={{ color: "var(--accent)" }}><Icon name="file-text" size={15} /></span>全18ページ
-                </div>
-                <div style={{ width: "1px", height: "16px", background: "var(--line-strong)" }} />
-                <div style={{ display: "flex", alignItems: "center", gap: "7px", fontSize: "12.5px", color: "var(--fg-2)" }}>
-                  <span style={{ color: "var(--accent)" }}><Icon name="clock" size={15} /></span>約3分で読了
-                </div>
-                <div style={{ width: "1px", height: "16px", background: "var(--line-strong)" }} />
-                <div style={{ display: "flex", alignItems: "center", gap: "7px", fontSize: "12.5px", color: "var(--fg-2)" }}>PDF・無料</div>
+              <div className={`${styles.deckCard} ${styles.deckCover}`}>
+                <div className={styles.coverGlow} />
+                <div className={styles.coverBrand}>AI総合戦略研究所</div>
+                <div className={styles.coverTitle}>AI経営基盤<br />ご提案資料</div>
+                <div className={styles.coverSub}>サービス概要・導入事例・効果</div>
+                <div className={styles.coverRule} />
+                <div className={styles.coverConf}>CONFIDENTIAL</div>
               </div>
             </div>
 
-            <DownloadForm />
+            <div className={styles.features}>
+              {features.map((f) => (
+                <div key={f.title} className={styles.feature}>
+                  <span className={styles.featIcon}><Icon name={f.icon} size={20} /></span>
+                  <div>
+                    <div className={styles.featTitle}>{f.title}</div>
+                    <div className={styles.featText}>{f.text}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.trust}>
+              <span><Icon name="shield-check" size={17} /></span>
+              ご入力いただいた情報は、資料の送付およびご提案目的のみに使用します。
+            </div>
           </div>
+
+          {/* Right — form */}
+          <DownloadForm />
         </div>
-      </div>
+      </section>
       <SiteFooter />
     </>
   );

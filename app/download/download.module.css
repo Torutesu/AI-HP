@@ -1,0 +1,214 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(115deg, #eaf1ff 0%, #f2f7ff 46%, #ffffff 78%);
+  padding: 128px 24px 96px;
+}
+.grid {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* ---------- left value column ---------- */
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.title {
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 700;
+  line-height: 1.36;
+  letter-spacing: -0.02em;
+  color: var(--fg-0);
+  margin: 0 0 20px;
+}
+.title em {
+  font-style: normal;
+  color: var(--accent);
+}
+.lead {
+  font-size: 15px;
+  line-height: 1.95;
+  color: var(--fg-2);
+  margin: 0 0 36px;
+  max-width: 460px;
+}
+
+/* ---------- proposal deck illustration (pure CSS) ---------- */
+.deck {
+  position: relative;
+  height: 300px;
+  margin: 0 0 40px;
+}
+.deckCard {
+  position: absolute;
+  border-radius: 12px;
+  box-shadow: 0 24px 48px rgba(12, 21, 36, 0.16);
+  border: 0.5px solid rgba(255, 255, 255, 0.6);
+}
+.deckChart {
+  top: 24px;
+  right: 0;
+  width: 56%;
+  height: 248px;
+  background: #fff;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transform: rotate(3deg);
+}
+.chartTitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--fg-1);
+}
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 96px;
+  padding-top: 6px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.bar {
+  flex: 1;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, #4c9bff, #1e63e6);
+}
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+.chip {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--blue-050);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+.deckCover {
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 272px;
+  overflow: hidden;
+  background: linear-gradient(155deg, #0b1b3a 0%, #123a86 52%, #1e63e6 100%);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  transform: rotate(-4deg);
+}
+.coverGlow {
+  position: absolute;
+  right: -30%;
+  bottom: -30%;
+  width: 90%;
+  height: 90%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.28), transparent 66%);
+  pointer-events: none;
+}
+.coverBrand {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.75);
+}
+.coverTitle {
+  margin-top: auto;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #fff;
+}
+.coverSub {
+  margin-top: 8px;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.78);
+}
+.coverRule {
+  margin-top: 14px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+.coverConf {
+  margin-top: 8px;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- feature list (2x2) ---------- */
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 24px;
+  margin-bottom: 30px;
+}
+.feature {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+}
+.featIcon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+}
+.featTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fg-0);
+  margin-bottom: 4px;
+}
+.featText {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--fg-2);
+}
+.trust {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 0.5px solid var(--blue-100);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 12.5px;
+  color: var(--fg-2);
+}
+.trust span {
+  flex: none;
+  color: var(--accent);
+  display: inline-flex;
+}
+
+@media (max-width: 920px) {
+  .section { padding: 104px 22px 72px; }
+  .grid { grid-template-columns: 1fr; gap: 40px; }
+  .lead { max-width: none; }
+}
+@media (max-width: 520px) {
+  .features { grid-template-columns: 1fr; gap: 16px; }
+  .deck { height: 260px; }
+}

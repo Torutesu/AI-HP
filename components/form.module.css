@@ -46,8 +46,55 @@ select.fld {
 .card {
   background: var(--surface-card);
   border: 0.5px solid var(--line-strong);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 40px 40px 44px;
+  box-shadow: 0 24px 60px rgba(12, 21, 36, 0.1);
+}
+.cardTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fg-0);
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.optional {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--fg-3);
+  margin-left: 2px;
+}
+.checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.check {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  color: var(--fg-1);
+  border: 0.5px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 11px 13px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.check:hover {
+  border-color: var(--panel-border);
+}
+.check input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.check:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--blue-tint);
+}
+@media (max-width: 400px) {
+  .checks { grid-template-columns: 1fr; }
 }
 .form {
   display: flex;
