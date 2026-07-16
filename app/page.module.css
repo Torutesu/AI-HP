@@ -755,24 +755,65 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
   .fvBadge { flex-direction: row; align-items: center; gap: 14px; padding: 15px 16px; }
   .fvMark { margin-bottom: 0; width: 38px; height: 38px; }
 
-  .belief { padding: 76px 20px 90px; }
-  .beliefEyebrow { margin-bottom: 18px; }
-  .beliefTitle { line-height: 1.45; }
-  .philosophy { padding: 56px 0 64px; }
-  .strengths { padding: 48px 0 60px; }
-  .os { padding: 60px 0; }
-  .pain, .why, .process, .cases { padding: 56px 0; }
-  .ctaSection { padding: 16px 0 64px; }
+  /* ---- Section rhythm: denser vertical spacing ---- */
+  .belief { padding: 68px 20px 82px; }
+  .philosophy { padding: 50px 0 58px; }
+  .strengths { padding: 44px 0 54px; }
+  .os { padding: 54px 0; }
+  .pain, .why, .process, .cases { padding: 50px 0; }
+  .ctaSection { padding: 14px 0 58px; }
 
-  .grid4 { grid-template-columns: 1fr; gap: 12px; }
-  .casesGrid { grid-template-columns: 1fr; }
-  .ctaBand { padding: 36px 22px; }
-  .rowCard, .osPanel { padding: 24px 22px; }
-  .osTop { gap: 12px; }
-  .osTopCard { padding: 26px 24px; }
-  .philLeft { padding: 30px 22px; }
+  /* ---- (A) Mobile-native type scale ---- */
+  .beliefEyebrow { margin-bottom: 16px; font-size: 11px; }
+  .beliefTitle { font-size: 24px; line-height: 1.42; margin-bottom: 16px; }
+  .beliefText { font-size: 13.5px; line-height: 1.75; }
+  .philosophyTitle { font-size: 25px; margin-bottom: 12px; }
+  .philLead { font-size: 15px; margin-bottom: 16px; }
+  .philosophyText { font-size: 13.5px; line-height: 1.8; margin-bottom: 14px; }
+  .roiHeading { font-size: 20px; }
+  .roiItemTitle { font-size: 15px; }
+  .roiItemText { font-size: 13px; line-height: 1.75; }
+  .osTopSub { font-size: 14px; }
+  .osTopText, .osPanelText { font-size: 13px; line-height: 1.8; }
+  .osPanelTitle { font-size: 20px; }
+  .featureTitle { font-size: 14.5px; }
+  .featureText { font-size: 12.5px; line-height: 1.7; }
+  .stepTitle { font-size: 16.5px; }
+  .stepText { font-size: 13px; line-height: 1.75; }
+  .disclaimer { font-size: 11px; }
+
+  /* tighten the gap between a section heading and its content */
+  .osSplit, .processGrid { margin-top: 24px; }
+
+  /* ---- Card paddings ---- */
+  .ctaBand { padding: 34px 22px; }
+  .rowCard, .osPanel { padding: 22px 20px; }
+  .osTopCard { padding: 24px 22px; min-height: 0; }
+  .philLeft { padding: 28px 20px; }
   .philStats { gap: 12px; }
-  .philCard { padding: 22px 22px; }
+  .philCard { padding: 20px 20px; }
+  .stepCard { padding: 26px 24px; }
+
+  /* ---- (B) Card rows become swipeable carousels ---- */
+  .grid4, .casesGrid, .osTop {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 20px;
+    gap: 12px;
+    margin: 24px -20px 0;
+    padding: 2px 20px 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .grid4::-webkit-scrollbar,
+  .casesGrid::-webkit-scrollbar,
+  .osTop::-webkit-scrollbar { display: none; }
+  .grid4 > *, .casesGrid > *, .osTop > * {
+    flex: 0 0 80%;
+    scroll-snap-align: start;
+  }
 }
 
 /* Small phone (iPhone SE / mini) */
@@ -781,4 +822,12 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
   .heroBody { padding: 96px 16px 26px; }
   .heroTitle { font-size: 29px; }
   .partnerRow { margin: 0 16px; }
+  /* keep the carousel bleed aligned to the 16px container padding */
+  .grid4, .casesGrid, .osTop {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    scroll-padding-left: 16px;
+  }
 }

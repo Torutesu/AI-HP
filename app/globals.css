@@ -192,4 +192,9 @@ html.cursor-custom * { cursor: none !important; }
 }
 @media (max-width: 640px) {
   .dc-collapse-2 { grid-template-columns: 1fr !important; }
+  /* Mobile-native heading scale */
+  .section-heading { gap: 10px; }
+  .section-heading h2 { font-size: 21px; line-height: 1.32; }
+  .section-heading .lead { font-size: 14px; line-height: 1.7; }
+  .section-heading .eyebrow { font-size: 11px; }
 }
