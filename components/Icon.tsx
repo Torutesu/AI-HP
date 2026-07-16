@@ -1,6 +1,6 @@
 import {
   ArrowRight, BadgeCheck, Blocks, BookOpen, Briefcase, Building2, Check,
-  CheckCircle2, Clock, Compass, Cpu, Crosshair, EyeOff, Factory, FileCheck,
+  CheckCircle2, Clock, Compass, Cpu, Crosshair, Download, EyeOff, Factory, FileCheck,
   FileText, Flag, Globe, Handshake, Headphones, Image as ImageIcon, Landmark,
   Layers, LayoutGrid, ListOrdered, Lock, Magnet, Megaphone, PenTool, Percent,
   PieChart, Receipt, Route, Search, ShieldCheck, ShoppingBag, Stethoscope, Tag,
@@ -26,6 +26,7 @@ const registry: Record<string, LucideIcon> = {
   compass: Compass,
   cpu: Cpu,
   crosshair: Crosshair,
+  download: Download,
   "eye-off": EyeOff,
   factory: Factory,
   "file-check": FileCheck,

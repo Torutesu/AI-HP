@@ -37,7 +37,9 @@
   flex-direction: column;
   justify-content: center;
   padding: 40px 44px;
-  max-width: 760px;
+  /* Wide enough to let the credential badge row grow ~1.5x on desktop.
+     The hero copy keeps its own max-widths, so only the badges use the room. */
+  max-width: 1080px;
 }
 /* YC hackathon winner credential (dark glass, over the hero) */
 .ycBadgeLink {
@@ -67,65 +69,68 @@
 .fvBadges {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 16px;
   align-self: stretch;
   align-items: stretch;
-  max-width: 780px;
-  margin-top: 36px;
+  max-width: 1010px;
+  margin-top: 40px;
 }
 .fvBadge {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 14px;
-  padding: 18px 18px 16px;
+  border-radius: 16px;
+  padding: 20px 24px;
   backdrop-filter: blur(10px);
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 a.fvBadge:hover { background: rgba(255, 255, 255, 0.11); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
-/* image-based badge (self-contained artwork, no card frame) */
+/* image-based badge (self-contained artwork, no card frame).
+   A fixed height drives the whole row so all three badges match. */
 .fvImgBadge { display: flex; align-items: center; justify-content: flex-start; }
 .fvImg {
-  width: 100%;
-  height: auto;
-  max-height: 118px;
+  height: 116px;
+  width: auto;
+  max-width: 100%;
   object-fit: contain;
   object-position: left center;
   transition: transform 0.2s ease;
 }
 a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
 .fvMark {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 9px;
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
   color: #fff;
-  margin-bottom: 14px;
 }
-.fvMarkText { font-family: var(--font-en); font-weight: 800; font-size: 23px; line-height: 1; }
+.fvMarkText { font-family: var(--font-en); font-weight: 800; font-size: 31px; line-height: 1; }
 .fvBody { display: flex; flex-direction: column; min-width: 0; }
 .fvLabel {
-  font-size: 10.5px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
-.fvTitle { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.01em; line-height: 1.3; }
+.fvTitle { font-size: 19px; font-weight: 700; color: #fff; letter-spacing: -0.01em; line-height: 1.3; }
 .fvPresenter {
-  margin-top: 14px;
-  padding-top: 13px;
+  margin-top: 18px;
+  padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 .fvPresenterLabel {
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -134,8 +139,8 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
 .fvPresenterName {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13.5px;
+  gap: 7px;
+  font-size: 16px;
   font-weight: 600;
   color: #fff;
 }

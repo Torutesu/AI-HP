@@ -101,6 +101,10 @@ body {
   line-height: var(--lh-relaxed);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Break Japanese at natural phrase boundaries so words like「終わらせず」
+     never split mid-word. Inherits site-wide; unsupported browsers ignore it. */
+  word-break: auto-phrase;
+  line-break: strict;
 }
 
 h1, h2, h3, h4, h5, h6 { margin: 0; color: var(--fg-0); font-weight: var(--fw-bold); line-height: 1.15; letter-spacing: -0.02em; }
@@ -140,6 +144,11 @@ html.cursor-custom * { cursor: none !important; }
 .whiteCta:hover .dc-icon { transform: translateX(3px); }
 .ghostCta { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 15px; font-weight: 600; transition: opacity .2s; }
 .ghostCta:hover { color: #fff; opacity: .75; }
+/* Secondary hero CTA — glass outline, matches whiteCta size */
+.heroOutlineCta { display: inline-flex; align-items: center; gap: 9px; color: #fff; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.34); padding: 13px 28px; border-radius: 999px; font-size: 15px; font-weight: 500; backdrop-filter: blur(10px); transition: background .2s, border-color .2s, transform .2s; }
+.heroOutlineCta:hover { color: #fff; background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.55); transform: translateY(-1px); }
+.heroOutlineCta .dc-icon { transition: transform .2s var(--ease-standard); }
+.heroOutlineCta:hover .dc-icon { transform: translateY(1px); }
 
 /* Lift card */
 .liftCard { transition: border-color .25s var(--ease-standard), transform .25s var(--ease-standard), background-color .25s; }

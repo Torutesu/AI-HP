@@ -191,8 +191,11 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal immediate delay={0.52} y={20} className={styles.heroCtas}>
-            <a className="whiteCta" href="/download">
-              資料をダウンロード<Icon name="arrow-right" size={17} />
+            <a className="whiteCta" href="/contact">
+              無料相談<Icon name="arrow-right" size={17} />
+            </a>
+            <a className="heroOutlineCta" href="/download">
+              資料をダウンロード<Icon name="download" size={16} />
             </a>
           </Reveal>
           <Reveal immediate delay={0.62} y={20} className={styles.fvBadges}>
@@ -216,7 +219,7 @@ export default function Home() {
                     {b.markText ? (
                       <span className={styles.fvMarkText}>{b.markText}</span>
                     ) : (
-                      <Icon name={b.markIcon as string} size={22} />
+                      <Icon name={b.markIcon as string} size={28} />
                     )}
                   </span>
                   <span className={styles.fvBody}>
