@@ -751,9 +751,14 @@ a.fvImgBadge:hover .fvImg { transform: translateY(-2px); }
   .partnerLogos { gap: 20px; }
 
   /* badges become compact horizontal rows */
-  .fvBadges { grid-template-columns: 1fr; max-width: 100%; gap: 10px; margin-top: 26px; }
-  .fvBadge { flex-direction: row; align-items: center; gap: 14px; padding: 15px 16px; }
-  .fvMark { margin-bottom: 0; width: 38px; height: 38px; }
+  .fvBadges { grid-template-columns: 1fr; max-width: 100%; gap: 10px; margin-top: 24px; }
+  .fvBadge { flex-direction: row; align-items: center; gap: 13px; padding: 12px 14px; }
+  .fvMark { margin-bottom: 0; width: 34px; height: 34px; }
+  .fvMarkText { font-size: 19px; }
+  .fvLabel { font-size: 9.5px; margin-bottom: 2px; }
+  .fvTitle { font-size: 14px; }
+  /* keep the YC image badge small (was spanning full width) */
+  .fvImg { width: auto; max-height: 48px; max-width: 100%; }
 
   /* ---- Section rhythm: denser vertical spacing ---- */
   .belief { padding: 68px 20px 82px; }
