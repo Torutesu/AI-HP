@@ -9,7 +9,11 @@ import { DEFAULT_ASSET_ID, getAsset } from "@/lib/assets";
 import { isFreeEmail, FREE_EMAIL_MESSAGE } from "@/lib/freeEmail";
 import styles from "./form.module.css";
 
-const REQUIRED = ["company", "name", "email", "size"];
+// Same lead fields as the contact form so both capture equivalent information.
+const REQUIRED = [
+  "company", "pref", "size", "role", "title",
+  "last", "first", "email", "phone",
+];
 const THEMES = ["業務効率化", "売上拡大", "コスト最適化", "データ活用"];
 
 const val = (form: HTMLFormElement, name: string) =>
@@ -87,19 +91,22 @@ export default function DownloadForm() {
         <input type="hidden" name="asset" value={assetId} readOnly />
         <div>
           <label className={styles.lbl} htmlFor="company">会社名 <span className={styles.req}>*</span></label>
-          <input id="company" name="company" className={styles.fld} type="text" placeholder="株式会社〇〇" />
+          <input id="company" name="company" className={styles.fld} type="text" placeholder="例）株式会社〇〇〇〇〇" />
         </div>
         <div>
-          <label className={styles.lbl} htmlFor="name">お名前 <span className={styles.req}>*</span></label>
-          <input id="name" name="name" className={styles.fld} type="text" placeholder="山田 太郎" />
+          <label className={styles.lbl} htmlFor="pref">会社所在地（都道府県） <span className={styles.req}>*</span></label>
+          <select id="pref" name="pref" className={styles.fld} defaultValue="">
+            <option value="">選択してください</option>
+            <option value="北海道・東北">北海道・東北</option>
+            <option value="関東">関東</option>
+            <option value="中部">中部</option>
+            <option value="近畿">近畿</option>
+            <option value="中国・四国">中国・四国</option>
+            <option value="九州・沖縄">九州・沖縄</option>
+          </select>
         </div>
         <div>
-          <label className={styles.lbl} htmlFor="email">メールアドレス（業務用） <span className={styles.req}>*</span></label>
-          <input id="email" name="email" className={styles.fld} type="email" placeholder="you@company.co.jp" />
-          <p className={styles.hint}>フリーメール（Gmail・Yahoo!メール・携帯キャリアメール等）はご利用いただけません。貴社ドメインのメールアドレスをご入力ください。</p>
-        </div>
-        <div>
-          <label className={styles.lbl} htmlFor="size">従業員規模 <span className={styles.req}>*</span></label>
+          <label className={styles.lbl} htmlFor="size">従業員数 <span className={styles.req}>*</span></label>
           <select id="size" name="size" className={styles.fld} defaultValue="">
             <option value="">選択してください</option>
             <option value="1-10">1〜10名</option>
@@ -109,6 +116,48 @@ export default function DownloadForm() {
             <option value="300-1000">300〜1,000名</option>
             <option value="1000+">1,000名以上</option>
           </select>
+        </div>
+        <div>
+          <label className={styles.lbl} htmlFor="role">あなたのメインのお役回りを1つご選択ください <span className={styles.req}>*</span></label>
+          <select id="role" name="role" className={styles.fld} defaultValue="">
+            <option value="">選択してください</option>
+            <option value="経営・役員">経営・役員</option>
+            <option value="情報システム・IT">情報システム・IT</option>
+            <option value="事業・企画">事業・企画</option>
+            <option value="営業・マーケティング">営業・マーケティング</option>
+            <option value="管理・バックオフィス">管理・バックオフィス</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+        <div>
+          <label className={styles.lbl} htmlFor="title">役職名 <span className={styles.req}>*</span></label>
+          <select id="title" name="title" className={styles.fld} defaultValue="">
+            <option value="">選択してください</option>
+            <option value="経営者・役員">経営者・役員</option>
+            <option value="部長クラス">部長クラス</option>
+            <option value="課長・マネージャー">課長・マネージャー</option>
+            <option value="担当者">担当者</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+          <div>
+            <label className={styles.lbl} htmlFor="last">姓 <span className={styles.req}>*</span></label>
+            <input id="last" name="last" className={styles.fld} type="text" placeholder="例）山田" />
+          </div>
+          <div>
+            <label className={styles.lbl} htmlFor="first">名 <span className={styles.req}>*</span></label>
+            <input id="first" name="first" className={styles.fld} type="text" placeholder="例）太郎" />
+          </div>
+        </div>
+        <div>
+          <label className={styles.lbl} htmlFor="email">メールアドレス（業務用） <span className={styles.req}>*</span></label>
+          <input id="email" name="email" className={styles.fld} type="email" placeholder="例）account@company.com" />
+          <p className={styles.hint}>フリーメール（Gmail・Yahoo!メール・携帯キャリアメール等）はご利用いただけません。貴社ドメインのメールアドレスをご入力ください。</p>
+        </div>
+        <div>
+          <label className={styles.lbl} htmlFor="phone">ご連絡がつきやすい携帯電話番号 <span className={styles.req}>*</span></label>
+          <input id="phone" name="phone" className={styles.fld} type="tel" placeholder="例）09012345678" />
         </div>
         <div>
           <label className={styles.lbl}>関心のあるテーマ <span className={styles.optional}>（複数選択可）</span></label>

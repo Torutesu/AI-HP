@@ -27,9 +27,14 @@ interface Env {
 
 type Ctx = { request: Request; env: Env };
 
-const REQUIRED = ["company", "name", "email", "size"];
+// Aligned with the contact form so both capture equivalent lead information.
+const REQUIRED = [
+  "company", "pref", "size", "role", "title",
+  "last", "first", "email", "phone",
+];
 const LABELS: Record<string, string> = {
-  company: "会社名", name: "お名前", email: "メールアドレス", size: "従業員規模",
+  company: "会社名", pref: "所在地", size: "従業員数", role: "お役回り",
+  title: "役職名", last: "姓", first: "名", email: "メールアドレス", phone: "電話番号",
 };
 
 function json(body: unknown, status = 200): Response {
@@ -125,6 +130,7 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
     return json({ ok: false, error: "送信に失敗しました。時間をおいて再度お試しください。" }, 502);
   }
 
-  await sendMaterial(env, String(data.email).trim(), String(data.name).trim(), asset);
+  const requesterName = `${String(data.last).trim()}${String(data.first).trim()}`;
+  await sendMaterial(env, String(data.email).trim(), requesterName, asset);
   return json({ ok: true });
 };
