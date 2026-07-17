@@ -58,6 +58,7 @@ async function autoReply(env: Env, origin: string, to: string, name: string): Pr
   if (!env.RESEND_API_KEY || !env.AUTOREPLY_FROM_EMAIL) return;
   const { html, text } = renderEmail({
     origin,
+    logoUrl: `${origin}/logo-mark-white.png`,
     preheader: "お問い合わせを受け付けました。担当者より1〜2営業日以内にご連絡します。",
     heading: "お問い合わせを受け付けました",
     greetingName: name,
@@ -65,6 +66,15 @@ async function autoReply(env: Env, origin: string, to: string, name: string): Pr
       "この度はAI総合戦略研究所へお問い合わせいただき、誠にありがとうございます。",
       "内容を確認のうえ、担当者より1〜2営業日以内にご返信いたします。今しばらくお待ちくださいませ。",
     ],
+    secondaryButton: { label: "サービス資料をダウンロード", url: `${origin}/download/` },
+    nurture: {
+      title: "ご返信をお待ちいただく間に",
+      items: [
+        { label: "導入事例", url: `${origin}/cases/`, desc: "業種別の活用シナリオとROIシミュレーション" },
+        { label: "AI経営基盤（AI OS）", url: `${origin}/ai-os/`, desc: "コスト削減×売上向上を内製で実装する仕組み" },
+        { label: "マガジン", url: `${origin}/magazine/`, desc: "経営とAI実装の実務知" },
+      ],
+    },
   });
   try {
     await fetch("https://api.resend.com/emails", {

@@ -69,6 +69,7 @@ async function sendMaterial(env: Env, origin: string, to: string, name: string, 
   const url = assetUrl(env, asset);
   const { html, text } = renderEmail({
     origin,
+    logoUrl: `${origin}/logo-mark-white.png`,
     preheader: `${asset.label}をお送りします。ダウンロードはこちらから。`,
     heading: `${asset.label}をお送りします`,
     greetingName: name,
@@ -80,6 +81,15 @@ async function sendMaterial(env: Env, origin: string, to: string, name: string, 
       "ご不明な点やご相談がございましたら、お気軽にお問い合わせください。",
     ],
     button: url ? { label: `${asset.label}をダウンロード`, url } : undefined,
+    secondaryButton: { label: "無料でAI経営診断を受ける", url: `${origin}/contact/` },
+    nurture: {
+      title: "あわせてご覧ください",
+      items: [
+        { label: "導入事例", url: `${origin}/cases/`, desc: "業種別の活用シナリオとROIシミュレーション" },
+        { label: "AI経営基盤（AI OS）", url: `${origin}/ai-os/`, desc: "コスト削減×売上向上を内製で実装する仕組み" },
+        { label: "マガジン", url: `${origin}/magazine/`, desc: "経営とAI実装の実務知" },
+      ],
+    },
   });
   try {
     await fetch("https://api.resend.com/emails", {
