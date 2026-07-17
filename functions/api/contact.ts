@@ -14,6 +14,7 @@
  */
 
 import { isFreeEmail, FREE_EMAIL_MESSAGE } from "../../lib/freeEmail";
+import { renderEmail } from "../../lib/emailTemplate";
 
 interface Env {
   NOTIFY_WEBHOOK_URL: string;
@@ -52,15 +53,19 @@ async function notify(webhookUrl: string, text: string): Promise<boolean> {
   return res.ok;
 }
 
-/** Best-effort auto-reply to the submitter via Resend. */
-async function autoReply(env: Env, to: string, name: string): Promise<void> {
+/** Best-effort auto-reply to the submitter via Resend (branded HTML + text). */
+async function autoReply(env: Env, origin: string, to: string, name: string): Promise<void> {
   if (!env.RESEND_API_KEY || !env.AUTOREPLY_FROM_EMAIL) return;
-  const text =
-    `${name} 様\n\n` +
-    "この度はAI総合戦略研究所へお問い合わせいただき、誠にありがとうございます。\n" +
-    "内容を確認のうえ、担当者より1〜2営業日以内にご返信いたします。\n\n" +
-    "※本メールは送信専用アドレスから自動送信しています。\n\n" +
-    "──────────────\nAI総合戦略研究所 / AI Strategy Institute\n";
+  const { html, text } = renderEmail({
+    origin,
+    preheader: "お問い合わせを受け付けました。担当者より1〜2営業日以内にご連絡します。",
+    heading: "お問い合わせを受け付けました",
+    greetingName: name,
+    paragraphs: [
+      "この度はAI総合戦略研究所へお問い合わせいただき、誠にありがとうございます。",
+      "内容を確認のうえ、担当者より1〜2営業日以内にご返信いたします。今しばらくお待ちくださいませ。",
+    ],
+  });
   try {
     await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -72,6 +77,7 @@ async function autoReply(env: Env, to: string, name: string): Promise<void> {
         from: env.AUTOREPLY_FROM_EMAIL,
         to: [to],
         subject: "【AI総合戦略研究所】お問い合わせを受け付けました",
+        html,
         text,
       }),
     });
@@ -111,6 +117,6 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
     return json({ ok: false, error: "送信に失敗しました。時間をおいて再度お試しください。" }, 502);
   }
 
-  await autoReply(env, String(data.email).trim(), `${data.last}${data.first}`);
+  await autoReply(env, new URL(request.url).origin, String(data.email).trim(), `${data.last}${data.first}`);
   return json({ ok: true });
 };

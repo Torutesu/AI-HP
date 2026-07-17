@@ -16,6 +16,7 @@
 
 import { getAsset, DEFAULT_ASSET_ID, type DownloadAsset } from "../../lib/assets";
 import { isFreeEmail, FREE_EMAIL_MESSAGE } from "../../lib/freeEmail";
+import { renderEmail } from "../../lib/emailTemplate";
 
 interface Env {
   NOTIFY_WEBHOOK_URL: string;
@@ -63,17 +64,23 @@ async function notify(webhookUrl: string, text: string): Promise<boolean> {
   return res.ok;
 }
 
-async function sendMaterial(env: Env, to: string, name: string, asset: DownloadAsset): Promise<void> {
+async function sendMaterial(env: Env, origin: string, to: string, name: string, asset: DownloadAsset): Promise<void> {
   if (!env.RESEND_API_KEY || !env.AUTOREPLY_FROM_EMAIL) return;
   const url = assetUrl(env, asset);
-  const link = url ? `▼ ${asset.label}のダウンロードはこちら\n${url}\n\n` : "";
-  const text =
-    `${name} 様\n\n` +
-    `この度はAI総合戦略研究所の「${asset.label}」をご請求いただき、誠にありがとうございます。\n` +
-    `以下より資料をご覧いただけます。\n\n${link}` +
-    "ご不明な点やご相談がございましたら、お気軽にお問い合わせください。\n\n" +
-    "※本メールは送信専用アドレスから自動送信しています。\n\n" +
-    "──────────────\nAI総合戦略研究所 / AI Strategy Institute\n";
+  const { html, text } = renderEmail({
+    origin,
+    preheader: `${asset.label}をお送りします。ダウンロードはこちらから。`,
+    heading: `${asset.label}をお送りします`,
+    greetingName: name,
+    paragraphs: [
+      `この度はAI総合戦略研究所の「${asset.label}」をご請求いただき、誠にありがとうございます。`,
+      url
+        ? "下のボタンから資料をご覧いただけます。"
+        : "資料の準備が整い次第、担当者より改めてご案内いたします。",
+      "ご不明な点やご相談がございましたら、お気軽にお問い合わせください。",
+    ],
+    button: url ? { label: `${asset.label}をダウンロード`, url } : undefined,
+  });
   try {
     await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -85,6 +92,7 @@ async function sendMaterial(env: Env, to: string, name: string, asset: DownloadA
         from: env.AUTOREPLY_FROM_EMAIL,
         to: [to],
         subject: `【AI総合戦略研究所】${asset.label}をお送りします`,
+        html,
         text,
       }),
     });
@@ -131,6 +139,6 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
   }
 
   const requesterName = `${String(data.last).trim()}${String(data.first).trim()}`;
-  await sendMaterial(env, String(data.email).trim(), requesterName, asset);
+  await sendMaterial(env, new URL(request.url).origin, String(data.email).trim(), requesterName, asset);
   return json({ ok: true });
 };
