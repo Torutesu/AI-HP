@@ -30,12 +30,6 @@ const WHY = [
   { icon: "unplug", title: "払い続けない構造", text: "汎用SaaSに毎月払い続ける必要はありません。同等の機能を、より軽い構造で内製化します。" },
 ];
 
-const STEPS = [
-  { no: "STEP 01", title: "可視化", text: "メンバー・ツール別の活用度と費用対効果を診断し、経営が判断できる形で現状を数字にします。" },
-  { no: "STEP 02", title: "設計", text: "グローバル事例を土台に貴社の勝ち筋を見極め、削減と成長、両面の打ち手を優先順位とともに設計します。" },
-  { no: "STEP 03", title: "改善", text: "実装して終わりにはしません。成果を毎月数字で確かめ、改善が回り続ける体制まで伴走します。" },
-];
-
 const STATS = [
   { icon: "users", cat: "営業", note: "商談分析・提案資料自動生成", value: "-40%", label: "営業工数削減" },
   { icon: "headphones", cat: "カスタマーサクセス", note: "問い合わせ自動化・要約", value: "-30%", label: "CS対応時間削減" },
@@ -267,7 +261,7 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.roiWrap}>
             <Reveal className={styles.roiReasons}>
-              <h2 className={styles.roiHeading}>ROIにこだわり抜ける、2つの理由。</h2>
+              <h2 className={styles.roiHeading}>ROIにこだわり抜く2つの理由。</h2>
               <div className={styles.roiList}>
                 {ROI_REASONS.map((r) => (
                   <div key={r.title} className={styles.roiItem}>
@@ -292,7 +286,7 @@ export default function Home() {
       <section className={styles.belief}>
         <div className={styles.beliefGlow} />
         <Reveal className={styles.beliefInner}>
-          <h2 className={styles.beliefTitle}>テクノロジーの進化を、<br />経営の成果へと翻訳する。</h2>
+          <h2 className={styles.beliefTitle}>テクノロジーの進化を、<br />経営の成果へと繋げる。</h2>
           <p className={styles.beliefText}>
             日々生まれる最先端のAIを、貴社の事業に最適な形へ。実験で終わらせず、確かな数字の変化として届けます。
           </p>
@@ -306,7 +300,7 @@ export default function Home() {
           <div className={styles.philosophyGrid}>
             <Reveal className={styles.philLeft}>
               <div className={styles.philLeftBody}>
-                <h2 className={styles.philosophyTitle}>「学ぶ」だけでは、<br />成果は動きません。</h2>
+                <h2 className={styles.philosophyTitle}>「学ぶ」だけでは、<br />成果につながりません。</h2>
                 <p className={styles.philLead}>戦略から実装、成果までを一気通貫で。</p>
                 <p className={styles.philosophyText}>研修や講座を受けるだけでは、現場も数字も変わりません。知識は、貴社の事業に結びついて、はじめて成果になります。</p>
                 <p className={styles.philosophyText}>AIモデルも活用の手法も、日進月歩で進化しています。私たちは常に最新の打ち手を取り入れ、貴社に最適な形で実装し続けます。</p>
@@ -443,7 +437,7 @@ export default function Home() {
       {/* ===================== WHY US ===================== */}
       <section className={`${styles.section} ${styles.why}`}>
         <div className={styles.container}>
-          <Reveal><SectionHeading title="なぜ、1/3のコストで実現できるのか。" /></Reveal>
+          <Reveal><SectionHeading title="なぜ、他社や既存ソリューションの 1/3〜1/5コストで実現できるのか。" /></Reveal>
           <MobileCarousel className={styles.grid4}>
             {WHY.map((c, i) => (
               <Reveal key={c.title} delay={i * 0.08} className={`${styles.featureCard} liftCard`}>
@@ -453,22 +447,6 @@ export default function Home() {
               </Reveal>
             ))}
           </MobileCarousel>
-        </div>
-      </section>
-
-      {/* ===================== PROCESS ===================== */}
-      <section className={`${styles.sectionAlt} ${styles.process}`}>
-        <div className={styles.container}>
-          <Reveal><SectionHeading title="成果に至るまで、3つのステップ。" /></Reveal>
-          <div className={styles.processGrid}>
-            {STEPS.map((s, i) => (
-              <Reveal key={s.no} delay={i * 0.1} className={`${styles.stepCard} liftCard`}>
-                <div className={styles.stepNo}>{s.no}</div>
-                <div className={styles.stepTitle}>{s.title}</div>
-                <p className={styles.stepText}>{s.text}</p>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -504,10 +482,10 @@ export default function Home() {
           <Reveal className={styles.ctaBand}>
             <div className={styles.ctaGlow} />
             <div className={styles.ctaCopy}>
-              <span className={styles.ctaEyebrow}>FREE AI ASSESSMENT</span>
-              <h2 className={styles.ctaTitle}>“試して終わり”を、<br />成果に変える。</h2>
+              <span className={styles.ctaEyebrow}>無料AI経営診断</span>
+              <h2 className={styles.ctaTitle}>AIへの投資を、<br />利益の数字に変える。</h2>
               <p className={styles.ctaText}>
-                まずは無料のAI経営診断から。コスト削減と売上の伸びしろを、数字でご提示します。サービス資料は3分でお読みいただけます。
+                まずは無料のAI経営診断から。貴社のコスト削減余地と売上の伸びしろを、具体的な数字で可視化します。診断は無料、サービス資料は3分。経営会議でそのまま使える“次の一手”を、お持ち帰りいただけます。
               </p>
             </div>
             <div className={styles.ctaActions}>

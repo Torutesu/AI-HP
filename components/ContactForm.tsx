@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import Icon from "./Icon";
 import Button from "./Button";
+import { isFreeEmail, FREE_EMAIL_MESSAGE } from "@/lib/freeEmail";
 import styles from "./form.module.css";
 
 /** Reads any ROI estimate stashed by the simulator into a short summary. */
@@ -50,6 +51,10 @@ export default function ContactForm() {
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
       setError("メールアドレスの形式をご確認ください。");
+      return;
+    }
+    if (isFreeEmail(data.email)) {
+      setError(FREE_EMAIL_MESSAGE);
       return;
     }
     setError("");
@@ -155,6 +160,7 @@ export default function ContactForm() {
         <div>
           <label className={styles.lbl} htmlFor="email">メールアドレス（勤務先） <span className={styles.req}>*</span></label>
           <input id="email" name="email" className={styles.fld} type="email" placeholder="例）account@company.com" />
+          <p className={styles.hint}>フリーメール（Gmail・Yahoo!メール・携帯キャリアメール等）はご利用いただけません。貴社ドメインのメールアドレスをご入力ください。</p>
         </div>
         <div>
           <label className={styles.lbl} htmlFor="phone">ご連絡がつきやすい携帯電話番号 <span className={styles.req}>*</span></label>

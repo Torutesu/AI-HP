@@ -6,6 +6,7 @@ import Link from "next/link";
 import Icon from "./Icon";
 import Button from "./Button";
 import { DEFAULT_ASSET_ID, getAsset } from "@/lib/assets";
+import { isFreeEmail, FREE_EMAIL_MESSAGE } from "@/lib/freeEmail";
 import styles from "./form.module.css";
 
 const REQUIRED = ["company", "name", "email", "size"];
@@ -40,6 +41,10 @@ export default function DownloadForm() {
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email as string)) {
       setError("メールアドレスの形式をご確認ください。");
+      return;
+    }
+    if (isFreeEmail(data.email as string)) {
+      setError(FREE_EMAIL_MESSAGE);
       return;
     }
     setError("");
@@ -91,6 +96,7 @@ export default function DownloadForm() {
         <div>
           <label className={styles.lbl} htmlFor="email">メールアドレス（業務用） <span className={styles.req}>*</span></label>
           <input id="email" name="email" className={styles.fld} type="email" placeholder="you@company.co.jp" />
+          <p className={styles.hint}>フリーメール（Gmail・Yahoo!メール・携帯キャリアメール等）はご利用いただけません。貴社ドメインのメールアドレスをご入力ください。</p>
         </div>
         <div>
           <label className={styles.lbl} htmlFor="size">従業員規模 <span className={styles.req}>*</span></label>

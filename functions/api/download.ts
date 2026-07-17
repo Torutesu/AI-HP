@@ -15,6 +15,7 @@
  */
 
 import { getAsset, DEFAULT_ASSET_ID, type DownloadAsset } from "../../lib/assets";
+import { isFreeEmail, FREE_EMAIL_MESSAGE } from "../../lib/freeEmail";
 
 interface Env {
   NOTIFY_WEBHOOK_URL: string;
@@ -101,6 +102,9 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(data.email))) {
     return json({ ok: false, error: "メールアドレスの形式をご確認ください。" }, 400);
+  }
+  if (isFreeEmail(String(data.email))) {
+    return json({ ok: false, error: FREE_EMAIL_MESSAGE }, 400);
   }
 
   // Which asset is being requested (defaults to the service guide).
