@@ -154,21 +154,76 @@ export default async function ArticlePage({
           </div>
         </section>
 
-        {/* Body */}
+        {/* Body — blocks follow the conventions documented on Article.body */}
         <article style={{ maxWidth: "820px", margin: "0 auto", padding: "56px 24px 72px" }}>
-          {a.body.map((para, i) => (
-            <p
-              key={i}
-              style={{
-                fontSize: "16px",
-                lineHeight: 2,
-                color: "var(--fg-1)",
-                margin: "0 0 28px",
-              }}
-            >
-              {para}
-            </p>
-          ))}
+          {a.body.map((block, i) => {
+            if (block.startsWith("## ")) {
+              return (
+                <h2
+                  key={i}
+                  style={{
+                    fontSize: "22px",
+                    fontWeight: 700,
+                    lineHeight: 1.5,
+                    letterSpacing: "-0.01em",
+                    color: "var(--fg-0)",
+                    margin: i === 0 ? "0 0 18px" : "44px 0 18px",
+                    paddingLeft: "14px",
+                    borderLeft: "3px solid var(--blue-600)",
+                  }}
+                >
+                  {block.slice(3)}
+                </h2>
+              );
+            }
+            if (block.startsWith("- ")) {
+              return (
+                <ul key={i} style={{ margin: "0 0 28px", paddingLeft: "1.4em" }}>
+                  {block.split("\n").map((item, j) => (
+                    <li
+                      key={j}
+                      style={{
+                        fontSize: "16px",
+                        lineHeight: 1.9,
+                        color: "var(--fg-1)",
+                        marginBottom: "8px",
+                      }}
+                    >
+                      {item.replace(/^- /, "")}
+                    </li>
+                  ))}
+                </ul>
+              );
+            }
+            if (block.startsWith("※")) {
+              return (
+                <p
+                  key={i}
+                  style={{
+                    fontSize: "12.5px",
+                    lineHeight: 1.8,
+                    color: "var(--fg-3)",
+                    margin: "-16px 0 28px",
+                  }}
+                >
+                  {block}
+                </p>
+              );
+            }
+            return (
+              <p
+                key={i}
+                style={{
+                  fontSize: "16px",
+                  lineHeight: 2,
+                  color: "var(--fg-1)",
+                  margin: "0 0 28px",
+                }}
+              >
+                {block}
+              </p>
+            );
+          })}
 
           <div style={{ marginTop: "8px", paddingTop: "32px", borderTop: "0.5px solid var(--line-strong)" }}>
             <Link
