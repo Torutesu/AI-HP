@@ -127,6 +127,23 @@ PII最小化のため IP は保存せず、国（`CF-IPCountry`）のみ記録�
 認証はサービスアカウントのJWT（Workers の Web Crypto でRS256署名）→ OAuthトークン。
 スプレッドシートは非公開のまま、鍵はサーバー側のみで扱います（ブラウザ・リポジトリに出しません）。
 
+### 管理画面（Phase 2）＋ AIエンリッチ（Phase 3）
+
+`/admin` に受信一覧（検索・種別フィルタ・CSV）を表示します。**Cloudflare Access**
+（Zero Trust・無料50人まで）で `/admin` と `/api/admin/*` を保護し、Function側でも
+Access JWT を検証します（`lib/accessAuth.ts`）。Pages 環境変数:
+
+- `ACCESS_TEAM_DOMAIN` — 例 `yourteam.cloudflareaccess.com`
+- `ACCESS_AUD` — Access アプリケーションの Application Audience (AUD) Tag
+
+**AIエンリッチ**は保存時に **Workers AI**（`env.AI` バインディング・`@cf/meta/llama-3.1-8b-instruct`）で
+要約・意図分類・優先度(1〜5)・返信ドラフトを生成し、D1に追記→管理画面に表示します
+（`lib/enrichLead.ts`）。**データはCloudflare内で完結し、外部LLMにPIIを送りません。**
+
+- 既存DBには AIカラムを追加: `wrangler d1 execute ai-hp-leads --file=./db/migrations/0002_ai_enrichment.sql --remote`
+- Workers AI バインディングを **`AI`** の名前で追加（ダッシュボード or `wrangler.toml`）
+- 未設定でも保存は動作（AI列が空になるだけ）
+
 ### GitHub Actions（検索順位モニタ）
 
 `.github/workflows/rank-check.yml` が毎週月曜 09:00 JST に `scripts/rank-check.mjs` を実行し、

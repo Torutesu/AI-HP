@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
@@ -10,6 +11,42 @@ import { SITE_URL as SITE } from "@/lib/site";
 
 const abs = (p: string) => (p.startsWith("http") ? p : `${SITE}${p.startsWith("/") ? "" : "/"}${p}`);
 const DEFAULT_IMAGE = `${SITE}/logo-mark.png`;
+
+const linkStyle = {
+  color: "var(--accent)",
+  fontWeight: 600,
+  textDecoration: "underline",
+  textUnderlineOffset: "3px",
+  textDecorationThickness: "0.5px",
+} as const;
+
+// Render body text with inline markdown links "[label](/magazine/slug)".
+// Internal (root-relative) links use next/link; external ones a plain anchor.
+function renderInline(text: string): ReactNode {
+  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: ReactNode[] = [];
+  let last = 0;
+  let key = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    const [, label, href] = m;
+    parts.push(
+      href.startsWith("/") ? (
+        <Link key={key++} href={href} style={linkStyle}>
+          {label}
+        </Link>
+      ) : (
+        <a key={key++} href={href} style={linkStyle} target="_blank" rel="noopener noreferrer">
+          {label}
+        </a>
+      ),
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts.length > 0 ? parts : text;
+}
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -86,12 +123,32 @@ export default async function ArticlePage({
     ],
   };
 
-  const related = articles.filter((x) => x.slug !== a.slug && x.category === a.category).slice(0, 2);
+  const faqLd = a.faq?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: a.faq.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+
+  // Topic-cluster internal links: curated `related` first (may cross category),
+  // topped up with same-category articles, deduped, capped at 3.
+  const curated = (a.related ?? []).map(getArticle).filter((x): x is NonNullable<typeof x> => Boolean(x));
+  const seen = new Set([a.slug, ...curated.map((x) => x.slug)]);
+  const byCategory = articles.filter((x) => !seen.has(x.slug) && x.category === a.category);
+  const related = [...curated, ...byCategory].slice(0, 3);
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      {faqLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      )}
 
       <SiteHeader variant="solid" />
       <div style={{ background: "var(--white)" }}>
@@ -174,21 +231,129 @@ export default async function ArticlePage({
           </div>
         </section>
 
-        {/* Body */}
+        {/* Body — blocks follow the conventions documented on Article.body */}
         <article style={{ maxWidth: "820px", margin: "0 auto", padding: "56px 24px 72px" }}>
-          {a.body.map((para, i) => (
-            <p
-              key={i}
-              style={{
-                fontSize: "16px",
-                lineHeight: 2,
-                color: "var(--fg-1)",
-                margin: "0 0 28px",
-              }}
-            >
-              {para}
-            </p>
-          ))}
+          {a.body.map((block, i) => {
+            if (block.startsWith("## ")) {
+              return (
+                <h2
+                  key={i}
+                  style={{
+                    fontSize: "22px",
+                    fontWeight: 700,
+                    lineHeight: 1.5,
+                    letterSpacing: "-0.01em",
+                    color: "var(--fg-0)",
+                    margin: i === 0 ? "0 0 18px" : "44px 0 18px",
+                    paddingLeft: "14px",
+                    borderLeft: "3px solid var(--blue-600)",
+                  }}
+                >
+                  {block.slice(3)}
+                </h2>
+              );
+            }
+            if (block.startsWith("- ")) {
+              return (
+                <ul key={i} style={{ margin: "0 0 28px", paddingLeft: "1.4em" }}>
+                  {block.split("\n").map((item, j) => (
+                    <li
+                      key={j}
+                      style={{
+                        fontSize: "16px",
+                        lineHeight: 1.9,
+                        color: "var(--fg-1)",
+                        marginBottom: "8px",
+                      }}
+                    >
+                      {renderInline(item.replace(/^- /, ""))}
+                    </li>
+                  ))}
+                </ul>
+              );
+            }
+            if (block.startsWith("※")) {
+              return (
+                <p
+                  key={i}
+                  style={{
+                    fontSize: "12.5px",
+                    lineHeight: 1.8,
+                    color: "var(--fg-3)",
+                    margin: "-16px 0 28px",
+                  }}
+                >
+                  {block}
+                </p>
+              );
+            }
+            return (
+              <p
+                key={i}
+                style={{
+                  fontSize: "16px",
+                  lineHeight: 2,
+                  color: "var(--fg-1)",
+                  margin: "0 0 28px",
+                }}
+              >
+                {renderInline(block)}
+              </p>
+            );
+          })}
+
+          {a.faq && a.faq.length > 0 && (
+            <div style={{ marginTop: "48px", paddingTop: "40px", borderTop: "0.5px solid var(--line-strong)" }}>
+              <h2
+                style={{
+                  fontSize: "22px",
+                  fontWeight: 700,
+                  lineHeight: 1.5,
+                  letterSpacing: "-0.01em",
+                  color: "var(--fg-0)",
+                  margin: "0 0 24px",
+                }}
+              >
+                よくある質問
+              </h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                {a.faq.map((f, i) => (
+                  <details
+                    key={i}
+                    style={{
+                      background: "var(--surface-card)",
+                      border: "0.5px solid var(--line-strong)",
+                      borderRadius: "10px",
+                      padding: "18px 22px",
+                    }}
+                  >
+                    <summary
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "15.5px",
+                        fontWeight: 600,
+                        color: "var(--fg-0)",
+                        lineHeight: 1.6,
+                        listStyle: "none",
+                      }}
+                    >
+                      Q. {f.q}
+                    </summary>
+                    <p
+                      style={{
+                        margin: "14px 0 0",
+                        fontSize: "15px",
+                        lineHeight: 1.95,
+                        color: "var(--fg-1)",
+                      }}
+                    >
+                      {f.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div style={{ marginTop: "8px", paddingTop: "32px", borderTop: "0.5px solid var(--line-strong)" }}>
             <Link

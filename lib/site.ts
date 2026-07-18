@@ -1,8 +1,11 @@
-// Canonical site origin. Set NEXT_PUBLIC_SITE_URL in the Cloudflare Pages
-// environment (and locally in .env) to your real domain once it's connected;
-// the fallback keeps builds working before that.
+// Canonical site origin. Drives every absolute URL on the site: metadataBase
+// (OG/canonical), per-page canonicals, sitemap.xml, robots.txt, feed.xml,
+// llms.txt and the JSON-LD (Article/Organization/breadcrumb). The fallback is
+// the live production domain, so canonicals are correct even if the env var is
+// unset. Override with NEXT_PUBLIC_SITE_URL in the Cloudflare Pages environment
+// when a custom domain is connected (set it to that domain, no trailing slash).
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://ai-strategy-institute.example"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://ai-hp.pages.dev"
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "AI総合戦略研究所";
