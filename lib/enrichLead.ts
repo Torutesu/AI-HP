@@ -22,7 +22,8 @@ export interface Enrichment {
   reply: string;
 }
 
-const MODEL = "@cf/meta/llama-3.1-8b-instruct";
+// @cf/meta/llama-3.1-8b-instruct was deprecated 2026-05-30. Current model:
+const MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 
 function clampPriority(v: unknown): number {
   const n = Math.round(Number(v));
