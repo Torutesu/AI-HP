@@ -24,7 +24,13 @@ CREATE TABLE IF NOT EXISTS leads (
   themes      TEXT,                     -- download: 関心テーマ（、区切り）
   roi         TEXT,                     -- contact: ROIシミュレーター試算
   country     TEXT,                     -- CF-IPCountry（PII最小化のためIPは保存しない）
-  raw         TEXT                      -- 送信ペイロード全体（バックアップ）
+  raw         TEXT,                     -- 送信ペイロード全体（バックアップ）
+  -- AI enrichment (Phase 3, Workers AI — 追記される)
+  ai_summary  TEXT,                     -- 一文要約
+  ai_intent   TEXT,                     -- 意図分類
+  ai_priority INTEGER,                  -- 優先度 1〜5
+  ai_reply    TEXT,                     -- 返信ドラフト
+  ai_status   TEXT                      -- 'done' | 'error' | NULL(未処理)
 );
 
 CREATE INDEX IF NOT EXISTS idx_leads_created_at ON leads (created_at);

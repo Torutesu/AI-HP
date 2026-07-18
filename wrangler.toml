@@ -18,3 +18,9 @@ pages_build_output_dir = "out"
 # binding = "DB"
 # database_name = "ai-hp-leads"
 # database_id = "<your-d1-database-id>"
+#
+# Workers AI binding (Phase 3 — lead enrichment), exposed as `env.AI`.
+# Add in the dashboard (Settings → Functions → Bindings → Workers AI, name AI),
+# or uncomment:
+# [ai]
+# binding = "AI"

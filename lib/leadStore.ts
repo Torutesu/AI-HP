@@ -6,6 +6,7 @@
  * visitor — the realtime Slack/Discord notification remains the critical path.
  */
 import { appendRow, type SheetsEnv } from "./googleSheets";
+import { enrichLead, type EnrichEnv } from "./enrichLead";
 
 /** Minimal structural type for a D1 database binding (avoids workers-types dep). */
 export interface D1Stmt {
@@ -18,7 +19,7 @@ export interface D1Like {
   prepare(query: string): D1Stmt;
 }
 
-export interface LeadStoreEnv extends SheetsEnv {
+export interface LeadStoreEnv extends SheetsEnv, EnrichEnv {
   DB?: D1Like;
 }
 
@@ -72,13 +73,14 @@ function toRow(r: LeadRecord): string[] {
   ];
 }
 
-async function insertD1(db: D1Like, r: LeadRecord): Promise<void> {
-  await db
+async function insertD1(db: D1Like, r: LeadRecord): Promise<number | null> {
+  const row = await db
     .prepare(
       `INSERT INTO leads
         (created_at, type, company, pref, size, role, title, last_name, first_name,
          email, phone, kind, message, asset, themes, roi, country, raw)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+       RETURNING id`
     )
     .bind(
       r.createdAt, r.type, r.company ?? null, r.pref ?? null, r.size ?? null,
@@ -87,7 +89,30 @@ async function insertD1(db: D1Like, r: LeadRecord): Promise<void> {
       r.asset ?? null, r.themes ?? null, r.roi ?? null, r.country ?? null,
       r.raw ?? null
     )
-    .run();
+    .first<{ id: number }>();
+  return row?.id ?? null;
+}
+
+/** Enrich a stored lead with Workers AI and write the results back to its row. */
+async function enrichAndUpdate(env: LeadStoreEnv, id: number, record: LeadRecord): Promise<void> {
+  if (!env.DB || !env.AI) return;
+  try {
+    const e = await enrichLead(env, record);
+    if (!e) {
+      await env.DB.prepare(`UPDATE leads SET ai_status='error' WHERE id=?`).bind(id).run();
+      return;
+    }
+    await env.DB
+      .prepare(
+        `UPDATE leads
+           SET ai_summary=?, ai_intent=?, ai_priority=?, ai_reply=?, ai_status='done'
+         WHERE id=?`
+      )
+      .bind(e.summary, e.intent, e.priority, e.reply, id)
+      .run();
+  } catch (err) {
+    console.error("AI enrich/update failed:", err);
+  }
 }
 
 /**
@@ -97,14 +122,19 @@ async function insertD1(db: D1Like, r: LeadRecord): Promise<void> {
  */
 export async function persistLead(env: LeadStoreEnv, record: LeadRecord): Promise<void> {
   await Promise.allSettled([
+    // D1 (source of truth) → then AI enrichment writes back to the same row.
     (async () => {
       if (!env.DB) return;
+      let id: number | null = null;
       try {
-        await insertD1(env.DB, record);
+        id = await insertD1(env.DB, record);
       } catch (err) {
         console.error("D1 insert failed:", err);
+        return;
       }
+      if (id != null) await enrichAndUpdate(env, id, record);
     })(),
+    // Google Sheets (raw working log) — independent of D1/AI.
     (async () => {
       try {
         await appendRow(env, toRow(record));

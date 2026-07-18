@@ -24,6 +24,7 @@ const COLUMNS = [
   "id", "created_at", "type", "company", "pref", "size", "role", "title",
   "last_name", "first_name", "email", "phone", "kind", "message", "asset",
   "themes", "roi", "country",
+  "ai_summary", "ai_intent", "ai_priority", "ai_reply", "ai_status",
 ];
 
 function json(body: unknown, status = 200): Response {

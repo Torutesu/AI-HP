@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import styles from "./admin.module.css";
 
 type Lead = {
@@ -22,6 +22,11 @@ type Lead = {
   themes?: string;
   roi?: string;
   country?: string;
+  ai_summary?: string;
+  ai_intent?: string;
+  ai_priority?: number;
+  ai_reply?: string;
+  ai_status?: string;
 };
 
 const PAGE = 100;
@@ -44,6 +49,17 @@ function note(l: Lead): string {
     : [l.asset, l.themes].filter(Boolean).join("｜");
 }
 
+const PRIORITY_LABEL = ["", "低", "やや低", "中", "高", "最優先"];
+
+function PriorityBadge({ p }: { p?: number }) {
+  if (!p) return <span className={styles.pNone}>—</span>;
+  return (
+    <span className={`${styles.pBadge} ${styles["p" + p]}`} title={PRIORITY_LABEL[p]}>
+      {p}
+    </span>
+  );
+}
+
 export default function AdminDashboard() {
   const [q, setQ] = useState("");
   const [type, setType] = useState("");
@@ -53,6 +69,8 @@ export default function AdminDashboard() {
   const [viewer, setViewer] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [expanded, setExpanded] = useState<number | null>(null);
+  const [copied, setCopied] = useState<number | null>(null);
 
   const load = useCallback(
     async (reset: boolean) => {
@@ -150,33 +168,84 @@ export default function AdminDashboard() {
         <table className={styles.table}>
           <thead>
             <tr>
+              <th></th>
               <th>受信日時</th>
               <th>種別</th>
+              <th title="AIによる優先度（1〜5）">優先</th>
               <th>会社名</th>
               <th>氏名</th>
               <th>メール</th>
-              <th>電話</th>
-              <th>補足</th>
+              <th>AI要約</th>
             </tr>
           </thead>
           <tbody>
-            {items.map((l) => (
-              <tr key={l.id}>
-                <td className={styles.nowrap}>{fmtDate(l.created_at)}</td>
-                <td>
-                  <span className={`${styles.badge} ${l.type === "contact" ? styles.bContact : styles.bDownload}`}>
-                    {l.type === "contact" ? "問い合わせ" : "資料DL"}
-                  </span>
-                </td>
-                <td>{l.company || "—"}</td>
-                <td className={styles.nowrap}>{`${l.last_name ?? ""}${l.first_name ?? ""}` || "—"}</td>
-                <td>{l.email ? <a href={`mailto:${l.email}`}>{l.email}</a> : "—"}</td>
-                <td className={styles.nowrap}>{l.phone || "—"}</td>
-                <td className={styles.note} title={note(l)}>{note(l) || "—"}</td>
-              </tr>
-            ))}
+            {items.map((l) => {
+              const open = expanded === l.id;
+              return (
+                <Fragment key={l.id}>
+                  <tr className={styles.row} onClick={() => setExpanded(open ? null : l.id)}>
+                    <td className={styles.caret}>{open ? "▾" : "▸"}</td>
+                    <td className={styles.nowrap}>{fmtDate(l.created_at)}</td>
+                    <td>
+                      <span className={`${styles.badge} ${l.type === "contact" ? styles.bContact : styles.bDownload}`}>
+                        {l.type === "contact" ? "問い合わせ" : "資料DL"}
+                      </span>
+                    </td>
+                    <td><PriorityBadge p={l.ai_priority} /></td>
+                    <td>{l.company || "—"}</td>
+                    <td className={styles.nowrap}>{`${l.last_name ?? ""}${l.first_name ?? ""}` || "—"}</td>
+                    <td>{l.email ? <a href={`mailto:${l.email}`} onClick={(e) => e.stopPropagation()}>{l.email}</a> : "—"}</td>
+                    <td className={styles.note} title={l.ai_summary || ""}>
+                      {l.ai_summary || (l.ai_status === "error" ? <span className={styles.aiErr}>AI失敗</span> : <span className={styles.aiPending}>—</span>)}
+                    </td>
+                  </tr>
+                  {open ? (
+                    <tr className={styles.detailRow}>
+                      <td colSpan={8}>
+                        <div className={styles.detail}>
+                          <div className={styles.detailGrid}>
+                            <div><span className={styles.dl}>電話</span>{l.phone || "—"}</div>
+                            <div><span className={styles.dl}>所在地</span>{l.pref || "—"}</div>
+                            <div><span className={styles.dl}>従業員数</span>{l.size || "—"}</div>
+                            <div><span className={styles.dl}>役回り</span>{l.role || "—"}</div>
+                            <div><span className={styles.dl}>役職</span>{l.title || "—"}</div>
+                            <div><span className={styles.dl}>AI意図</span>{l.ai_intent || "—"}</div>
+                          </div>
+                          <div className={styles.detailBlock}>
+                            <span className={styles.dl}>{l.type === "contact" ? "お問い合わせ内容" : "請求資料・関心テーマ"}</span>
+                            <p className={styles.detailText}>{note(l) || "—"}</p>
+                          </div>
+                          {l.roi ? (
+                            <div className={styles.detailBlock}>
+                              <span className={styles.dl}>ROI試算</span>
+                              <p className={styles.detailText}>{l.roi}</p>
+                            </div>
+                          ) : null}
+                          {l.ai_reply ? (
+                            <div className={styles.detailBlock}>
+                              <span className={styles.dl}>AI返信ドラフト</span>
+                              <p className={styles.replyText}>{l.ai_reply}</p>
+                              <button
+                                className={styles.copyBtn}
+                                onClick={() => {
+                                  navigator.clipboard?.writeText(l.ai_reply || "");
+                                  setCopied(l.id);
+                                  setTimeout(() => setCopied((c) => (c === l.id ? null : c)), 1500);
+                                }}
+                              >
+                                {copied === l.id ? "コピーしました" : "返信文をコピー"}
+                              </button>
+                            </div>
+                          ) : null}
+                        </div>
+                      </td>
+                    </tr>
+                  ) : null}
+                </Fragment>
+              );
+            })}
             {!loading && items.length === 0 && !error ? (
-              <tr><td colSpan={7} className={styles.empty}>該当するリードはありません。</td></tr>
+              <tr><td colSpan={8} className={styles.empty}>該当するリードはありません。</td></tr>
             ) : null}
           </tbody>
         </table>
