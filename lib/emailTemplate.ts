@@ -53,7 +53,11 @@ const BLUE = "#1e63e6";
 const BLUE_2 = "#2b7cff";
 const INK = "#0c1524";
 const MUTED = "#6b7688";
-const SANS = "'Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif";
+// Noto Sans JP first (matches the site). Falls back to each OS's clean gothic
+// where Noto isn't installed. A web-font <link> in <head> upgrades clients that
+// support it (e.g. Apple Mail); others simply use the fallback.
+const SANS =
+  "'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic','YuGothic',Meiryo,sans-serif";
 
 /** Escape a string for safe interpolation into HTML text/attributes. */
 function esc(s: string): string {
@@ -163,8 +167,15 @@ export function renderEmail(opts: EmailOptions): { html: string; text: string } 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="light only" />
 <title>${esc(heading)}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+  body, table, td, div, p, h1, a, span { font-family: ${SANS}; }
+</style>
 </head>
-<body style="margin:0;padding:0;background:#eef1f7;">
+<body style="margin:0;padding:0;background:#eef1f7;font-family:${SANS};">
   <span style="display:none;max-height:0;overflow:hidden;opacity:0;color:#eef1f7;">${esc(
     preheader
   )}</span>
