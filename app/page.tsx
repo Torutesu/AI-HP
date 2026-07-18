@@ -465,7 +465,7 @@ export default function Home() {
             ))}
           </MobileCarousel>
           <p className={styles.disclaimer}>※ 上記は代表的なシミュレーション事例であり、効果を保証するものではありません。</p>
-          <Reveal className={styles.centerRow} style={{ marginTop: 28 }}>
+          <Reveal className={styles.centerRow} style={{ marginTop: 20 }}>
             <a className={styles.detailLink} href="/cases">業種別の活用シナリオを見る<Icon name="arrow-right" size={16} /></a>
           </Reveal>
         </div>
