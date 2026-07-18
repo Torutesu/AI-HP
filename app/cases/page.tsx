@@ -150,48 +150,27 @@ export default function Page() {
           </div>
         </section>
 
-        <section style={{ padding: "0 0 96px" }}>
-          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-            <Reveal
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                borderRadius: "12px",
-                border: "0.5px solid var(--panel-border)",
-                background: "var(--panel-grad)",
-                padding: "56px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                gap: "32px",
-                flexWrap: "wrap",
-              }}
-            >
-              <div>
-                <h2
-                  style={{
-                    fontSize: "28px",
-                    fontWeight: 700,
-                    color: "var(--fg-0)",
-                    margin: "0 0 10px",
-                  }}
-                >
+        <section className={cx.ctaSection}>
+          <div className={cx.ctaContainer}>
+            <Reveal className={cx.ctaPanel}>
+              <span className={cx.ctaImage} aria-hidden="true" />
+              <span className={cx.ctaOverlay} aria-hidden="true" />
+              <div className={cx.ctaCopy}>
+                <span className={cx.ctaEyebrow}>INDUSTRY SIMULATION</span>
+                <h2 className={cx.ctaTitle}>
                   貴社の業種で、試算する。
                 </h2>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: "14.5px",
-                    color: "var(--fg-2)",
-                    lineHeight: 1.8,
-                  }}
-                >
+                <p className={cx.ctaText}>
                   現状に合わせた削減余地と売上の伸びしろを、数字でご提案します。
                 </p>
               </div>
-              <Button href="/download" variant="primary" size="lg">
-                資料をダウンロード
-              </Button>
+              <div className={cx.ctaAction}>
+                <Button href="/download" variant="secondary" size="lg" className={cx.ctaButton}>
+                  資料をダウンロード
+                  <Icon name="arrow-right" size={17} />
+                </Button>
+                <span className={cx.ctaNote}>業種別の想定効果と活用例を収録</span>
+              </div>
             </Reveal>
           </div>
         </section>
