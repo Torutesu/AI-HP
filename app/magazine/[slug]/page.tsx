@@ -233,6 +233,33 @@ export default async function ArticlePage({
 
         {/* Body — blocks follow the conventions documented on Article.body */}
         <article style={{ maxWidth: "820px", margin: "0 auto", padding: "56px 24px 72px" }}>
+          {a.summary && (
+            <div
+              style={{
+                background: "var(--surface-card)",
+                border: "0.5px solid var(--line-strong)",
+                borderLeft: "3px solid var(--blue-600)",
+                borderRadius: "10px",
+                padding: "20px 24px",
+                margin: "0 0 40px",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "11.5px",
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
+                  color: "var(--accent)",
+                  marginBottom: "8px",
+                }}
+              >
+                要点
+              </div>
+              <p style={{ margin: 0, fontSize: "15.5px", lineHeight: 1.9, color: "var(--fg-0)", fontWeight: 500 }}>
+                {renderInline(a.summary)}
+              </p>
+            </div>
+          )}
           {a.body.map((block, i) => {
             if (block.startsWith("## ")) {
               return (
