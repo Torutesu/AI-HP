@@ -1,5 +1,5 @@
 import { SITE_URL, SITE_NAME, SITE_NAME_EN } from "@/lib/site";
-import { articles } from "@/lib/magazine";
+import { publishedArticles } from "@/lib/magazine";
 
 // Generated as a static file (/llms.txt) at build time. Uses SITE_URL so the
 // links reflect the real domain once NEXT_PUBLIC_SITE_URL is set.
@@ -30,7 +30,7 @@ ${SITE_NAME}は、従業員50名以上の企業の経営層・IT意思決定者�
 ${pages.map(([t, p, d]) => `- [${t}](${SITE_URL}${p}): ${d}`).join("\n")}
 
 ## マガジン記事
-${articles.map((a) => `- [${a.title}](${SITE_URL}/magazine/${a.slug}/): ${a.excerpt}`).join("\n")}
+${publishedArticles.map((a) => `- [${a.title}](${SITE_URL}/magazine/${a.slug}/): ${a.excerpt}`).join("\n")}
 
 ## コンテンツのテーマ・対象読者
 - テーマ: AI導入支援 / コスト削減 / 売上向上 / 内製AI開発 / AI経営基盤（AI OS）/ 業務自動化 / ROI可視化

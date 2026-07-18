@@ -11,6 +11,12 @@ export type Article = {
   title: string;
   date: string; // published, "YYYY.MM.DD"
   updatedAt?: string; // last updated, "YYYY.MM.DD"; falls back to `date`
+  // Publication state (human-review gate). Omitted or "published" = live.
+  // "draft" = written but NOT yet approved by a human reviewer: excluded from
+  // the list, sitemap, RSS and llms.txt, and marked noindex with a review
+  // banner on its detail page (previewable by URL only). Flip to "published"
+  // once a human has reviewed it. New skill-authored articles start as "draft".
+  status?: "draft" | "published";
   excerpt: string;
   // Conclusion-first "short answer" (2-4 sentences) shown in a highlighted box
   // at the top of the article. Directly answers the article's core question so
@@ -1031,8 +1037,19 @@ export const articles: Article[] = [...rawArticles]
       "/img/service/hero.jpg",
   }));
 
-export const featuredArticle = articles.find((a) => a.featured) ?? articles[0];
-export const listArticles = articles.filter((a) => !a.featured);
+/** True unless the article is an unapproved draft. Drives the review gate. */
+export function isPublished(a: Article): boolean {
+  return a.status !== "draft";
+}
+
+// Live articles only. Feed the list, featured slot, sitemap, RSS and llms.txt
+// from this so drafts never surface publicly. The full `articles` export still
+// includes drafts so their detail page can be built (noindex) for preview.
+export const publishedArticles = articles.filter(isPublished);
+
+export const featuredArticle =
+  publishedArticles.find((a) => a.featured) ?? publishedArticles[0];
+export const listArticles = publishedArticles.filter((a) => !a.featured);
 
 export function getArticle(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);

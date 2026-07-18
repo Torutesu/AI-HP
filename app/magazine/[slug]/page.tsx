@@ -6,7 +6,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Button from "@/components/Button";
 import Icon from "@/components/Icon";
-import { articles, getArticle, isoDate, isoPublished } from "@/lib/magazine";
+import { articles, publishedArticles, getArticle, isPublished, isoDate, isoPublished } from "@/lib/magazine";
 import { SITE_URL as SITE } from "@/lib/site";
 import styles from "./article.module.css";
 
@@ -77,6 +77,8 @@ export async function generateMetadata({
     title: a.title,
     description: a.excerpt,
     alternates: { canonical: url },
+    // Drafts are previewable by URL but must not be indexed until approved.
+    ...(isPublished(a) ? {} : { robots: { index: false, follow: false } }),
     openGraph: {
       type: "article",
       title: a.title,
@@ -148,9 +150,11 @@ export default async function ArticlePage({
 
   // Topic-cluster internal links: curated `related` first (may cross category),
   // topped up with same-category articles, deduped, capped at 3.
-  const curated = (a.related ?? []).map(getArticle).filter((x): x is NonNullable<typeof x> => Boolean(x));
+  const curated = (a.related ?? [])
+    .map(getArticle)
+    .filter((x): x is NonNullable<typeof x> => Boolean(x) && isPublished(x!));
   const seen = new Set([a.slug, ...curated.map((x) => x.slug)]);
-  const byCategory = articles.filter((x) => !seen.has(x.slug) && x.category === a.category);
+  const byCategory = publishedArticles.filter((x) => !seen.has(x.slug) && x.category === a.category);
   const related = [...curated, ...byCategory].slice(0, 3);
   const insertVisualAfter = visualInsertIndex(a.body);
   const articleHeadings = a.body
@@ -167,6 +171,20 @@ export default async function ArticlePage({
       )}
 
       <SiteHeader variant="solid" />
+      {!isPublished(a) && (
+        <div
+          style={{
+            background: "#7a2e00",
+            color: "#fff",
+            fontSize: "13px",
+            fontWeight: 600,
+            textAlign: "center",
+            padding: "8px 16px",
+          }}
+        >
+          レビュー中の下書きです（未公開・検索非対象）。公開前に人間のレビューが必要です。
+        </div>
+      )}
       <div style={{ background: "var(--white)" }}>
         {/* Article header */}
         <section style={{ position: "relative", overflow: "hidden", background: "#05070c" }}>

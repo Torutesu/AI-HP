@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
-import { articles, isoDate } from "@/lib/magazine";
+import { publishedArticles, isoDate } from "@/lib/magazine";
 
 export const dynamic = "force-static";
 
@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: r === "" ? 1 : 0.7,
   }));
 
-  const posts: MetadataRoute.Sitemap = articles.map((a) => ({
+  const posts: MetadataRoute.Sitemap = publishedArticles.map((a) => ({
     url: `${SITE_URL}/magazine/${a.slug}/`,
     lastModified: isoDate(a), // article's updatedAt ?? date — never the deploy date
     changeFrequency: "monthly",

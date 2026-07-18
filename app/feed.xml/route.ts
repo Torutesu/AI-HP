@@ -1,8 +1,8 @@
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
-import { articles, isoDate, isoPublished } from "@/lib/magazine";
+import { publishedArticles, isoDate, isoPublished } from "@/lib/magazine";
 
 // Generated as a static file (/feed.xml) at build time — same force-static
-// pattern as llms.txt. RSS 2.0 from the magazine articles.
+// pattern as llms.txt. RSS 2.0 from the magazine publishedArticles.
 export const dynamic = "force-static";
 
 const esc = (s: string) =>
@@ -12,12 +12,12 @@ const rfc822 = (isoYmd: string) => new Date(`${isoYmd}T00:00:00Z`).toUTCString()
 
 export function GET() {
   // Newest article date drives lastBuildDate (deterministic — not the deploy time).
-  const latest = articles
+  const latest = publishedArticles
     .map((a) => isoDate(a))
     .sort()
     .at(-1) as string;
 
-  const items = articles
+  const items = publishedArticles
     .map((a) => {
       const link = `${SITE_URL}/magazine/${a.slug}/`;
       return `    <item>
