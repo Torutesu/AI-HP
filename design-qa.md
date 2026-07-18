@@ -1,27 +1,27 @@
 # Design QA
 
-- Source visual truth: the two user-provided screenshots from 2026-07-18 15:16 and 15:17
+- Source visual truth: user feedback requesting a denser 390 px mobile layout
 - Implementation: local Next.js homepage browser capture
 - Viewports: 1440 x 1000, 390 x 844
-- State: homepage FV and Select Semantic Tree Method section at rest
+- State: homepage FV and Select Semantic Tree Method section at 390 x 844
 
 ## Full-view comparison evidence
 
-- Desktop keeps all three FV badges aligned while accommodating the longer 15万件 research title.
+- Desktop styles are unchanged by the mobile-only overrides.
 - Mobile reports no document-level horizontal overflow at 390 px.
-- Mobile stacks the theory and application panels while preserving readable Japanese line breaks.
+- All three mobile FV badges resolve to an equal 80 px height.
 
 ## Focused region comparison evidence
 
-- The supplied report screenshot remains recognizable inside the FV research badge at desktop and mobile widths.
-- The Semantic Tree visual is cropped from the supplied reference so embedded slide text does not compete with HTML copy.
-- The external source link opens the supplied Reddit AMA in a new tab with safe link attributes.
+- FV badge accents and descriptions are hidden on mobile while the three proof points remain visible.
+- Mobile section spacing, card padding, card heights, headings, and body copy are reduced without clipping.
+- Semantic Tree theory and application panels both resolve to 350 px at mobile width.
 
 ## Comparison history
 
-1. P1: the FV badge showed a generic archive illustration and the outdated 5万件 count. Fixed with the supplied report visual and 15万件 copy.
-2. P1: the proprietary method had no dedicated explanation on the homepage. Fixed with a full two-panel feature section.
-3. P2: using the full supplied slide as a background created duplicate text. Fixed by cropping a dedicated Semantic Tree visual from the source.
+1. P1: mobile FV badges included desktop descriptions and made the hero excessively tall. Fixed by retaining only the badge core.
+2. P2: research and impact badges resolved at different heights because of their media aspect ratios. Fixed with an explicit 62 px badge core.
+3. P2: mobile section cards and typography still felt oversized. Fixed with mobile-only density reductions of roughly 10-20%.
 
 ## Verification
 

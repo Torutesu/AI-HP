@@ -1464,41 +1464,42 @@ a.fvBadge:hover {
     justify-content: flex-start;
     max-width: 100%;
   }
-  .heroTitle { font-size: clamp(30px, 8.5vw, 40px); }
-  .heroSub { margin-bottom: 20px; }
-  .heroLead { margin-bottom: 28px; max-width: 100%; }
-  .heroCtas { gap: 14px; }
-  .partnerRow { margin: 0; padding: 18px 0 22px; gap: 14px; }
-  .partnerNote { font-size: 12px; }
+  .heroTitle { font-size: clamp(28px, 8vw, 36px); }
+  .heroSub { margin-bottom: 16px; }
+  .heroLead { margin-bottom: 22px; max-width: 100%; font-size: 13px; line-height: 1.72; }
+  .heroCtas { gap: 10px; }
+  .partnerRow { margin: 0; padding: 14px 0 18px; gap: 10px; }
+  .partnerNote { font-size: 10.5px; }
   .partnerLogoSet { gap: 28px; padding: 0 16px; }
   .partnerLogoSet img { height: 15px; }
   .partnerLogos { animation-duration: 18s; }
 
   /* badges become compact horizontal rows */
-  .fvBadges { grid-template-columns: 1fr; max-width: 100%; gap: 10px; margin-top: 24px; }
-  .fvBadge { gap: 12px; padding: 16px; min-height: 0; }
-  .fvTopBadge { min-height: 78px; padding: 12px; gap: 10px; }
-  .fvTopBadgeYc { height: 82px; min-height: 82px; padding: 0; }
+  .fvBadges { grid-template-columns: 1fr; max-width: 100%; gap: 7px; margin-top: 18px; }
+  .fvBadge { gap: 0; padding: 9px; min-height: 0; border-radius: 14px; }
+  .fvBody { gap: 0; }
+  .fvTopBadge { height: 62px; min-height: 62px; padding: 8px; gap: 8px; border-radius: 10px; }
+  .fvTopBadgeYc { height: 62px; min-height: 62px; padding: 0; }
   .fvMediaYc,
   .fvMediaResearch,
-  .fvMediaImpact { width: 64px; min-height: 64px; }
-  .fvMediaResearch { width: 88px; }
-  .fvMediaYc { width: 100%; height: 82px; min-height: 82px; }
-  .fvLabel { font-size: 10px; margin-bottom: 2px; }
-  .fvTitle { font-size: 15px; line-height: 1.38; text-wrap: balance; }
-  .fvAccent { margin-top: 8px; font-size: 10px; }
-  .fvDesc { margin-top: 6px; font-size: 12px; line-height: 1.7; }
+  .fvMediaImpact { width: 46px; height: 46px; min-height: 46px; border-radius: 11px; }
+  .fvMediaResearch { width: 70px; height: 46px; min-height: 46px; }
+  .fvMediaYc { width: 100%; height: 62px; min-height: 62px; }
+  .fvLabel { font-size: 8.5px; margin-bottom: 1px; }
+  .fvTitle { font-size: 13px; line-height: 1.28; text-wrap: balance; }
+  .fvAccent,
+  .fvDesc { display: none; }
   .fvPresenter { padding-top: 10px; }
-  .fvImg { width: 108%; max-width: none; max-height: none; }
+  .fvImg { width: 100%; max-width: none; max-height: none; }
 
   /* ---- Section rhythm: denser vertical spacing ---- */
-  .belief { padding: 68px 20px 82px; }
-  .philosophy { padding: 50px 0 58px; }
-  .strengths { padding: 44px 0 54px; }
-  .os { padding: 54px 0; }
-  .pain, .why, .process, .cases { padding: 50px 0; }
-  .method { padding: 54px 0 60px; }
-  .ctaSection { padding: 14px 0 58px; }
+  .belief { padding: 58px 20px 66px; }
+  .philosophy { padding: 44px 0 50px; }
+  .strengths { padding: 40px 0 46px; }
+  .os { padding: 46px 0; }
+  .pain, .why, .process, .cases { padding: 42px 0; }
+  .method { padding: 46px 0 50px; }
+  .ctaSection { padding: 10px 0 48px; }
   .ctaBand {
     grid-template-columns: minmax(0, 1fr);
     gap: 28px;
@@ -1508,22 +1509,22 @@ a.fvBadge:hover {
 
   /* ---- (A) Mobile-native type scale ---- */
   .beliefEyebrow { margin-bottom: 16px; font-size: 11px; }
-  .beliefTitle { font-size: 24px; line-height: 1.42; margin-bottom: 16px; }
-  .beliefText { font-size: 13.5px; line-height: 1.75; }
-  .philosophyTitle { font-size: 25px; margin-bottom: 12px; }
-  .philLead { font-size: 15px; margin-bottom: 16px; }
-  .philosophyText { font-size: 13.5px; line-height: 1.8; margin-bottom: 14px; }
-  .roiHeading { font-size: 28px; }
+  .beliefTitle { font-size: 22px; line-height: 1.4; margin-bottom: 13px; }
+  .beliefText { font-size: 13px; line-height: 1.72; }
+  .philosophyTitle { font-size: 23px; margin-bottom: 10px; }
+  .philLead { font-size: 14px; margin-bottom: 13px; }
+  .philosophyText { font-size: 13px; line-height: 1.72; margin-bottom: 12px; }
+  .roiHeading { font-size: 25px; }
   .roiList { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 22px; }
-  .roiItem { min-height: 210px; padding: 24px; border-radius: 16px; }
+  .roiItem { min-height: 188px; padding: 20px; border-radius: 15px; }
   .roiItemContent { max-width: 94%; }
-  .roiItemTitle { font-size: 18px; }
-  .roiItemText { font-size: 12.5px; line-height: 1.75; }
-  .osTopSub { font-size: 14px; }
-  .osTopText, .osPanelText { font-size: 13px; line-height: 1.8; }
-  .osPanelTitle { font-size: 20px; }
-  .featureTitle { font-size: 14.5px; }
-  .featureText { font-size: 12.5px; line-height: 1.7; }
+  .roiItemTitle { font-size: 17px; }
+  .roiItemText { font-size: 12px; line-height: 1.7; }
+  .osTopSub { font-size: 13px; }
+  .osTopText, .osPanelText { font-size: 12.5px; line-height: 1.72; }
+  .osPanelTitle { font-size: 18px; }
+  .featureTitle { font-size: 14px; }
+  .featureText { font-size: 12px; line-height: 1.65; }
   .stepTitle { font-size: 16.5px; }
   .stepText { font-size: 13px; line-height: 1.75; }
   .disclaimer { font-size: 11px; }
@@ -1533,13 +1534,13 @@ a.fvBadge:hover {
 
   /* ---- Unified mobile card padding: common 22px everywhere ---- */
   .featureCard, .osTopCard, .osPanel, .rowCard, .stepCard, .statcard,
-  .philCard, .philLeft { padding: 22px; }
-  .statcard { min-height: 350px; }
-  .statCat { top: 20px; left: 22px; }
-  .why .featureCard { min-height: 350px; }
-  .painCard { min-height: 340px; padding: 22px; }
-  .pain .featureTitle { font-size: 17px; }
-  .pain .featureText { font-size: 12.5px; line-height: 1.72; }
+  .philCard, .philLeft { padding: 19px; }
+  .statcard { min-height: 310px; }
+  .statCat { top: 18px; left: 19px; }
+  .why .featureCard { min-height: 310px; }
+  .painCard { min-height: 300px; padding: 19px; }
+  .pain .featureTitle { font-size: 15.5px; }
+  .pain .featureText { font-size: 12px; line-height: 1.65; }
   .why .featureImage { background-position: 74% 0; background-size: auto 68%; }
   .osTopCard { min-height: 0; }
   .osTopBg { opacity: 0.88; }
@@ -1560,15 +1561,15 @@ a.fvBadge:hover {
   .philStats { gap: 12px; }
   .ctaBand { padding: 28px 22px; }
 
-  .methodHead { margin-bottom: 28px; }
+  .methodHead { margin-bottom: 22px; }
   .methodFeature { margin-bottom: 12px; }
-  .methodTitle { font-size: 28px; line-height: 1.3; }
-  .methodLead { margin-top: 14px; font-size: 13px; line-height: 1.8; }
-  .methodGrid { gap: 14px; }
-  .methodTheory, .methodPractice { min-height: 400px; padding: 26px 22px; border-radius: 16px; }
-  .methodTheory h3, .methodPractice h3 { margin: 15px 0 16px; font-size: 24px; }
-  .methodTheory blockquote { font-size: 13px; line-height: 1.9; }
-  .methodPractice p { font-size: 13px; line-height: 1.8; }
+  .methodTitle { font-size: 24px; line-height: 1.32; }
+  .methodLead { margin-top: 12px; font-size: 12.5px; line-height: 1.72; }
+  .methodGrid { gap: 12px; }
+  .methodTheory, .methodPractice { min-height: 350px; padding: 22px 19px; border-radius: 15px; }
+  .methodTheory h3, .methodPractice h3 { margin: 13px 0 14px; font-size: 21px; }
+  .methodTheory blockquote { font-size: 12.5px; line-height: 1.78; }
+  .methodPractice p { font-size: 12.5px; line-height: 1.72; }
   .methodSteps { gap: 6px; margin-top: 20px; }
   .methodSteps span { padding: 7px 9px; font-size: 9.5px; }
 
