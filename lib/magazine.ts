@@ -66,7 +66,6 @@ const rawArticles: Article[] = [
   {
     slug: "meeting-minutes-ai",
     updatedAt: "2026.07.18",
-    status: "draft",
     category: "事例・シナリオ",
     title: "会議の議事録をAIで自動化する、定着まで含めた設計",
     date: "2026.07.18",
@@ -122,7 +121,6 @@ const rawArticles: Article[] = [
   {
     slug: "ai-cost-benchmark",
     updatedAt: "2026.07.18",
-    status: "draft",
     summary:
       "結論から言えば、AI導入費用に一律の相場はありません。既製ツールの利用か自社業務に合わせた内製かで金額は2桁変わるためです。判断のコツは、初期費用（設計・開発・データ整備）と運用費（利用料・保守・人件費）を分け、単月ではなく2〜3年の総額で比べること。まずは対象業務の現状コストを数字にするところから始めます。",
     related: ["inhouse-vs-saas", "saas-cost-one-third", "ai-subsidy-guide"],
@@ -231,7 +229,6 @@ const rawArticles: Article[] = [
   {
     slug: "genai-vs-rpa",
     updatedAt: "2026.07.18",
-    status: "draft",
     summary:
       "RPAは決められた手順を正確に再現する自動化ツール、従来型AIは過去データから予測・分類を行う仕組み、生成AIは非定型の文章や対話を柔軟に扱う技術です。厳密さのRPA、柔軟さの生成AIという違いがあり、業務を工程に分解して当てはめるのが使い分けの基本。実務では3つを組み合わせて業務フロー全体を設計するのが主流です。",
     related: ["back-office-automation", "ai-agent-autonomy", "application-layer-cases"],
@@ -290,7 +287,6 @@ const rawArticles: Article[] = [
   {
     slug: "inhouse-vs-saas",
     updatedAt: "2026.07.18",
-    status: "draft",
     summary:
       "内製とSaaSに一律の正解はなく、業務の性質で決まります。標準的で差別化に関係せず急ぐ業務はSaaS、自社独自で競争力に直結し規模も大きい業務は内製が有利です。判断は標準性・競争力への直結度・スピード・規模の4軸と、数年間の総額比較で行います。標準業務はSaaS、差別化業務は内製と使い分けるのが現実解です。",
     related: ["saas-cost-one-third", "ai-cost-benchmark", "open-tech-cost"],
@@ -347,7 +343,6 @@ const rawArticles: Article[] = [
   {
     slug: "ai-agent-autonomy",
     updatedAt: "2026.07.18",
-    status: "draft",
     summary:
       "AIエージェントは、目標を与えると手順を自分で分解して複数のステップを実行するAIで、一問一答の従来型AIと異なります。現時点では、情報収集や資料の初稿作成など影響が可逆な業務は任せやすい一方、対外文書や金銭処理・最終判断は人の確認を挟むべき段階です。全自動ではなく「人が監督する自動化」として、可逆な業務から始めるのが賢明です。（2026年7月時点）",
     related: ["genai-vs-rpa", "application-layer-cases", "ai-data-security"],
@@ -402,7 +397,6 @@ const rawArticles: Article[] = [
   {
     slug: "open-models-tracking",
     updatedAt: "2026.07.18",
-    status: "draft",
     summary:
       "オープンモデルは用途によっては商用モデルに迫る性能に達し、自社環境で動かせて従量課金が積み上がらないといった利点があります。選ぶときはランキングを追うのではなく、自社の用途での性能・運用コスト・ライセンス・継続性の4軸で見ます。特定モデルに仕組みを固定せず差し替え可能に設計しておけば、世代交代を追い風にできます。（2026年7月時点）",
     related: ["open-tech-cost", "ai-agent-autonomy", "ai-data-security"],
@@ -453,7 +447,6 @@ const rawArticles: Article[] = [
   {
     slug: "ai-adoption-failures",
     updatedAt: "2026.07.18",
-    status: "draft",
     summary:
       "中小企業のAI導入でよくある失敗は、目的化・配布だけで終わる・基準値がない・完璧主義・現場不在・データ未整備・特定ツール依存の7つです。いずれも技術ではなく設計の問題で、動かす数字から逆算し、小さく始め、現場を巻き込み、ツールに縛られない設計にすれば大半は避けられます。自社がどのパターンに陥りやすいかを知ることが出発点です。",
     related: ["poc-to-results", "ai-adoption-steps", "ai-native-organization"],
@@ -501,7 +494,6 @@ const rawArticles: Article[] = [
   {
     slug: "ai-data-security",
     updatedAt: "2026.07.18",
-    status: "draft",
     summary:
       "社内データをAIに使わせても、正しく設計すれば機密性を保って活用できます。データを機密度で分類し、最小権限・既存の権限管理との整合・高機密データを外部に出さない構成を徹底するのが基本です。全面禁止はかえって隠れた利用（シャドーAI）を招くため、安全に使える業務用の窓口とガイドラインで正しい使い方に誘導します。",
     related: ["ai-agent-autonomy", "ai-adoption-steps", "open-models-tracking"],
@@ -554,7 +546,6 @@ const rawArticles: Article[] = [
   {
     slug: "ai-adoption-steps",
     updatedAt: "2026.07.18",
-    status: "draft",
     summary:
       "AI導入は、①現状の可視化と診断、②動かす数字と対象業務の決定、③小さく実装して検証、④横展開して定着、⑤差別化領域の内製、の5ステップで進めます。出発点はツール選びではなく現状把握で、各段階を飛ばさず順に進むのが成功の条件です。まず影響の小さい1業務から始め、効果を数字で確認してから広げます。",
     related: ["poc-to-results", "ai-adoption-failures", "ai-cost-benchmark"],
@@ -615,7 +606,6 @@ const rawArticles: Article[] = [
   {
     slug: "professional-services-ai",
     updatedAt: "2026.07.18",
-    status: "draft",
     summary:
       "士業のAI活用は、下調べ・ドラフト初稿・照会の一次対応・事務処理といった準備作業に効きます。設計の原則は「AIが調べて下書きし、専門家が確認して仕上げる」分業で、最終的な法的・税務的判断は専門家に残します。顧客情報を扱うため、外部の学習に使われない構成など守秘義務への配慮が前提です。",
     related: ["back-office-automation", "manufacturing-estimate", "ai-data-security"],
@@ -672,7 +662,6 @@ const rawArticles: Article[] = [
   {
     slug: "retail-ec-ai",
     updatedAt: "2026.07.18",
-    status: "draft",
     summary:
       "小売・ECでは、商品説明文の初稿自動生成と、定型的な問い合わせの一次対応の自動化が効きます。AIが下書き・一次対応を担い、人は確認・調整とクレームや重要顧客の対応に集中する分業が基本です。制作量を増やしつつCS対応を軽くでき、コスト削減と売上向上を同時に狙えます。",
     related: ["sales-ai-win-rate", "back-office-automation", "healthcare-backoffice-ai"],
@@ -728,7 +717,6 @@ const rawArticles: Article[] = [
   {
     slug: "healthcare-backoffice-ai",
     updatedAt: "2026.07.18",
-    status: "draft",
     summary:
       "人手不足の医療・介護では、予約・記録作成・問い合わせ・転記といったバックオフィス事務のAI化が効きます。定型事務はAIに任せ、診断・ケア・利用者への説明は専門職が担う切り分けで、専門職の時間を本来のケアへ戻せます。要配慮情報を扱うため、データを外部に出さない構成など保護設計が前提です。",
     related: ["back-office-automation", "professional-services-ai", "ai-data-security"],
