@@ -179,7 +179,7 @@ export default function AiOsShowcase() {
           </div>
           <p className={styles.summary}>{SUMMARY_BY_TAB[active]}</p>
           <div className={styles.sideFoot}>
-            <span className={styles.sideFootIcon}><Icon name="sparkles" size={14} /></span>
+            <span className={styles.sideFootIcon}><Icon name="cpu" size={14} /></span>
             AIが運用データをもとに毎朝アップデート
           </div>
         </div>

@@ -888,10 +888,10 @@ a.fvBadge:hover {
 .osChart { flex: 1; width: 100%; height: 56px; display: block; }
 .osSplit {
   display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
   margin-top: 20px;
-  align-items: start;
+  align-items: stretch;
 }
 .osPanel {
   position: relative;
@@ -909,6 +909,8 @@ a.fvBadge:hover {
   background-image: linear-gradient(130deg, #f4f8ff, #ffffff 70%);
 }
 .osPanelMedia { min-height: 0; background: var(--white); }
+.osPanelMedia,
+.osPanelHighlight { height: 100%; }
 .osPanelEyebrow {
   display: inline-flex;
   align-items: center;

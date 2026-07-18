@@ -9,6 +9,7 @@ import CountUp from "@/components/CountUp";
 import RoiSimulator from "@/components/RoiSimulator";
 import MobileCarousel from "@/components/MobileCarousel";
 import AiOsShowcase from "@/components/AiOsShowcase";
+import CostDownShowcase from "@/components/CostDownShowcase";
 import { HERO_VIDEO_URL, PARTNER_LOGOS as PARTNERS } from "@/lib/site";
 import type { Metadata } from "next";
 import styles from "./page.module.css";
@@ -398,25 +399,7 @@ export default function Home() {
 
           <MobileCarousel className={styles.osSplit}>
             <Reveal className={`${styles.osPanel} ${styles.osPanelMedia}`}>
-              <div className={styles.osPanelTitle}>削減の層</div>
-              <p className={styles.osPanelText}>手作業と分散管理をAIへ置き換え、工数とSaaS費をまとめて削減します。</p>
-              <div className={styles.osWorkflow}>
-                <div className={styles.osWorkflowCard}>
-                  <div className={styles.osWorkflowHead}>導入前</div>
-                  <div className={styles.osWorkflowRow}>
-                    <span>手作業・転記</span>
-                    <span>分散したExcel管理</span>
-                  </div>
-                </div>
-                <div className={styles.osWorkflowArrow}><Icon name="arrow-right" size={18} /></div>
-                <div className={styles.osWorkflowCard}>
-                  <div className={styles.osWorkflowHead}>導入後</div>
-                  <div className={styles.osWorkflowRow}>
-                    <span>AIで自動処理</span>
-                    <span>データを一元管理</span>
-                  </div>
-                </div>
-              </div>
+              <CostDownShowcase />
             </Reveal>
             <Reveal delay={0.1} className={`${styles.osPanel} ${styles.osPanelHighlight}`}>
               <AiOsShowcase />
