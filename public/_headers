@@ -1,0 +1,13 @@
+# Cloudflare Pages response headers.
+# Crawler-facing feeds are regenerated on every content deploy, so they must
+# never be served stale from the CDN edge. no-store keeps sitemap.xml, llms.txt,
+# feed.xml and robots.txt always fresh (they are tiny and rarely fetched, so
+# skipping the cache costs nothing). Article HTML keeps Pages' default caching.
+/sitemap.xml
+  Cache-Control: no-store
+/llms.txt
+  Cache-Control: no-store
+/feed.xml
+  Cache-Control: no-store
+/robots.txt
+  Cache-Control: no-store
