@@ -2,9 +2,9 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import Icon from "@/components/Icon";
 import Button from "@/components/Button";
 import SectionHeading from "@/components/SectionHeading";
+import styles from "./ConsultingPage.module.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -20,25 +20,29 @@ export default function Page() {
       step: "STEP 01",
       title: "商売の解剖",
       body: "どう稼ぎ、どこに無駄があるか。事業構造を戦略コンサルのように分解する。",
-      accent: false,
+      image: "/img/company/position.jpg",
+      label: "BUSINESS MODEL",
     },
     {
       step: "STEP 02",
       title: "AI経営診断",
       body: "メンバー・ツール別の活用度とROIを可視化。経営が判断できる数字にする。",
-      accent: false,
+      image: "/img/cases/management.jpg",
+      label: "DIAGNOSIS",
     },
     {
       step: "STEP 03",
       title: "設計・実装",
       body: "削減と成長、両面の打ち手を優先順位付きで設計。内製AIを一緒に作る。",
-      accent: false,
+      image: "/img/method/semantic-tree-visual.png",
+      label: "DESIGN & BUILD",
     },
     {
       step: "STEP 04",
       title: "改善の伴走",
       body: "成果を毎月数字で証明。改善が回り続ける体制まで介入する。",
-      accent: true,
+      image: "/img/company/promise.jpg",
+      label: "CONTINUOUS GROWTH",
     },
   ];
 
@@ -114,66 +118,30 @@ export default function Page() {
                   </p>
                 </div>
               </Reveal>
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                <Reveal delay={0}>
+              <div className={styles.contrastStack}>
+                <Reveal delay={0} className={styles.contrastCard}>
                   <div
-                    style={{
-                      background: "var(--surface-card)",
-                      border: "0.5px solid var(--line-strong)",
-                      borderRadius: "10px",
-                      padding: "22px 26px",
-                      display: "flex",
-                      gap: "16px",
-                      alignItems: "center",
-                    }}
-                  >
-                    <span style={{ color: "var(--accent)" }}>
-                      <Icon name="x-circle" size={22} />
-                    </span>
-                    <div style={{ fontSize: "14.5px", fontWeight: 600, color: "var(--fg-0)" }}>
-                      やらないこと ： 受けて終わる研修
-                    </div>
-                  </div>
+                    className={styles.contrastImage}
+                    style={{ backgroundImage: "url(/img/why/case-intelligence.jpg)" }}
+                  />
+                  <span>NO / 01</span>
+                  <strong>受けて終わる研修</strong>
                 </Reveal>
-                <Reveal delay={0.08}>
+                <Reveal delay={0.08} className={styles.contrastCard}>
                   <div
-                    style={{
-                      background: "var(--surface-card)",
-                      border: "0.5px solid var(--line-strong)",
-                      borderRadius: "10px",
-                      padding: "22px 26px",
-                      display: "flex",
-                      gap: "16px",
-                      alignItems: "center",
-                    }}
-                  >
-                    <span style={{ color: "var(--accent)" }}>
-                      <Icon name="x-circle" size={22} />
-                    </span>
-                    <div style={{ fontSize: "14.5px", fontWeight: 600, color: "var(--fg-0)" }}>
-                      やらないこと ： 汎用的な一律メニュー
-                    </div>
-                  </div>
+                    className={styles.contrastImage}
+                    style={{ backgroundImage: "url(/img/why/modules.jpg)" }}
+                  />
+                  <span>NO / 02</span>
+                  <strong>汎用的な一律メニュー</strong>
                 </Reveal>
-                <Reveal delay={0.16}>
+                <Reveal delay={0.16} className={`${styles.contrastCard} ${styles.contrastCardPositive}`}>
                   <div
-                    style={{
-                      border: "0.5px solid var(--panel-border)",
-                      borderRadius: "10px",
-                      padding: "22px 26px",
-                      display: "flex",
-                      gap: "16px",
-                      alignItems: "center",
-                      backgroundImage: "linear-gradient(120deg, #F4F8FF, #FFFFFF)",
-                    }}
-                  >
-                    <span style={{ color: "var(--accent)" }}>
-                      <Icon name="check-circle-2" size={22} />
-                    </span>
-                    <div style={{ fontSize: "14.5px", fontWeight: 700, color: "var(--fg-0)" }}>
-                      やること ： 商売に紐づく、継続最適化
-                    </div>
-                  </div>
+                    className={styles.contrastImage}
+                    style={{ backgroundImage: "url(/img/service/consulting-card.jpg)" }}
+                  />
+                  <span>YES / 03</span>
+                  <strong>商売に紐づく、継続最適化</strong>
                 </Reveal>
               </div>
             </div>
@@ -193,53 +161,19 @@ export default function Page() {
               }}
             >
               {steps.map((s, i) => (
-                <Reveal key={s.step} delay={i * 0.08}>
+                <Reveal key={s.step} delay={i * 0.08} className={styles.stepCard}>
                   <div
-                    style={
-                      s.accent
-                        ? {
-                            border: "0.5px solid var(--panel-border)",
-                            borderRadius: "8px",
-                            padding: "30px 26px",
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "12px",
-                            backgroundImage: "linear-gradient(120deg, #F4F8FF, #FFFFFF)",
-                          }
-                        : {
-                            background: "var(--surface-card)",
-                            border: "0.5px solid var(--line-strong)",
-                            borderRadius: "8px",
-                            padding: "30px 26px",
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "12px",
-                          }
-                    }
-                  >
-                    <div
-                      style={{
-                        fontSize: "12px",
-                        fontWeight: 600,
-                        letterSpacing: "0.18em",
-                        color: "var(--accent)",
-                      }}
-                    >
-                      {s.step}
-                    </div>
-                    <div style={{ fontSize: "18px", fontWeight: 700, color: "var(--fg-0)" }}>
-                      {s.title}
-                    </div>
-                    <p
-                      style={{
-                        margin: 0,
-                        fontSize: "13px",
-                        lineHeight: 1.8,
-                        color: s.accent ? "var(--fg-1)" : "var(--fg-2)",
-                      }}
-                    >
-                      {s.body}
-                    </p>
+                    className={styles.stepImage}
+                    style={{ backgroundImage: `url(${s.image})` }}
+                  />
+                  <div className={styles.stepTopline}>
+                    <span>{s.step}</span>
+                    <span>{String(i + 1).padStart(2, "0")}</span>
+                  </div>
+                  <div className={styles.stepContent}>
+                    <span>{s.label}</span>
+                    <h3>{s.title}</h3>
+                    <p>{s.body}</p>
                   </div>
                 </Reveal>
               ))}
@@ -249,45 +183,17 @@ export default function Page() {
 
         <section style={{ padding: "0 0 96px", paddingTop: "96px" }}>
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-            <Reveal>
-              <div
-                style={{
-                  position: "relative",
-                  overflow: "hidden",
-                  borderRadius: "12px",
-                  border: "0.5px solid var(--panel-border)",
-                  background: "var(--panel-grad)",
-                  padding: "56px",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  gap: "32px",
-                  flexWrap: "wrap",
-                }}
-              >
+            <Reveal className={styles.cta}>
+              <div className={styles.ctaImage} />
+              <div className={styles.ctaTopline}>AI BUSINESS DIAGNOSIS</div>
+              <div className={styles.ctaInner}>
                 <div>
-                  <h2
-                    style={{
-                      fontSize: "28px",
-                      fontWeight: 700,
-                      color: "var(--fg-0)",
-                      margin: "0 0 10px",
-                    }}
-                  >
-                    まず、無料の経営診断から。
-                  </h2>
-                  <p
-                    style={{
-                      margin: 0,
-                      fontSize: "14.5px",
-                      color: "var(--fg-2)",
-                      lineHeight: 1.8,
-                    }}
-                  >
+                  <h2>まず、無料の経営診断から。</h2>
+                  <p>
                     貴社の課題に合わせて、最適な第一歩をご提案します。
                   </p>
                 </div>
-                <Button href="/download" variant="primary" size="lg">
+                <Button href="/download" variant="primary" size="lg" className={styles.ctaButton}>
                   資料をダウンロード
                 </Button>
               </div>

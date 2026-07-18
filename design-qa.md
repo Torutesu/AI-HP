@@ -1,27 +1,27 @@
 # Design QA
 
-- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_FVE6SD/スクリーンショット 2026-07-18 15.26.20.png`, `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_cZPx1C/スクリーンショット 2026-07-18 15.26.28.png`, `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_SqjdIA/スクリーンショット 2026-07-18 15.26.35.png`
-- Implementation: local Next.js AI operating system page browser capture
+- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_EtZ9Tz/スクリーンショット 2026-07-18 15.27.03.png`, `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_2lTGrl/スクリーンショット 2026-07-18 15.27.12.png`
+- Implementation: local Next.js consulting page browser capture
 - Viewports: 1440 x 1000, 390 x 844
-- State: equation, cost-down, sales-up, and pricing-reason cards
+- State: training contrast, four-step process, and closing CTA
 
 ## Full-view comparison evidence
 
-- All desktop card rows align to four equal columns, with the equation row using three equal columns.
+- The desktop process row aligns to four equal-height image cards.
 - Mobile reports no document-level horizontal overflow at 390 px.
-- Mobile equation and feature cards resolve to the same 342 px content width.
+- Mobile contrast and process cards resolve to the same 342 px content width.
 
 ## Focused region comparison evidence
 
-- Line icons were removed from all four requested card groups.
-- Each card now uses a relevant existing visual, a controlled navy overlay, an index, and a concise category label.
-- Light and dark source images maintain readable white card copy through the shared overlay system.
+- The three training contrasts now communicate `NO` and `YES` through imagery, typography, and color rather than icons.
+- The four consulting steps use distinct visuals, process numbers, and concise English category labels.
+- The closing CTA uses a full visual backdrop, white copy, and a high-contrast white action button.
 
 ## Comparison history
 
-1. P1: generic blue line icons made the sections feel interchangeable. Fixed by replacing icons with full-card imagery.
-2. P2: different source-image brightness could reduce text contrast. Fixed with layered directional and bottom overlays.
-3. P2: large imagery could make mobile excessively tall. Fixed with a 260 px mobile card height and single-column flow.
+1. P1: icon-based contrast rows looked like generic notices. Fixed with image-backed `NO / YES` cards.
+2. P1: the pale closing banner did not create a strong conversion endpoint. Fixed with a dark visual CTA and white button.
+3. P2: rich cards could become oversized on mobile. Fixed with 94 px contrast cards, 264 px process cards, and a 360 px CTA.
 
 ## Verification
 
