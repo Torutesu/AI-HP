@@ -93,11 +93,11 @@ const STRENGTHS: {
   {
     color: "#2B7CFF",
     label: "Research Archive",
-    title: "AI事例 5万件",
-    description: "海外を含むAI活用事例を、業界・用途・成果別に整理。提案や設計の母集団があります。",
-    accent: "業界別に整理済み",
+    title: "世界最先端のAI事例 15万件",
+    description: "世界のAI活用事例15万件を、業界・用途・成果別に整理。戦略や設計に使えるリサーチ基盤です。",
+    accent: "業界・用途・成果別に整理",
     visual: "research",
-    image: "/img/badge/research-archive.png",
+    image: "/img/research/ai-case-report.png",
   },
   {
     color: "#E0A800",
@@ -470,6 +470,50 @@ export default function Home() {
               </Reveal>
             ))}
           </MobileCarousel>
+        </div>
+      </section>
+
+      {/* ===================== SELECT SEMANTIC TREE METHOD ===================== */}
+      <section className={styles.method}>
+        <div className={styles.container}>
+          <Reveal>
+            <div className={styles.methodHead}>
+              <span className={styles.methodFeature}>FEATURE 01</span>
+              <h2 className={styles.methodTitle}>独自の「Selectセマンティックツリーメソッド」</h2>
+              <p className={styles.methodLead}>知識を枝葉から集めず、幹となる第一原理から組み立てる。戦略と開発の精度を高める、私たち独自の設計手法です。</p>
+            </div>
+          </Reveal>
+
+          <div className={styles.methodGrid}>
+            <Reveal className={styles.methodTheory}>
+              <span className={styles.methodPanelLabel}>THEORY / SEMANTIC TREE</span>
+              <h3>枝葉より先に、<br />幹と原理を理解する。</h3>
+              <blockquote>
+                知識をセマンティックツリーとして捉え、詳細へ入る前に、幹と枝のような土台となる原理を理解する。そうでなければ、新しい知識は記憶に残らない。
+              </blockquote>
+              <a
+                className={styles.methodSource}
+                href="https://www.reddit.com/r/IAmA/comments/2rgsan/i_am_elon_musk_ceocto_of_a_rocket_t_company_ama/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                イーロン・マスクの実際の回答を読む<Icon name="arrow-right" size={15} />
+              </a>
+            </Reveal>
+
+            <Reveal delay={0.1} className={styles.methodPractice}>
+              <span className={styles.methodDocument} aria-hidden="true">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/img/method/semantic-tree-visual.png" alt="" />
+              </span>
+              <span className={styles.methodPanelLabel}>SELECT / FOR JAPAN</span>
+              <h3>日本市場の戦略立案と、<br />ソフトウェア開発に最適化。</h3>
+              <p>第一原理に基づき、事業構造やサービス設計を徹底的に要素分解。「ただ開発する」のではなく、成果から逆算して実装します。</p>
+              <div className={styles.methodSteps} aria-label="設計プロセス">
+                <span>第一原理</span><b>→</b><span>構造分解</span><b>→</b><span>成果設計</span>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 

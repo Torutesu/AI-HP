@@ -174,9 +174,13 @@ a.fvBadge:hover {
   max-width: none;
 }
 .fvMediaResearch {
+  width: 94px;
   overflow: hidden;
   background: rgba(13, 24, 44, 0.8);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.fvMediaResearch .fvAssetImage {
+  object-position: center;
 }
 .fvAssetImage {
   display: block;
@@ -906,6 +910,165 @@ a.fvBadge:hover {
 .why { padding: 80px 0 76px; }
 .why .grid4 { margin-top: 36px; }
 
+/* ---------------- SELECT SEMANTIC TREE METHOD ---------------- */
+.method {
+  padding: 92px 0 104px;
+  background: #f5f8fc;
+}
+.methodHead {
+  max-width: 920px;
+  margin-bottom: 42px;
+}
+.methodFeature,
+.methodPanelLabel {
+  font-family: var(--font-en);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+}
+.methodFeature {
+  display: inline-block;
+  margin-bottom: 17px;
+  color: var(--accent);
+}
+.methodTitle {
+  margin: 0;
+  color: var(--fg-0);
+  font-size: clamp(30px, 4.3vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.methodLead {
+  max-width: 760px;
+  margin: 20px 0 0;
+  color: var(--fg-2);
+  font-size: 14px;
+  line-height: 1.9;
+}
+.methodGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 20px;
+}
+.methodTheory,
+.methodPractice {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 440px;
+  padding: 42px;
+  border-radius: 20px;
+}
+.methodTheory {
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 86% 8%, rgba(93, 158, 255, 0.34), transparent 36%),
+    linear-gradient(145deg, #0e5eb2 0%, #073b78 48%, #041a39 100%);
+  box-shadow: 0 28px 64px rgba(5, 48, 99, 0.2);
+}
+.methodTheory::after {
+  content: "SELECT";
+  position: absolute;
+  right: -10px;
+  bottom: -24px;
+  z-index: -1;
+  color: rgba(255, 255, 255, 0.045);
+  font: 800 96px/1 var(--font-en);
+  letter-spacing: -0.06em;
+}
+.methodTheory .methodPanelLabel { color: #9cc5ff; }
+.methodTheory h3,
+.methodPractice h3 {
+  margin: 19px 0 20px;
+  font-size: clamp(24px, 2.7vw, 32px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+}
+.methodTheory h3 { color: #fff; }
+.methodTheory blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 14px;
+  line-height: 2;
+}
+.methodSource {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 24px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+.methodSource svg { transition: transform 180ms ease; }
+.methodSource:hover svg { transform: translateX(3px); }
+.methodPractice {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid rgba(119, 147, 188, 0.18);
+  background: #fff;
+  box-shadow: 0 28px 64px rgba(29, 61, 106, 0.1);
+}
+.methodDocument {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+.methodDocument img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 24%;
+  filter: saturate(0.78) contrast(0.95);
+  opacity: 0.5;
+  transform: scale(1.02);
+  transition: transform 750ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.methodPractice::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.38) 34%, rgba(255, 255, 255, 0.96) 67%, #fff 100%);
+}
+.methodPractice:hover .methodDocument img { transform: scale(1.065); }
+.methodPractice .methodPanelLabel { color: var(--accent); }
+.methodPractice h3 { color: var(--fg-0); }
+.methodPractice p {
+  max-width: 590px;
+  margin: 0;
+  color: var(--fg-2);
+  font-size: 13.5px;
+  line-height: 1.9;
+}
+.methodSteps {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 24px;
+}
+.methodSteps span {
+  padding: 8px 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--fg-1);
+  font-size: 10.5px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+.methodSteps b { color: var(--accent); font-size: 12px; }
+
 /* ---------------- OS / AI経営基盤 ---------------- */
 .os { padding: 104px 0; }
 .osTop {
@@ -1266,6 +1429,9 @@ a.fvBadge:hover {
   .casesGrid { grid-template-columns: repeat(3, 1fr); }
   .os { padding: 88px 0; }
   .pain, .why, .process, .cases { padding: 80px 0; }
+  .method { padding: 80px 0; }
+  .methodGrid { grid-template-columns: 1fr; }
+  .methodTheory, .methodPractice { min-height: 400px; }
   .osTopText { max-width: 60%; }
 }
 
@@ -1281,6 +1447,7 @@ a.fvBadge:hover {
   .strengths { padding: 64px 0 76px; }
   .os { padding: 76px 0; }
   .pain, .why, .process, .cases { padding: 68px 0; }
+  .method { padding: 68px 0; }
   .casesGrid { grid-template-columns: repeat(2, 1fr); }
   .osTopCard { min-height: 0; }
   .osTopText { max-width: 100%; }
@@ -1315,6 +1482,7 @@ a.fvBadge:hover {
   .fvMediaYc,
   .fvMediaResearch,
   .fvMediaImpact { width: 64px; min-height: 64px; }
+  .fvMediaResearch { width: 88px; }
   .fvMediaYc { width: 100%; height: 82px; min-height: 82px; }
   .fvLabel { font-size: 10px; margin-bottom: 2px; }
   .fvTitle { font-size: 15px; line-height: 1.38; text-wrap: balance; }
@@ -1329,6 +1497,7 @@ a.fvBadge:hover {
   .strengths { padding: 44px 0 54px; }
   .os { padding: 54px 0; }
   .pain, .why, .process, .cases { padding: 50px 0; }
+  .method { padding: 54px 0 60px; }
   .ctaSection { padding: 14px 0 58px; }
   .ctaBand {
     grid-template-columns: minmax(0, 1fr);
@@ -1390,6 +1559,18 @@ a.fvBadge:hover {
   .osWorkflowRow span { font-size: 10.5px; line-height: 1.5; }
   .philStats { gap: 12px; }
   .ctaBand { padding: 28px 22px; }
+
+  .methodHead { margin-bottom: 28px; }
+  .methodFeature { margin-bottom: 12px; }
+  .methodTitle { font-size: 28px; line-height: 1.3; }
+  .methodLead { margin-top: 14px; font-size: 13px; line-height: 1.8; }
+  .methodGrid { gap: 14px; }
+  .methodTheory, .methodPractice { min-height: 400px; padding: 26px 22px; border-radius: 16px; }
+  .methodTheory h3, .methodPractice h3 { margin: 15px 0 16px; font-size: 24px; }
+  .methodTheory blockquote { font-size: 13px; line-height: 1.9; }
+  .methodPractice p { font-size: 13px; line-height: 1.8; }
+  .methodSteps { gap: 6px; margin-top: 20px; }
+  .methodSteps span { padding: 7px 9px; font-size: 9.5px; }
 
   /* ---- (B) Card rows become swipeable carousels ---- */
   .grid4, .casesGrid, .osTop {
