@@ -80,14 +80,14 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 18px;
+  gap: 14px;
   position: relative;
   overflow: hidden;
-  min-height: 258px;
+  min-height: 228px;
   background: linear-gradient(145deg, rgba(16, 12, 12, 0.74), rgba(56, 31, 24, 0.48));
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 20px;
-  padding: 22px;
+  padding: 18px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(14px);
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
@@ -111,13 +111,17 @@ a.fvBadge:hover {
   z-index: 1;
   display: flex;
   align-items: center;
-  gap: 16px;
-  min-height: 92px;
-  border-radius: 18px;
+  gap: 12px;
+  min-height: 84px;
+  border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: linear-gradient(180deg, rgba(17, 17, 19, 0.72), rgba(33, 25, 22, 0.58));
-  padding: 16px 18px;
+  padding: 12px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.fvTopBadgeYc {
+  justify-content: center;
+  padding: 10px 14px;
 }
 .fvTopBadgeResearch {
   background:
@@ -136,8 +140,9 @@ a.fvBadge:hover {
   gap: 4px;
 }
 .fvImg {
-  height: 54px;
   width: auto;
+  height: auto;
+  max-height: 62px;
   max-width: 100%;
   object-fit: contain;
   object-position: left center;
@@ -148,18 +153,16 @@ a.fvBadge:hover {
 .fvMediaImpact {
   position: relative;
   flex: none;
-  width: 72px;
-  min-height: 72px;
+  width: 60px;
+  min-height: 60px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 16px;
 }
 .fvMediaYc {
-  width: 96px;
-  min-height: 72px;
-  align-items: flex-start;
-  justify-content: flex-start;
+  width: 100%;
+  min-height: 62px;
 }
 .fvMediaResearch {
   overflow: hidden;
@@ -271,7 +274,7 @@ a.fvBadge:hover {
 .fvAccent {
   display: inline-flex;
   align-self: flex-start;
-  margin-top: 2px;
+  margin-top: 0;
   padding: 6px 10px;
   border-radius: 999px;
   background: rgba(255, 214, 102, 0.12);
@@ -282,7 +285,7 @@ a.fvBadge:hover {
   color: #ffd978;
 }
 .fvDesc {
-  margin-top: 2px;
+  margin-top: 0;
   font-size: 12.5px;
   line-height: 1.72;
   color: rgba(255, 255, 255, 0.78);
@@ -1060,10 +1063,11 @@ a.fvBadge:hover {
   .fvBadges { grid-template-columns: 1fr; max-width: 100%; gap: 10px; margin-top: 24px; }
   .fvBadge { gap: 12px; padding: 16px; min-height: 0; }
   .fvTopBadge { min-height: 78px; padding: 12px; gap: 10px; }
+  .fvTopBadgeYc { padding: 10px 12px; }
   .fvMediaYc,
   .fvMediaResearch,
   .fvMediaImpact { width: 64px; min-height: 64px; }
-  .fvMediaYc { width: 86px; min-height: 64px; }
+  .fvMediaYc { width: 100%; min-height: 56px; }
   .fvLabel { font-size: 10px; margin-bottom: 2px; }
   .fvTitle { font-size: 15px; line-height: 1.38; text-wrap: balance; }
   .fvAccent { margin-top: 8px; font-size: 10px; }

@@ -49,7 +49,6 @@ const STRENGTHS: {
   accent?: string;
   visual?: "yc" | "research" | "impact";
   href?: string;
-  presenter?: string;
   /** When set, the badge renders this image instead of the CSS layout.
    *  AI事例 / ROI will get their own images later; drop the files in
    *  public/img/badge/ and set `image` here to swap them in. */
@@ -64,7 +63,6 @@ const STRENGTHS: {
     accent: "世界トップアクセラレーター発",
     visual: "yc",
     href: "https://x.com/KyosukeTogami/status/2075136867461460299",
-    presenter: "Transpose",
     image: "/img/badge/yc-transparent.png",
   },
   {
@@ -186,7 +184,7 @@ export default function Home() {
               const inner = (
                 <>
                   <span className={styles.fvBody}>
-                    <span className={`${styles.fvTopBadge} ${b.visual === "research" ? styles.fvTopBadgeResearch : ""} ${b.visual === "impact" ? styles.fvTopBadgeImpact : ""}`}>
+                    <span className={`${styles.fvTopBadge} ${b.visual === "yc" ? styles.fvTopBadgeYc : ""} ${b.visual === "research" ? styles.fvTopBadgeResearch : ""} ${b.visual === "impact" ? styles.fvTopBadgeImpact : ""}`}>
                       {b.visual === "yc" ? (
                         <span className={styles.fvMediaYc}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -205,25 +203,15 @@ export default function Home() {
                           <img className={styles.fvAssetImage} src={b.image} alt="" />
                         </span>
                       ) : null}
-                      <span className={styles.fvTopCopy}>
-                        <span className={styles.fvLabel}>{b.label}</span>
-                        <span className={styles.fvTitle}>{b.title}</span>
-                      </span>
+                      {b.visual !== "yc" ? (
+                        <span className={styles.fvTopCopy}>
+                          <span className={styles.fvLabel}>{b.label}</span>
+                          <span className={styles.fvTitle}>{b.title}</span>
+                        </span>
+                      ) : null}
                     </span>
                     {b.accent ? <span className={styles.fvAccent}>{b.accent}</span> : null}
                     {b.description ? <span className={styles.fvDesc}>{b.description}</span> : null}
-                    {b.presenter ? (
-                      <span className={styles.fvPresenter}>
-                        <span className={styles.fvPresenterLabel}>Presented by</span>
-                        <span className={styles.fvPresenterName}>
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden>
-                            <path d="M12 2L20 12L12 22L4 12Z" />
-                            <circle cx="12" cy="12" r="3" />
-                          </svg>
-                          {b.presenter}
-                        </span>
-                      </span>
-                    ) : null}
                   </span>
                 </>
               );
