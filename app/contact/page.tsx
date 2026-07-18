@@ -4,6 +4,7 @@ import SiteFooter from "@/components/SiteFooter";
 import PageHero from "@/components/PageHero";
 import Icon from "@/components/Icon";
 import ContactForm from "@/components/ContactForm";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/contact/" },
@@ -30,37 +31,23 @@ export default function ContactPage() {
           lead="フォームに必要事項とご相談内容をご記入ください。確認後、担当者よりご返信いたします。"
         />
 
-        <div style={{ flex: 1, position: "relative", overflow: "hidden", background: "var(--white)" }}>
-          <div
-            className="dc-collapse"
-            style={{
-              maxWidth: "1080px",
-              margin: "0 auto",
-              padding: "8px 24px 96px",
-              position: "relative",
-              display: "grid",
-              gridTemplateColumns: "0.82fr 1.18fr",
-              gap: "56px",
-              alignItems: "start",
-            }}
-          >
-            <div>
-              <div style={{ fontSize: "20px", fontWeight: 700, color: "var(--fg-0)", letterSpacing: "-0.01em", margin: "0 0 8px" }}>
-                こんなご相談を、承ります。
-              </div>
-              <p style={{ fontSize: "14px", lineHeight: 1.9, color: "var(--fg-2)", margin: "0 0 24px" }}>
-                どんな些細なことでも構いません。まずはお気軽にご相談ください。
+        <div className={styles.contactSection}>
+          <div className={styles.contactLayout}>
+            <div className={styles.intro}>
+              <h2 className={styles.introTitle}>お気軽にお問い合わせください。</h2>
+              <p className={styles.introText}>
+                ご相談内容が固まっていなくても構いません。課題の整理からお手伝いします。
               </p>
-              <div style={{ background: "var(--surface-card)", border: "0.5px solid var(--line-strong)", borderRadius: "12px", padding: "28px 30px", display: "flex", flexDirection: "column", gap: "16px" }}>
+              <div className={styles.checkList}>
                 {CHECKS.map((c) => (
-                  <div key={c} style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "14px", lineHeight: 1.6, color: "var(--fg-1)" }}>
-                    <span style={{ flex: "none", color: "var(--accent)", marginTop: "1px" }}><Icon name="check" size={18} /></span>
+                  <div key={c} className={styles.checkItem}>
+                    <span className={styles.checkIcon}><Icon name="check" size={18} /></span>
                     {c}
                   </div>
                 ))}
               </div>
-              <p style={{ fontSize: "13px", lineHeight: 1.9, color: "var(--fg-2)", margin: "24px 0 0" }}>
-                資料だけご覧になりたい方は、<a href="/download" style={{ color: "var(--accent)" }}>資料ダウンロード</a>もご利用いただけます。
+              <p className={styles.downloadNote}>
+                資料だけご覧になりたい方は、<a href="/download">資料ダウンロード</a>もご利用いただけます。
               </p>
             </div>
 
