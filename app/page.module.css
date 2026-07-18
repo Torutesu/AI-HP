@@ -593,7 +593,8 @@ a.fvBadge:hover {
   padding: 32px;
 }
 /* A restrained light trace runs around the edge without tinting the card. */
-.philCard::before {
+.philCard::before,
+.featureCard::before {
   content: "";
   position: absolute;
   inset: -0.5px;
@@ -601,7 +602,7 @@ a.fvBadge:hover {
   padding: 1.5px;
   border-radius: inherit;
   background: conic-gradient(
-    from var(--phil-border-angle),
+    from var(--card-border-angle),
     transparent 0 72%,
     rgba(43, 124, 255, 0.25) 78%,
     var(--accent) 85%,
@@ -620,20 +621,22 @@ a.fvBadge:hover {
   border-color: var(--line-strong);
   background-color: var(--white);
 }
-.philCard:hover::before {
+.philCard:hover::before,
+.featureCard:hover::before {
   opacity: 1;
-  animation: philBorderOrbit 1.35s linear infinite;
+  animation: cardBorderOrbit 1.35s linear infinite;
 }
-@property --phil-border-angle {
+@property --card-border-angle {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }
-@keyframes philBorderOrbit {
-  to { --phil-border-angle: 360deg; }
+@keyframes cardBorderOrbit {
+  to { --card-border-angle: 360deg; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .philCard:hover::before {
+  .philCard:hover::before,
+  .featureCard:hover::before {
     animation: none;
     background: var(--panel-border);
   }
@@ -722,13 +725,20 @@ a.fvBadge:hover {
   margin-top: 48px;
 }
 .featureCard {
+  position: relative;
+  overflow: hidden;
   background: var(--surface-card);
   border: 0.5px solid var(--line-strong);
   border-radius: 8px;
-  padding: 32px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+}
+.featureCard:hover {
+  transform: none;
+  border-color: var(--line-strong);
+  background-color: var(--surface-card);
 }
 .featureIcon {
   display: inline-flex;
@@ -744,7 +754,8 @@ a.fvBadge:hover {
 .featureTitle { font-size: 15.5px; font-weight: 600; color: var(--fg-0); line-height: 1.4; }
 .featureText { margin: 0; font-size: 13px; line-height: 1.85; color: var(--fg-2); }
 
-.pain { padding: 96px 0; }
+.pain { padding: 80px 0 76px; }
+.pain .grid4 { margin-top: 36px; }
 .why { padding: 96px 0; }
 
 /* ---------------- OS / AI経営基盤 ---------------- */
