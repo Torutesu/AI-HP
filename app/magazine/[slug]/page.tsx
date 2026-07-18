@@ -8,6 +8,7 @@ import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import { articles, getArticle, isoDate, isoPublished } from "@/lib/magazine";
 import { SITE_URL as SITE } from "@/lib/site";
+import styles from "./article.module.css";
 
 const abs = (p: string) => (p.startsWith("http") ? p : `${SITE}${p.startsWith("/") ? "" : "/"}${p}`);
 const DEFAULT_IMAGE = `${SITE}/logo-mark.png`;
@@ -442,32 +443,30 @@ export default async function ArticlePage({
         )}
 
         {/* CTA */}
-        <section style={{ padding: "0 0 96px" }}>
-          <div style={{ maxWidth: "820px", margin: "0 auto", padding: "0 24px" }}>
-            <div
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                borderRadius: "12px",
-                border: "0.5px solid var(--panel-border)",
-                background: "var(--panel-grad)",
-                padding: "40px 40px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                gap: "24px",
-                flexWrap: "wrap",
-              }}
-            >
-              <div>
-                <h2 style={{ fontSize: "22px", fontWeight: 700, color: "var(--fg-0)", margin: "0 0 8px" }}>
-                  貴社の一手を、数字で。
-                </h2>
-                <p style={{ margin: 0, fontSize: "14px", color: "var(--fg-2)", lineHeight: 1.8 }}>
-                  無料のAI経営診断から、はじめられます。
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaContainer}>
+            <div className={styles.ctaPanel}>
+              <span className={styles.ctaImage} aria-hidden="true" />
+              <span className={styles.ctaOverlay} aria-hidden="true" />
+              <div className={styles.ctaCopy}>
+                <span className={styles.ctaEyebrow}>FREE AI BUSINESS DIAGNOSIS</span>
+                <h2 className={styles.ctaTitle}>貴社の一手を、<br />数字で。</h2>
+                <p className={styles.ctaText}>
+                  コスト削減余地と売上の伸びしろを整理し、<br className={styles.desktopBreak} />経営会議で使える次の一手をご提案します。
                 </p>
+                <div className={styles.ctaPoints} aria-label="診断でわかること">
+                  <span>削減余地</span>
+                  <span>売上余地</span>
+                  <span>実行優先度</span>
+                </div>
               </div>
-              <Button href="/contact" variant="primary" size="lg">無料相談する</Button>
+              <div className={styles.ctaAction}>
+                <span className={styles.ctaActionLabel}>CONSULTATION / FREE</span>
+                <Button href="/contact" variant="secondary" size="lg" className={styles.ctaButton}>
+                  無料相談する<Icon name="arrow-right" size={17} />
+                </Button>
+                <span className={styles.ctaNote}>相談内容が固まっていなくても構いません</span>
+              </div>
             </div>
           </div>
         </section>

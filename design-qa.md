@@ -1,27 +1,27 @@
 # Design QA
 
-- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_ZKP0bI/スクリーンショット 2026-07-18 15.08.18.png`
-- Implementation: local Next.js homepage browser capture
+- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_SiNvNO/スクリーンショット 2026-07-18 15.09.19.png`
+- Implementation: local Next.js magazine article browser capture
 - Viewports: 1440 x 1000, 390 x 844
-- State: homepage issue cards at rest
+- State: magazine article CTA at rest
 
 ## Full-view comparison evidence
 
-- Desktop keeps all four issue cards aligned at equal height with consistent image and copy proportions.
+- Desktop keeps the CTA inside the 820 px article measure with balanced copy and action columns.
 - Mobile reports no document-level horizontal overflow at 390 px.
-- Mobile presents the cards as a 286 px-wide snap carousel with the next card visible as a navigation cue.
+- Mobile stacks copy, diagnostic points, and the full-width action inside a 358 px panel.
 
 ## Focused region comparison evidence
 
-- Each issue uses a distinct image that maps to visibility, adoption, ROI, or recurring cost.
-- Dark lower gradients preserve white-text contrast without hiding the image subject.
-- Japanese titles and body copy remain fully visible at desktop and mobile widths.
+- The data-network image creates depth while preserving a clear path toward the CTA.
+- The dark responsive overlay maintains legible white copy across desktop and mobile crops.
+- Diagnostic points and CTA labels remain fully visible without awkward Japanese line breaks.
 
 ## Comparison history
 
-1. P1: the original cards relied on small generic icons and did not visually communicate each business problem. Fixed with full-card contextual imagery.
-2. P2: the original long copy made the row feel text-heavy. Fixed by shortening each description while retaining the business meaning.
-3. P2: a full-width mobile card would hide the horizontal relationship. Fixed with an 80% snap width and a visible next-card cue.
+1. P1: the original pale banner lacked visual weight at the conversion point. Fixed with a full-bleed business-data image and dark premium treatment.
+2. P2: the original CTA explained only that consultation was free. Fixed by showing the three concrete outputs of the diagnosis.
+3. P2: the original oversized blue button competed with the copy. Fixed with a compact white action that remains full width on mobile.
 
 ## Verification
 
