@@ -25,6 +25,10 @@ type Lead = {
   ai_summary?: string;
   ai_intent?: string;
   ai_priority?: number;
+  ai_priority_reason?: string;
+  ai_next_action?: string;
+  ai_handling?: "human" | "auto" | string;
+  ai_talking_points?: string;
   ai_reply?: string;
   ai_status?: string;
 };
@@ -58,6 +62,12 @@ function PriorityBadge({ p }: { p?: number }) {
       {p}
     </span>
   );
+}
+
+function HandlingBadge({ h }: { h?: string }) {
+  if (h === "human") return <span className={`${styles.hBadge} ${styles.hHuman}`}>要対応</span>;
+  if (h === "auto") return <span className={`${styles.hBadge} ${styles.hAuto}`}>自動可</span>;
+  return <span className={styles.pNone}>—</span>;
 }
 
 export default function AdminDashboard() {
@@ -171,10 +181,11 @@ export default function AdminDashboard() {
               <th></th>
               <th>受信日時</th>
               <th>種別</th>
-              <th title="AIによる優先度（1〜5）">優先</th>
+              <th title="AIによる優先度（1〜5・企業規模×決裁権×緊度）">優先</th>
+              <th title="AIによる振り分け（要対応＝人間 / 自動可）">対応</th>
               <th>会社名</th>
               <th>氏名</th>
-              <th>メール</th>
+              <th title="AIが推奨する次の一手">次の一手</th>
               <th>AI要約</th>
             </tr>
           </thead>
@@ -192,16 +203,17 @@ export default function AdminDashboard() {
                       </span>
                     </td>
                     <td><PriorityBadge p={l.ai_priority} /></td>
+                    <td><HandlingBadge h={l.ai_handling} /></td>
                     <td>{l.company || "—"}</td>
                     <td className={styles.nowrap}>{`${l.last_name ?? ""}${l.first_name ?? ""}` || "—"}</td>
-                    <td>{l.email ? <a href={`mailto:${l.email}`} onClick={(e) => e.stopPropagation()}>{l.email}</a> : "—"}</td>
+                    <td className={styles.note} title={l.ai_next_action || ""}>{l.ai_next_action || "—"}</td>
                     <td className={styles.note} title={l.ai_summary || ""}>
                       {l.ai_summary || (l.ai_status === "error" ? <span className={styles.aiErr}>AI失敗</span> : <span className={styles.aiPending}>—</span>)}
                     </td>
                   </tr>
                   {open ? (
                     <tr className={styles.detailRow}>
-                      <td colSpan={8}>
+                      <td colSpan={9}>
                         <div className={styles.detail}>
                           <div className={styles.detailGrid}>
                             <div><span className={styles.dl}>電話</span>{l.phone || "—"}</div>
@@ -211,6 +223,24 @@ export default function AdminDashboard() {
                             <div><span className={styles.dl}>役職</span>{l.title || "—"}</div>
                             <div><span className={styles.dl}>AI意図</span>{l.ai_intent || "—"}</div>
                           </div>
+                          {l.ai_priority_reason || l.ai_next_action || l.ai_talking_points ? (
+                            <div className={styles.aiPanel}>
+                              <div className={styles.aiPanelHead}>
+                                <span className={styles.dl}>AIトリアージ</span>
+                                <PriorityBadge p={l.ai_priority} />
+                                <HandlingBadge h={l.ai_handling} />
+                              </div>
+                              {l.ai_priority_reason ? (
+                                <div className={styles.aiRow}><span className={styles.aiK}>優先度の根拠</span><span>{l.ai_priority_reason}</span></div>
+                              ) : null}
+                              {l.ai_next_action ? (
+                                <div className={styles.aiRow}><span className={styles.aiK}>次の一手</span><span>{l.ai_next_action}</span></div>
+                              ) : null}
+                              {l.ai_talking_points ? (
+                                <div className={styles.aiRow}><span className={styles.aiK}>商談の切り口</span><span>{l.ai_talking_points}</span></div>
+                              ) : null}
+                            </div>
+                          ) : null}
                           <div className={styles.detailBlock}>
                             <span className={styles.dl}>{l.type === "contact" ? "お問い合わせ内容" : "請求資料・関心テーマ"}</span>
                             <p className={styles.detailText}>{note(l) || "—"}</p>
@@ -223,7 +253,7 @@ export default function AdminDashboard() {
                           ) : null}
                           {l.ai_reply ? (
                             <div className={styles.detailBlock}>
-                              <span className={styles.dl}>AI返信ドラフト</span>
+                              <span className={styles.dl}>AI返信ドラフト（低スコア/自動対応向け）</span>
                               <p className={styles.replyText}>{l.ai_reply}</p>
                               <button
                                 className={styles.copyBtn}
@@ -245,7 +275,7 @@ export default function AdminDashboard() {
               );
             })}
             {!loading && items.length === 0 && !error ? (
-              <tr><td colSpan={8} className={styles.empty}>該当するリードはありません。</td></tr>
+              <tr><td colSpan={9} className={styles.empty}>該当するリードはありません。</td></tr>
             ) : null}
           </tbody>
         </table>

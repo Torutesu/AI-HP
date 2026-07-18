@@ -24,7 +24,8 @@ const COLUMNS = [
   "id", "created_at", "type", "company", "pref", "size", "role", "title",
   "last_name", "first_name", "email", "phone", "kind", "message", "asset",
   "themes", "roi", "country",
-  "ai_summary", "ai_intent", "ai_priority", "ai_reply", "ai_status",
+  "ai_summary", "ai_intent", "ai_priority", "ai_priority_reason",
+  "ai_next_action", "ai_handling", "ai_talking_points", "ai_reply", "ai_status",
 ];
 
 function json(body: unknown, status = 200): Response {
@@ -84,8 +85,13 @@ export const onRequestGet = async ({ request, env }: Ctx): Promise<Response> => 
       });
     }
 
+    // Hot leads first (highest AI priority), then most recent. In SQLite NULLs
+    // sort last under DESC, so not-yet-enriched rows fall to the bottom.
     const { results } = await env.DB
-      .prepare(`SELECT ${cols} FROM leads ${whereSql} ORDER BY created_at DESC LIMIT ? OFFSET ?`)
+      .prepare(
+        `SELECT ${cols} FROM leads ${whereSql}
+         ORDER BY ai_priority DESC, created_at DESC LIMIT ? OFFSET ?`
+      )
       .bind(...binds, limit, offset)
       .all<Record<string, unknown>>();
     const countRow = await env.DB

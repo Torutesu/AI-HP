@@ -195,6 +195,44 @@
 .p4 { background: #e8830c; }
 .p5 { background: #dc4436; }
 
+/* handling badge (human / auto routing) */
+.hBadge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.hHuman { background: #fdecdf; color: #c05a10; }
+.hAuto { background: #eef1f6; color: #6b7688; }
+
+/* AI triage panel (in the expanded detail) */
+.aiPanel {
+  margin-top: 14px;
+  background: #fff;
+  border: 1px solid #e3e8f0;
+  border-left: 3px solid #2b7cff;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.aiPanelHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.aiRow {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #28324a;
+  padding: 3px 0;
+}
+.aiK { font-size: 11px; font-weight: 700; color: #8a93a4; padding-top: 2px; }
+
 .more { text-align: center; margin-top: 20px; }
 .moreBtn {
   padding: 11px 26px;
