@@ -319,24 +319,14 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.philosophyGrid}>
             <Reveal className={styles.philLeft}>
+              <div className={styles.philLeftImage} />
               <div className={styles.philLeftBody}>
-                <h2 className={styles.philosophyTitle}>「学ぶ」だけでは、<br />成果につながりません。</h2>
-                <p className={styles.philLead}>戦略から実装、成果までを一気通貫で。</p>
-                <p className={styles.philosophyText}>研修や講座を受けるだけでは、現場も数字も変わりません。知識は、貴社の事業に結びついて、はじめて成果になります。</p>
-                <p className={styles.philosophyText}>AIモデルも活用の手法も、日進月歩で進化しています。私たちは常に最新の打ち手を取り入れ、貴社に最適な形で実装し続けます。</p>
+                <span className={styles.philKicker}>FROM KNOWLEDGE TO IMPACT</span>
+                <h2 className={styles.philosophyTitle}>「学ぶ」で、<br />終わらせない。</h2>
+                <p className={styles.philLead}>戦略から実装、成果まで。</p>
               </div>
-              <div className={styles.philStats}>
-                {[
-                  { icon: "route", value: "一気通貫", label: "戦略から実装・改善まで" },
-                  { icon: "cpu", value: "内製で構築", label: "貴社の資産として残す" },
-                  { icon: "handshake", value: "伴走型", label: "成果が出るまで、伴走" },
-                ].map((s) => (
-                  <div key={s.value} className={styles.philStat}>
-                    <span className={styles.philStatIcon}><Icon name={s.icon} size={18} /></span>
-                    <div className={styles.philStatValue}>{s.value}</div>
-                    <div className={styles.philStatLabel}>{s.label}</div>
-                  </div>
-                ))}
+              <div className={styles.philFlow} aria-label="戦略から成果まで">
+                <span>STRATEGY</span><i>→</i><span>BUILD</span><i>→</i><span>IMPACT</span>
               </div>
             </Reveal>
 
@@ -344,21 +334,24 @@ export default function Home() {
               {[
                 {
                   no: "01",
-                  icon: "compass",
-                  title: "事業の理解から、始める。",
-                  text: "戦略コンサルティングの視点で、貴社がどのように価値を生み、どこで稼ぐのかを丁寧に紐解きます。すべては、ここから始まります。",
+                  label: "BUSINESS DESIGN",
+                  image: "/img/company/position.jpg",
+                  title: "事業を、解剖する。",
+                  text: "稼ぎ方と課題を特定。",
                 },
                 {
                   no: "02",
-                  icon: "workflow",
-                  title: "貴社専属の、開発チーム。",
-                  text: "改善策とシステム構成をともに描き、現場で確かに使える内製AIを開発します。業績につながる仕組みを、伴走しながら形にします。",
+                  label: "AI BUILD TEAM",
+                  image: "/img/why/modules.jpg",
+                  title: "専属AIを、実装する。",
+                  text: "現場で使える仕組みを内製。",
                 },
                 {
                   no: "03",
-                  icon: "trending-up",
-                  title: "投資に、成果で応える。",
-                  text: "まずコスト削減から、次に売上向上へ。人員計画の見直しにまで踏み込み、投資対効果にこだわってご支援します。",
+                  label: "MEASURABLE IMPACT",
+                  image: "/img/company/promise.jpg",
+                  title: "成果まで、改善する。",
+                  text: "コスト・売上を数字で追う。",
                   highlight: true,
                 },
               ].map((c, i) => (
@@ -367,15 +360,14 @@ export default function Home() {
                   delay={0.05 + i * 0.08}
                   className={`${styles.philCard}${c.highlight ? ` ${styles.philCardHi}` : ""} liftCard`}
                 >
-                  <span className={styles.philCardIcon}><Icon name={c.icon} size={22} /></span>
+                  <div className={styles.philCardImage} style={{ backgroundImage: `url(${c.image})` }} />
+                  <div className={styles.philCardWash} />
                   <div className={styles.philCardBodyText}>
-                    <div className={styles.philCardHead}>
-                      <span className={styles.philCardNo}>{c.no}</span>
-                      <span className={styles.philCardTitle}>{c.title}</span>
-                    </div>
+                    <span className={styles.philCardLabel}>{c.label}</span>
+                    <span className={styles.philCardTitle}>{c.title}</span>
                     <p className={styles.philCardText}>{c.text}</p>
                   </div>
-                  <span className={styles.philCardWm} aria-hidden>{c.no}</span>
+                  <span className={styles.philCardNo} aria-hidden>{c.no}</span>
                 </Reveal>
               ))}
             </div>

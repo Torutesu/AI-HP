@@ -1,27 +1,27 @@
 # Design QA
 
-- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_EtZ9Tz/スクリーンショット 2026-07-18 15.27.03.png`, `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_2lTGrl/スクリーンショット 2026-07-18 15.27.12.png`
-- Implementation: local Next.js consulting page browser capture
+- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_bebRgi/スクリーンショット 2026-07-18 15.34.18.png`
+- Implementation: local Next.js homepage philosophy section browser capture
 - Viewports: 1440 x 1000, 390 x 844
-- State: training contrast, four-step process, and closing CTA
+- State: knowledge-to-impact message and three delivery steps
 
 ## Full-view comparison evidence
 
-- The desktop process row aligns to four equal-height image cards.
+- The desktop visual panel aligns with the combined height of the three process cards.
 - Mobile reports no document-level horizontal overflow at 390 px.
-- Mobile contrast and process cards resolve to the same 342 px content width.
+- Mobile uses a 360 px message panel and compact 150 px process cards.
 
 ## Focused region comparison evidence
 
-- The three training contrasts now communicate `NO` and `YES` through imagery, typography, and color rather than icons.
-- The four consulting steps use distinct visuals, process numbers, and concise English category labels.
-- The closing CTA uses a full visual backdrop, white copy, and a high-contrast white action button.
+- Two long explanatory paragraphs and three icon statistics were removed from the left panel.
+- The three right-side descriptions were reduced to one short sentence each.
+- Full-card imagery, navy overlays, process labels, and numbers communicate the removed detail visually.
 
 ## Comparison history
 
-1. P1: icon-based contrast rows looked like generic notices. Fixed with image-backed `NO / YES` cards.
-2. P1: the pale closing banner did not create a strong conversion endpoint. Fixed with a dark visual CTA and white button.
-3. P2: rich cards could become oversized on mobile. Fixed with 94 px contrast cards, 264 px process cards, and a 360 px CTA.
+1. P1: the section repeated its message across five long text blocks. Fixed by reducing it to one message and three outcomes.
+2. P1: generic line icons carried little meaning. Fixed by using business, module, and growth imagery.
+3. P2: the desktop composition could become too tall on mobile. Fixed with dedicated 360 px and 150 px mobile card heights.
 
 ## Verification
 
