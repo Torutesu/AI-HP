@@ -68,7 +68,6 @@ const rawArticles: Article[] = [
     category: "経営・組織",
     title: "会社でChatGPTを業務活用する、最初の一歩",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "会社でChatGPTを業務活用したいが何から始めるか。個人の1業務で試す入口から、向く業務の選び方、機密の線引き、定着のコツまで具体的に解説します。",
     summary:
@@ -127,7 +126,6 @@ const rawArticles: Article[] = [
     category: "経営・組織",
     title: "AI活用のKPIをどう設計するか（活用度と効果の指標）",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "活用度と効果の指標をどう分け、どんな目標値を置くか。AI活用のKPI設計を、指標例と判断基準に沿って解説します。",
     summary:
@@ -185,7 +183,6 @@ const rawArticles: Article[] = [
     category: "経営・組織",
     title: "AI投資の社内稟議を通すための、経営への説明設計",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "現場で効果が見えていても、稟議で止まる。決裁者が見る観点と、通るための説明資料の組み立て方を具体例で解説します。",
     summary:
@@ -243,7 +240,6 @@ const rawArticles: Article[] = [
     category: "事例・シナリオ",
     title: "建設業のAI活用：書類・積算・問い合わせを軽くする",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "書類作成・積算・問い合わせ対応をAIで軽くする方法を、建設業の現場に沿って具体的に解説します。",
     summary:
@@ -300,7 +296,6 @@ const rawArticles: Article[] = [
     category: "事例・シナリオ",
     title: "物流のAI活用：需要予測と問い合わせ対応の設計",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "需要予測から問い合わせ・伝票処理まで、物流と倉庫でAIが効く4領域を、人との切り分けとデータ整備、導入の順序まで具体的に設計します。",
     summary:
@@ -358,7 +353,6 @@ const rawArticles: Article[] = [
     category: "事例・シナリオ",
     title: "採用・人材業のAI活用：スクリーニングと対応の効率化",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "書類スクリーニングの下処理、応募者対応、求人原稿、面接記録。採用・人材業の準備作業をAIで軽くしつつ、公平性と最終判断を人に残す設計を解説します。",
     summary:
@@ -416,7 +410,6 @@ const rawArticles: Article[] = [
     category: "コスト削減",
     title: "AIの費用対効果をどう試算するか（回収期間の考え方）",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "AIの費用対効果は、効果を金額に換算し、初期費用と運用費で割って回収期間を出せば試算できます。計算例と感度分析、落とし穴まで、順を追って解説します。",
     summary:
@@ -481,7 +474,6 @@ const rawArticles: Article[] = [
     category: "技術トレンド",
     title: "生成AIの誤り（ハルシネーション）を業務で抑える設計",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "生成AIが事実と異なる内容をもっともらしく答えるハルシネーション。なぜ起きるのか、業務で困る場面、そして誤りを完全には消せない前提で被害を抑える設計を、かみ砕いて整理します。",
     summary:
@@ -541,7 +533,6 @@ const rawArticles: Article[] = [
     category: "経営・組織",
     title: "AI導入にかかる期間の目安と、段階的な進め方",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "AI導入にどれくらい期間がかかるのか。一律の目安が言えない理由と、フェーズごとの期間の考え方、見積もりの誤解までを整理します。",
     summary:
@@ -596,7 +587,6 @@ const rawArticles: Article[] = [
     category: "経営・組織",
     title: "DXとAI活用は何が違うか、中小企業の優先順位",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "DXとAI活用はよく混同されるが、指す対象の大きさが違う。両者の定義と関係を整理し、中小企業が小さく数字を動かすところから始める優先順位を示します。",
     summary:

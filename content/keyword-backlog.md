@@ -46,16 +46,16 @@
 | 高 | 社内 生成AI ガイドライン | ハウツー | 経営・組織 | 社内の生成AI利用ガイドラインの作り方（そのまま使える構成）→ `genai-guidelines` | published |
 | 高 | RAG 社内文書 検索 とは | 定義 | 技術トレンド | 社内文書を賢く検索するRAGとは何か、導入の勘所 → `rag-explained` | published |
 | 高 | AI チャットボット 問い合わせ 効果 | 購入ガイド | 事例・シナリオ | 問い合わせ対応AIの効果と、失敗しない設計 → `chatbot-support` | published |
-| 中 | ChatGPT 業務 活用 始め方 | ハウツー | 経営・組織 | 会社でChatGPTを業務活用する、最初の一歩 → `chatgpt-business-start` | drafting（レビュー待ち） |
-| 中 | AI 導入 KPI 設計 | ハウツー | 経営・組織 | AI活用のKPIをどう設計するか（活用度と効果） → `ai-kpi-design` | drafting（レビュー待ち） |
-| 中 | AI 稟議 社内 通し方 | ハウツー | 経営・組織 | AI投資の社内稟議を通すための、経営への説明設計 → `ai-proposal-approval` | drafting（レビュー待ち） |
-| 中 | 建設業 AI活用 | ハウツー | 事例・シナリオ | 建設業のAI活用：書類・積算・問い合わせを軽くする → `construction-ai` | drafting（レビュー待ち） |
-| 中 | 物流 倉庫 AI活用 | ハウツー | 事例・シナリオ | 物流のAI活用：需要予測と問い合わせ対応の設計 → `logistics-ai` | drafting（レビュー待ち） |
-| 中 | 人材 採用 AI活用 | ハウツー | 事例・シナリオ | 採用・人材業のAI活用：スクリーニングと対応の効率化 → `recruiting-ai` | drafting（レビュー待ち） |
-| 低 | AI 費用対効果 計算 方法 | ハウツー | コスト削減 | AIの費用対効果をどう試算するか（回収期間の考え方） → `ai-roi-calculation` | drafting（レビュー待ち） |
-| 低 | 生成AI ハルシネーション 対策 | 定義/トラブル対応 | 技術トレンド | 生成AIの誤り（ハルシネーション）を業務で抑える設計 → `hallucination-control` | drafting（レビュー待ち） |
-| 低 | AI 導入 スケジュール 期間 | 定義 | 経営・組織 | AI導入にかかる期間の目安と、段階的な進め方 → `ai-timeline` | drafting（レビュー待ち） |
-| 低 | 中小企業 DX AI 違い | 比較 | 経営・組織 | DXとAI活用は何が違うか、中小企業の優先順位 → `dx-vs-ai` | drafting（レビュー待ち） |
+| 中 | ChatGPT 業務 活用 始め方 | ハウツー | 経営・組織 | 会社でChatGPTを業務活用する、最初の一歩 → `chatgpt-business-start` | published |
+| 中 | AI 導入 KPI 設計 | ハウツー | 経営・組織 | AI活用のKPIをどう設計するか（活用度と効果） → `ai-kpi-design` | published |
+| 中 | AI 稟議 社内 通し方 | ハウツー | 経営・組織 | AI投資の社内稟議を通すための、経営への説明設計 → `ai-proposal-approval` | published |
+| 中 | 建設業 AI活用 | ハウツー | 事例・シナリオ | 建設業のAI活用：書類・積算・問い合わせを軽くする → `construction-ai` | published |
+| 中 | 物流 倉庫 AI活用 | ハウツー | 事例・シナリオ | 物流のAI活用：需要予測と問い合わせ対応の設計 → `logistics-ai` | published |
+| 中 | 人材 採用 AI活用 | ハウツー | 事例・シナリオ | 採用・人材業のAI活用：スクリーニングと対応の効率化 → `recruiting-ai` | published |
+| 低 | AI 費用対効果 計算 方法 | ハウツー | コスト削減 | AIの費用対効果をどう試算するか（回収期間の考え方） → `ai-roi-calculation` | published |
+| 低 | 生成AI ハルシネーション 対策 | 定義/トラブル対応 | 技術トレンド | 生成AIの誤り（ハルシネーション）を業務で抑える設計 → `hallucination-control` | published |
+| 低 | AI 導入 スケジュール 期間 | 定義 | 経営・組織 | AI導入にかかる期間の目安と、段階的な進め方 → `ai-timeline` | published |
+| 低 | 中小企業 DX AI 違い | 比較 | 経営・組織 | DXとAI活用は何が違うか、中小企業の優先順位 → `dx-vs-ai` | published |
 
 ## 補充のルール
 
