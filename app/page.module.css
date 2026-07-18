@@ -642,21 +642,18 @@ a.fvBadge:hover {
 .strengths { padding: 84px 0 96px; }
 .roiWrap {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 20px;
+  grid-template-columns: minmax(0, 0.82fr) minmax(520px, 1.18fr);
+  gap: clamp(40px, 5vw, 72px);
   margin-top: 20px;
-  align-items: stretch;
+  align-items: start;
 }
 .roiReasons {
-  border: 0.5px solid var(--line-strong);
-  border-radius: 16px;
-  padding: 32px;
-  background: var(--ink-900);
+  padding: 38px 0 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
-.roiHeading { font-size: clamp(24px, 3.6vw, 32px); font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; line-height: 1.25; margin: 14px 0 0; }
+.roiHeading { font-size: clamp(24px, 3.6vw, 32px); font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; line-height: 1.25; margin: 0; }
 .roiList { display: flex; flex-direction: column; gap: 22px; margin-top: 26px; }
 .roiItem { display: flex; gap: 16px; align-items: flex-start; }
 .roiIcon {
@@ -674,7 +671,7 @@ a.fvBadge:hover {
 .roiItemTitle { font-size: 16px; font-weight: 700; color: var(--fg-0); margin-bottom: 6px; }
 .roiItemText { margin: 0; font-size: 13.5px; line-height: 1.85; color: var(--fg-2); }
 
-.roiSimCol { display: flex; }
+.roiSimCol { display: flex; min-width: 0; }
 
 /* ---------------- Card grids (pain / why) ---------------- */
 .grid4 {
@@ -1014,7 +1011,8 @@ a.fvBadge:hover {
   .fvTopBadge { padding: 14px; gap: 12px; }
   .fvTitle { font-size: 15px; }
   .philosophyGrid { grid-template-columns: 1fr; gap: 36px; }
-  .roiWrap { grid-template-columns: 1fr; }
+  .roiWrap { grid-template-columns: 1fr; gap: 32px; }
+  .roiReasons { max-width: 720px; padding: 0; }
   .osSplit { grid-template-columns: 1fr; }
   .grid4 { grid-template-columns: repeat(2, 1fr); }
   .osTop { grid-template-columns: 1fr; }
@@ -1116,7 +1114,7 @@ a.fvBadge:hover {
 
   /* ---- Unified mobile card padding: common 22px everywhere ---- */
   .featureCard, .osTopCard, .osPanel, .rowCard, .stepCard, .statcard,
-  .philCard, .philLeft, .roiReasons { padding: 22px; }
+  .philCard, .philLeft { padding: 22px; }
   .osTopCard { min-height: 0; }
   .osTopBg { opacity: 0.88; }
   .osTopText { max-width: 100%; }
