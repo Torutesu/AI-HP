@@ -606,7 +606,6 @@ const rawArticles: Article[] = [
   },
   {
     slug: "poc-to-results",
-    status: "draft",
     summary:
       "AIを「試して終わり」にする会社と数字が動く会社を分けるのは、技術ではなく設計です。成果が出る会社は、コスト・売上・利益率といった経営指標から逆算して業務を選び、業務単位で小さく実装し、毎月同じ物差しで効果を検証し続けます。出発点は現状の可視化と診断で、どの数字をいくら動かすかを最初に決めることが鍵です。",
     related: ["ai-adoption-steps", "ai-adoption-failures", "roi-visualization"],
@@ -670,7 +669,6 @@ const rawArticles: Article[] = [
   },
   {
     slug: "saas-cost-one-third",
-    status: "draft",
     summary:
       "汎用SaaSの固定費が下がりにくいのは、席数課金・機能の過剰・分散契約という構造が原因です。内製なら必要な機能だけを実装でき席数課金からも解放されるため、開発済みモジュールとオープン技術を組み合わせれば同等機能をより軽い構造で実装できます。ただし全置換ではなく、標準業務はSaaSに残し、差別化・高コスト領域を内製に切り替える見極めが肝心です。",
     related: ["license-audit", "inhouse-vs-saas", "ai-cost-benchmark"],
@@ -696,6 +694,7 @@ const rawArticles: Article[] = [
       "## どの契約から手をつけるか",
       "すべての契約が置き換えの候補になるわけではありません。優先度が高いのは、席数課金の比率が大きく、使っている機能が一部に偏っている契約です。反対に、少人数で全機能を使い切っている契約は、置き換えても削減幅が小さいため、後回しでかまいません。ここで無理をして効果の薄い契約から着手すると、労力の割に数字が動かず、社内の熱が冷めてしまいます。",
       "もう1つの物差しは、その業務が自社の差別化に関わるかどうかです。差別化に直結する業務ほど、汎用SaaSの標準機能では細部が噛み合わず、内製で自社の型に合わせる価値が出ます。たとえば士業や専門サービスの下調べのように、自社に蓄積したナレッジを組み込むほど効く業務は内製と相性がよく、私たちの業種別シミュレーションでは下調べ工数を48%削減する想定を置いています。残すか置き換えるかで迷うときの整理は[内製とSaaSの判断フレーム](/magazine/inhouse-vs-saas)にまとめています。",
+      "※業種別シミュレーションの数値は代表的な想定であり、効果を保証するものではありません。",
       "※業種別の数値は代表的なシミュレーションであり、効果を保証するものではありません。",
       "## 進め方：診断 → 試算 → 段階的置換",
       "- 活用度診断：契約中のツール・席数・年間費用と、実際の利用状況を棚卸しする（進め方は[活用度診断のはじめ方](/magazine/license-audit)を参照）\n- 置換試算：内製した場合の開発・運用コストと、削減できる利用料・回収期間を比較する\n- 段階的置換：影響範囲の小さい業務から置き換え、検証しながら対象を広げる",
@@ -723,7 +722,6 @@ const rawArticles: Article[] = [
   },
   {
     slug: "sales-ai-win-rate",
-    status: "draft",
     summary:
       "営業支援AIは事務効率化にとどめず、商談分析・提案書自動生成・顧客ランキングの3パターンで使うと勝率に直接効きます。導入はすでにデータがある場所から始め、勝率・受注件数という同じ物差しで毎月検証します。判断基準を現場と一緒に作り、根拠を説明できる形にすることが定着の条件です。",
     related: ["retail-ec-ai", "roi-visualization", "poc-to-results"],
@@ -788,7 +786,6 @@ const rawArticles: Article[] = [
     date: "2026.07.02",
     image: "/img/service/hero.jpg",
     updatedAt: "2026.07.18",
-    status: "draft",
     excerpt:
       "グローバルのアプリケーションレイヤー事例から、日本企業が取り入れるべき勝ち筋を読み解きます。",
     body: [
@@ -828,7 +825,6 @@ const rawArticles: Article[] = [
   },
   {
     slug: "manufacturing-estimate",
-    status: "draft",
     summary:
       "製造業の見積は最も属人化しやすい業務の一つで、AIが図面からの情報抽出や類似案件検索、見積初稿を担い、人が最終判断を行う分業が効果的です。当研究所のシミュレーションでは見積作成工数45%削減・受注対応スピード18%向上と試算しています（効果を保証するものではありません）。整備した工程知識は見積だけでなく教育や技術継承にも使える全社資産になります。",
     related: ["back-office-automation", "professional-services-ai", "poc-to-results"],
@@ -888,7 +884,6 @@ const rawArticles: Article[] = [
   },
   {
     slug: "roi-visualization",
-    status: "draft",
     summary:
       "AI投資のROIが語りにくいのは、効果が分散し、測り方がばらばらで、導入前の基準値がないためで、測れないのではなく測る設計をしていないだけです。投資・活用・効果の3層で捉え、その接続を見ることで、削るべき所と伸ばすべき所が見えます。換算ルールの固定・導入前の基準値取得・月次の定点観測が、役員会で使える数字にするコツです。",
     related: ["poc-to-results", "license-audit", "ai-adoption-steps"],
@@ -953,7 +948,6 @@ const rawArticles: Article[] = [
     date: "2026.06.20",
     image: "/img/industries/finance.jpg",
     updatedAt: "2026.07.18",
-    status: "draft",
     excerpt:
       "誰が、どのツールを、どれだけ使っているか。活用度診断から、無駄な固定費を洗い出します。",
     body: [
@@ -998,7 +992,6 @@ const rawArticles: Article[] = [
   },
   {
     slug: "back-office-automation",
-    status: "draft",
     summary:
       "バックオフィスの定型業務は、頻度が高く量が多い・手順が決まっている・入力形式がばらつく業務から自動化すると効果的です。読み取り・転記・突合はAI、承認・例外判断は人という切り分けが効果を決め、確信度の低い処理だけを人に回す例外ルートを用意します。空いた時間を締めの早期化や分析など判断業務へ戻すところまで設計します。",
     related: ["manufacturing-estimate", "healthcare-backoffice-ai", "ai-adoption-steps"],
@@ -1057,7 +1050,6 @@ const rawArticles: Article[] = [
   },
   {
     slug: "ai-native-organization",
-    status: "draft",
     summary:
       "研修だけでAIが定着しないのは、業務フローにAIの出番が組み込まれていないからです。定着させるには「推奨する」のではなく、頻度の高い業務にAIを組み込み、業務手順書に正式な手順として書き込みます。経営スポンサー・現場チャンピオン・横断推進チームの3役と、活用度の月次可視化が移行を支えます。",
     related: ["poc-to-results", "ai-adoption-steps", "ai-adoption-failures"],
