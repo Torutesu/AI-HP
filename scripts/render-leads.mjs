@@ -35,16 +35,33 @@ const SQL = `
   LIMIT 500
 `;
 
+// Use curl rather than fetch: outbound HTTPS in this environment goes through a
+// pre-configured proxy that curl honors (via HTTPS_PROXY) but Node's fetch does
+// not by default. curl keeps this a single-command workflow.
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+const execFileP = promisify(execFile);
+
 async function queryD1() {
   const url = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/d1/database/${DB_ID}/query`;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${API_TOKEN}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ sql: SQL }),
-  });
-  const json = await res.json();
-  if (!res.ok || !json.success) {
-    throw new Error(`D1 query failed: ${res.status} ${JSON.stringify(json.errors || json)}`);
+  const { stdout } = await execFileP(
+    "curl",
+    [
+      "-s", "-X", "POST", url,
+      "-H", `Authorization: Bearer ${API_TOKEN}`,
+      "-H", "Content-Type: application/json",
+      "--data", JSON.stringify({ sql: SQL }),
+    ],
+    { maxBuffer: 32 * 1024 * 1024 }
+  );
+  let json;
+  try {
+    json = JSON.parse(stdout);
+  } catch {
+    throw new Error(`D1 応答がJSONではありません: ${stdout.slice(0, 200)}`);
+  }
+  if (!json.success) {
+    throw new Error(`D1 query failed: ${JSON.stringify(json.errors || json)}`);
   }
   return json.result?.[0]?.results ?? [];
 }
