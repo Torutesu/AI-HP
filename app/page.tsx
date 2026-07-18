@@ -74,6 +74,7 @@ const STRENGTHS: {
     description: "海外を含むAI活用事例を、業界・用途・成果別に整理。提案や設計の母集団があります。",
     accent: "業界別に整理済み",
     visual: "research",
+    image: "/img/badge/research-archive.png",
   },
   {
     color: "#E0A800",
@@ -82,6 +83,7 @@ const STRENGTHS: {
     description: "まずは削減から効かせ、次に売上へ。役員会で説明できる数字まで最短で持っていきます。",
     accent: "最初に効くのはコスト",
     visual: "impact",
+    image: "/img/badge/business-impact.png",
   },
 ];
 
@@ -193,22 +195,14 @@ export default function Home() {
                       ) : null}
                       {b.visual === "research" ? (
                         <span className={styles.fvMediaResearch} aria-hidden>
-                          <span className={styles.fvDocStack}>
-                            <span />
-                            <span />
-                            <span />
-                          </span>
-                          <span className={styles.fvDocCover}>
-                            <span className={styles.fvDocBar} />
-                            <span className={styles.fvDocChart} />
-                          </span>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img className={styles.fvAssetImage} src={b.image} alt="" />
                         </span>
                       ) : null}
                       {b.visual === "impact" ? (
                         <span className={styles.fvMediaImpact} aria-hidden>
-                          <span className={styles.fvImpactRing} />
-                          <span className={styles.fvImpactCore}>ROI</span>
-                          <span className={styles.fvImpactSpark} />
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img className={styles.fvAssetImage} src={b.image} alt="" />
                         </span>
                       ) : null}
                       <span className={styles.fvTopCopy}>
@@ -245,13 +239,19 @@ export default function Home() {
         </div>
 
         <Reveal immediate delay={0.58} y={20} className={styles.partnerRow}>
-          <span className={styles.partnerNote}>世界の先端AI事例を、日々リサーチしています</span>
-          <div className={styles.partnerLogos}>
-            {PARTNERS.map((p) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={p.alt} src={p.src} alt={p.alt} />
-            ))}
+          <div className={styles.partnerViewport}>
+            <div className={styles.partnerLogos}>
+              {[0, 1].map((set) => (
+                <div key={set} className={styles.partnerLogoSet} aria-hidden={set === 1}>
+                  {PARTNERS.map((p) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img key={`${set}-${p.alt}`} src={p.src} alt={set === 0 ? p.alt : ""} />
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
+          <span className={styles.partnerNote}>世界の先端AI事例を、日々リサーチしています</span>
         </Reveal>
       </div>
 

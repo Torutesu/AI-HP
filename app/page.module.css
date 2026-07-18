@@ -162,8 +162,16 @@ a.fvBadge:hover {
   justify-content: flex-start;
 }
 .fvMediaResearch {
-  background: linear-gradient(160deg, rgba(87, 145, 255, 0.32), rgba(22, 79, 172, 0.18));
+  overflow: hidden;
+  background: rgba(13, 24, 44, 0.8);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.fvAssetImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
 }
 .fvDocStack {
   position: absolute;
@@ -208,7 +216,8 @@ a.fvBadge:hover {
     linear-gradient(90deg, rgba(43,124,255,0.3) 20%, rgba(43,124,255,0.12) 20% 40%, rgba(43,124,255,0.42) 40% 62%, rgba(43,124,255,0.2) 62% 100%);
 }
 .fvMediaImpact {
-  background: radial-gradient(circle at 50% 42%, rgba(255, 226, 98, 0.5), rgba(255, 189, 28, 0.12) 58%, rgba(255, 189, 28, 0.04) 100%);
+  overflow: hidden;
+  background: rgba(28, 19, 7, 0.82);
 }
 .fvImpactRing {
   position: absolute;
@@ -346,28 +355,50 @@ a.fvBadge:hover {
   margin: 0 44px;
   padding: 22px 0 30px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
+  gap: 16px;
 }
 .partnerNote {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.55);
   line-break: strict;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+.partnerViewport {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 .partnerLogos {
   display: flex;
   align-items: center;
-  gap: 34px;
-  flex-wrap: wrap;
+  width: max-content;
   opacity: 0.7;
+  animation: partnerMarquee 24s linear infinite;
 }
-.partnerLogos img {
+.partnerLogoSet {
+  display: flex;
+  align-items: center;
+  gap: clamp(34px, 4.4vw, 72px);
+  padding-right: clamp(34px, 4.4vw, 72px);
+}
+.partnerLogoSet img {
   height: 18px;
   width: auto;
   filter: brightness(0) invert(1);
+  flex: none;
+}
+
+@keyframes partnerMarquee {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partnerLogos { animation-play-state: paused; }
 }
 
 /* ---------------- OUR BELIEF ---------------- */
@@ -1021,8 +1052,9 @@ a.fvBadge:hover {
   .heroCtas { gap: 14px; }
   .partnerRow { margin: 0 20px; padding: 18px 0 22px; gap: 14px; }
   .partnerNote { font-size: 12px; }
-  .partnerLogos { gap: 20px; width: 100%; justify-content: space-between; }
-  .partnerLogos img { height: 15px; max-width: 27%; }
+  .partnerLogoSet { gap: 28px; padding-right: 28px; }
+  .partnerLogoSet img { height: 15px; }
+  .partnerLogos { animation-duration: 18s; }
 
   /* badges become compact horizontal rows */
   .fvBadges { grid-template-columns: 1fr; max-width: 100%; gap: 10px; margin-top: 24px; }
