@@ -8,10 +8,14 @@
 import { appendRow, type SheetsEnv } from "./googleSheets";
 
 /** Minimal structural type for a D1 database binding (avoids workers-types dep). */
+export interface D1Stmt {
+  bind(...values: unknown[]): D1Stmt;
+  run(): Promise<unknown>;
+  all<T = Record<string, unknown>>(): Promise<{ results: T[] }>;
+  first<T = Record<string, unknown>>(): Promise<T | null>;
+}
 export interface D1Like {
-  prepare(query: string): {
-    bind(...values: unknown[]): { run(): Promise<unknown> };
-  };
+  prepare(query: string): D1Stmt;
 }
 
 export interface LeadStoreEnv extends SheetsEnv {
