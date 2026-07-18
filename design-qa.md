@@ -1,27 +1,27 @@
 # Design QA
 
-- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_DMun0L/スクリーンショット 2026-07-18 15.24.28.png`
+- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_JvMCXs/スクリーンショット 2026-07-18 15.25.37.png`
 - Implementation: local Next.js homepage browser capture
 - Viewports: 1440 x 1000, 390 x 844
-- State: homepage WHY cards at 1440 x 1000 and 390 x 844
+- State: desktop service dropdown and open mobile navigation
 
 ## Full-view comparison evidence
 
-- All four desktop cards resolve to an equal 340 px height.
+- The desktop dropdown remains fully inside the 1440 px viewport and opens directly below `サービス`.
 - Mobile reports no document-level horizontal overflow at 390 px.
-- Desktop title and body start positions differ by no more than 2 px across the row.
+- The mobile direct links resolve to equal 165 x 58 px tap targets.
 
 ## Focused region comparison evidence
 
-- The updated `最先端のオープンソース技術` label remains on one line at desktop width.
-- Shared title and body blocks align cards with different copy lengths.
-- Mobile removes the desktop alignment minimums and preserves the compact swipe-card layout.
+- `AI経営基盤` links to `/ai-os/` and `コンサルティング` links to `/consulting/` in both layouts.
+- Desktop uses a two-card dropdown without changing the header height.
+- Mobile keeps both services visible immediately below the parent service link.
 
 ## Comparison history
 
-1. P1: the second feature used the broader `オープン技術` wording. Fixed to the requested `オープンソース技術` wording.
-2. P2: variable body line counts shifted title positions across the row. Fixed with shared title and body minimum heights.
-3. P2: desktop alignment constraints could add empty space on mobile. Fixed by resetting those minimums below 640 px.
+1. P1: `サービス` only linked to the overview page. Fixed with direct links to both core offerings.
+2. P2: a desktop-only dropdown would hide the direct path on mobile. Fixed with two persistent mobile service cards.
+3. P2: dropdown hover gaps could close the menu while moving the pointer. Fixed with a transparent interaction bridge.
 
 ## Verification
 

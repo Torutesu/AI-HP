@@ -14,6 +14,21 @@ const NAV = [
   { label: "マガジン", href: "/magazine" },
 ];
 
+const SERVICE_LINKS = [
+  {
+    eyebrow: "AI OPERATING SYSTEM",
+    label: "AI経営基盤",
+    description: "業務を置き換え、成果を生むAIを内製",
+    href: "/ai-os",
+  },
+  {
+    eyebrow: "STRATEGY & EXECUTION",
+    label: "コンサルティング",
+    description: "事業理解から戦略・実装まで伴走",
+    href: "/consulting",
+  },
+];
+
 export default function SiteHeader({
   variant = "overlay",
 }: {
@@ -41,7 +56,29 @@ export default function SiteHeader({
         </Link>
 
         <nav className={styles.nav}>
-          {NAV.map((item) => (
+          {NAV.map((item) => item.href === "/service" ? (
+            <div key={item.href} className={styles.serviceNav}>
+              <Link className={`navlink ${styles.serviceTrigger}`} href={item.href} aria-haspopup="true">
+                {item.label}<span className={styles.serviceCaret} aria-hidden="true" />
+              </Link>
+              <div className={styles.serviceDropdown} aria-label="サービスメニュー">
+                <div className={styles.serviceDropdownHead}>
+                  <span>OUR SERVICES</span>
+                  <Link href="/service">サービス一覧</Link>
+                </div>
+                <div className={styles.serviceDropdownGrid}>
+                  {SERVICE_LINKS.map((service) => (
+                    <Link key={service.href} className={styles.serviceOption} href={service.href}>
+                      <span className={styles.serviceOptionEyebrow}>{service.eyebrow}</span>
+                      <strong>{service.label}</strong>
+                      <span className={styles.serviceOptionText}>{service.description}</span>
+                      <span className={styles.serviceArrow} aria-hidden="true">→</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
             <Link key={item.href} className="navlink" href={item.href}>
               {item.label}
             </Link>
@@ -74,7 +111,20 @@ export default function SiteHeader({
             transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className={styles.mobileInner}>
-              {NAV.map((item) => (
+              {NAV.map((item) => item.href === "/service" ? (
+                <div key={item.href} className={styles.mobileServiceGroup}>
+                  <Link className={styles.mobileLink} href={item.href} onClick={() => setOpen(false)}>
+                    {item.label}
+                  </Link>
+                  <div className={styles.mobileServiceLinks}>
+                    {SERVICE_LINKS.map((service) => (
+                      <Link key={service.href} href={service.href} onClick={() => setOpen(false)}>
+                        <span>{service.label}</span><span aria-hidden="true">→</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
                 <Link key={item.href} className={styles.mobileLink} href={item.href} onClick={() => setOpen(false)}>
                   {item.label}
                 </Link>
