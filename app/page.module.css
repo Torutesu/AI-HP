@@ -833,7 +833,7 @@ a.fvBadge:hover {
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
   gap: 20px;
   margin-top: 20px;
-  align-items: stretch;
+  align-items: start;
 }
 .osPanel {
   position: relative;
@@ -850,26 +850,7 @@ a.fvBadge:hover {
   border: 0.5px solid var(--panel-border);
   background-image: linear-gradient(130deg, #f4f8ff, #ffffff 70%);
 }
-.osPanelMedia { min-height: 420px; }
-.osPanelBg {
-  position: absolute;
-  inset: auto -8% -2% auto;
-  width: 88%;
-  height: 74%;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.68;
-  transform: scale(1.04);
-  animation: osPulse 14s ease-in-out infinite alternate;
-}
-.osPanelOverlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.58) 32%, rgba(255, 255, 255, 0.42) 58%, rgba(255, 255, 255, 0.72) 100%),
-    linear-gradient(120deg, rgba(241, 247, 255, 0.82), rgba(255, 255, 255, 0.16));
-}
+.osPanelMedia { min-height: 0; background: var(--white); }
 .osPanelEyebrow {
   display: inline-flex;
   align-items: center;
@@ -890,7 +871,7 @@ a.fvBadge:hover {
 .osPanelTitle { font-size: 22px; font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; }
 .osPanelText { margin: 0; font-size: 14px; line-height: 1.95; color: var(--fg-2); max-width: 78%; }
 .osWorkflow {
-  margin-top: 18px;
+  margin-top: 6px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   gap: 12px;
@@ -947,11 +928,6 @@ a.fvBadge:hover {
 @keyframes osDrift {
   0% { transform: translate3d(0, 8px, 0) scale(1.02); }
   100% { transform: translate3d(-8px, -6px, 0) scale(1.05); }
-}
-
-@keyframes osPulse {
-  0% { transform: scale(1.02) translateY(0); opacity: 0.62; }
-  100% { transform: scale(1.06) translateY(-5px); opacity: 0.76; }
 }
 
 /* ---------------- PROCESS ---------------- */
@@ -1079,11 +1055,6 @@ a.fvBadge:hover {
   .casesGrid { grid-template-columns: repeat(2, 1fr); }
   .osTopCard { min-height: 0; }
   .osTopText { max-width: 100%; }
-  .osPanelBg {
-    width: 94%;
-    height: 58%;
-    inset: auto -10% 4% auto;
-  }
 }
 
 /* Header already collapses to a hamburger at 880px */
@@ -1161,19 +1132,17 @@ a.fvBadge:hover {
   .osTopText { max-width: 100%; }
   .osPanelText { max-width: 100%; }
   .osWorkflow {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr);
+    gap: 8px;
     width: 100%;
   }
   .osWorkflowArrow {
-    margin: 0 auto;
-    transform: rotate(90deg);
+    width: 32px;
+    height: 32px;
+    margin: 0;
   }
-  .osPanelBg {
-    width: 110%;
-    height: 46%;
-    inset: auto -16% 8% auto;
-    opacity: 0.54;
-  }
+  .osWorkflowCard { padding: 12px; }
+  .osWorkflowRow span { font-size: 10.5px; line-height: 1.5; }
   .philStats { gap: 12px; }
   .ctaBand { padding: 28px 22px; }
 

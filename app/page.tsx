@@ -398,26 +398,22 @@ export default function Home() {
 
           <MobileCarousel className={styles.osSplit}>
             <Reveal className={`${styles.osPanel} ${styles.osPanelMedia}`}>
-              <div className={styles.osPanelBg} style={{ backgroundImage: "url(/img/os/cost-down-bg.png)" }} />
-              <div className={styles.osPanelOverlay} />
               <div className={styles.osPanelTitle}>削減の層</div>
-              <p className={styles.osPanelText}>余分な工数・人件費・外注費・汎用SaaS費を削減する層です。業務そのものを、AIへと置き換えていきます。</p>
+              <p className={styles.osPanelText}>手作業と分散管理をAIへ置き換え、工数とSaaS費をまとめて削減します。</p>
               <div className={styles.osWorkflow}>
                 <div className={styles.osWorkflowCard}>
                   <div className={styles.osWorkflowHead}>導入前</div>
                   <div className={styles.osWorkflowRow}>
                     <span>手作業・転記</span>
-                    <span>Excel管理</span>
-                    <span>属人化・工数過多</span>
+                    <span>分散したExcel管理</span>
                   </div>
                 </div>
                 <div className={styles.osWorkflowArrow}><Icon name="arrow-right" size={18} /></div>
                 <div className={styles.osWorkflowCard}>
                   <div className={styles.osWorkflowHead}>導入後</div>
                   <div className={styles.osWorkflowRow}>
-                    <span>AI自動処理</span>
-                    <span>データ一元化</span>
-                    <span>工数削減・標準化</span>
+                    <span>AIで自動処理</span>
+                    <span>データを一元管理</span>
                   </div>
                 </div>
               </div>
