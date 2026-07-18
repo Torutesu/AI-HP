@@ -25,10 +25,10 @@ const ISSUES = [
 ];
 
 const WHY = [
-  { icon: "blocks", title: "独自のモジュール群", text: "開発済みの部品を組み合わせて構築します。ゼロから作らないため、速く、無駄がありません。" },
-  { icon: "globe", title: "最先端のオープン技術", text: "世界最先端のオープン技術を活用して開発することで、開発コストを構造から圧縮します。" },
-  { icon: "layers", title: "高い事例の解像度", text: "グローバルのアプリケーションレイヤー事例を、常にキャッチアップしています。" },
-  { icon: "unplug", title: "払い続けない構造", text: "汎用SaaSに毎月払い続ける必要はありません。同等の機能を、より軽い構造で内製化します。" },
+  { image: "/img/why/modules.jpg", title: "独自のモジュール群", text: "開発済みの部品を組み合わせて構築します。ゼロから作らないため、速く、無駄がありません。" },
+  { image: "/img/why/open-tech.jpg", title: "最先端のオープン技術", text: "世界最先端のオープン技術を活用して開発することで、開発コストを構造から圧縮します。" },
+  { image: "/img/why/case-intelligence.jpg", title: "高い事例の解像度", text: "グローバルのアプリケーションレイヤー事例を、常にキャッチアップしています。" },
+  { image: "/img/why/owned-system.jpg", title: "払い続けない構造", text: "汎用SaaSに毎月払い続ける必要はありません。同等の機能を、より軽い構造で内製化します。" },
 ];
 
 const STATS = [
@@ -436,7 +436,12 @@ export default function Home() {
           <MobileCarousel className={styles.grid4}>
             {WHY.map((c, i) => (
               <Reveal key={c.title} delay={i * 0.08} className={`${styles.featureCard} liftCard`}>
-                <div className={styles.featureIcon}><Icon name={c.icon} size={24} /></div>
+                <span
+                  className={styles.featureImage}
+                  style={{ backgroundImage: `url(${c.image})` }}
+                  aria-hidden="true"
+                />
+                <span className={styles.featureWash} aria-hidden="true" />
                 <div className={styles.featureTitle}>{c.title}</div>
                 <p className={styles.featureText}>{c.text}</p>
               </Reveal>
