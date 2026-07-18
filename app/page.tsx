@@ -32,11 +32,11 @@ const WHY = [
 ];
 
 const STATS = [
-  { icon: "users", cat: "営業", note: "商談分析・提案資料自動生成", value: "-40%", label: "営業工数削減" },
-  { icon: "headphones", cat: "カスタマーサクセス", note: "問い合わせ自動化・要約", value: "-30%", label: "CS対応時間削減" },
-  { icon: "megaphone", cat: "マーケティング", note: "コンテンツ生成・分析自動化", value: "-50%", label: "コンテンツ作成時間削減" },
-  { icon: "file-text", cat: "バックオフィス", note: "書類・データ処理自動化", value: "-60%", label: "業務工数削減" },
-  { icon: "trending-up", cat: "経営・意思決定", note: "データ分析・予測精度向上", value: "+25%", label: "意思決定スピード向上" },
+  { image: "/img/cases/sales.jpg", position: "50% 34%", cat: "営業", value: "-40%", label: "営業工数削減" },
+  { image: "/img/cases/customer-success.jpg", position: "46% 42%", cat: "カスタマーサクセス", value: "-30%", label: "CS対応時間削減" },
+  { image: "/img/cases/marketing.jpg", position: "38% 42%", cat: "マーケティング", value: "-50%", label: "制作時間削減" },
+  { image: "/img/cases/back-office.jpg", position: "50% 42%", cat: "バックオフィス", value: "-60%", label: "業務工数削減" },
+  { image: "/img/cases/management.jpg", position: "50% 42%", cat: "経営・意思決定", value: "+25%", label: "意思決定速度向上" },
 ];
 
 const STRENGTHS: {
@@ -458,13 +458,17 @@ export default function Home() {
             {STATS.map((s, i) => (
               <Reveal key={s.cat} delay={i * 0.08}>
                 <div className={styles.statcard}>
-                  <div className={styles.statRow}>
-                    <span className={styles.statIcon}><Icon name={s.icon} size={18} /></span>
-                    <span className={styles.statCat}>{s.cat}</span>
+                  <span
+                    className={styles.statBg}
+                    style={{ backgroundImage: `url(${s.image})`, backgroundPosition: s.position }}
+                    aria-hidden="true"
+                  />
+                  <span className={styles.statShade} aria-hidden="true" />
+                  <div className={styles.statContent}>
+                    <div className={styles.statCat}>{s.cat}</div>
+                    <div className={styles.statValue}><CountUp value={s.value} /></div>
+                    <div className={styles.statLabel}>{s.label}</div>
                   </div>
-                  <div className={styles.statNote}>{s.note}</div>
-                  <div className={styles.statValue}><CountUp value={s.value} /></div>
-                  <div className={styles.statLabel}>{s.label}</div>
                 </div>
               </Reveal>
             ))}
