@@ -191,6 +191,122 @@
   transform: translateX(4px);
 }
 
+.ctaSection {
+  padding: 10px 0 96px;
+}
+
+.ctaPanel {
+  position: relative;
+  isolation: isolate;
+  min-height: 320px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(40px, 8vw, 112px);
+  padding: clamp(44px, 5vw, 64px);
+  border: 1px solid rgba(130, 175, 255, 0.2);
+  border-radius: 22px;
+  background: #050b15;
+  box-shadow: 0 32px 80px rgba(4, 13, 31, 0.22);
+}
+
+.ctaImage,
+.ctaOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.ctaImage {
+  background-image: url("/img/cases/management.jpg");
+  background-position: 64% 46%;
+  background-size: cover;
+  filter: saturate(0.9) contrast(1.06);
+  transform: scale(1.03);
+  transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 300ms ease;
+}
+
+.ctaOverlay {
+  z-index: -1;
+  background:
+    radial-gradient(circle at 83% 28%, rgba(76, 139, 255, 0.2), transparent 28%),
+    linear-gradient(90deg, rgba(4, 10, 21, 0.99) 0%, rgba(4, 10, 21, 0.93) 38%, rgba(4, 10, 21, 0.46) 67%, rgba(4, 10, 21, 0.18) 100%),
+    linear-gradient(180deg, rgba(4, 10, 21, 0.08), rgba(4, 10, 21, 0.74));
+}
+
+.ctaPanel:hover .ctaImage {
+  filter: saturate(1.05) contrast(1.08);
+  transform: scale(1.075);
+}
+
+.ctaCopy {
+  max-width: 620px;
+}
+
+.ctaEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: #7fb0ff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.ctaEyebrow::before {
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.ctaTitle {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(28px, 3.5vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.ctaText {
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.67);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.ctaAction {
+  display: flex;
+  min-width: 260px;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.ctaButton:global(.btn-secondary) {
+  min-width: 260px;
+  border-color: rgba(255, 255, 255, 0.9);
+  background: #fff;
+  color: #07101e;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.24);
+}
+
+.ctaButton:global(.btn-secondary:hover) {
+  border-color: #fff;
+  background: #fff;
+  color: #07101e;
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.32);
+}
+
+.ctaNote {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+}
+
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
@@ -198,6 +314,15 @@
 
   .cardContent {
     width: min(70%, 500px);
+  }
+
+  .ctaPanel {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .ctaAction {
+    align-items: flex-start;
   }
 }
 
@@ -264,6 +389,53 @@
   .tags {
     margin-bottom: 20px;
   }
+
+  .ctaSection {
+    padding: 2px 0 58px;
+  }
+
+  .ctaPanel {
+    min-height: 440px;
+    align-content: end;
+    gap: 28px;
+    padding: 28px 24px;
+    border-radius: 17px;
+  }
+
+  .ctaImage {
+    background-position: 57% center;
+  }
+
+  .ctaOverlay {
+    background:
+      linear-gradient(180deg, rgba(4, 10, 21, 0.12) 0%, rgba(4, 10, 21, 0.34) 38%, rgba(4, 10, 21, 0.96) 72%, #040a15 100%),
+      linear-gradient(90deg, rgba(4, 10, 21, 0.35), rgba(4, 10, 21, 0.05));
+  }
+
+  .ctaEyebrow {
+    margin-bottom: 14px;
+  }
+
+  .ctaTitle {
+    font-size: 28px;
+  }
+
+  .ctaText {
+    font-size: 13px;
+  }
+
+  .ctaAction {
+    width: 100%;
+  }
+
+  .ctaButton:global(.btn-secondary) {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .ctaNote {
+    align-self: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -272,7 +444,8 @@
   }
 
   .cardImage,
-  .detail svg {
+  .detail svg,
+  .ctaImage {
     transition: none;
   }
 }

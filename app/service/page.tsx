@@ -95,48 +95,27 @@ export default function Page() {
           </div>
         </section>
 
-        <section style={{ padding: "24px 0 96px" }}>
-          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-            <Reveal
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                borderRadius: "12px",
-                border: "0.5px solid var(--panel-border)",
-                background: "var(--panel-grad)",
-                padding: "56px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                gap: "32px",
-                flexWrap: "wrap",
-              }}
-            >
-              <div>
-                <h2
-                  style={{
-                    fontSize: "28px",
-                    fontWeight: 700,
-                    color: "var(--fg-0)",
-                    margin: "0 0 10px",
-                  }}
-                >
+        <section className={styles.ctaSection}>
+          <div className={styles.container}>
+            <Reveal className={styles.ctaPanel}>
+              <span className={styles.ctaImage} aria-hidden="true" />
+              <span className={styles.ctaOverlay} aria-hidden="true" />
+              <div className={styles.ctaCopy}>
+                <span className={styles.ctaEyebrow}>SERVICE GUIDE</span>
+                <h2 className={styles.ctaTitle}>
                   どちらが合うか、診断から。
                 </h2>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: "14.5px",
-                    color: "var(--fg-2)",
-                    lineHeight: 1.8,
-                  }}
-                >
+                <p className={styles.ctaText}>
                   貴社の状況に合わせて、最適な入り口をご提案します。
                 </p>
               </div>
-              <Button href="/download" variant="primary" size="lg">
-                資料をダウンロード
-              </Button>
+              <div className={styles.ctaAction}>
+                <Button href="/download" variant="secondary" size="lg" className={styles.ctaButton}>
+                  資料をダウンロード
+                  <Icon name="arrow-right" size={17} />
+                </Button>
+                <span className={styles.ctaNote}>AI経営基盤とコンサルティングを比較</span>
+              </div>
             </Reveal>
           </div>
         </section>
