@@ -88,12 +88,14 @@ const STRENGTHS: {
 
 const ROI_REASONS = [
   {
-    icon: "blocks",
+    no: "01 / BUILD FASTER",
+    image: "/img/why/modules.jpg",
     title: "最速で、実装する。",
     text: "ゼロから作りません。開発済みの自社モジュール群を組み合わせるから、圧倒的に速く、無駄なく形にします。",
   },
   {
-    icon: "globe",
+    no: "02 / GLOBAL TEAM",
+    image: "/img/why/open-tech.jpg",
     title: "最適な人材を、世界から。",
     text: "国境にはこだわりません。案件ごとに世界の複数国から最適なエンジニアをアサインし、品質とコストを両立します。",
   },
@@ -253,8 +255,14 @@ export default function Home() {
               <div className={styles.roiList}>
                 {ROI_REASONS.map((r) => (
                   <div key={r.title} className={styles.roiItem}>
-                    <span className={styles.roiIcon}><Icon name={r.icon} size={20} /></span>
-                    <div>
+                    <span
+                      className={styles.roiItemBg}
+                      style={{ backgroundImage: `url(${r.image})` }}
+                      aria-hidden="true"
+                    />
+                    <span className={styles.roiItemWash} aria-hidden="true" />
+                    <div className={styles.roiItemContent}>
+                      <span className={styles.roiItemNo}>{r.no}</span>
                       <div className={styles.roiItemTitle}>{r.title}</div>
                       <p className={styles.roiItemText}>{r.text}</p>
                     </div>

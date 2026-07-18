@@ -695,28 +695,65 @@ a.fvBadge:hover {
   align-items: start;
 }
 .roiReasons {
-  padding: 38px 0 0;
+  padding: 10px 0 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
-.roiHeading { font-size: clamp(24px, 3.6vw, 32px); font-weight: 700; color: var(--fg-0); letter-spacing: -0.01em; line-height: 1.25; margin: 0; }
-.roiList { display: flex; flex-direction: column; gap: 22px; margin-top: 26px; }
-.roiItem { display: flex; gap: 16px; align-items: flex-start; }
-.roiIcon {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  border: 0.5px solid var(--line-strong);
-  background: var(--blue-tint);
-  color: var(--accent);
+.roiHeading { font-size: clamp(28px, 3.6vw, 38px); font-weight: 700; color: var(--fg-0); letter-spacing: -0.035em; line-height: 1.2; margin: 0; }
+.roiList { display: grid; gap: 14px; margin-top: 28px; }
+.roiItem {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 190px;
+  display: flex;
+  align-items: flex-end;
+  padding: 26px;
+  border: 1px solid rgba(115, 169, 255, 0.22);
+  border-radius: 18px;
+  background: #06101f;
+  box-shadow: 0 20px 46px rgba(6, 20, 43, 0.14);
 }
-.roiItemTitle { font-size: 16px; font-weight: 700; color: var(--fg-0); margin-bottom: 6px; }
-.roiItemText { margin: 0; font-size: 13.5px; line-height: 1.85; color: var(--fg-2); }
+.roiItemBg,
+.roiItemWash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.roiItemBg {
+  z-index: -2;
+  background-position: 68% center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: saturate(0.92) contrast(1.05);
+  transform: scale(1.025);
+  transition: transform 750ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 300ms ease;
+}
+.roiItemWash {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(3, 10, 23, 0.98) 0%, rgba(4, 13, 29, 0.88) 48%, rgba(4, 13, 29, 0.3) 100%),
+    linear-gradient(180deg, rgba(3, 10, 23, 0.08), rgba(3, 10, 23, 0.76));
+}
+.roiItemContent {
+  max-width: 88%;
+}
+.roiItemNo {
+  display: block;
+  margin-bottom: 10px;
+  color: #78aaff;
+  font-family: var(--font-en);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+.roiItemTitle { margin-bottom: 8px; color: #fff; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+.roiItemText { margin: 0; color: rgba(255, 255, 255, 0.67); font-size: 12.5px; line-height: 1.75; }
+.roiItem:hover .roiItemBg {
+  filter: saturate(1.06) contrast(1.08);
+  transform: scale(1.08);
+}
 
 .roiSimCol { display: flex; min-width: 0; }
 
@@ -1155,7 +1192,9 @@ a.fvBadge:hover {
   .fvTitle { font-size: 15px; }
   .philosophyGrid { grid-template-columns: 1fr; gap: 36px; }
   .roiWrap { grid-template-columns: 1fr; gap: 32px; }
-  .roiReasons { max-width: 720px; padding: 0; }
+  .roiReasons { max-width: none; padding: 0; }
+  .roiList { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .roiItem { min-height: 220px; }
   .osSplit { grid-template-columns: 1fr; }
   .grid4 { grid-template-columns: repeat(2, 1fr); }
   .osTop { grid-template-columns: 1fr; }
@@ -1241,9 +1280,12 @@ a.fvBadge:hover {
   .philosophyTitle { font-size: 25px; margin-bottom: 12px; }
   .philLead { font-size: 15px; margin-bottom: 16px; }
   .philosophyText { font-size: 13.5px; line-height: 1.8; margin-bottom: 14px; }
-  .roiHeading { font-size: 20px; }
-  .roiItemTitle { font-size: 15px; }
-  .roiItemText { font-size: 13px; line-height: 1.75; }
+  .roiHeading { font-size: 28px; }
+  .roiList { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 22px; }
+  .roiItem { min-height: 210px; padding: 24px; border-radius: 16px; }
+  .roiItemContent { max-width: 94%; }
+  .roiItemTitle { font-size: 18px; }
+  .roiItemText { font-size: 12.5px; line-height: 1.75; }
   .osTopSub { font-size: 14px; }
   .osTopText, .osPanelText { font-size: 13px; line-height: 1.8; }
   .osPanelTitle { font-size: 20px; }
