@@ -49,6 +49,16 @@ function renderInline(text: string): ReactNode {
   return parts.length > 0 ? parts : text;
 }
 
+function visualInsertIndex(body: string[]): number {
+  const firstList = body.findIndex((block, i) => i > 0 && block.startsWith("- "));
+  if (firstList >= 0) return firstList;
+
+  const firstHeading = body.findIndex((block) => block.startsWith("## "));
+  if (firstHeading >= 0) return Math.min(firstHeading + 2, body.length - 1);
+
+  return Math.min(2, body.length - 1);
+}
+
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
 }
@@ -142,6 +152,11 @@ export default async function ArticlePage({
   const seen = new Set([a.slug, ...curated.map((x) => x.slug)]);
   const byCategory = articles.filter((x) => !seen.has(x.slug) && x.category === a.category);
   const related = [...curated, ...byCategory].slice(0, 3);
+  const insertVisualAfter = visualInsertIndex(a.body);
+  const articleHeadings = a.body
+    .filter((block) => block.startsWith("## "))
+    .map((block) => block.slice(3))
+    .slice(0, 3);
 
   return (
     <>
@@ -233,101 +248,75 @@ export default async function ArticlePage({
         </section>
 
         {/* Body — blocks follow the conventions documented on Article.body */}
-        <article style={{ maxWidth: "820px", margin: "0 auto", padding: "56px 24px 72px" }}>
+        <article className={styles.articleBody}>
           {a.summary && (
-            <div
-              style={{
-                background: "var(--surface-card)",
-                border: "0.5px solid var(--line-strong)",
-                borderLeft: "3px solid var(--blue-600)",
-                borderRadius: "10px",
-                padding: "20px 24px",
-                margin: "0 0 40px",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "11.5px",
-                  fontWeight: 700,
-                  letterSpacing: "0.04em",
-                  color: "var(--accent)",
-                  marginBottom: "8px",
-                }}
-              >
-                要点
+            <section className={styles.summaryPanel}>
+              <span className={styles.summaryImage} style={{ backgroundImage: `url(${image})` }} aria-hidden="true" />
+              <span className={styles.summaryOverlay} aria-hidden="true" />
+              <div className={styles.summaryContent}>
+                <span className={styles.summaryEyebrow}>SHORT ANSWER</span>
+                <h2 className={styles.summaryTitle}>この記事の結論</h2>
+                <p className={styles.summaryText}>{renderInline(a.summary)}</p>
               </div>
-              <p style={{ margin: 0, fontSize: "15.5px", lineHeight: 1.9, color: "var(--fg-0)", fontWeight: 500 }}>
-                {renderInline(a.summary)}
-              </p>
-            </div>
+            </section>
           )}
           {a.body.map((block, i) => {
+            const visualBreak = i === insertVisualAfter && a.image ? (
+              <aside key={`visual-${i}`} className={styles.articleVisual}>
+                <div
+                  className={styles.articleVisualImage}
+                  style={{ backgroundImage: `url(${a.image})` }}
+                  aria-hidden="true"
+                />
+                <div className={styles.articleVisualCaption}>
+                  <span>{a.category}</span>
+                  <p>{articleHeadings[0] ?? a.title}</p>
+                  {articleHeadings.length > 1 && (
+                    <div className={styles.articleVisualChips} aria-label="記事の主な論点">
+                      {articleHeadings.map((heading) => (
+                        <em key={heading}>{heading}</em>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </aside>
+            ) : null;
+
             if (block.startsWith("## ")) {
-              return (
+              return [
                 <h2
                   key={i}
-                  style={{
-                    fontSize: "22px",
-                    fontWeight: 700,
-                    lineHeight: 1.5,
-                    letterSpacing: "-0.01em",
-                    color: "var(--fg-0)",
-                    margin: i === 0 ? "0 0 18px" : "44px 0 18px",
-                    paddingLeft: "14px",
-                    borderLeft: "3px solid var(--blue-600)",
-                  }}
+                  className={styles.proseHeading}
                 >
                   {block.slice(3)}
-                </h2>
-              );
+                </h2>,
+                visualBreak,
+              ];
             }
             if (block.startsWith("- ")) {
-              return (
-                <ul key={i} style={{ margin: "0 0 28px", paddingLeft: "1.4em" }}>
+              return [
+                <ul key={i} className={styles.proseList}>
                   {block.split("\n").map((item, j) => (
-                    <li
-                      key={j}
-                      style={{
-                        fontSize: "16px",
-                        lineHeight: 1.9,
-                        color: "var(--fg-1)",
-                        marginBottom: "8px",
-                      }}
-                    >
+                    <li key={j}>
                       {renderInline(item.replace(/^- /, ""))}
                     </li>
                   ))}
-                </ul>
-              );
+                </ul>,
+                visualBreak,
+              ];
             }
             if (block.startsWith("※")) {
-              return (
-                <p
-                  key={i}
-                  style={{
-                    fontSize: "12.5px",
-                    lineHeight: 1.8,
-                    color: "var(--fg-3)",
-                    margin: "-16px 0 28px",
-                  }}
-                >
-                  {block}
-                </p>
-              );
+              return [
+                <p key={i} className={styles.proseNote}>{block}</p>,
+                visualBreak,
+              ];
             }
-            return (
-              <p
-                key={i}
-                style={{
-                  fontSize: "16px",
-                  lineHeight: 2,
-                  color: "var(--fg-1)",
-                  margin: "0 0 28px",
-                }}
-              >
+            return [
+              <p key={i} className={styles.proseParagraph}>
                 {renderInline(block)}
-              </p>
-            );
+              </p>,
+              visualBreak,
+            ];
           })}
 
           {a.faq && a.faq.length > 0 && (
