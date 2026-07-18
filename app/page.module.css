@@ -368,7 +368,7 @@ a.fvBadge:hover {
   position: relative;
   z-index: 10;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 0 44px;
+  margin: 0;
   padding: 22px 0 30px;
   display: flex;
   flex-direction: column;
@@ -399,8 +399,10 @@ a.fvBadge:hover {
 .partnerLogoSet {
   display: flex;
   align-items: center;
+  justify-content: space-around;
+  min-width: 100vw;
   gap: clamp(34px, 4.4vw, 72px);
-  padding-right: clamp(34px, 4.4vw, 72px);
+  padding: 0 clamp(20px, 2.4vw, 40px);
 }
 .partnerLogoSet img {
   height: 18px;
@@ -1038,7 +1040,7 @@ a.fvBadge:hover {
   .heroLead br { display: none; }
   .fvBadges { grid-template-columns: 1fr; gap: 12px; }
   .fvBadge { min-height: 0; }
-  .partnerRow { margin: 0 28px; }
+  .partnerRow { margin: 0; }
   .belief { padding: 104px 28px 120px; }
   .philosophy { padding: 72px 0 80px; }
   .strengths { padding: 64px 0 76px; }
@@ -1069,9 +1071,9 @@ a.fvBadge:hover {
   .heroSub { margin-bottom: 20px; }
   .heroLead { margin-bottom: 28px; max-width: 100%; }
   .heroCtas { gap: 14px; }
-  .partnerRow { margin: 0 20px; padding: 18px 0 22px; gap: 14px; }
+  .partnerRow { margin: 0; padding: 18px 0 22px; gap: 14px; }
   .partnerNote { font-size: 12px; }
-  .partnerLogoSet { gap: 28px; padding-right: 28px; }
+  .partnerLogoSet { gap: 28px; padding: 0 16px; }
   .partnerLogoSet img { height: 15px; }
   .partnerLogos { animation-duration: 18s; }
 
@@ -1183,7 +1185,7 @@ a.fvBadge:hover {
   .container { padding: 0 16px; }
   .heroBody { padding: 96px 16px 26px; }
   .heroTitle { font-size: 29px; }
-  .partnerRow { margin: 0 16px; }
+  .partnerRow { margin: 0; }
   /* keep the carousel bleed aligned to the 16px container padding */
   .grid4, .casesGrid, .osTop {
     margin-left: -16px;
