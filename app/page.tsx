@@ -51,7 +51,7 @@ const ISSUES = [
 
 const WHY = [
   { image: "/img/why/modules.jpg", title: "独自のモジュール群", text: "開発済みの部品を組み合わせて構築します。ゼロから作らないため、速く、無駄がありません。" },
-  { image: "/img/why/open-tech.jpg", title: "最先端のオープン技術", text: "世界最先端のオープン技術を活用して開発することで、開発コストを構造から圧縮します。" },
+  { image: "/img/why/open-tech.jpg", title: "最先端のオープンソース技術", text: "世界最先端のオープンソース技術を活用して開発することで、開発コストを構造から圧縮します。" },
   { image: "/img/why/case-intelligence.jpg", title: "高い事例の解像度", text: "グローバルのアプリケーションレイヤー事例を、常にキャッチアップしています。" },
   { image: "/img/why/owned-system.jpg", title: "払い続けない構造", text: "汎用SaaSに毎月払い続ける必要はありません。同等の機能を、より軽い構造で内製化します。" },
 ];

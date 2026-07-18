@@ -836,6 +836,14 @@ a.fvBadge:hover {
   position: relative;
   z-index: 2;
 }
+.why .featureTitle {
+  display: flex;
+  min-height: 44px;
+  align-items: flex-end;
+}
+.why .featureText {
+  min-height: 96px;
+}
 .why .featureCard:hover .featureImage {
   filter: saturate(1) contrast(1.02);
   transform: scale(1.055);
@@ -1538,6 +1546,8 @@ a.fvBadge:hover {
   .statcard { min-height: 310px; }
   .statCat { top: 18px; left: 19px; }
   .why .featureCard { min-height: 310px; }
+  .why .featureTitle,
+  .why .featureText { min-height: 0; }
   .painCard { min-height: 300px; padding: 19px; }
   .pain .featureTitle { font-size: 15.5px; }
   .pain .featureText { font-size: 12px; line-height: 1.65; }

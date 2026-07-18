@@ -1,27 +1,27 @@
 # Design QA
 
-- Source visual truth: user feedback requesting a denser 390 px mobile layout
+- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_DMun0L/スクリーンショット 2026-07-18 15.24.28.png`
 - Implementation: local Next.js homepage browser capture
 - Viewports: 1440 x 1000, 390 x 844
-- State: homepage FV and Select Semantic Tree Method section at 390 x 844
+- State: homepage WHY cards at 1440 x 1000 and 390 x 844
 
 ## Full-view comparison evidence
 
-- Desktop styles are unchanged by the mobile-only overrides.
+- All four desktop cards resolve to an equal 340 px height.
 - Mobile reports no document-level horizontal overflow at 390 px.
-- All three mobile FV badges resolve to an equal 80 px height.
+- Desktop title and body start positions differ by no more than 2 px across the row.
 
 ## Focused region comparison evidence
 
-- FV badge accents and descriptions are hidden on mobile while the three proof points remain visible.
-- Mobile section spacing, card padding, card heights, headings, and body copy are reduced without clipping.
-- Semantic Tree theory and application panels both resolve to 350 px at mobile width.
+- The updated `最先端のオープンソース技術` label remains on one line at desktop width.
+- Shared title and body blocks align cards with different copy lengths.
+- Mobile removes the desktop alignment minimums and preserves the compact swipe-card layout.
 
 ## Comparison history
 
-1. P1: mobile FV badges included desktop descriptions and made the hero excessively tall. Fixed by retaining only the badge core.
-2. P2: research and impact badges resolved at different heights because of their media aspect ratios. Fixed with an explicit 62 px badge core.
-3. P2: mobile section cards and typography still felt oversized. Fixed with mobile-only density reductions of roughly 10-20%.
+1. P1: the second feature used the broader `オープン技術` wording. Fixed to the requested `オープンソース技術` wording.
+2. P2: variable body line counts shifted title positions across the row. Fixed with shared title and body minimum heights.
+3. P2: desktop alignment constraints could add empty space on mobile. Fixed by resetting those minimums below 640 px.
 
 ## Verification
 
