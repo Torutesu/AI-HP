@@ -43,21 +43,8 @@ function json(body: unknown, status = 200): Response {
   });
 }
 
-/** Post a message to Slack, Discord, or Ando. */
+/** Post a plain-text message to a Slack or Discord incoming webhook. */
 async function notify(webhookUrl: string, text: string): Promise<boolean> {
-  const isAndo = webhookUrl.startsWith("ando_sk_");
-  if (isAndo) {
-    const res = await fetch("https://api.ando.so/v1/messages", {
-      method: "POST",
-      headers: {
-        "x-api-key": webhookUrl,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ content: text }),
-    });
-    return res.ok;
-  }
-
   const isDiscord = /discord(app)?\.com/.test(webhookUrl);
   const res = await fetch(webhookUrl, {
     method: "POST",
