@@ -121,7 +121,11 @@ a.fvBadge:hover {
 }
 .fvTopBadgeYc {
   justify-content: center;
-  padding: 10px 14px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 .fvTopBadgeResearch {
   background:
@@ -140,9 +144,9 @@ a.fvBadge:hover {
   gap: 4px;
 }
 .fvImg {
-  width: auto;
+  width: 100%;
   height: auto;
-  max-height: 62px;
+  max-height: none;
   max-width: 100%;
   object-fit: contain;
   object-position: left center;
@@ -162,7 +166,7 @@ a.fvBadge:hover {
 }
 .fvMediaYc {
   width: 100%;
-  min-height: 62px;
+  min-height: 0;
 }
 .fvMediaResearch {
   overflow: hidden;
@@ -1063,17 +1067,17 @@ a.fvBadge:hover {
   .fvBadges { grid-template-columns: 1fr; max-width: 100%; gap: 10px; margin-top: 24px; }
   .fvBadge { gap: 12px; padding: 16px; min-height: 0; }
   .fvTopBadge { min-height: 78px; padding: 12px; gap: 10px; }
-  .fvTopBadgeYc { padding: 10px 12px; }
+  .fvTopBadgeYc { min-height: 0; padding: 0; }
   .fvMediaYc,
   .fvMediaResearch,
   .fvMediaImpact { width: 64px; min-height: 64px; }
-  .fvMediaYc { width: 100%; min-height: 56px; }
+  .fvMediaYc { width: 100%; min-height: 0; }
   .fvLabel { font-size: 10px; margin-bottom: 2px; }
   .fvTitle { font-size: 15px; line-height: 1.38; text-wrap: balance; }
   .fvAccent { margin-top: 8px; font-size: 10px; }
   .fvDesc { margin-top: 6px; font-size: 12px; line-height: 1.7; }
   .fvPresenter { padding-top: 10px; }
-  .fvImg { width: auto; max-height: 46px; max-width: 100%; }
+  .fvImg { width: 100%; max-height: none; }
 
   /* ---- Section rhythm: denser vertical spacing ---- */
   .belief { padding: 68px 20px 82px; }
