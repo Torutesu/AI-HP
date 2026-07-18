@@ -1,27 +1,27 @@
 # Design QA
 
-- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_JvMCXs/スクリーンショット 2026-07-18 15.25.37.png`
-- Implementation: local Next.js homepage browser capture
+- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_FVE6SD/スクリーンショット 2026-07-18 15.26.20.png`, `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_cZPx1C/スクリーンショット 2026-07-18 15.26.28.png`, `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_SqjdIA/スクリーンショット 2026-07-18 15.26.35.png`
+- Implementation: local Next.js AI operating system page browser capture
 - Viewports: 1440 x 1000, 390 x 844
-- State: desktop service dropdown and open mobile navigation
+- State: equation, cost-down, sales-up, and pricing-reason cards
 
 ## Full-view comparison evidence
 
-- The desktop dropdown remains fully inside the 1440 px viewport and opens directly below `サービス`.
+- All desktop card rows align to four equal columns, with the equation row using three equal columns.
 - Mobile reports no document-level horizontal overflow at 390 px.
-- The mobile direct links resolve to equal 165 x 58 px tap targets.
+- Mobile equation and feature cards resolve to the same 342 px content width.
 
 ## Focused region comparison evidence
 
-- `AI経営基盤` links to `/ai-os/` and `コンサルティング` links to `/consulting/` in both layouts.
-- Desktop uses a two-card dropdown without changing the header height.
-- Mobile keeps both services visible immediately below the parent service link.
+- Line icons were removed from all four requested card groups.
+- Each card now uses a relevant existing visual, a controlled navy overlay, an index, and a concise category label.
+- Light and dark source images maintain readable white card copy through the shared overlay system.
 
 ## Comparison history
 
-1. P1: `サービス` only linked to the overview page. Fixed with direct links to both core offerings.
-2. P2: a desktop-only dropdown would hide the direct path on mobile. Fixed with two persistent mobile service cards.
-3. P2: dropdown hover gaps could close the menu while moving the pointer. Fixed with a transparent interaction bridge.
+1. P1: generic blue line icons made the sections feel interchangeable. Fixed by replacing icons with full-card imagery.
+2. P2: different source-image brightness could reduce text contrast. Fixed with layered directional and bottom overlays.
+3. P2: large imagery could make mobile excessively tall. Fixed with a 260 px mobile card height and single-column flow.
 
 ## Verification
 

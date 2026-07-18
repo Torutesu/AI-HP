@@ -1,0 +1,237 @@
+.equationGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.equationCard {
+  position: relative;
+  min-height: 286px;
+  overflow: hidden;
+  border: 1px solid rgba(36, 105, 238, 0.16);
+  border-radius: 16px;
+  background: #edf4ff;
+  box-shadow: 0 18px 45px rgba(19, 57, 119, 0.09);
+  isolation: isolate;
+}
+
+.equationCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.88) 38%, rgba(255, 255, 255, 0.2) 78%),
+    linear-gradient(0deg, rgba(245, 249, 255, 0.94) 0%, rgba(245, 249, 255, 0) 62%);
+}
+
+.equationVisual {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.01);
+  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1), filter 400ms ease;
+}
+
+.equationCard:hover .equationVisual {
+  filter: saturate(1.12) contrast(1.02);
+  transform: scale(1.055);
+}
+
+.equationTopline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px 0;
+  color: #2469ee;
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.15em;
+}
+
+.equationTopline span:last-child {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid rgba(36, 105, 238, 0.2);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.66);
+  letter-spacing: 0;
+}
+
+.equationContent {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  left: 24px;
+}
+
+.equationContent h2 {
+  margin: 0;
+  color: #071326;
+  font-size: clamp(22px, 2.2vw, 29px);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+}
+
+.equationContent p {
+  max-width: 300px;
+  margin: 12px 0 0;
+  color: #4c5d78;
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.featureCard {
+  position: relative;
+  min-height: 322px;
+  overflow: hidden;
+  border: 1px solid rgba(116, 155, 221, 0.2);
+  border-radius: 14px;
+  background: #071326;
+  box-shadow: 0 20px 50px rgba(7, 24, 54, 0.12);
+  isolation: isolate;
+}
+
+.featureCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(4, 12, 27, 0.04) 18%, rgba(4, 12, 27, 0.96) 82%),
+    linear-gradient(90deg, rgba(4, 12, 27, 0.7), rgba(4, 12, 27, 0.02) 72%);
+}
+
+.featureImage {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.01);
+  transition: transform 850ms cubic-bezier(0.16, 1, 0.3, 1), filter 450ms ease;
+}
+
+.featureCard:hover .featureImage {
+  filter: saturate(1.14) brightness(1.05);
+  transform: scale(1.07);
+}
+
+.featureNumber {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.featureContent {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  left: 22px;
+}
+
+.featureContent > span {
+  display: block;
+  margin-bottom: 10px;
+  color: #82afff;
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+}
+
+.featureContent h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.featureContent p {
+  max-width: 240px;
+  margin: 10px 0 0;
+  color: rgba(235, 242, 255, 0.7);
+  font-size: 11.5px;
+  line-height: 1.75;
+}
+
+.featureCardDark {
+  border-color: rgba(111, 159, 255, 0.22);
+  box-shadow: 0 20px 50px rgba(0, 7, 19, 0.24);
+}
+
+.featureCardFinal::after {
+  background:
+    linear-gradient(180deg, rgba(8, 35, 83, 0.08), rgba(4, 15, 36, 0.96)),
+    linear-gradient(110deg, rgba(36, 105, 238, 0.44), transparent 68%);
+}
+
+.whyCard {
+  min-height: 310px;
+}
+
+@media (max-width: 900px) {
+  .equationGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .featureCard,
+  .whyCard {
+    min-height: 290px;
+  }
+}
+
+@media (max-width: 640px) {
+  .equationGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .equationCard {
+    min-height: 236px;
+  }
+
+  .equationTopline {
+    padding: 18px 18px 0;
+  }
+
+  .equationContent {
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+  }
+
+  .equationContent h2 {
+    font-size: 22px;
+  }
+
+  .equationContent p {
+    margin-top: 8px;
+    font-size: 11.5px;
+  }
+
+  .featureCard,
+  .whyCard {
+    min-height: 260px;
+  }
+
+  .featureContent {
+    right: 19px;
+    bottom: 19px;
+    left: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .equationVisual,
+  .featureImage {
+    transition: none;
+  }
+}
