@@ -1,0 +1,294 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fg-0);
+  letter-spacing: -0.01em;
+}
+
+.text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.95;
+  color: var(--fg-2);
+  line-break: strict;
+  text-wrap: pretty;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--fg-1);
+  background: rgba(255, 255, 255, 0.82);
+  border: 0.5px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  border-color: var(--panel-border);
+  color: var(--fg-0);
+  transform: translateY(-1px);
+}
+
+.chipActive {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), #5f9bff);
+  border-color: transparent;
+  box-shadow: 0 12px 24px rgba(43, 124, 255, 0.18);
+}
+
+.preview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  min-height: 0;
+}
+
+.previewMain,
+.previewSide {
+  border-radius: 16px;
+  border: 0.5px solid rgba(125, 147, 177, 0.2);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(245, 249, 255, 0.92)),
+    rgba(255, 255, 255, 0.88);
+  box-shadow: 0 18px 40px rgba(15, 38, 74, 0.07);
+}
+
+.previewMain {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kpiRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.kpiCard {
+  border-radius: 12px;
+  border: 0.5px solid rgba(125, 147, 177, 0.16);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 12px 13px;
+}
+
+.kpiLabel {
+  font-size: 11px;
+  color: var(--fg-3);
+  margin-bottom: 7px;
+}
+
+.kpiValue {
+  font: var(--fw-bold) 28px/1 var(--font-en);
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.kpiDelta {
+  margin-top: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #2d77ef;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tableRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-radius: 12px;
+  border: 0.5px solid rgba(125, 147, 177, 0.14);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 14px 15px;
+}
+
+.tableRow > div:first-child {
+  flex: 0 0 38%;
+  min-width: 0;
+}
+
+.rowLeft {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fg-0);
+  white-space: nowrap;
+}
+
+.rowMeta {
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--fg-3);
+}
+
+.rowRight {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--fg-1);
+  text-align: right;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+
+.previewSide {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: minmax(150px, 0.75fr) minmax(0, 1.25fr);
+  grid-template-rows: auto auto;
+  gap: 12px 18px;
+  align-items: center;
+}
+
+.sideChart {
+  position: relative;
+  min-height: 132px;
+  grid-row: 1 / span 2;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(241, 247, 255, 0.95), rgba(255, 255, 255, 0.92));
+  overflow: hidden;
+}
+
+.sideChartBars {
+  position: absolute;
+  inset: auto 16px 18px;
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.sideChartBars span {
+  flex: 1;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(180deg, rgba(119, 169, 255, 0.55), rgba(43, 124, 255, 0.12));
+}
+
+.sideChartBars span:nth-child(1) { height: 24px; }
+.sideChartBars span:nth-child(2) { height: 38px; }
+.sideChartBars span:nth-child(3) { height: 58px; }
+.sideChartBars span:nth-child(4) { height: 76px; }
+.sideChartBars span:nth-child(5) { height: 48px; }
+
+.sideChartLine {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 34px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(43, 124, 255, 0.35), rgba(43, 124, 255, 1));
+  transform: skewY(-12deg);
+  transform-origin: left center;
+  box-shadow: 0 0 0 1px rgba(43, 124, 255, 0.06);
+}
+
+.summary {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--fg-2);
+  line-break: strict;
+  text-wrap: pretty;
+}
+
+.sideFoot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--fg-3);
+  align-self: end;
+}
+
+.sideFootIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgba(43, 124, 255, 0.08);
+  color: var(--accent);
+}
+
+@media (max-width: 1024px) {
+  .preview {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .previewSide { min-height: 0; }
+}
+
+@media (max-width: 640px) {
+  .wrap { gap: 14px; }
+  .header { gap: 8px; }
+  .title { font-size: 20px; }
+  .text, .summary { font-size: 13px; line-height: 1.8; }
+  .chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0 -22px;
+    padding: 2px 22px 8px;
+    scrollbar-width: none;
+  }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { padding: 7px 12px; font-size: 12px; }
+  .preview { gap: 10px; }
+  .previewMain { padding: 12px; gap: 12px; }
+  .kpiRow { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .kpiCard { min-width: 0; padding: 10px 8px; }
+  .kpiLabel { font-size: 9.5px; line-height: 1.35; min-height: 2.7em; }
+  .kpiValue { font-size: clamp(15px, 4.8vw, 22px); }
+  .kpiDelta { font-size: 9.5px; }
+  .table { gap: 6px; }
+  .tableRow { gap: 10px; padding: 11px 10px; }
+  .tableRow > div:first-child { min-width: 0; }
+  .rowLeft { font-size: 12px; }
+  .rowRight { max-width: 48%; font-size: 11px; line-height: 1.5; }
+  .previewSide {
+    min-height: 0;
+    padding: 14px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 12px;
+  }
+  .sideChart { grid-row: auto; }
+  .sideChart { min-height: 96px; }
+  .sideFoot { font-size: 11px; line-height: 1.55; }
+}
+
+@media (max-width: 380px) {
+  .kpiValue { font-size: 16px; }
+  .kpiLabel { font-size: 9px; }
+  .rowRight { max-width: 46%; }
+}

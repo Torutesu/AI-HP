@@ -4,7 +4,6 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import Icon from "@/components/Icon";
 import MagazineList from "@/components/MagazineList";
 import { CATEGORIES, featuredArticle, listArticles } from "@/lib/magazine";
 
@@ -25,6 +24,7 @@ export default function Page() {
           crumbs={[{ label: "ホーム", href: "/" }, { label: "マガジン" }]}
           title={<>AI総戦研マガジン</>}
           lead="経営とAIの実装知。グローバル事例の解像度で、貴社の次の一手を、ともに考えます。"
+          bgImage={f.image}
         />
 
         {/* Featured */}
@@ -50,15 +50,12 @@ export default function Page() {
                   style={{
                     aspectRatio: "16/10",
                     borderRadius: "8px",
-                    background: "linear-gradient(130deg, #EEF4FF, #D7E4FE)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--accent)",
+                    backgroundImage: `linear-gradient(180deg, rgba(5, 7, 12, 0.06), rgba(5, 7, 12, 0.18)), url(${f.image})`,
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
                   }}
-                >
-                  <Icon name="image" size={40} />
-                </div>
+                />
                 <div style={{ padding: "20px 32px 20px 0" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
                     <span

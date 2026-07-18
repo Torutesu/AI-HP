@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import Reveal from "./Reveal";
-import Icon from "./Icon";
 import type { Article } from "@/lib/magazine";
 import styles from "./MagazineList.module.css";
 
@@ -56,9 +55,10 @@ export default function MagazineList({
           {shown.map((a, i) => (
             <Reveal key={a.slug} delay={(i % PAGE) * 0.06}>
               <Link href={`/magazine/${a.slug}`} className={styles.card}>
-                <div className={styles.thumb}>
-                  <Icon name="image" size={32} />
-                </div>
+                <div
+                  className={styles.thumb}
+                  style={a.image ? { backgroundImage: `linear-gradient(180deg, rgba(5, 7, 12, 0.04), rgba(5, 7, 12, 0.22)), url(${a.image})` } : undefined}
+                />
                 <div className={styles.body}>
                   <span className={styles.cat}>{a.category}</span>
                   <h3 className={styles.title}>{a.title}</h3>

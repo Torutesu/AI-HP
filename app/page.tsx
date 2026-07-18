@@ -8,6 +8,7 @@ import HeroVideo from "@/components/HeroVideo";
 import CountUp from "@/components/CountUp";
 import RoiSimulator from "@/components/RoiSimulator";
 import MobileCarousel from "@/components/MobileCarousel";
+import AiOsShowcase from "@/components/AiOsShowcase";
 import { HERO_VIDEO_URL, PARTNER_LOGOS as PARTNERS } from "@/lib/site";
 import type { Metadata } from "next";
 import styles from "./page.module.css";
@@ -38,14 +39,15 @@ const STATS = [
   { icon: "trending-up", cat: "経営・意思決定", note: "データ分析・予測精度向上", value: "+25%", label: "意思決定スピード向上" },
 ];
 
-const SALES_TAGS = ["リード獲得AI", "提案書自動生成", "顧客分析・ランキング付け", "コンテンツ生成", "営業支援AI", "価格最適化", "マーケ最適化AI"];
-
 const STRENGTHS: {
   color: string;
   markText?: string;
   markIcon?: string;
   label: string;
   title: string;
+  description?: string;
+  accent?: string;
+  visual?: "yc" | "research" | "impact";
   href?: string;
   presenter?: string;
   /** When set, the badge renders this image instead of the CSS layout.
@@ -58,21 +60,28 @@ const STRENGTHS: {
     markText: "Y",
     label: "Winner of",
     title: "YC RFS Hackathon 2026",
+    description: "世界トップアクセラレーター Y Combinator が日本で開催した RFS Hackathon で優勝。",
+    accent: "世界トップアクセラレーター発",
+    visual: "yc",
     href: "https://x.com/KyosukeTogami/status/2075136867461460299",
     presenter: "Transpose",
     image: "/img/badge/yc-transparent.png",
   },
   {
     color: "#2B7CFF",
-    markIcon: "globe",
-    label: "Research DB",
+    label: "Research Archive",
     title: "AI事例 5万件",
+    description: "海外を含むAI活用事例を、業界・用途・成果別に整理。提案や設計の母集団があります。",
+    accent: "業界別に整理済み",
+    visual: "research",
   },
   {
-    color: "#1F9D62",
-    markIcon: "trending-up",
-    label: "Framework",
-    title: "ROI起点の設計",
+    color: "#E0A800",
+    label: "Business Impact",
+    title: "初年度から費用対効果を体感",
+    description: "まずは削減から効かせ、次に売上へ。役員会で説明できる数字まで最短で持っていきます。",
+    accent: "最初に効くのはコスト",
+    visual: "impact",
   },
 ];
 
@@ -91,29 +100,26 @@ const ROI_REASONS = [
 
 const OS_TOP = [
   {
-    icon: "trending-down",
     label: "コスト DOWN",
-    color: "#2B7CFF",
     sub: "削減の起点をつくる",
     text: "汎用SaaSの代替と業務の自動化により、余分な固定費・外注費を構造から見直します。",
     kind: "cost" as const,
+    bgImage: "/img/os/cost-down-bg.png",
   },
   {
-    icon: "trending-up",
     label: "売上 UP",
-    color: "#1F9D62",
     sub: "人的リソースを解放する",
     text: "自動化で生まれた人的リソースを、本来注力すべき事業へと振り向けます。",
     kind: "sales" as const,
+    bgImage: "/img/os/sales-up-bg.png",
   },
   {
-    icon: "percent",
     label: "利益率 UP",
-    color: "#7C5CFF",
     sub: "結果として高まる",
     text: "削減と向上の両方が効くことで、結果として利益率が高まっていきます。",
     kind: "profit" as const,
     highlight: true,
+    bgImage: "/img/os/profit-up-bg.png",
   },
 ];
 
@@ -136,25 +142,6 @@ function OsTrend({ kind, color }: { kind: "cost" | "sales" | "profit"; color: st
         fill={color}
         transform={`translate(${tip.x},${tip.y}) rotate(${tip.rot})`}
       />
-    </svg>
-  );
-}
-
-/** Stacked-disk motif for the COST DOWN layer panel. */
-function LayerStack() {
-  return (
-    <svg className={styles.osLayerArt} viewBox="0 0 180 158" fill="none" aria-hidden>
-      <defs>
-        <linearGradient id="osDisk" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#7FB2FF" />
-          <stop offset="1" stopColor="#2A6BEF" />
-        </linearGradient>
-      </defs>
-      <path d="M90,16 L90,58" stroke="#9CC3FF" strokeWidth="13" strokeLinecap="round" opacity="0.55" />
-      <path d="M71,52 L90,76 L109,52 Z" fill="#9CC3FF" opacity="0.7" />
-      <g opacity="0.78"><ellipse cx="90" cy="120" rx="54" ry="17" fill="url(#osDisk)" /></g>
-      <g opacity="0.88"><ellipse cx="90" cy="106" rx="54" ry="17" fill="url(#osDisk)" /></g>
-      <g><ellipse cx="90" cy="92" rx="54" ry="17" fill="url(#osDisk)" /></g>
     </svg>
   );
 }
@@ -194,31 +181,43 @@ export default function Home() {
           </Reveal>
           <Reveal immediate delay={0.62} y={20} className={styles.fvBadges}>
             {STRENGTHS.map((b) => {
-              if (b.image) {
-                const img = (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img className={styles.fvImg} src={b.image} alt={b.title} />
-                );
-                return b.href ? (
-                  <a key={b.title} className={styles.fvImgBadge} href={b.href} target="_blank" rel="noopener noreferrer">
-                    {img}
-                  </a>
-                ) : (
-                  <span key={b.title} className={styles.fvImgBadge}>{img}</span>
-                );
-              }
               const inner = (
                 <>
-                  <span className={styles.fvMark} style={{ background: b.color }}>
-                    {b.markText ? (
-                      <span className={styles.fvMarkText}>{b.markText}</span>
-                    ) : (
-                      <Icon name={b.markIcon as string} size={28} />
-                    )}
-                  </span>
                   <span className={styles.fvBody}>
-                    <span className={styles.fvLabel}>{b.label}</span>
-                    <span className={styles.fvTitle}>{b.title}</span>
+                    <span className={`${styles.fvTopBadge} ${b.visual === "research" ? styles.fvTopBadgeResearch : ""} ${b.visual === "impact" ? styles.fvTopBadgeImpact : ""}`}>
+                      {b.visual === "yc" ? (
+                        <span className={styles.fvMediaYc}>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img className={styles.fvImg} src={b.image} alt={b.title} />
+                        </span>
+                      ) : null}
+                      {b.visual === "research" ? (
+                        <span className={styles.fvMediaResearch} aria-hidden>
+                          <span className={styles.fvDocStack}>
+                            <span />
+                            <span />
+                            <span />
+                          </span>
+                          <span className={styles.fvDocCover}>
+                            <span className={styles.fvDocBar} />
+                            <span className={styles.fvDocChart} />
+                          </span>
+                        </span>
+                      ) : null}
+                      {b.visual === "impact" ? (
+                        <span className={styles.fvMediaImpact} aria-hidden>
+                          <span className={styles.fvImpactRing} />
+                          <span className={styles.fvImpactCore}>ROI</span>
+                          <span className={styles.fvImpactSpark} />
+                        </span>
+                      ) : null}
+                      <span className={styles.fvTopCopy}>
+                        <span className={styles.fvLabel}>{b.label}</span>
+                        <span className={styles.fvTitle}>{b.title}</span>
+                      </span>
+                    </span>
+                    {b.accent ? <span className={styles.fvAccent}>{b.accent}</span> : null}
+                    {b.description ? <span className={styles.fvDesc}>{b.description}</span> : null}
                     {b.presenter ? (
                       <span className={styles.fvPresenter}>
                         <span className={styles.fvPresenterLabel}>Presented by</span>
@@ -396,35 +395,47 @@ export default function Home() {
                 delay={i * 0.1}
                 className={`${styles.osTopCard}${c.highlight ? ` ${styles.osTopCardHighlight}` : ""} liftCard`}
               >
-                <span className={styles.osTopLabel} style={{ color: c.color }}>
-                  <span className={styles.osTopIcon} style={{ background: `${c.color}14`, color: c.color }}>
-                    <Icon name={c.icon} size={20} />
-                  </span>
-                  {c.label}
-                </span>
+                <div className={styles.osTopBg} style={{ backgroundImage: `url(${c.bgImage})` }} />
+                <div className={styles.osTopSweep} />
+                <span className={styles.osTopLabel}>{c.label}</span>
                 <div className={styles.osTopSub}>{c.sub}</div>
                 <p className={styles.osTopText}>{c.text}</p>
                 <div className={styles.osChartWrap}>
-                  <span className={styles.osChartLabel} style={{ color: c.color }}>{c.kind.toUpperCase()}</span>
-                  <OsTrend kind={c.kind} color={c.color} />
+                  <span className={styles.osChartLabel}>{c.kind.toUpperCase()}</span>
+                  <OsTrend kind={c.kind} color="#2B7CFF" />
                 </div>
               </Reveal>
             ))}
           </MobileCarousel>
 
           <MobileCarousel className={styles.osSplit}>
-            <Reveal className={styles.osPanel}>
+            <Reveal className={`${styles.osPanel} ${styles.osPanelMedia}`}>
+              <div className={styles.osPanelBg} style={{ backgroundImage: "url(/img/os/cost-down-bg.png)" }} />
+              <div className={styles.osPanelOverlay} />
               <div className={styles.osPanelTitle}>削減の層</div>
               <p className={styles.osPanelText}>余分な工数・人件費・外注費・汎用SaaS費を削減する層です。業務そのものを、AIへと置き換えていきます。</p>
-              <LayerStack />
-              <div className={styles.osPanelFoot}>業務置換 — Replacement</div>
+              <div className={styles.osWorkflow}>
+                <div className={styles.osWorkflowCard}>
+                  <div className={styles.osWorkflowHead}>導入前</div>
+                  <div className={styles.osWorkflowRow}>
+                    <span>手作業・転記</span>
+                    <span>Excel管理</span>
+                    <span>属人化・工数過多</span>
+                  </div>
+                </div>
+                <div className={styles.osWorkflowArrow}><Icon name="arrow-right" size={18} /></div>
+                <div className={styles.osWorkflowCard}>
+                  <div className={styles.osWorkflowHead}>導入後</div>
+                  <div className={styles.osWorkflowRow}>
+                    <span>AI自動処理</span>
+                    <span>データ一元化</span>
+                    <span>工数削減・標準化</span>
+                  </div>
+                </div>
+              </div>
             </Reveal>
             <Reveal delay={0.1} className={`${styles.osPanel} ${styles.osPanelHighlight}`}>
-              <div className={styles.osPanelTitle}>向上の層</div>
-              <p className={styles.osPanelText}>生まれた力を、売上へと変える層です。営業やマーケティングの現場で使えるAIを、貴社に内製します。</p>
-              <div className={styles.chips}>
-                {SALES_TAGS.map((t) => <span key={t} className={styles.chip}>{t}</span>)}
-              </div>
+              <AiOsShowcase />
             </Reveal>
           </MobileCarousel>
 

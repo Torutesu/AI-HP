@@ -50,10 +50,9 @@
 .thumb {
   aspect-ratio: 16 / 9;
   background: linear-gradient(130deg, #f3f6fb, #e9f1ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--blue-300);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .body {
   padding: 24px 26px;
@@ -92,4 +91,5 @@
 }
 @media (max-width: 640px) {
   .grid { grid-template-columns: 1fr; }
+  .body { padding: 20px 20px 22px; }
 }

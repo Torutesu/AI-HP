@@ -97,6 +97,26 @@ export default async function ArticlePage({
       <div style={{ background: "var(--white)" }}>
         {/* Article header */}
         <section style={{ position: "relative", overflow: "hidden", background: "#05070c" }}>
+          {a.image ? (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                backgroundImage: `url(${a.image})`,
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                opacity: 0.22,
+              }}
+            />
+          ) : null}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(180deg, rgba(5,7,12,0.72), rgba(5,7,12,0.9))",
+            }}
+          />
           <div
             style={{
               position: "absolute",
@@ -194,18 +214,32 @@ export default async function ArticlePage({
                     href={`/magazine/${r.slug}`}
                     className="hover-panel"
                     style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
+                      display: "grid",
+                      gridTemplateColumns: "160px 1fr auto",
                       gap: "16px",
                       background: "var(--surface-card)",
                       border: "0.5px solid var(--line-strong)",
                       borderRadius: "10px",
-                      padding: "18px 22px",
+                      padding: "12px",
                       transition: "border-color .2s",
                     }}
                   >
-                    <span style={{ fontSize: "14.5px", fontWeight: 600, color: "var(--fg-0)" }}>{r.title}</span>
+                    <div
+                      style={{
+                        minHeight: "96px",
+                        borderRadius: "8px",
+                        backgroundImage: `linear-gradient(180deg, rgba(5, 7, 12, 0.04), rgba(5, 7, 12, 0.18)), url(${r.image})`,
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                      }}
+                    />
+                    <div style={{ alignSelf: "center", padding: "8px 0" }}>
+                      <div style={{ fontSize: "11.5px", color: "var(--accent)", fontWeight: 600, marginBottom: "8px" }}>
+                        {r.category}
+                      </div>
+                      <span style={{ fontSize: "14.5px", fontWeight: 600, color: "var(--fg-0)", lineHeight: 1.6 }}>{r.title}</span>
+                    </div>
                     <span style={{ flex: "none", color: "var(--accent)" }}><Icon name="arrow-right" size={16} /></span>
                   </Link>
                 ))}

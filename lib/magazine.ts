@@ -38,6 +38,7 @@ export const articles: Article[] = [
     title: "「AIを試した」で止まる会社と、数字が動く会社の違い",
     date: "2026.07.10",
     featured: true,
+    image: "/img/company/position.jpg",
     excerpt:
       "PoCの先へ進めない最大の理由は、技術ではなく設計にある。経営の数字から逆算する実装の型を解説します。",
     body: [
@@ -51,6 +52,7 @@ export const articles: Article[] = [
     category: "コスト削減",
     title: "汎用SaaSの固定費を、内製で1/3にする考え方",
     date: "2026.07.08",
+    image: "/img/company/promise.jpg",
     excerpt:
       "毎月積み上がる汎用SaaSの固定費を、内製AIで構造から見直す。削減の考え方と進め方を整理します。",
     body: [
@@ -63,6 +65,7 @@ export const articles: Article[] = [
     category: "売上向上",
     title: "営業支援AIで商談の勝率を上げる、3つの実装パターン",
     date: "2026.07.05",
+    image: "/img/industries/professional.jpg",
     excerpt:
       "商談分析・提案書自動生成・顧客ランキング。営業の現場で効く3つの実装パターンを紹介します。",
     body: [
@@ -75,6 +78,7 @@ export const articles: Article[] = [
     category: "技術トレンド",
     title: "アプリケーションレイヤーの最新事例と、日本企業への示唆",
     date: "2026.07.02",
+    image: "/img/service/hero.jpg",
     excerpt:
       "グローバルのアプリケーションレイヤー事例から、日本企業が取り入れるべき勝ち筋を読み解きます。",
     body: [
@@ -87,6 +91,7 @@ export const articles: Article[] = [
     category: "事例・シナリオ",
     title: "製造業の見積工数を半減させた、AI置換の進め方",
     date: "2026.06.28",
+    image: "/img/industries/manufacturing.jpg",
     excerpt:
       "属人化しがちな見積・図面対応をAIに置換。工程知識を全社の資産に変える進め方を解説します。",
     body: [
@@ -99,6 +104,7 @@ export const articles: Article[] = [
     category: "経営・組織",
     title: "AI活用度を役員会で語るための、ROI可視化フレーム",
     date: "2026.06.24",
+    image: "/img/company/mission.jpg",
     excerpt:
       "投資対効果を役員会で説明できる形に。活用度とROIを可視化するフレームを紹介します。",
     body: [
@@ -111,6 +117,7 @@ export const articles: Article[] = [
     category: "コスト削減",
     title: "使われないライセンスを見つける、活用度診断のはじめ方",
     date: "2026.06.20",
+    image: "/img/industries/finance.jpg",
     excerpt:
       "誰が、どのツールを、どれだけ使っているか。活用度診断から、無駄な固定費を洗い出します。",
     body: [
@@ -123,6 +130,7 @@ export const articles: Article[] = [
     category: "事例・シナリオ",
     title: "バックオフィスの書類処理を6割減らす、自動化の設計",
     date: "2026.06.16",
+    image: "/img/industries/retail.jpg",
     excerpt:
       "請求・経費・データ入力といった定型業務を自動化し、人の時間を判断業務へ戻す設計を解説します。",
     body: [
@@ -135,6 +143,7 @@ export const articles: Article[] = [
     category: "経営・組織",
     title: "AI Native企業への移行を、現場に定着させる組織設計",
     date: "2026.06.12",
+    image: "/img/company/position.jpg",
     excerpt:
       "研修だけでは定着しない。AI活用を現場の業務に根づかせる組織設計の勘所をまとめます。",
     body: [
@@ -147,6 +156,7 @@ export const articles: Article[] = [
     category: "技術トレンド",
     title: "最先端のオープン技術で、開発コストを構造から圧縮する",
     date: "2026.06.08",
+    image: "/img/industries/healthcare.jpg",
     excerpt:
       "世界最先端のオープン技術をどう活用すれば、開発コストを構造から下げられるのかを解説します。",
     body: [
