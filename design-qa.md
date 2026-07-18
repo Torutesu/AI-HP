@@ -1,27 +1,29 @@
 # Design QA
 
-- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_bebRgi/スクリーンショット 2026-07-18 15.34.18.png`
-- Implementation: local Next.js homepage philosophy section browser capture
-- Viewports: 1440 x 1000, 390 x 844
-- State: knowledge-to-impact message and three delivery steps
+- Source visual truth: article title, summary, excerpt, and headings in `lib/magazine.ts`
+- Implementation: local Next.js magazine list and article detail
+- Viewports: 1280 x 720, 390 x 844
+- State: 23 article-specific generated thumbnails
 
 ## Full-view comparison evidence
 
-- The desktop visual panel aligns with the combined height of the three process cards.
-- Mobile reports no document-level horizontal overflow at 390 px.
-- Mobile uses a 360 px message panel and compact 150 px process cards.
+- Desktop renders a featured article followed by a three-column thumbnail grid.
+- Mobile renders a single-column list with intact 16:9 crops and no horizontal overflow.
+- The first seven visible entries use distinct article-specific subjects while sharing one editorial palette.
 
 ## Focused region comparison evidence
 
-- Two long explanatory paragraphs and three icon statistics were removed from the left panel.
-- The three right-side descriptions were reduced to one short sentence each.
-- Full-card imagery, navy overlays, process labels, and numbers communicate the removed detail visually.
+- Meeting minutes uses a conference table and an audio-to-action workflow.
+- AI adoption cost uses a physical descending cost model.
+- Subsidies use an application folder and a converging selection path.
+- Article detail uses the same generated asset for the hero background and Open Graph image.
 
-## Comparison history
+## Pipeline evidence
 
-1. P1: the section repeated its message across five long text blocks. Fixed by reducing it to one message and three outcomes.
-2. P1: generic line icons carried little meaning. Fixed by using business, module, and growth imagery.
-3. P2: the desktop composition could become too tall on mobile. Fixed with dedicated 360 px and 150 px mobile card heights.
+- `npm run magazine:thumbnail-briefs` reports 23 ready and 0 pending.
+- `npm run magazine:thumbnail-check` reports all briefs current.
+- Source and image hashes are stored separately, so article edits return stale thumbnails to pending.
+- All thumbnails are 1600 x 900 WebP assets; the full set is approximately 1.6 MB.
 
 ## Verification
 

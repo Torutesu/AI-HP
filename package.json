@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "magazine:thumbnail-briefs": "node scripts/build-magazine-thumbnail-briefs.mjs",
+    "magazine:thumbnail-check": "node scripts/build-magazine-thumbnail-briefs.mjs --check",
     "start": "next start",
     "lint": "next lint",
     "preview": "npm run build && wrangler pages dev out",

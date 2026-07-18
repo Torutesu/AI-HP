@@ -1,3 +1,5 @@
+import thumbnailManifest from "../content/magazine-thumbnails.json";
+
 // Magazine content source.
 // A single, typed data module drives the list page, the category filter, the
 // per-article detail pages (/magazine/[slug]) and the sitemap. To publish a new
@@ -1010,6 +1012,11 @@ const CATEGORY_IMAGES: Record<string, string> = {
   "技術トレンド": "/img/service/hero.jpg",
 };
 
+const GENERATED_IMAGES = thumbnailManifest.articles as Record<
+  string,
+  { path?: string; status: "ready" | "pending" }
+>;
+
 // Sorted newest-first by published date (YYYY.MM.DD sorts correctly as text).
 // Stable: equal dates keep authoring order. All consumers read this export, so
 // the hand-maintained authoring order no longer has to be kept in date order.
@@ -1017,7 +1024,11 @@ export const articles: Article[] = [...rawArticles]
   .sort((a, b) => b.date.localeCompare(a.date))
   .map((article) => ({
     ...article,
-    image: article.image ?? CATEGORY_IMAGES[article.category] ?? "/img/service/hero.jpg",
+    image:
+      GENERATED_IMAGES[article.slug]?.path ??
+      article.image ??
+      CATEGORY_IMAGES[article.category] ??
+      "/img/service/hero.jpg",
   }));
 
 export const featuredArticle = articles.find((a) => a.featured) ?? articles[0];

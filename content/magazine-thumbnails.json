@@ -1,0 +1,213 @@
+{
+  "version": 1,
+  "artDirection": "Premium Japanese B2B editorial still life. White and cool-gray space, restrained cobalt and navy, one clear business object, no people, no text, no logos, no generic AI imagery.",
+  "articles": {
+    "meeting-minutes-ai": {
+      "status": "ready",
+      "path": "/img/magazine/meeting-minutes-ai.webp",
+      "sourceHash": "d1a4ad37945c",
+      "imageHash": "0d9d01259c59",
+      "approvedSourceHash": "d1a4ad37945c",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 会議の議事録をAIで自動化する、定着まで含めた設計\nEditorial context: 会議の議事録は、録音・文字起こし・要約・共有という工程に分けると、AIで自動化しやすい業務です。ただしツールを配るだけでは定着せず、「誰が最終確認するか」「どこに保存し次にどう使うか」まで業務手順に組み込むことが成否を分けます。まずは定例会議など頻度の高い1つに絞って導入し、確認の手間と抜け漏れが減ることを確かめてから広げるのが確実です。 録音・文字起こし・要約・共有に分けると議事録はAIで自動化しやすい業務です。ツール導入で終わらせず、定着まで含めた設計を解説します。\nKey sections: 議事録づくりを工程に分解する / AIに任せる工程と、人が担う工程 / 定着させる設計：ツールを入れて終わりにしない / 導入の進め方と注意点\nPrimary visual direction: a recognizable real-world business workspace focused on the task being transformed. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "ai-cost-benchmark": {
+      "status": "ready",
+      "path": "/img/magazine/ai-cost-benchmark.webp",
+      "sourceHash": "2286bb71e617",
+      "imageHash": "dd2f3357d9d0",
+      "approvedSourceHash": "2286bb71e617",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: AI導入の費用相場は？中小企業のコスト構造を分解する\nEditorial context: 結論から言えば、AI導入費用に一律の相場はありません。既製ツールの利用か自社業務に合わせた内製かで金額は2桁変わるためです。判断のコツは、初期費用（設計・開発・データ整備）と運用費（利用料・保守・人件費）を分け、単月ではなく2〜3年の総額で比べること。まずは対象業務の現状コストを数字にするところから始めます。 「AI導入はいくらかかるのか」。初期費用と運用費の内訳、費用が上下する要因、相場の考え方を分解して解説します。\nKey sections: なぜAI導入の費用は「相場」が示しにくいのか / 費用は「初期費用」と「運用費」に分けて捉える / 費用を大きく左右する4つの要因 / 「安く見える選択肢」が高くつく場合\nPrimary visual direction: a physical cost model that makes waste, recurring fees, or process compression immediately visible. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "ai-subsidy-guide": {
+      "status": "ready",
+      "path": "/img/magazine/ai-subsidy-guide.webp",
+      "sourceHash": "b1c4ba28004f",
+      "imageHash": "168a2419c60f",
+      "approvedSourceHash": "b1c4ba28004f",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: AI活用に使える補助金・助成金の選び方（2026年時点）\nEditorial context: AI導入には、ITツール導入・設備投資・販路開拓などを支援する国や自治体の補助金を活用できる場合があります。ただし補助率・上限・要件・公募期間は制度ごとに異なり毎年改定されるため、必ず公式サイトで最新の公募要領を確認してください。選ぶときは金額ではなく「自社の計画に合うか」で判断し、補助金ありきで導入内容を決めないことが肝心です。（2026年7月時点） AI導入に補助金は使えるのか。代表的な制度の種類と、自社に合う制度を見極める選び方を、時点情報として整理します。\nKey sections: AI導入に関係しうる代表的な制度の型 / 補助金を選ぶときの4つの視点 / 補助金活用でつまずきやすい点 / 補助金は「目的」ではなく「手段」\nPrimary visual direction: an executive decision model showing governance, adoption, investment, or organizational change. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "genai-vs-rpa": {
+      "status": "ready",
+      "path": "/img/magazine/genai-vs-rpa.webp",
+      "sourceHash": "b4740034e82d",
+      "imageHash": "44dc010983d6",
+      "approvedSourceHash": "b4740034e82d",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 生成AI・従来型AI・RPAは何が違うか、使い分けの基準\nEditorial context: RPAは決められた手順を正確に再現する自動化ツール、従来型AIは過去データから予測・分類を行う仕組み、生成AIは非定型の文章や対話を柔軟に扱う技術です。厳密さのRPA、柔軟さの生成AIという違いがあり、業務を工程に分解して当てはめるのが使い分けの基本。実務では3つを組み合わせて業務フロー全体を設計するのが主流です。 生成AI、従来型AI、RPA。混同されがちな3つの違いを、仕組みと得意領域から整理し、業務ごとの使い分けの基準を示します。\nKey sections: 3つの技術は、それぞれ何が得意か / 決定的な違いは「判断の柔軟さ」と「入力の形」 / 業務ごとの使い分けの基準 / 実務では「組み合わせ」が主流\nPrimary visual direction: an evaluation bench of modular technology components showing differences, selection, or compatibility. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "inhouse-vs-saas": {
+      "status": "ready",
+      "path": "/img/magazine/inhouse-vs-saas.webp",
+      "sourceHash": "ca8a5a6c50ee",
+      "imageHash": "1d5f0c9f868f",
+      "approvedSourceHash": "ca8a5a6c50ee",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: AIの内製とSaaS導入、どちらを選ぶべきか判断フレーム\nEditorial context: 内製とSaaSに一律の正解はなく、業務の性質で決まります。標準的で差別化に関係せず急ぐ業務はSaaS、自社独自で競争力に直結し規模も大きい業務は内製が有利です。判断は標準性・競争力への直結度・スピード・規模の4軸と、数年間の総額比較で行います。標準業務はSaaS、差別化業務は内製と使い分けるのが現実解です。 AIは自社で内製すべきか、既製のSaaSを導入すべきか。コスト・スピード・競争力の観点から、判断のフレームを示します。\nKey sections: そもそも内製とSaaSは何が違うのか / 判断を分ける4つの軸 / 使い分けの目安 / 「二択」ではなく「組み合わせ」で考える\nPrimary visual direction: a physical cost model that makes waste, recurring fees, or process compression immediately visible. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "ai-agent-autonomy": {
+      "status": "ready",
+      "path": "/img/magazine/ai-agent-autonomy.webp",
+      "sourceHash": "68ad808f9f0c",
+      "imageHash": "3861970d6fb4",
+      "approvedSourceHash": "68ad808f9f0c",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: AIエージェントで業務はどこまで自律化できるか（2026年時点）\nEditorial context: AIエージェントは、目標を与えると手順を自分で分解して複数のステップを実行するAIで、一問一答の従来型AIと異なります。現時点では、情報収集や資料の初稿作成など影響が可逆な業務は任せやすい一方、対外文書や金銭処理・最終判断は人の確認を挟むべき段階です。全自動ではなく「人が監督する自動化」として、可逆な業務から始めるのが賢明です。（2026年7月時点） 指示待ちのAIから、自ら手順を実行するAIエージェントへ。何が変わり、業務のどこまで任せられるのかを、現時点の実像で整理します。\nKey sections: AIエージェントは、従来のAIと何が違うのか / いま、どこまで任せられるのか / 「全自動」ではなく「人が監督する自動化」 / 導入で押さえるべき勘所\nPrimary visual direction: an evaluation bench of modular technology components showing differences, selection, or compatibility. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "open-models-tracking": {
+      "status": "ready",
+      "path": "/img/magazine/open-models-tracking.webp",
+      "sourceHash": "5237198b04b4",
+      "imageHash": "2df0e15a5652",
+      "approvedSourceHash": "5237198b04b4",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 業務で使えるオープンモデルの見極め方（定点観測の視点）\nEditorial context: オープンモデルは用途によっては商用モデルに迫る性能に達し、自社環境で動かせて従量課金が積み上がらないといった利点があります。選ぶときはランキングを追うのではなく、自社の用途での性能・運用コスト・ライセンス・継続性の4軸で見ます。特定モデルに仕組みを固定せず差し替え可能に設計しておけば、世代交代を追い風にできます。（2026年7月時点） 商用モデルに迫るオープンモデルを、業務でどう選ぶか。特定モデルの優劣ではなく、変化に強い「見極めの視点」を定点観測の形で示します。\nKey sections: なぜオープンモデルが選択肢になったのか / 「最新モデル」ではなく「見極めの軸」を持つ / 自社で評価するための実務ステップ / モデルは「差し替え可能な部品」として設計する\nPrimary visual direction: an evaluation bench of modular technology components showing differences, selection, or compatibility. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "ai-adoption-failures": {
+      "status": "ready",
+      "path": "/img/magazine/ai-adoption-failures.webp",
+      "sourceHash": "cea5357dc67e",
+      "imageHash": "d01ec8742e3f",
+      "approvedSourceHash": "cea5357dc67e",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 中小企業がAI導入で失敗する7つのパターンと回避策\nEditorial context: 中小企業のAI導入でよくある失敗は、目的化・配布だけで終わる・基準値がない・完璧主義・現場不在・データ未整備・特定ツール依存の7つです。いずれも技術ではなく設計の問題で、動かす数字から逆算し、小さく始め、現場を巻き込み、ツールに縛られない設計にすれば大半は避けられます。自社がどのパターンに陥りやすいかを知ることが出発点です。 AI導入がうまくいかない会社には共通の型があります。よくある7つの失敗パターンと、それぞれの回避策を整理します。\nKey sections: パターン1：目的が「AIを使うこと」になっている / パターン2：ツールを配って終わりにする / パターン3：効果を測る物差しがない / パターン4：完璧を目指して動き出せない\nPrimary visual direction: an executive decision model showing governance, adoption, investment, or organizational change. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "ai-data-security": {
+      "status": "ready",
+      "path": "/img/magazine/ai-data-security.webp",
+      "sourceHash": "54689b1f3be0",
+      "imageHash": "ad5c609a0c29",
+      "approvedSourceHash": "54689b1f3be0",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 社内データを安全に使うための、AIセキュリティ設計\nEditorial context: 社内データをAIに使わせても、正しく設計すれば機密性を保って活用できます。データを機密度で分類し、最小権限・既存の権限管理との整合・高機密データを外部に出さない構成を徹底するのが基本です。全面禁止はかえって隠れた利用（シャドーAI）を招くため、安全に使える業務用の窓口とガイドラインで正しい使い方に誘導します。 AIに社内データを使わせたいが、情報漏えいが心配。安全に活用するために押さえるべきセキュリティ設計の勘所を整理します。\nKey sections: まず切り分ける：何を、どこまでAIに渡すのか / 主要なリスクと、対応の方向性 / 設計の基本原則 / 「使わせない」ではなく「安全に使わせる」\nPrimary visual direction: an evaluation bench of modular technology components showing differences, selection, or compatibility. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "ai-adoption-steps": {
+      "status": "ready",
+      "path": "/img/magazine/ai-adoption-steps.webp",
+      "sourceHash": "3ffaf957e268",
+      "imageHash": "eff10682b619",
+      "approvedSourceHash": "3ffaf957e268",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: AI導入の進め方を5ステップで解説（診断から内製まで）\nEditorial context: AI導入は、①現状の可視化と診断、②動かす数字と対象業務の決定、③小さく実装して検証、④横展開して定着、⑤差別化領域の内製、の5ステップで進めます。出発点はツール選びではなく現状把握で、各段階を飛ばさず順に進むのが成功の条件です。まず影響の小さい1業務から始め、効果を数字で確認してから広げます。 何から手をつければいいか分からない。AI導入を、現状診断から内製化まで5つのステップに分けて具体的に解説します。\nKey sections: ステップ1：現状の可視化と診断 / ステップ2：動かす数字と対象業務を決める / ステップ3：小さく実装して検証する / ステップ4：横展開して定着させる\nPrimary visual direction: an executive decision model showing governance, adoption, investment, or organizational change. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "poc-to-results": {
+      "status": "ready",
+      "path": "/img/magazine/poc-to-results.webp",
+      "sourceHash": "b664ae37ce4c",
+      "imageHash": "0993708ca772",
+      "approvedSourceHash": "b664ae37ce4c",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 「AIを試した」で止まる会社と、数字が動く会社の違い\nEditorial context: AIを「試して終わり」にする会社と数字が動く会社を分けるのは、技術ではなく設計です。成果が出る会社は、コスト・売上・利益率といった経営指標から逆算して業務を選び、業務単位で小さく実装し、毎月同じ物差しで効果を検証し続けます。出発点は現状の可視化と診断で、どの数字をいくら動かすかを最初に決めることが鍵です。 PoCの先へ進めない最大の理由は、技術ではなく設計にある。経営の数字から逆算する実装の型を解説します。\nKey sections: なぜ「試した」で止まるのか / 数字が動く会社は、逆算で設計している / 「試して終わり」を防ぐ体制 / まずは、現状の可視化から\nPrimary visual direction: an executive decision model showing governance, adoption, investment, or organizational change. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "professional-services-ai": {
+      "status": "ready",
+      "path": "/img/magazine/professional-services-ai.webp",
+      "sourceHash": "6d455c894380",
+      "imageHash": "950b3e31166c",
+      "approvedSourceHash": "6d455c894380",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 士業のAI活用：調査・ドラフト作成を自動化する設計\nEditorial context: 士業のAI活用は、下調べ・ドラフト初稿・照会の一次対応・事務処理といった準備作業に効きます。設計の原則は「AIが調べて下書きし、専門家が確認して仕上げる」分業で、最終的な法的・税務的判断は専門家に残します。顧客情報を扱うため、外部の学習に使われない構成など守秘義務への配慮が前提です。 弁護士・税理士・社労士など士業の業務で、調査やドラフト作成をAIで加速する設計を、専門家の判断を守りながら解説します。\nKey sections: 士業業務のどこにAIが効くのか / 「AIが下書き、専門家が判断」の分業 / 士業ならではの注意点 / 効果のイメージ\nPrimary visual direction: a recognizable real-world business workspace focused on the task being transformed. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "retail-ec-ai": {
+      "status": "ready",
+      "path": "/img/magazine/retail-ec-ai.webp",
+      "sourceHash": "f54271dd1d88",
+      "imageHash": "667c8dc99d8d",
+      "approvedSourceHash": "f54271dd1d88",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 小売・ECのAI活用：商品説明とCS対応を効率化する\nEditorial context: 小売・ECでは、商品説明文の初稿自動生成と、定型的な問い合わせの一次対応の自動化が効きます。AIが下書き・一次対応を担い、人は確認・調整とクレームや重要顧客の対応に集中する分業が基本です。制作量を増やしつつCS対応を軽くでき、コスト削減と売上向上を同時に狙えます。 商品説明の作成とカスタマーサポート。量に追われがちな小売・ECの2大業務を、AIで軽くしながら売上につなげる設計を解説します。\nKey sections: 商品説明の作成をAIで加速する / CS対応をAIで軽くする / 効果と、設計の勘所 / 量の制約から、成長の余地へ\nPrimary visual direction: a recognizable real-world business workspace focused on the task being transformed. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "healthcare-backoffice-ai": {
+      "status": "ready",
+      "path": "/img/magazine/healthcare-backoffice-ai.webp",
+      "sourceHash": "cb9e1940d856",
+      "imageHash": "f8d56e32a5d2",
+      "approvedSourceHash": "cb9e1940d856",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 医療・介護のバックオフィスを、AIで軽くする\nEditorial context: 人手不足の医療・介護では、予約・記録作成・問い合わせ・転記といったバックオフィス事務のAI化が効きます。定型事務はAIに任せ、診断・ケア・利用者への説明は専門職が担う切り分けで、専門職の時間を本来のケアへ戻せます。要配慮情報を扱うため、データを外部に出さない構成など保護設計が前提です。 人手不足が深刻な医療・介護現場で、予約・記録・問い合わせといった事務をAIで軽くし、専門職の時間を本来の業務へ戻す設計を解説します。\nKey sections: 専門職の時間を奪っている事務作業 / AIに任せる事務と、人が担うケアを分ける / 医療・介護ならではの注意点 / 効果のイメージ\nPrimary visual direction: a recognizable real-world business workspace focused on the task being transformed. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "saas-cost-one-third": {
+      "status": "ready",
+      "path": "/img/magazine/saas-cost-one-third.webp",
+      "sourceHash": "d0fe6db3c949",
+      "imageHash": "21c8b3439c40",
+      "approvedSourceHash": "d0fe6db3c949",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 汎用SaaSの固定費を、内製で1/3にする考え方\nEditorial context: 汎用SaaSの固定費が下がりにくいのは、席数課金・機能の過剰・分散契約という構造が原因です。内製なら必要な機能だけを実装でき席数課金からも解放されるため、開発済みモジュールとオープン技術を組み合わせれば同等機能をより軽い構造で実装できます。ただし全置換ではなく、標準業務はSaaSに残し、差別化・高コスト領域を内製に切り替える見極めが肝心です。 毎月積み上がる汎用SaaSの固定費を、内製AIで構造から見直す。削減の考え方と進め方を整理します。\nKey sections: 固定費が下がらない3つの構造 / なぜ内製で1/3を目指せるのか / 進め方：診断 → 試算 → 段階的置換 / すべてを内製すべきではない\nPrimary visual direction: a physical cost model that makes waste, recurring fees, or process compression immediately visible. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "sales-ai-win-rate": {
+      "status": "ready",
+      "path": "/img/magazine/sales-ai-win-rate.webp",
+      "sourceHash": "12abbbc08b61",
+      "imageHash": "f39d4ffa5ce2",
+      "approvedSourceHash": "12abbbc08b61",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 営業支援AIで商談の勝率を上げる、3つの実装パターン\nEditorial context: 営業支援AIは事務効率化にとどめず、商談分析・提案書自動生成・顧客ランキングの3パターンで使うと勝率に直接効きます。導入はすでにデータがある場所から始め、勝率・受注件数という同じ物差しで毎月検証します。判断基準を現場と一緒に作り、根拠を説明できる形にすることが定着の条件です。 商談分析・提案書自動生成・顧客ランキング。営業の現場で効く3つの実装パターンを紹介します。\nKey sections: パターン1：商談分析で「なぜ勝てたか」を構造化する / パターン2：提案書の自動生成で、準備の時間を提案の質に変える / パターン3：顧客ランキングで、勝てる商談に時間を配る / どの順番で入れるべきか\nPrimary visual direction: a precise commercial workflow that makes prioritization, conversion, or next actions immediately visible. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "application-layer-cases": {
+      "status": "ready",
+      "path": "/img/magazine/application-layer-cases.webp",
+      "sourceHash": "122caf9bab7b",
+      "imageHash": "4c40aa34a9ce",
+      "approvedSourceHash": "122caf9bab7b",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: アプリケーションレイヤーの最新事例と、日本企業への示唆\nEditorial context: AIの価値の多くは、基盤モデルそのものではなく、モデルと業務をつなぐアプリケーションレイヤーで生まれます。海外事例はそのまま輸入せず、日本の業務慣行に合わせて翻訳（再設計）することが必要です。競合が真似できないのは自社の業務データと業務知識で、それをこの層に組み込めた企業から優位が生まれます。 グローバルのアプリケーションレイヤー事例から、日本企業が取り入れるべき勝ち筋を読み解きます。\nKey sections: アプリケーションレイヤーとは何か / グローバル事例に見る3つの類型 / 日本企業への示唆\nPrimary visual direction: an evaluation bench of modular technology components showing differences, selection, or compatibility. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "manufacturing-estimate": {
+      "status": "ready",
+      "path": "/img/magazine/manufacturing-estimate.webp",
+      "sourceHash": "f355c439c995",
+      "imageHash": "e1cfb9a111e3",
+      "approvedSourceHash": "f355c439c995",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 製造業の見積工数を半減させた、AI置換の進め方\nEditorial context: 製造業の見積は最も属人化しやすい業務の一つで、AIが図面からの情報抽出や類似案件検索、見積初稿を担い、人が最終判断を行う分業が効果的です。当研究所のシミュレーションでは見積作成工数45%削減・受注対応スピード18%向上と試算しています（効果を保証するものではありません）。整備した工程知識は見積だけでなく教育や技術継承にも使える全社資産になります。 属人化しがちな見積・図面対応をAIに置換。工程知識を全社の資産に変える進め方を解説します。\nKey sections: 属人化が生む3つの損失 / AIに任せる業務と、人に残す判断を切り分ける / 進め方：過去データの資産化から / 効果のシミュレーション\nPrimary visual direction: a recognizable real-world business workspace focused on the task being transformed. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "roi-visualization": {
+      "status": "ready",
+      "path": "/img/magazine/roi-visualization.webp",
+      "sourceHash": "cef861e39610",
+      "imageHash": "5504ad130007",
+      "approvedSourceHash": "cef861e39610",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: AI活用度を役員会で語るための、ROI可視化フレーム\nEditorial context: AI投資のROIが語りにくいのは、効果が分散し、測り方がばらばらで、導入前の基準値がないためで、測れないのではなく測る設計をしていないだけです。投資・活用・効果の3層で捉え、その接続を見ることで、削るべき所と伸ばすべき所が見えます。換算ルールの固定・導入前の基準値取得・月次の定点観測が、役員会で使える数字にするコツです。 投資対効果を役員会で説明できる形に。活用度とROIを可視化するフレームを紹介します。\nKey sections: なぜAIのROIは語りにくいのか / 可視化フレーム：3つの層で捉える / 役員会で使える形にするための3つのルール / 可視化は、次の投資の準備でもある\nPrimary visual direction: an executive decision model showing governance, adoption, investment, or organizational change. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "license-audit": {
+      "status": "ready",
+      "path": "/img/magazine/license-audit.webp",
+      "sourceHash": "4797c2d4e284",
+      "imageHash": "35c8d41117e8",
+      "approvedSourceHash": "4797c2d4e284",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 使われないライセンスを見つける、活用度診断のはじめ方\nEditorial context: 使われていないSaaSライセンスは、契約・席数・費用・更新月を部門契約や個人経費まで棚卸しし、利用状況を実測して見つけます。各ツールを継続・縮小・統合・解約・内製代替の5択で判定し、貢献する数字を答えられない契約が見直しの第一候補です。四半期ごとの定点観測にすれば「気づいたら自動更新」を仕組みで防げます。 誰が、どのツールを、どれだけ使っているか。活用度診断から、無駄な固定費を洗い出します。\nKey sections: 使われないライセンスが生まれる仕組み / 活用度診断の3ステップ / 診断を一度きりで終わらせない\nPrimary visual direction: a physical cost model that makes waste, recurring fees, or process compression immediately visible. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "back-office-automation": {
+      "status": "ready",
+      "path": "/img/magazine/back-office-automation.webp",
+      "sourceHash": "b8cad16371d9",
+      "imageHash": "675b9919637a",
+      "approvedSourceHash": "b8cad16371d9",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: バックオフィスの書類処理を6割減らす、自動化の設計\nEditorial context: バックオフィスの定型業務は、頻度が高く量が多い・手順が決まっている・入力形式がばらつく業務から自動化すると効果的です。読み取り・転記・突合はAI、承認・例外判断は人という切り分けが効果を決め、確信度の低い処理だけを人に回す例外ルートを用意します。空いた時間を締めの早期化や分析など判断業務へ戻すところまで設計します。 請求・経費・データ入力といった定型業務を自動化し、人の時間を判断業務へ戻す設計を解説します。\nKey sections: 自動化に向く業務の見極め / 人とAIの切り分けを設計する / 進め方と効果のシミュレーション / 削減した時間の使い道まで設計する\nPrimary visual direction: a recognizable real-world business workspace focused on the task being transformed. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "ai-native-organization": {
+      "status": "ready",
+      "path": "/img/magazine/ai-native-organization.webp",
+      "sourceHash": "a56eecd64478",
+      "imageHash": "a5de0a828180",
+      "approvedSourceHash": "a56eecd64478",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: AI Native企業への移行を、現場に定着させる組織設計\nEditorial context: 研修だけでAIが定着しないのは、業務フローにAIの出番が組み込まれていないからです。定着させるには「推奨する」のではなく、頻度の高い業務にAIを組み込み、業務手順書に正式な手順として書き込みます。経営スポンサー・現場チャンピオン・横断推進チームの3役と、活用度の月次可視化が移行を支えます。 研修だけでは定着しない。AI活用を現場の業務に根づかせる組織設計の勘所をまとめます。\nKey sections: 研修だけでは定着しない理由 / 「使いましょう」ではなく、業務に組み込む / 移行を支える3つの役割 / 移行のロードマップ\nPrimary visual direction: an executive decision model showing governance, adoption, investment, or organizational change. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    },
+    "open-tech-cost": {
+      "status": "ready",
+      "path": "/img/magazine/open-tech-cost.webp",
+      "sourceHash": "0ddb676e6fc2",
+      "imageHash": "42ae93e56e46",
+      "approvedSourceHash": "0ddb676e6fc2",
+      "updatedAt": "2026-07-18",
+      "prompt": "Use case: productivity-visual\nAsset type: premium editorial thumbnail for a Japanese AI strategy magazine, 16:9 landscape\nArticle title: 最先端のオープン技術で、開発コストを構造から圧縮する\nEditorial context: AI開発が高いという常識は、モデル・部品・知見が公開され成熟したことで過去のものになりつつあります。定番機能はオープン技術と既製モジュールで組み立て、独自開発は差別化に直結する部分だけに集中させるのがコスト圧縮の要点です。選定は継続性・互換性・総保有コストで判断し、差し替え可能な設計で進化を取り込み続けます。 世界最先端のオープン技術をどう活用すれば、開発コストを構造から下げられるのかを解説します。\nKey sections: 何が変わったのか / 「作る」から「組み合わせて、差別化に集中する」へ / オープン技術を選定する3つの観点 / 進化を取り込み続ける体制\nPrimary visual direction: an evaluation bench of modular technology components showing differences, selection, or compatibility. Choose one concrete object or workflow from the article as the focal subject. The image must communicate the article before decoration.\nStyle/medium: premium photorealistic editorial still life blended with subtle architectural data visualization, sophisticated Japanese B2B design, realistic materials, not sci-fi\nComposition/framing: one strong focal subject, generous negative space, balanced 16:9 crop, readable at small card size\nLighting/mood: soft daylight, calm, precise, trustworthy\nColor palette: white, very pale cool gray, restrained cobalt blue accents, subtle navy shadows\nConstraints: no people, no faces, no visible brand, no legible text, no letters, no numbers, no logos, no watermark\nAvoid: generic glowing AI brain, humanoid robots, neon cyberpunk, floating hologram overload, stock-photo handshake, clutter, saturated gradients"
+    }
+  }
+}
