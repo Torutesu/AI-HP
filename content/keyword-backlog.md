@@ -14,7 +14,7 @@
 | キーワード想定 | 検索意図 | カテゴリ | slug | status |
 | --- | --- | --- | --- | --- |
 | AI 導入 費用 相場 | 定義/購入ガイド | コスト削減 | `ai-cost-benchmark` | published |
-| AI 補助金 2026 | 購入ガイド | 経営・組織 | `ai-subsidy-guide` | published |
+| AI 補助金 2026 | 購入ガイド | 経営・組織 | `ai-subsidy-guide`（2026.07 公式出典つきで改稿・レビュー済） | published |
 | 生成AI RPA 違い | 定義/比較 | 技術トレンド | `genai-vs-rpa` | published |
 | AI 内製 SaaS 比較 | 比較 | コスト削減 | `inhouse-vs-saas` | published |
 | AIエージェント 業務 自律 | 定義 | 技術トレンド | `ai-agent-autonomy` | published |

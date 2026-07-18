@@ -152,7 +152,6 @@ const rawArticles: Article[] = [
     title: "AI活用に使える補助金・助成金の選び方（2026年時点）",
     date: "2026.07.17",
     updatedAt: "2026.07.18",
-    status: "draft",
     excerpt:
       "AI導入に使える国の補助金を、2026年時点の公式情報で整理。デジタル化・AI導入補助金2026など代表的な制度と、自社に合う制度の選び方を解説します。",
     summary:
