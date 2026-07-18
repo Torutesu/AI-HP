@@ -480,14 +480,14 @@ export default function Home() {
               <span className={styles.ctaEyebrow}>無料AI経営診断</span>
               <h2 className={styles.ctaTitle}>AIへの投資を、<br />利益に変える。</h2>
               <p className={styles.ctaText}>
-                まずは無料のAI経営診断から。貴社のコスト削減余地と売上の伸びしろを、具体的な数字で可視化します。診断は無料、サービス資料は3分。経営会議でそのまま使える“次の一手”を、お持ち帰りいただけます。
+                コスト削減余地と売上の伸びしろを、経営会議で使える数字に整理します。診断は無料、資料は3分でご覧いただけます。
               </p>
             </div>
             <div className={styles.ctaActions}>
               <Button href="/contact" variant="primary" size="lg">
-                無料でAI経営診断を受ける<Icon name="arrow-right" size={17} />
+                無料で診断する<Icon name="arrow-right" size={17} />
               </Button>
-              <Button href="/download" variant="secondary" size="lg">資料をダウンロード</Button>
+              <Button href="/download" variant="secondary" size="lg">サービス資料を見る</Button>
             </div>
           </Reveal>
         </div>

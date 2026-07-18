@@ -1004,39 +1004,58 @@ a.fvBadge:hover {
 .disclaimer { text-align: center; margin-top: 20px; font-size: 12px; color: var(--fg-3); }
 
 /* ---------------- CTA BAND ---------------- */
-.ctaSection { padding: 24px 0 96px; background: var(--white); }
+.ctaSection { padding: 48px 0 88px; background: var(--white); }
 .ctaBand {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
-  border: 0.5px solid var(--panel-border);
-  background: var(--panel-grad);
-  padding: 60px 56px;
-  display: flex;
+  isolation: isolate;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #090d14;
+  padding: 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   justify-content: space-between;
   align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
+  gap: clamp(40px, 7vw, 96px);
+  box-shadow: 0 26px 70px rgba(7, 14, 28, 0.14);
+}
+.ctaBand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.3;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(90deg, transparent, #000 62%, #000);
 }
 .ctaGlow {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(90% 120% at 100% 0%, rgba(43, 124, 255, 0.1), transparent 60%);
+  z-index: -1;
+  background:
+    radial-gradient(66% 170% at 100% 0%, rgba(43, 124, 255, 0.24), transparent 62%),
+    linear-gradient(115deg, transparent 0 70%, rgba(43, 124, 255, 0.08));
 }
-.ctaCopy { position: relative; max-width: 560px; }
+.ctaCopy { position: relative; max-width: 620px; }
 .ctaEyebrow {
   display: inline-block;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 14px;
+  color: var(--blue-300);
+  margin-bottom: 18px;
 }
-.ctaTitle { font-size: clamp(24px, 3.4vw, 32px); font-weight: 700; line-height: 1.32; color: var(--fg-0); letter-spacing: -0.01em; margin: 0 0 14px; }
-.ctaText { font-size: 15px; color: var(--fg-2); line-height: 1.85; margin: 0; }
-.ctaActions { position: relative; display: flex; gap: 14px; flex-wrap: wrap; }
+.ctaTitle { font-size: clamp(30px, 4vw, 42px); font-weight: 600; line-height: 1.24; color: #fff; letter-spacing: -0.03em; margin: 0 0 18px; }
+.ctaText { font-size: 14px; color: rgba(255, 255, 255, 0.62); line-height: 1.85; margin: 0; max-width: 580px; }
+.ctaActions { position: relative; display: flex; flex-direction: column; align-items: stretch; gap: 12px; min-width: 250px; }
+.ctaBand :global(.btn-secondary) { color: #fff; border-color: rgba(255, 255, 255, 0.28); }
+.ctaBand :global(.btn-secondary:hover) { color: #fff; border-color: rgba(255, 255, 255, 0.52); background: rgba(255, 255, 255, 0.08); }
 
 /* ============================================================
    Responsive
@@ -1122,6 +1141,12 @@ a.fvBadge:hover {
   .os { padding: 54px 0; }
   .pain, .why, .process, .cases { padding: 50px 0; }
   .ctaSection { padding: 14px 0 58px; }
+  .ctaBand {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 32px 24px;
+  }
+  .ctaActions { width: 100%; min-width: 0; }
 
   /* ---- (A) Mobile-native type scale ---- */
   .beliefEyebrow { margin-bottom: 16px; font-size: 11px; }
