@@ -213,3 +213,108 @@ html.cursor-custom * { cursor: none !important; }
   .section-heading .lead { font-size: 14px; line-height: 1.7; }
   .section-heading .eyebrow { font-size: 11px; }
 }
+/* Magazine cards share one restrained interaction language across list and article pages. */
+.magazine-motion-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 360ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 240ms ease;
+}
+
+.magazine-motion-card::before,
+.magazine-motion-card::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.magazine-motion-card::before {
+  inset: -110%;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg 230deg,
+    rgba(43, 124, 255, 0.16) 255deg,
+    rgba(43, 124, 255, 0.95) 292deg,
+    rgba(129, 177, 255, 0.35) 320deg,
+    transparent 350deg
+  );
+  opacity: 0;
+  transform: rotate(0deg);
+}
+
+.magazine-motion-card::after {
+  inset: 1px;
+  z-index: 1;
+  border-radius: calc(12px - 1px);
+  background: var(--surface-card);
+}
+
+.magazine-motion-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.magazine-motion-image {
+  transition:
+    transform 720ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 360ms ease;
+}
+
+.magazine-motion-arrow {
+  transition: transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .magazine-motion-card:hover {
+    border-color: transparent !important;
+    box-shadow: 0 22px 52px rgba(15, 38, 74, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .magazine-motion-card:hover::before {
+    opacity: 1;
+    animation: magazine-border-orbit 2.2s linear infinite;
+  }
+
+  .magazine-motion-card:hover .magazine-motion-image {
+    filter: saturate(1.06) contrast(1.025);
+    transform: scale(1.045);
+  }
+
+  .magazine-motion-card:hover .magazine-motion-arrow {
+    transform: translateX(6px);
+  }
+}
+
+.magazine-motion-card:focus-visible {
+  border-color: transparent !important;
+  box-shadow: 0 0 0 3px rgba(43, 124, 255, 0.18), 0 18px 44px rgba(15, 38, 74, 0.1);
+  outline: none;
+  transform: translateY(-3px);
+}
+
+.magazine-motion-card:focus-visible::before {
+  opacity: 1;
+  animation: magazine-border-orbit 2.2s linear infinite;
+}
+
+@keyframes magazine-border-orbit {
+  to { transform: rotate(1turn); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magazine-motion-card,
+  .magazine-motion-image,
+  .magazine-motion-arrow {
+    transition: none;
+  }
+
+  .magazine-motion-card:hover::before,
+  .magazine-motion-card:focus-visible::before {
+    animation: none;
+  }
+}

@@ -404,7 +404,7 @@ export default async function ArticlePage({
                   <Link
                     key={r.slug}
                     href={`/magazine/${r.slug}`}
-                    className="hover-panel"
+                    className="hover-panel magazine-motion-card"
                     style={{
                       display: "grid",
                       gridTemplateColumns: "160px 1fr auto",
@@ -417,6 +417,7 @@ export default async function ArticlePage({
                     }}
                   >
                     <div
+                      className="magazine-motion-image"
                       style={{
                         minHeight: "96px",
                         borderRadius: "8px",
@@ -432,7 +433,7 @@ export default async function ArticlePage({
                       </div>
                       <span style={{ fontSize: "14.5px", fontWeight: 600, color: "var(--fg-0)", lineHeight: 1.6 }}>{r.title}</span>
                     </div>
-                    <span style={{ flex: "none", color: "var(--accent)" }}><Icon name="arrow-right" size={16} /></span>
+                    <span className="magazine-motion-arrow" style={{ flex: "none", color: "var(--accent)" }}><Icon name="arrow-right" size={16} /></span>
                   </Link>
                 ))}
               </div>

@@ -54,9 +54,9 @@ export default function MagazineList({
         <div className={styles.grid}>
           {shown.map((a, i) => (
             <Reveal key={a.slug} delay={(i % PAGE) * 0.06}>
-              <Link href={`/magazine/${a.slug}`} className={styles.card}>
+              <Link href={`/magazine/${a.slug}`} className={`${styles.card} magazine-motion-card`}>
                 <div
-                  className={styles.thumb}
+                  className={`${styles.thumb} magazine-motion-image`}
                   style={a.image ? { backgroundImage: `linear-gradient(180deg, rgba(5, 7, 12, 0.04), rgba(5, 7, 12, 0.22)), url(${a.image})` } : undefined}
                 />
                 <div className={styles.body}>

@@ -33,7 +33,7 @@ export default function Page() {
             <Reveal>
               <Link
                 href={`/magazine/${f.slug}`}
-                className="hover-panel dc-collapse"
+                className="hover-panel dc-collapse magazine-motion-card"
                 style={{
                   display: "grid",
                   gridTemplateColumns: "1.1fr 0.9fr",
@@ -47,6 +47,7 @@ export default function Page() {
                 }}
               >
                 <div
+                  className="magazine-motion-image"
                   style={{
                     aspectRatio: "16/10",
                     borderRadius: "8px",
