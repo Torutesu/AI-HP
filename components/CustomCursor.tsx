@@ -27,6 +27,7 @@ export default function CustomCursor() {
     let ry = my;
     let visible = false;
     let raf = 0;
+    let darkCursor = false;
 
     document.documentElement.classList.add("cursor-custom");
 
@@ -44,13 +45,42 @@ export default function CustomCursor() {
       ring.style.opacity = "0";
     };
 
+    const setCursorContrast = (target: Element | null) => {
+      const override = target?.closest<HTMLElement>("[data-cursor-tone]")?.dataset.cursorTone;
+      let useDark = override === "dark";
+
+      if (!override) {
+        let current: Element | null = target;
+        while (current) {
+          const match = getComputedStyle(current).backgroundColor.match(
+            /rgba?\(\s*([\d.]+)[, ]+\s*([\d.]+)[, ]+\s*([\d.]+)(?:\s*[,/]\s*([\d.]+))?\s*\)/,
+          );
+
+          if (match && Number(match[4] ?? 1) > 0.12) {
+            const [r, g, b] = match.slice(1, 4).map(Number);
+            const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+            useDark = luminance > 0.58;
+            break;
+          }
+          current = current.parentElement;
+        }
+      }
+
+      if (useDark === darkCursor) return;
+      darkCursor = useDark;
+      dot.classList.toggle(styles.dark, useDark);
+      ring.classList.toggle(styles.dark, useDark);
+    };
+
     const onMove = (e: MouseEvent) => {
       mx = e.clientX;
       my = e.clientY;
       show();
       dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
-      const el = (e.target as Element | null)?.closest?.(INTERACTIVE);
+      const target = e.target as Element | null;
+      const el = target?.closest?.(INTERACTIVE);
       ring.classList.toggle(styles.hover, !!el);
+      setCursorContrast(target);
     };
     const onDown = () => ring.classList.add(styles.down);
     const onUp = () => ring.classList.remove(styles.down);
