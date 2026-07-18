@@ -86,12 +86,27 @@ export default async function ArticlePage({
     ],
   };
 
+  const faqLd = a.faq?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: a.faq.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+
   const related = articles.filter((x) => x.slug !== a.slug && x.category === a.category).slice(0, 2);
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      {faqLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      )}
 
       <SiteHeader variant="solid" />
       <div style={{ background: "var(--white)" }}>
@@ -224,6 +239,59 @@ export default async function ArticlePage({
               </p>
             );
           })}
+
+          {a.faq && a.faq.length > 0 && (
+            <div style={{ marginTop: "48px", paddingTop: "40px", borderTop: "0.5px solid var(--line-strong)" }}>
+              <h2
+                style={{
+                  fontSize: "22px",
+                  fontWeight: 700,
+                  lineHeight: 1.5,
+                  letterSpacing: "-0.01em",
+                  color: "var(--fg-0)",
+                  margin: "0 0 24px",
+                }}
+              >
+                よくある質問
+              </h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                {a.faq.map((f, i) => (
+                  <details
+                    key={i}
+                    style={{
+                      background: "var(--surface-card)",
+                      border: "0.5px solid var(--line-strong)",
+                      borderRadius: "10px",
+                      padding: "18px 22px",
+                    }}
+                  >
+                    <summary
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "15.5px",
+                        fontWeight: 600,
+                        color: "var(--fg-0)",
+                        lineHeight: 1.6,
+                        listStyle: "none",
+                      }}
+                    >
+                      Q. {f.q}
+                    </summary>
+                    <p
+                      style={{
+                        margin: "14px 0 0",
+                        fontSize: "15px",
+                        lineHeight: 1.95,
+                        color: "var(--fg-1)",
+                      }}
+                    >
+                      {f.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div style={{ marginTop: "8px", paddingTop: "32px", borderTop: "0.5px solid var(--line-strong)" }}>
             <Link
