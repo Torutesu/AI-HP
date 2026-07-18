@@ -68,7 +68,6 @@ const rawArticles: Article[] = [
     category: "経営・組織",
     title: "社内の生成AI利用ガイドラインの作り方（そのまま使える構成）",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "社内の生成AI利用ガイドラインの作り方を、盛り込むべき項目・使ってよい情報の線引き・出力の確認責任・運用まで、そのまま自社の草案に使える構成で整理します。",
     summary:
@@ -126,7 +125,6 @@ const rawArticles: Article[] = [
     category: "技術トレンド",
     title: "社内文書を賢く検索するRAGとは何か、導入の勘所",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "社内文書を検索して回答の根拠にするRAGとは何か。仕組みと業務での使いどころ、導入でつまずかないための勘所を、専門用語をかみ砕いて整理します。",
     summary:
@@ -187,7 +185,6 @@ const rawArticles: Article[] = [
     category: "事例・シナリオ",
     title: "問い合わせ対応AIの効果と、失敗しない設計",
     date: "2026.07.18",
-    status: "draft",
     excerpt:
       "問い合わせ対応AIで何ができ何ができないか、見込める効果、つまずきやすい失敗、失敗を避ける設計の勘所を、導入判断まで具体例で整理します。",
     summary:
