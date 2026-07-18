@@ -6,3 +6,15 @@
 name = "ai-hp"
 compatibility_date = "2025-06-01"
 pages_build_output_dir = "out"
+
+# --- Lead store (Phase 1) --------------------------------------------------
+# D1 database binding, exposed to Functions as `env.DB`.
+# Easiest path for GitHub-connected Pages: create the DB, then add the binding
+# in the dashboard (Settings → Functions → Bindings → D1) with variable name DB.
+#   1) wrangler d1 create ai-hp-leads
+#   2) wrangler d1 execute ai-hp-leads --file=./db/schema.sql --remote
+# If you prefer to bind here instead of the dashboard, uncomment and set the id:
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "ai-hp-leads"
+# database_id = "<your-d1-database-id>"

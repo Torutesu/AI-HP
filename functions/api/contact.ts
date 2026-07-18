@@ -15,14 +15,15 @@
 
 import { isFreeEmail, FREE_EMAIL_MESSAGE } from "../../lib/freeEmail";
 import { renderEmail } from "../../lib/emailTemplate";
+import { persistLead, type LeadStoreEnv, type LeadRecord } from "../../lib/leadStore";
 
-interface Env {
+interface Env extends LeadStoreEnv {
   NOTIFY_WEBHOOK_URL: string;
   RESEND_API_KEY?: string;
   AUTOREPLY_FROM_EMAIL?: string;
 }
 
-type Ctx = { request: Request; env: Env };
+type Ctx = { request: Request; env: Env; waitUntil: (p: Promise<unknown>) => void };
 
 const REQUIRED = [
   "company", "pref", "size", "role", "title",
@@ -96,7 +97,7 @@ async function autoReply(env: Env, origin: string, to: string, name: string): Pr
   }
 }
 
-export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> => {
+export const onRequestPost = async ({ request, env, waitUntil }: Ctx): Promise<Response> => {
   let data: Record<string, string>;
   try {
     data = (await request.json()) as Record<string, string>;
@@ -126,6 +127,19 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
   if (!ok) {
     return json({ ok: false, error: "送信に失敗しました。時間をおいて再度お試しください。" }, 502);
   }
+
+  // Persist to D1 + Google Sheets (best-effort, non-blocking).
+  const record: LeadRecord = {
+    createdAt: new Date().toISOString(),
+    type: "contact",
+    company: data.company, pref: data.pref, size: data.size, role: data.role,
+    title: data.title, lastName: data.last, firstName: data.first,
+    email: data.email, phone: data.phone, kind: data.kind, message: data.message,
+    roi: data.roi || undefined,
+    country: request.headers.get("CF-IPCountry") || undefined,
+    raw: JSON.stringify(data),
+  };
+  waitUntil(persistLead(env, record));
 
   await autoReply(env, new URL(request.url).origin, String(data.email).trim(), `${data.last}${data.first}`);
   return json({ ok: true });

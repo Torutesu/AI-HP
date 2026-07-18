@@ -17,8 +17,9 @@
 import { getAsset, DEFAULT_ASSET_ID, type DownloadAsset } from "../../lib/assets";
 import { isFreeEmail, FREE_EMAIL_MESSAGE } from "../../lib/freeEmail";
 import { renderEmail } from "../../lib/emailTemplate";
+import { persistLead, type LeadStoreEnv, type LeadRecord } from "../../lib/leadStore";
 
-interface Env {
+interface Env extends LeadStoreEnv {
   NOTIFY_WEBHOOK_URL: string;
   RESEND_API_KEY?: string;
   AUTOREPLY_FROM_EMAIL?: string;
@@ -26,7 +27,7 @@ interface Env {
   DOC_DOWNLOAD_URL?: string;
 }
 
-type Ctx = { request: Request; env: Env };
+type Ctx = { request: Request; env: Env; waitUntil: (p: Promise<unknown>) => void };
 
 // Aligned with the contact form so both capture equivalent lead information.
 const REQUIRED = [
@@ -111,7 +112,7 @@ async function sendMaterial(env: Env, origin: string, to: string, name: string, 
   }
 }
 
-export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> => {
+export const onRequestPost = async ({ request, env, waitUntil }: Ctx): Promise<Response> => {
   let data: Record<string, unknown>;
   try {
     data = (await request.json()) as Record<string, unknown>;
@@ -149,6 +150,28 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
   }
 
   const requesterName = `${String(data.last).trim()}${String(data.first).trim()}`;
+
+  // Persist to D1 + Google Sheets (best-effort, non-blocking).
+  const themesArr = Array.isArray(data.themes) ? (data.themes as unknown[]).filter(Boolean).map(String) : [];
+  const record: LeadRecord = {
+    createdAt: new Date().toISOString(),
+    type: "download",
+    company: String(data.company).trim(),
+    pref: String(data.pref).trim(),
+    size: String(data.size).trim(),
+    role: String(data.role).trim(),
+    title: String(data.title).trim(),
+    lastName: String(data.last).trim(),
+    firstName: String(data.first).trim(),
+    email: String(data.email).trim(),
+    phone: String(data.phone).trim(),
+    asset: asset.label,
+    themes: themesArr.join("、"),
+    country: request.headers.get("CF-IPCountry") || undefined,
+    raw: JSON.stringify(data),
+  };
+  waitUntil(persistLead(env, record));
+
   await sendMaterial(env, new URL(request.url).origin, String(data.email).trim(), requesterName, asset);
   return json({ ok: true });
 };

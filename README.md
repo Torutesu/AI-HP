@@ -99,6 +99,34 @@ Pages → **Settings → Environment variables**（`.env.example` 参照）:
 配布物を増やす場合は `lib/assets.ts` の `ASSETS` に `{ id, label, path }` を追加。
 フォームは `?asset=<id>` を hidden で受け取り、`download.ts` が id を検証して返信メール／通知に載せます。
 
+### リード保存（D1 ＋ Google Sheets）
+
+問い合わせ・資料DLの送信内容は、通知／自動返信に加えて **Cloudflare D1（正本）** に保存し、
+**非公開の Google スプレッドシート（運用ビュー）** に1行追記します（`lib/leadStore.ts`）。
+どちらも best-effort（`waitUntil` で非同期・失敗しても送信自体は成功）で、未設定でも通知だけで動作します。
+PII最小化のため IP は保存せず、国（`CF-IPCountry`）のみ記録します。
+
+**D1（保存の正本）:**
+
+1. `wrangler d1 create ai-hp-leads`
+2. `wrangler d1 execute ai-hp-leads --file=./db/schema.sql --remote`（スキーマ適用）
+3. Pages → **Settings → Functions → Bindings → D1** で、変数名 **`DB`** として上記DBをバインド
+   （または `wrangler.toml` の `[[d1_databases]]` を有効化）
+
+**Google Sheets 同期（任意・安全な繋ぎ方）:**
+
+1. スプレッドシートを作成し、タブ名を **`Leads`**（または `SHEETS_TAB` で指定）に。1行目の見出しは
+   `lib/leadStore.ts` の `SHEET_HEADER` の順に用意
+2. Google Cloud で **サービスアカウント** ＋ JSON鍵を作成し、**Sheets API** を有効化
+3. スプレッドシートを **サービスアカウントのメールに「編集者」で共有**（"リンクを知る全員" は使わない／アカウントは2段階認証）
+4. Pages の環境変数に登録:
+   - `GOOGLE_SERVICE_ACCOUNT_KEY` — サービスアカウントのJSON（文字列）
+   - `SHEETS_SPREADSHEET_ID` — スプレッドシートID（URLの `/d/<ID>/` 部分）
+   - `SHEETS_TAB` — タブ名（既定 `Leads`）
+
+認証はサービスアカウントのJWT（Workers の Web Crypto でRS256署名）→ OAuthトークン。
+スプレッドシートは非公開のまま、鍵はサーバー側のみで扱います（ブラウザ・リポジトリに出しません）。
+
 ### GitHub Actions（検索順位モニタ）
 
 `.github/workflows/rank-check.yml` が毎週月曜 09:00 JST に `scripts/rank-check.mjs` を実行し、
