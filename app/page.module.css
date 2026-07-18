@@ -756,7 +756,8 @@ a.fvBadge:hover {
 
 .pain { padding: 80px 0 76px; }
 .pain .grid4 { margin-top: 36px; }
-.why { padding: 96px 0; }
+.why { padding: 80px 0 76px; }
+.why .grid4 { margin-top: 36px; }
 
 /* ---------------- OS / AI経営基盤 ---------------- */
 .os { padding: 104px 0; }
