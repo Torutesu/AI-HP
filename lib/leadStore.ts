@@ -21,6 +21,8 @@ export interface D1Like {
 
 export interface LeadStoreEnv extends SheetsEnv, EnrichEnv {
   DB?: D1Like;
+  /** Slack/Discord webhook — used to post a triage alert for hot leads. */
+  NOTIFY_WEBHOOK_URL?: string;
 }
 
 export interface LeadRecord {
@@ -93,6 +95,25 @@ async function insertD1(db: D1Like, r: LeadRecord): Promise<number | null> {
   return row?.id ?? null;
 }
 
+/**
+ * Post a plain-text message to a Slack/Discord webhook (best-effort, no throw).
+ * URL is trimmed because pasted secrets often carry a trailing newline.
+ */
+async function postWebhook(webhookUrl: string, text: string): Promise<void> {
+  const url = (webhookUrl || "").trim();
+  if (!url) return;
+  const isDiscord = /discord(app)?\.com/.test(url);
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(isDiscord ? { content: text } : { text }),
+    });
+  } catch (err) {
+    console.error("triage webhook failed:", err);
+  }
+}
+
 /** Enrich a stored lead with Workers AI and write the results back to its row. */
 async function enrichAndUpdate(env: LeadStoreEnv, id: number, record: LeadRecord): Promise<void> {
   if (!env.DB || !env.AI) return;
@@ -105,11 +126,33 @@ async function enrichAndUpdate(env: LeadStoreEnv, id: number, record: LeadRecord
     await env.DB
       .prepare(
         `UPDATE leads
-           SET ai_summary=?, ai_intent=?, ai_priority=?, ai_reply=?, ai_status='done'
+           SET ai_summary=?, ai_intent=?, ai_priority=?, ai_priority_reason=?,
+               ai_next_action=?, ai_handling=?, ai_talking_points=?, ai_reply=?,
+               ai_status='done'
          WHERE id=?`
       )
-      .bind(e.summary, e.intent, e.priority, e.reply, id)
+      .bind(
+        e.summary, e.intent, e.priority, e.priorityReason,
+        e.nextAction, e.handling, e.talkingPoints, e.reply,
+        id
+      )
       .run();
+
+    // Score-based routing: only HOT leads (human handling) ping the team, so
+    // the channel stays signal. Low-score leads just sit in the dashboard.
+    if (e.handling === "human" && env.NOTIFY_WEBHOOK_URL) {
+      const who = [record.company, record.size && `${record.size}名`, record.title]
+        .filter(Boolean)
+        .join(" / ");
+      const alert =
+        `🔥 *要対応リード｜優先度 ${e.priority}/5*\n` +
+        `${who}\n` +
+        `意図: ${e.intent}\n` +
+        `根拠: ${e.priorityReason}\n` +
+        `次の一手: ${e.nextAction}\n` +
+        `切り口: ${e.talkingPoints}`;
+      await postWebhook(env.NOTIFY_WEBHOOK_URL, alert);
+    }
   } catch (err) {
     // Record the reason in ai_status so it's visible in the D1 console.
     console.error("AI enrich/update failed:", err);
