@@ -7,20 +7,16 @@ name = "ai-hp"
 compatibility_date = "2025-06-01"
 pages_build_output_dir = "out"
 
-# --- Lead store (Phase 1) --------------------------------------------------
-# D1 database binding, exposed to Functions as `env.DB`.
-# Easiest path for GitHub-connected Pages: create the DB, then add the binding
-# in the dashboard (Settings → Functions → Bindings → D1) with variable name DB.
-#   1) wrangler d1 create ai-hp-leads
-#   2) wrangler d1 execute ai-hp-leads --file=./db/schema.sql --remote
-# If you prefer to bind here instead of the dashboard, uncomment and set the id:
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "ai-hp-leads"
-# database_id = "<your-d1-database-id>"
-#
-# Workers AI binding (Phase 3 — lead enrichment), exposed as `env.AI`.
-# Add in the dashboard (Settings → Functions → Bindings → Workers AI, name AI),
-# or uncomment:
-# [ai]
-# binding = "AI"
+# --- Lead store bindings (managed here; the dashboard is read-only when a
+#     wrangler.toml is present) ------------------------------------------------
+# D1 database → env.DB. Apply the schema once:
+#   wrangler d1 execute ai-hp-leads --file=./db/schema.sql --remote
+# (or paste db/schema.sql into the D1 Console in the dashboard).
+[[d1_databases]]
+binding = "DB"
+database_name = "ai-hp-leads"
+database_id = "68391b6e-588c-482f-b1df-87ea374a60a4"
+
+# Workers AI (Phase 3 — lead enrichment) → env.AI
+[ai]
+binding = "AI"
