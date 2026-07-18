@@ -78,11 +78,27 @@ export async function enrichLead(env: EnrichEnv, r: LeadRecord): Promise<Enrichm
     ],
     max_tokens: 512,
     temperature: 0.2,
-  })) as { response?: string } | string;
+  })) as unknown;
 
-  const text = typeof res === "string" ? res : res.response ?? "";
-  const json = extractJson(text);
-  if (!json) throw new Error(`model returned no JSON: ${text.slice(0, 160)}`);
+  // The model output lives in `response` (or `res` itself for string models).
+  // Depending on the model, `response` is either a JSON string OR an
+  // already-parsed object — handle both.
+  const payload =
+    res && typeof res === "object" && "response" in res
+      ? (res as { response: unknown }).response
+      : res;
+
+  let json: Record<string, unknown> | null;
+  if (payload && typeof payload === "object") {
+    json = payload as Record<string, unknown>;
+  } else if (typeof payload === "string") {
+    json = extractJson(payload);
+  } else {
+    json = null;
+  }
+  if (!json) {
+    throw new Error(`model returned no JSON (${typeof payload}): ${String(payload).slice(0, 160)}`);
+  }
 
   return {
     summary: String(json.summary ?? "").slice(0, 200),
