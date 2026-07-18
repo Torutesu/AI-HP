@@ -482,7 +482,7 @@ export default function Home() {
             <div className={styles.ctaGlow} />
             <div className={styles.ctaCopy}>
               <span className={styles.ctaEyebrow}>無料AI経営診断</span>
-              <h2 className={styles.ctaTitle}>AIへの投資を、<br />利益の数字に変える。</h2>
+              <h2 className={styles.ctaTitle}>AIへの投資を、<br />利益に変える。</h2>
               <p className={styles.ctaText}>
                 まずは無料のAI経営診断から。貴社のコスト削減余地と売上の伸びしろを、具体的な数字で可視化します。診断は無料、サービス資料は3分。経営会議でそのまま使える“次の一手”を、お持ち帰りいただけます。
               </p>
