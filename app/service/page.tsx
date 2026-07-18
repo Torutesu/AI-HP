@@ -5,6 +5,7 @@ import Reveal from "@/components/Reveal";
 import Icon from "@/components/Icon";
 import Button from "@/components/Button";
 import type { Metadata } from "next";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/service/" },
@@ -21,6 +22,7 @@ const cards = [
     title: "AI経営基盤",
     body: "売上UP × コストDOWN × 利益率UP。儲けの方程式を、貴社専属のAIとして内製する。削減の層と向上の層、両面から経営の数字を動かす。",
     tags: ["SaaS代替", "業務自動化", "売上支援AI"],
+    image: "/img/service/ai-os-card.jpg",
   },
   {
     href: "/consulting",
@@ -29,6 +31,7 @@ const cards = [
     title: "コンサルティング",
     body: "戦略コンサルのように、商売そのものから入る。可視化・診断から改善の伴走まで。研修では終わらせない、成果に紐づく最適化を続ける。",
     tags: ["AI経営診断", "ロードマップ設計", "改善伴走"],
+    image: "/img/service/consulting-card.jpg",
   },
 ];
 
@@ -48,100 +51,42 @@ export default function Page() {
           bgImage="/img/service/hero.jpg"
         />
 
-        <section style={{ padding: "96px 0" }}>
-          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-            <div
-              className="dc-collapse"
-              style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}
-            >
+        <section className={styles.services}>
+          <div className={styles.container}>
+            <div className={styles.grid}>
               {cards.map((card, i) => (
                 <Reveal
                   key={card.href}
                   delay={i * 0.08}
-                  className="hover-panel"
-                  style={{
-                    display: "block",
-                    background: "var(--surface-card)",
-                    border: "0.5px solid var(--line-strong)",
-                    borderRadius: "12px",
-                    padding: "44px 42px",
-                    transition: "border-color .2s",
-                  }}
+                  className={styles.card}
                 >
-                  <a href={card.href} style={{ display: "block" }}>
+                  <a href={card.href} className={styles.cardLink}>
                     <span
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: "54px",
-                        height: "54px",
-                        borderRadius: "10px",
-                        border: "0.5px solid var(--line-strong)",
-                        background: "var(--blue-tint)",
-                        color: "var(--accent)",
-                        marginBottom: "24px",
-                      }}
-                    >
-                      <Icon name={card.icon} size={28} />
-                    </span>
-                    <h2
-                      style={{
-                        fontSize: "26px",
-                        fontWeight: 700,
-                        color: "var(--fg-0)",
-                        letterSpacing: "-0.01em",
-                        margin: "0 0 14px",
-                      }}
-                    >
-                      {card.title}
-                    </h2>
-                    <p
-                      style={{
-                        margin: "0 0 22px",
-                        fontSize: "14px",
-                        lineHeight: 1.9,
-                        color: "var(--fg-2)",
-                      }}
-                    >
-                      {card.body}
-                    </p>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: "8px",
-                        marginBottom: "24px",
-                      }}
-                    >
-                      {card.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          style={{
-                            fontSize: "12px",
-                            color: "var(--fg-1)",
-                            background: "var(--white)",
-                            border: "0.5px solid var(--line-strong)",
-                            borderRadius: "999px",
-                            padding: "6px 13px",
-                          }}
-                        >
-                          {tag}
+                      className={styles.cardImage}
+                      style={{ backgroundImage: `url(${card.image})` }}
+                      aria-hidden="true"
+                    />
+                    <span className={styles.cardWash} aria-hidden="true" />
+                    <span className={styles.cardContent}>
+                      <span className={styles.cardMeta}>
+                        <span className={styles.icon}>
+                          <Icon name={card.icon} size={24} />
                         </span>
-                      ))}
-                    </div>
-                    <span
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        fontSize: "14px",
-                        fontWeight: 600,
-                        color: "var(--accent)",
-                      }}
-                    >
-                      詳細を見る
-                      <Icon name="arrow-right" size={16} />
+                        <span className={styles.eyebrow}>{card.eyebrow}</span>
+                      </span>
+                      <h2 className={styles.title}>{card.title}</h2>
+                      <p className={styles.body}>{card.body}</p>
+                      <span className={styles.tags}>
+                        {card.tags.map((tag) => (
+                          <span key={tag} className={styles.tag}>
+                            {tag}
+                          </span>
+                        ))}
+                      </span>
+                      <span className={styles.detail}>
+                        詳細を見る
+                        <Icon name="arrow-right" size={16} />
+                      </span>
                     </span>
                   </a>
                 </Reveal>

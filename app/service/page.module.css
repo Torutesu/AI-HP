@@ -1,0 +1,278 @@
+@property --service-border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes serviceBorderOrbit {
+  to {
+    --service-border-angle: 360deg;
+  }
+}
+
+.services {
+  padding: 76px 0 68px;
+}
+
+.container {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  min-width: 0;
+  min-height: 350px;
+  overflow: hidden;
+  border: 1px solid rgba(33, 73, 129, 0.15);
+  border-radius: 18px;
+  background: #f7faff;
+  box-shadow: 0 24px 60px rgba(22, 54, 101, 0.08);
+  isolation: isolate;
+}
+
+.card::before {
+  position: absolute;
+  inset: -1px;
+  z-index: 5;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--service-border-angle),
+    transparent 0deg 250deg,
+    rgba(35, 105, 255, 0.18) 276deg,
+    #2468ff 314deg,
+    rgba(111, 179, 255, 0.24) 345deg,
+    transparent 360deg
+  );
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.card:hover::before,
+.card:focus-within::before {
+  animation: serviceBorderOrbit 1.45s linear infinite;
+  opacity: 1;
+}
+
+.cardLink {
+  position: relative;
+  display: flex;
+  min-height: 350px;
+  padding: 34px;
+  color: inherit;
+}
+
+.cardImage {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-position: center;
+  background-size: cover;
+  filter: saturate(0.82) contrast(0.98);
+  transform: scale(1.015);
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 300ms ease;
+}
+
+.cardWash {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.97) 42%, rgba(255, 255, 255, 0.7) 65%, rgba(255, 255, 255, 0.18) 100%),
+    linear-gradient(180deg, rgba(247, 250, 255, 0.25), rgba(235, 243, 255, 0.66));
+  transition: opacity 300ms ease;
+}
+
+.card:hover .cardImage,
+.card:focus-within .cardImage {
+  filter: saturate(1) contrast(1.02);
+  transform: scale(1.055);
+}
+
+.card:hover .cardWash,
+.card:focus-within .cardWash {
+  opacity: 0.88;
+}
+
+.cardContent {
+  display: flex;
+  width: min(76%, 430px);
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.icon {
+  display: inline-flex;
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(35, 105, 255, 0.15);
+  border-radius: 12px;
+  background: rgba(235, 242, 255, 0.88);
+  color: var(--accent);
+  backdrop-filter: blur(8px);
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.title {
+  margin: 0 0 13px;
+  color: var(--fg-0);
+  font-size: clamp(23px, 2vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.body {
+  margin: 0 0 20px;
+  color: var(--fg-2);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 25px;
+}
+
+.tag {
+  padding: 6px 12px;
+  border: 1px solid rgba(33, 73, 129, 0.13);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--fg-1);
+  font-size: 11px;
+  backdrop-filter: blur(8px);
+}
+
+.detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.detail svg {
+  transition: transform 200ms ease;
+}
+
+.card:hover .detail svg,
+.card:focus-within .detail svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardContent {
+    width: min(70%, 500px);
+  }
+}
+
+@media (max-width: 600px) {
+  .services {
+    padding: 48px 0 42px;
+  }
+
+  .container {
+    width: min(100% - 32px, 1200px);
+  }
+
+  .grid {
+    gap: 14px;
+  }
+
+  .card,
+  .cardLink {
+    min-height: 390px;
+  }
+
+  .card {
+    border-radius: 15px;
+    box-shadow: 0 18px 42px rgba(22, 54, 101, 0.075);
+  }
+
+  .cardLink {
+    padding: 24px 22px;
+  }
+
+  .cardImage {
+    background-position: 60% center;
+    opacity: 0.82;
+  }
+
+  .cardWash {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.95) 58%, rgba(245, 249, 255, 0.72) 78%, rgba(237, 244, 255, 0.4) 100%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.46));
+  }
+
+  .cardContent {
+    width: 100%;
+  }
+
+  .cardMeta {
+    margin-bottom: 18px;
+  }
+
+  .icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .title {
+    font-size: 23px;
+  }
+
+  .body {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .tags {
+    margin-bottom: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card::before {
+    animation: none !important;
+  }
+
+  .cardImage,
+  .detail svg {
+    transition: none;
+  }
+}
