@@ -5,6 +5,7 @@ import Reveal from "@/components/Reveal";
 import Icon from "@/components/Icon";
 import Button from "@/components/Button";
 import SectionHeading from "@/components/SectionHeading";
+import styles from "./page.module.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
@@ -182,42 +183,25 @@ export default function Page() {
           </div>
         </section>
 
-        <section style={{ padding: "0 0 96px" }}>
-          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-            <Reveal
-              className="dc-collapse"
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                borderRadius: "12px",
-                border: "0.5px solid var(--panel-border)",
-                background: "var(--panel-grad)",
-                padding: "56px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                gap: "32px",
-                flexWrap: "wrap",
-              }}
-            >
-              <div>
-                <h2
-                  style={{
-                    fontSize: "28px",
-                    fontWeight: 700,
-                    color: "var(--fg-0)",
-                    margin: "0 0 10px",
-                  }}
-                >
-                  一緒に、AI Nativeへ。
-                </h2>
-                <p style={{ margin: 0, fontSize: "14.5px", color: "var(--fg-2)", lineHeight: "1.8" }}>
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaContainer}>
+            <Reveal className={styles.ctaPanel}>
+              <span className={styles.ctaImage} aria-hidden="true" />
+              <span className={styles.ctaOverlay} aria-hidden="true" />
+              <div className={styles.ctaCopy}>
+                <span className={styles.ctaEyebrow}>START AI NATIVE</span>
+                <h2 className={styles.ctaTitle}>一緒に、AI Nativeへ。</h2>
+                <p className={styles.ctaText}>
                   まずは資料と無料相談から。貴社の第一歩をご提案します。
                 </p>
               </div>
-              <Button href="/download" variant="primary" size="lg">
-                資料をダウンロード
-              </Button>
+              <div className={styles.ctaAction}>
+                <Button href="/download" variant="secondary" size="lg" className={styles.ctaButton}>
+                  資料をダウンロード
+                  <Icon name="arrow-right" size={17} />
+                </Button>
+                <span className={styles.ctaNote}>構想から実装まで、最短ルートをご提案</span>
+              </div>
             </Reveal>
           </div>
         </section>
