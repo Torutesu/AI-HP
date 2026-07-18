@@ -43,15 +43,30 @@ function json(body: unknown, status = 200): Response {
   });
 }
 
-/** Post a plain-text message to a Slack or Discord incoming webhook. */
-async function notify(webhookUrl: string, text: string): Promise<boolean> {
-  const isDiscord = /discord(app)?\.com/.test(webhookUrl);
-  const res = await fetch(webhookUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(isDiscord ? { content: text } : { text }),
-  });
-  return res.ok;
+/**
+ * Post a plain-text message to a Slack or Discord incoming webhook.
+ * Never throws — returns { ok, detail } so the caller can surface the reason.
+ * The URL is trimmed because pasted secrets often carry a trailing newline,
+ * which would otherwise make fetch() throw "Invalid URL".
+ */
+async function notify(webhookUrl: string, text: string): Promise<{ ok: boolean; detail?: string }> {
+  const url = (webhookUrl || "").trim();
+  if (!url) return { ok: false, detail: "NOTIFY_WEBHOOK_URL is empty" };
+  const isDiscord = /discord(app)?\.com/.test(url);
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(isDiscord ? { content: text } : { text }),
+    });
+    if (!res.ok) {
+      const body = await res.text().catch(() => "");
+      return { ok: false, detail: `webhook ${res.status}: ${body.slice(0, 200)}` };
+    }
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, detail: `fetch threw: ${String(err)}` };
+  }
 }
 
 /** Best-effort auto-reply to the submitter via Resend (branded HTML + text). */
@@ -97,7 +112,17 @@ async function autoReply(env: Env, origin: string, to: string, name: string): Pr
   }
 }
 
-export const onRequestPost = async ({ request, env, waitUntil }: Ctx): Promise<Response> => {
+export const onRequestPost = async (ctx: Ctx): Promise<Response> => {
+  try {
+    return await handleContact(ctx);
+  } catch (err) {
+    // Surface the real cause instead of an opaque Cloudflare 1101 page.
+    console.error("contact handler error:", err);
+    return json({ ok: false, error: "サーバーエラーが発生しました。", detail: String(err) }, 500);
+  }
+};
+
+const handleContact = async ({ request, env, waitUntil }: Ctx): Promise<Response> => {
   let data: Record<string, string>;
   try {
     data = (await request.json()) as Record<string, string>;
@@ -123,9 +148,12 @@ export const onRequestPost = async ({ request, env, waitUntil }: Ctx): Promise<R
     : "";
   const message = `:mailbox_with_mail: *新しいお問い合わせ*\n${fields}${roiLine}`;
 
-  const ok = await notify(env.NOTIFY_WEBHOOK_URL, message);
-  if (!ok) {
-    return json({ ok: false, error: "送信に失敗しました。時間をおいて再度お試しください。" }, 502);
+  const result = await notify(env.NOTIFY_WEBHOOK_URL, message);
+  if (!result.ok) {
+    return json(
+      { ok: false, error: "送信に失敗しました。時間をおいて再度お試しください。", detail: result.detail },
+      502
+    );
   }
 
   // Persist to D1 + Google Sheets (best-effort, non-blocking).
