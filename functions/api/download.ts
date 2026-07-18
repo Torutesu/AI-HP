@@ -55,14 +55,29 @@ function assetUrl(env: Env, asset: DownloadAsset): string {
   return "";
 }
 
-async function notify(webhookUrl: string, text: string): Promise<boolean> {
-  const isDiscord = /discord(app)?\.com/.test(webhookUrl);
-  const res = await fetch(webhookUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(isDiscord ? { content: text } : { text }),
-  });
-  return res.ok;
+/**
+ * Post to a Slack/Discord incoming webhook. Never throws — returns
+ * { ok, detail }. The URL is trimmed because pasted secrets often carry a
+ * trailing newline, which would otherwise make fetch() throw "Invalid URL".
+ */
+async function notify(webhookUrl: string, text: string): Promise<{ ok: boolean; detail?: string }> {
+  const url = (webhookUrl || "").trim();
+  if (!url) return { ok: false, detail: "NOTIFY_WEBHOOK_URL is empty" };
+  const isDiscord = /discord(app)?\.com/.test(url);
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(isDiscord ? { content: text } : { text }),
+    });
+    if (!res.ok) {
+      const body = await res.text().catch(() => "");
+      return { ok: false, detail: `webhook ${res.status}: ${body.slice(0, 200)}` };
+    }
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, detail: `fetch threw: ${String(err)}` };
+  }
 }
 
 async function sendMaterial(env: Env, origin: string, to: string, name: string, asset: DownloadAsset): Promise<void> {
@@ -112,7 +127,17 @@ async function sendMaterial(env: Env, origin: string, to: string, name: string, 
   }
 }
 
-export const onRequestPost = async ({ request, env, waitUntil }: Ctx): Promise<Response> => {
+export const onRequestPost = async (ctx: Ctx): Promise<Response> => {
+  try {
+    return await handleDownload(ctx);
+  } catch (err) {
+    // Surface the real cause instead of an opaque Cloudflare 1101 page.
+    console.error("download handler error:", err);
+    return json({ ok: false, error: "サーバーエラーが発生しました。", detail: String(err) }, 500);
+  }
+};
+
+const handleDownload = async ({ request, env, waitUntil }: Ctx): Promise<Response> => {
   let data: Record<string, unknown>;
   try {
     data = (await request.json()) as Record<string, unknown>;
@@ -144,9 +169,12 @@ export const onRequestPost = async ({ request, env, waitUntil }: Ctx): Promise<R
   const assetLine = `\n• 請求資料: ${asset.label}（${asset.id}）`;
   const message = `:page_facing_up: *資料リクエスト*\n${fields}${assetLine}${themeLine}`;
 
-  const ok = await notify(env.NOTIFY_WEBHOOK_URL, message);
-  if (!ok) {
-    return json({ ok: false, error: "送信に失敗しました。時間をおいて再度お試しください。" }, 502);
+  const result = await notify(env.NOTIFY_WEBHOOK_URL, message);
+  if (!result.ok) {
+    return json(
+      { ok: false, error: "送信に失敗しました。時間をおいて再度お試しください。", detail: result.detail },
+      502
+    );
   }
 
   const requesterName = `${String(data.last).trim()}${String(data.first).trim()}`;
