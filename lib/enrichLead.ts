@@ -68,28 +68,25 @@ export async function enrichLead(env: EnrichEnv, r: LeadRecord): Promise<Enrichm
     `次のJSON形式のみで出力してください:\n` +
     `{"summary":"一文要約(60字以内)","intent":"意図を短く1つ(例: 料金問い合わせ / 導入検討 / 情報収集 / 採用 / 協業 / その他)","priority":整数1〜5(5=最優先の商談見込み。役職が上位・従業員数が多い・具体的な検討や見積り依頼ほど高い),"reply":"担当者がそのまま使える返信の下書き(200字以内・丁寧語)"}`;
 
-  try {
-    const res = (await env.AI.run(MODEL, {
-      messages: [
-        { role: "system", content: system },
-        { role: "user", content: user },
-      ],
-      max_tokens: 512,
-      temperature: 0.2,
-    })) as { response?: string } | string;
+  // Errors propagate to the caller (enrichAndUpdate), which records the reason
+  // in ai_status so failures are diagnosable from the D1 console during setup.
+  const res = (await env.AI.run(MODEL, {
+    messages: [
+      { role: "system", content: system },
+      { role: "user", content: user },
+    ],
+    max_tokens: 512,
+    temperature: 0.2,
+  })) as { response?: string } | string;
 
-    const text = typeof res === "string" ? res : res.response ?? "";
-    const json = extractJson(text);
-    if (!json) return null;
+  const text = typeof res === "string" ? res : res.response ?? "";
+  const json = extractJson(text);
+  if (!json) throw new Error(`model returned no JSON: ${text.slice(0, 160)}`);
 
-    return {
-      summary: String(json.summary ?? "").slice(0, 200),
-      intent: String(json.intent ?? "").slice(0, 40),
-      priority: clampPriority(json.priority),
-      reply: String(json.reply ?? "").slice(0, 1000),
-    };
-  } catch (err) {
-    console.error("AI enrich failed:", err);
-    return null;
-  }
+  return {
+    summary: String(json.summary ?? "").slice(0, 200),
+    intent: String(json.intent ?? "").slice(0, 40),
+    priority: clampPriority(json.priority),
+    reply: String(json.reply ?? "").slice(0, 1000),
+  };
 }

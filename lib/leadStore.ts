@@ -111,7 +111,17 @@ async function enrichAndUpdate(env: LeadStoreEnv, id: number, record: LeadRecord
       .bind(e.summary, e.intent, e.priority, e.reply, id)
       .run();
   } catch (err) {
+    // Record the reason in ai_status so it's visible in the D1 console.
     console.error("AI enrich/update failed:", err);
+    const reason = String(err instanceof Error ? err.message : err).slice(0, 300);
+    try {
+      await env.DB
+        .prepare(`UPDATE leads SET ai_status=? WHERE id=?`)
+        .bind(`error: ${reason}`, id)
+        .run();
+    } catch {
+      /* ignore secondary failure */
+    }
   }
 }
 
