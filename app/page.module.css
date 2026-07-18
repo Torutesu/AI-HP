@@ -839,6 +839,70 @@ a.fvBadge:hover {
 
 .pain { padding: 80px 0 76px; }
 .pain .grid4 { margin-top: 36px; }
+.painCard {
+  isolation: isolate;
+  min-height: 360px;
+  justify-content: flex-end;
+  padding: 26px;
+  border: 1px solid rgba(115, 169, 255, 0.2);
+  border-radius: 16px;
+  background: #06101f;
+  box-shadow: 0 18px 44px rgba(6, 20, 43, 0.12);
+}
+.painCard:hover {
+  border-color: rgba(115, 169, 255, 0.32);
+  background: #06101f;
+}
+.painCard::before { display: none; }
+.painImage,
+.painWash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.painImage {
+  z-index: -2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: saturate(0.86) contrast(1.04);
+  transform: scale(1.025);
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 240ms ease;
+}
+.painWash {
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(3, 10, 23, 0.06) 0%, rgba(3, 10, 23, 0.18) 34%, rgba(3, 10, 23, 0.94) 78%, #030b18 100%),
+    linear-gradient(90deg, rgba(3, 10, 23, 0.32), transparent 68%);
+}
+.painContent {
+  position: relative;
+  z-index: 1;
+}
+.painLabel {
+  display: block;
+  margin-bottom: 11px;
+  color: #78aaff;
+  font-family: var(--font-en);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+.pain .featureTitle {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.pain .featureText {
+  margin-top: 9px;
+  color: rgba(255, 255, 255, 0.67);
+  font-size: 12.5px;
+  line-height: 1.75;
+}
+.painCard:hover .painImage {
+  filter: saturate(1.02) contrast(1.08);
+  transform: scale(1.075);
+}
 .why { padding: 80px 0 76px; }
 .why .grid4 { margin-top: 36px; }
 
@@ -1304,6 +1368,9 @@ a.fvBadge:hover {
   .statcard { min-height: 350px; }
   .statCat { top: 20px; left: 22px; }
   .why .featureCard { min-height: 350px; }
+  .painCard { min-height: 340px; padding: 22px; }
+  .pain .featureTitle { font-size: 17px; }
+  .pain .featureText { font-size: 12.5px; line-height: 1.72; }
   .why .featureImage { background-position: 74% 0; background-size: auto 68%; }
   .osTopCard { min-height: 0; }
   .osTopBg { opacity: 0.88; }

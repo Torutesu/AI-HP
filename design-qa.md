@@ -1,32 +1,32 @@
 # Design QA
 
-- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_Wy05pe/スクリーンショット 2026-07-18 11.06.42.png`
+- Source visual truth: `/var/folders/73/8h5shzqn3nj4zmn32ntdtp6c0000gn/T/TemporaryItems/NSIRD_screencaptureui_ZKP0bI/スクリーンショット 2026-07-18 15.08.18.png`
 - Implementation: local Next.js homepage browser capture
-- Viewports: 1440 x 1000, 768 x 1024, 390 x 844
-- State: homepage FV and AI OS section; default and `提案書自動生成` tab states
+- Viewports: 1440 x 1000, 390 x 844
+- State: homepage issue cards at rest
 
 ## Full-view comparison evidence
 
-- Desktop keeps the three FV badges aligned at equal height with consistent outer padding.
-- Tablet and mobile report no document-level horizontal overflow.
-- Mobile stacks the two content-heavy AI OS layer panels vertically instead of clipping them in a horizontal carousel.
+- Desktop keeps all four issue cards aligned at equal height with consistent image and copy proportions.
+- Mobile reports no document-level horizontal overflow at 390 px.
+- Mobile presents the cards as a 286 px-wide snap carousel with the next card visible as a navigation cue.
 
 ## Focused region comparison evidence
 
-- FV: badge title, accent, description, and presenter content remain inside each card at desktop and mobile widths.
-- AI OS: tabs remain horizontally reachable; KPI values remain on one line; table labels and actions wrap within their rows.
-- Japanese body copy uses strict line breaking and balanced/pretty wrapping where supported.
+- Each issue uses a distinct image that maps to visibility, adoption, ROI, or recurring cost.
+- Dark lower gradients preserve white-text contrast without hiding the image subject.
+- Japanese titles and body copy remain fully visible at desktop and mobile widths.
 
 ## Comparison history
 
-1. P1: mobile AI OS detail panels were wider than the viewport and required horizontal swiping. Fixed by switching the layer panels to a single-column mobile grid.
-2. P2: KPI values could split before their unit on narrow screens. Fixed with a responsive type scale and no-wrap numeric values.
-3. P2: tablet FV badge copy was dense. Fixed by reducing badge padding and type size while preserving card hierarchy.
+1. P1: the original cards relied on small generic icons and did not visually communicate each business problem. Fixed with full-card contextual imagery.
+2. P2: the original long copy made the row feel text-heavy. Fixed by shortening each description while retaining the business meaning.
+3. P2: a full-width mobile card would hide the horizontal relationship. Fixed with an 80% snap width and a visible next-card cue.
 
 ## Verification
 
 - Production build completed successfully.
-- Primary tab interaction tested: `提案書自動生成` updates the KPI and table content.
-- No production build errors. Development-only CSS hot-reload errors were observed during live CSS replacement and did not reproduce as build failures.
+- Desktop and mobile browser captures completed successfully.
+- No production build errors or document-level horizontal overflow.
 
 final result: passed

@@ -19,10 +19,34 @@ export const metadata: Metadata = {
 };
 
 const ISSUES = [
-  { icon: "eye-off", title: "活用状況が見えない", text: "誰が、どのツールを、どれだけ活用しているか。即座に把握できている企業は多くありません。" },
-  { icon: "book-open", title: "研修が現場に根づかない", text: "学んだ知識が業務に定着せず、数か月後に活用しているのは一部の社員のみ、という状況に陥りがちです。" },
-  { icon: "pie-chart", title: "ROIを説明できない", text: "投資に対して何が得られたのか。役員会で示せる客観的な数字が、手元にありません。" },
-  { icon: "receipt", title: "ツール費用がかさむ", text: "十分に使われないライセンスに毎月の固定費。汎用SaaSの請求だけが、静かに積み上がっていきます。" },
+  {
+    label: "01 / VISIBILITY",
+    image: "/img/cases/management.jpg",
+    position: "50% 48%",
+    title: "活用状況が見えない",
+    text: "誰が、どのツールを、どれだけ使っているか。経営判断に必要な活用データが見えていません。",
+  },
+  {
+    label: "02 / ADOPTION",
+    image: "/img/company/position.jpg",
+    position: "66% 46%",
+    title: "研修が現場に根づかない",
+    text: "学んだ知識が日々の業務に定着せず、活用する社員が一部に限られています。",
+  },
+  {
+    label: "03 / ROI",
+    image: "/img/company/promise.jpg",
+    position: "62% 54%",
+    title: "ROIを説明できない",
+    text: "投資で何が変わったのか。役員会で示せる、客観的な成果指標が不足しています。",
+  },
+  {
+    label: "04 / FIXED COST",
+    image: "/img/why/owned-system.jpg",
+    position: "70% 50%",
+    title: "ツール費用がかさむ",
+    text: "使われないライセンスや重複機能が残り、毎月の固定費だけが積み上がっています。",
+  },
 ];
 
 const WHY = [
@@ -365,10 +389,18 @@ export default function Home() {
           <Reveal><SectionHeading title="なぜ、AIが経営の数字に結びつかないのか。" /></Reveal>
           <MobileCarousel className={styles.grid4}>
             {ISSUES.map((c, i) => (
-              <Reveal key={c.title} delay={i * 0.08} className={`${styles.featureCard} liftCard`}>
-                <div className={styles.featureIcon}><Icon name={c.icon} size={24} /></div>
-                <div className={styles.featureTitle}>{c.title}</div>
-                <p className={styles.featureText}>{c.text}</p>
+              <Reveal key={c.title} delay={i * 0.08} className={`${styles.featureCard} ${styles.painCard}`}>
+                <span
+                  className={styles.painImage}
+                  style={{ backgroundImage: `url(${c.image})`, backgroundPosition: c.position }}
+                  aria-hidden
+                />
+                <span className={styles.painWash} aria-hidden />
+                <div className={styles.painContent}>
+                  <span className={styles.painLabel}>{c.label}</span>
+                  <div className={styles.featureTitle}>{c.title}</div>
+                  <p className={styles.featureText}>{c.text}</p>
+                </div>
               </Reveal>
             ))}
           </MobileCarousel>
