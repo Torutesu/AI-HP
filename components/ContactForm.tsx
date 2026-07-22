@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import Icon from "./Icon";
 import Button from "./Button";
 import { isFreeEmail, FREE_EMAIL_MESSAGE } from "@/lib/freeEmail";
+import { PREFECTURES } from "./prefectures";
 import styles from "./form.module.css";
 
 /** Reads any ROI estimate stashed by the simulator into a short summary. */
@@ -104,12 +105,9 @@ export default function ContactForm() {
           <label className={styles.lbl} htmlFor="pref">会社所在地（都道府県） <span className={styles.req}>*</span></label>
           <select id="pref" name="pref" className={styles.fld} defaultValue="">
             <option value="">選択してください</option>
-            <option value="北海道・東北">北海道・東北</option>
-            <option value="関東">関東</option>
-            <option value="中部">中部</option>
-            <option value="近畿">近畿</option>
-            <option value="中国・四国">中国・四国</option>
-            <option value="九州・沖縄">九州・沖縄</option>
+            {PREFECTURES.map((pref) => (
+              <option key={pref} value={pref}>{pref}</option>
+            ))}
           </select>
         </div>
         <div>
