@@ -33,8 +33,9 @@ export default function SiteFooter() {
             <div className={styles.colTitle}>会社情報</div>
             <ul className={styles.list}>
               <li><Link href="/company">会社概要</Link></li>
-              <li><Link href="/partners">パートナー募集</Link></li>
               <li><Link href="/magazine">マガジン</Link></li>
+              <li><Link href="/recruiting">採用情報</Link></li>
+              <li><Link href="/partners">パートナー募集</Link></li>
               <li><Link href="/download">資料ダウンロード</Link></li>
               <li><Link href="/contact">お問い合わせ</Link></li>
             </ul>

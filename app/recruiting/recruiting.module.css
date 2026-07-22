@@ -1,0 +1,329 @@
+.page {
+  background: var(--white);
+}
+
+.section {
+  padding: 88px 0;
+}
+
+.sectionAlt {
+  padding: 88px 0;
+  background:
+    radial-gradient(circle at top left, rgba(42, 107, 255, 0.05), transparent 28%),
+    linear-gradient(180deg, #f7faff, #ffffff 72%);
+}
+
+.sectionBottom {
+  padding: 0 0 96px;
+}
+
+.container {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.valueGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.valueCard {
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+  border: 1px solid rgba(33, 73, 129, 0.14);
+  border-radius: 20px;
+  background: #071326;
+  isolation: isolate;
+}
+
+.valueImage,
+.valueOverlay,
+.ctaImage,
+.ctaOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.valueImage {
+  background-position: center;
+  background-size: cover;
+  filter: saturate(0.88) contrast(1.02);
+  transform: scale(1.03);
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.valueOverlay {
+  background:
+    linear-gradient(180deg, rgba(4, 12, 27, 0.06) 0%, rgba(4, 12, 27, 0.62) 55%, rgba(4, 12, 27, 0.96) 100%),
+    linear-gradient(90deg, rgba(4, 12, 27, 0.38), rgba(4, 12, 27, 0.1));
+}
+
+.valueCard:hover .valueImage {
+  transform: scale(1.07);
+}
+
+.valueCopy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+}
+
+.valueCopy h2 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: clamp(24px, 2.4vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.valueCopy p {
+  margin: 0;
+  color: rgba(235, 242, 255, 0.74);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.roleGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 34px;
+}
+
+.roleCard {
+  min-height: 220px;
+  padding: 26px 28px;
+  border: 1px solid rgba(33, 73, 129, 0.14);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(18, 41, 78, 0.06);
+}
+
+.roleIndex,
+.processStep {
+  display: inline-flex;
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.roleCard h3,
+.processCard h3 {
+  margin: 0 0 12px;
+  color: var(--fg-0);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.roleCard p,
+.processCard p {
+  margin: 0;
+  color: var(--fg-2);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 34px;
+}
+
+.processCard {
+  min-height: 220px;
+  padding: 24px;
+  border: 1px solid rgba(33, 73, 129, 0.14);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(247, 250, 255, 0.88), rgba(255, 255, 255, 0.98)),
+    #fff;
+  box-shadow: 0 16px 40px rgba(18, 41, 78, 0.06);
+}
+
+.cta {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(32px, 6vw, 96px);
+  padding: clamp(40px, 5vw, 64px);
+  border: 1px solid rgba(117, 161, 232, 0.24);
+  border-radius: 22px;
+  background: #061329;
+  box-shadow: 0 26px 70px rgba(7, 24, 54, 0.2);
+  isolation: isolate;
+}
+
+.ctaImage {
+  z-index: -2;
+  background-image: url("/img/company/position.jpg");
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.03);
+  transition: transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ctaOverlay {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(4, 14, 34, 0.98) 0%, rgba(5, 25, 58, 0.88) 48%, rgba(5, 25, 58, 0.28) 100%),
+    linear-gradient(0deg, rgba(4, 14, 34, 0.58), transparent 70%);
+}
+
+.cta:hover .ctaImage {
+  transform: scale(1.07);
+}
+
+.ctaCopy {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+}
+
+.ctaEyebrow {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: #82afff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+}
+
+.ctaCopy h2 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.ctaCopy p {
+  margin: 0;
+  color: rgba(235, 242, 255, 0.72);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.ctaAction {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.ctaButton {
+  border-color: #fff !important;
+  background: #fff !important;
+  color: #071326 !important;
+}
+
+.ctaButton:hover {
+  border-color: #e8f0ff !important;
+  background: #e8f0ff !important;
+}
+
+.ctaSubButton:global(.btn-ghost) {
+  justify-content: center;
+  border-color: rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.ctaSubButton:global(.btn-ghost:hover) {
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.ctaNote {
+  color: rgba(235, 242, 255, 0.62);
+  font-size: 12px;
+}
+
+@media (max-width: 960px) {
+  .valueGrid,
+  .roleGrid,
+  .processGrid,
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  .processGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .section,
+  .sectionAlt {
+    padding: 72px 0;
+  }
+
+  .sectionBottom {
+    padding: 0 0 72px;
+  }
+
+  .container {
+    width: min(100% - 32px, 1200px);
+  }
+
+  .valueCard,
+  .roleCard,
+  .processCard {
+    min-height: 0;
+  }
+
+  .valueCopy {
+    padding: 22px;
+  }
+
+  .valueCopy p,
+  .roleCard p,
+  .processCard p,
+  .ctaCopy p {
+    font-size: 13px;
+  }
+
+  .cta {
+    min-height: 0;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .ctaAction {
+    width: 100%;
+  }
+
+  .ctaButton,
+  .ctaSubButton,
+  .ctaAction > a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .processGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .valueImage,
+  .ctaImage {
+    transition: none;
+  }
+}
