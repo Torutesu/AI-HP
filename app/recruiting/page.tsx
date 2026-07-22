@@ -145,16 +145,8 @@ export default function Page() {
             <Reveal className={styles.applicationBand}>
               <div className={styles.applicationCopy}>
                 <span className={styles.applicationEyebrow}>JOIN US</span>
-                <h2>まずは、応募から。履歴書や職務経歴書を添えてご連絡ください。</h2>
-                <p>
-                  いきなり完璧な応募でなくて大丈夫です。どの職種に関心があるかを選んで、
-                  必要書類を添付していただければ、担当者が確認します。
-                </p>
-                <ul className={styles.applicationList}>
-                  <li>応募職種は「オープンポジション」「その他」も選べます。</li>
-                  <li>履歴書・職務経歴書は1ファイル添付してください。</li>
-                  <li>ご相談ベースでも、そのまま送信いただけます。</li>
-                </ul>
+                <h2>応募はこちらから。</h2>
+                <p>送信内容は担当者へ通知され、管理画面（/admin）とメールで確認・保存されます。</p>
               </div>
               <RecruitingForm />
             </Reveal>
