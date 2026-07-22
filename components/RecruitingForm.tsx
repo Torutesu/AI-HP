@@ -109,7 +109,7 @@ export default function RecruitingForm() {
           <span className={styles.successIcon}><Icon name="check" size={32} /></span>
           <h2 className={styles.successTitle}>応募を受け付けました。</h2>
           <p className={styles.successText}>
-            内容を確認のうえ、担当者よりご連絡いたします。応募内容は管理画面（/admin）にも反映されます。
+            内容を確認のうえ、担当者よりご連絡いたします。応募内容は内部管理側にも反映されます。
           </p>
           <Button href="/" variant="secondary" size="md" analyticsLabel="recruiting_top_return" analyticsLocation="recruiting_form_success">トップに戻る</Button>
         </div>
@@ -183,7 +183,7 @@ export default function RecruitingForm() {
             <p className={local.summaryTitle}>送信前にご確認ください</p>
           </div>
           <ul className={local.summaryList}>
-            <li>送信内容は担当者へ通知され、管理画面（/admin）で確認できます。</li>
+            <li>送信内容は担当者へ通知され、内部管理側で確認できます。</li>
             <li>応募職種は「オープンポジション」「その他」も選択できます。</li>
             <li>履歴書または職務経歴書を1ファイル添付してください。</li>
           </ul>

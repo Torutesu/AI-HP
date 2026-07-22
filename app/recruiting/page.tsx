@@ -146,7 +146,7 @@ export default function Page() {
               <div className={styles.applicationCopy}>
                 <span className={styles.applicationEyebrow}>JOIN US</span>
                 <h2>応募はこちらから。</h2>
-                <p>送信内容は担当者へ通知され、管理画面（/admin）とメールで確認・保存されます。</p>
+                <p>送信内容は担当者へ通知され、メールと内部管理側で確認・保存されます。</p>
               </div>
               <RecruitingForm />
             </Reveal>
