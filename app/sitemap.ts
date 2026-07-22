@@ -13,6 +13,7 @@ const STATIC_LASTMOD: Record<string, string> = {
   "/cases": "2026-07-16",
   "/ai-os": "2026-07-16",
   "/consulting": "2026-07-16",
+  "/partners": "2026-07-22",
   "/company": "2026-07-16",
   "/magazine": "2026-07-16",
   "/contact": "2026-07-15",

@@ -11,6 +11,7 @@ const NAV = [
   { label: "サービス", href: "/service" },
   { label: "導入事例", href: "/cases" },
   { label: "会社概要", href: "/company" },
+  { label: "パートナー募集", href: "/partners" },
   { label: "マガジン", href: "/magazine" },
 ];
 

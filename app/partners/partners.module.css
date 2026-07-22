@@ -1,0 +1,404 @@
+.page {
+  background: var(--white);
+}
+
+.section {
+  padding: 90px 0;
+}
+
+.sectionAlt {
+  padding: 90px 0;
+  background:
+    radial-gradient(circle at top left, rgba(42, 107, 255, 0.06), transparent 28%),
+    linear-gradient(180deg, #f7faff, #ffffff 74%);
+}
+
+.sectionBottom {
+  padding: 0 0 96px;
+}
+
+.container {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.modelGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 44px;
+}
+
+.modelCard {
+  position: relative;
+  overflow: hidden;
+  min-height: 360px;
+  border: 1px solid rgba(33, 73, 129, 0.14);
+  border-radius: 22px;
+  background: #071326;
+  box-shadow: 0 24px 54px rgba(18, 41, 78, 0.1);
+  isolation: isolate;
+}
+
+.modelCardAccent {
+  border-color: rgba(88, 145, 255, 0.2);
+}
+
+.modelMedia,
+.ctaImage,
+.ctaOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.modelImage {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  filter: saturate(0.92) contrast(1.03);
+  transform: scale(1.03);
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1), filter 300ms ease;
+}
+
+.modelCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(4, 12, 27, 0.05) 0%, rgba(4, 12, 27, 0.78) 55%, rgba(4, 12, 27, 0.98) 100%),
+    linear-gradient(90deg, rgba(4, 12, 27, 0.4), rgba(4, 12, 27, 0.1));
+}
+
+.modelCardAccent::after {
+  background:
+    linear-gradient(180deg, rgba(4, 12, 27, 0.04) 0%, rgba(4, 12, 27, 0.72) 55%, rgba(4, 12, 27, 0.98) 100%),
+    linear-gradient(90deg, rgba(4, 12, 27, 0.42), rgba(4, 12, 27, 0.08));
+}
+
+.modelCard:hover .modelImage {
+  filter: saturate(1.04) contrast(1.08);
+  transform: scale(1.075);
+}
+
+.modelCopy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 360px;
+  padding: 30px;
+}
+
+.modelEyebrow {
+  color: #8bb5ff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.modelCopy h2 {
+  margin: 10px 0 12px;
+  color: #fff;
+  font-size: clamp(24px, 2.4vw, 31px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.modelCopy p {
+  margin: 0;
+  max-width: 460px;
+  color: rgba(235, 242, 255, 0.74);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.modelPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.modelPills span {
+  padding: 7px 12px;
+  border: 1px solid rgba(138, 174, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #eaf1ff;
+  font-size: 11px;
+  backdrop-filter: blur(10px);
+}
+
+.recommendGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 34px;
+}
+
+.recommendCard {
+  min-height: 220px;
+  padding: 26px 28px;
+  border: 1px solid rgba(33, 73, 129, 0.14);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(18, 41, 78, 0.06);
+}
+
+.recommendLabel {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.recommendCard ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recommendCard li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--fg-1);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.recommendCard li + li {
+  margin-top: 10px;
+}
+
+.recommendCard li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #2b7cff, #6ba6ff);
+}
+
+.flowGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.flowCard {
+  position: relative;
+  min-height: 220px;
+  padding: 24px;
+  border: 1px solid rgba(33, 73, 129, 0.14);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(247, 250, 255, 0.88), rgba(255, 255, 255, 0.98)),
+    #fff;
+  box-shadow: 0 16px 40px rgba(18, 41, 78, 0.06);
+}
+
+.flowStep {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.flowCard h3 {
+  margin: 0 0 12px;
+  color: var(--fg-0);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.flowCard p {
+  margin: 0;
+  color: var(--fg-2);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.cta {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(32px, 6vw, 96px);
+  padding: clamp(40px, 5vw, 64px);
+  border: 1px solid rgba(117, 161, 232, 0.24);
+  border-radius: 22px;
+  background: #061329;
+  box-shadow: 0 26px 70px rgba(7, 24, 54, 0.2);
+  isolation: isolate;
+}
+
+.ctaImage {
+  z-index: -2;
+  background-image: url("/img/service/hero.jpg");
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.03);
+  transition: transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ctaOverlay {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(4, 14, 34, 0.98) 0%, rgba(5, 25, 58, 0.88) 48%, rgba(5, 25, 58, 0.28) 100%),
+    linear-gradient(0deg, rgba(4, 14, 34, 0.58), transparent 70%);
+}
+
+.cta:hover .ctaImage {
+  transform: scale(1.07);
+}
+
+.ctaCopy {
+  position: relative;
+  z-index: 1;
+  max-width: 660px;
+}
+
+.ctaEyebrow {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: #82afff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+}
+
+.ctaCopy h2 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.ctaCopy p {
+  margin: 0;
+  color: rgba(235, 242, 255, 0.72);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.ctaAction {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.ctaButton {
+  border-color: #fff !important;
+  background: #fff !important;
+  color: #071326 !important;
+}
+
+.ctaButton:hover {
+  border-color: #e8f0ff !important;
+  background: #e8f0ff !important;
+}
+
+.ctaSubButton:global(.btn-ghost) {
+  justify-content: center;
+  border-color: rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.ctaSubButton:global(.btn-ghost:hover) {
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.ctaNote {
+  color: rgba(235, 242, 255, 0.62);
+  font-size: 12px;
+}
+
+@media (max-width: 960px) {
+  .modelGrid,
+  .recommendGrid,
+  .flowGrid,
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  .flowGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .section,
+  .sectionAlt {
+    padding: 72px 0;
+  }
+
+  .sectionBottom {
+    padding: 0 0 72px;
+  }
+
+  .container {
+    width: min(1200px, calc(100% - 32px));
+  }
+
+  .modelCard,
+  .recommendCard,
+  .flowCard {
+    min-height: 0;
+  }
+
+  .modelCopy {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .modelCopy p,
+  .recommendCard li,
+  .flowCard p,
+  .ctaCopy p {
+    font-size: 13px;
+  }
+
+  .modelPills span {
+    font-size: 10px;
+  }
+
+  .flowGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta {
+    min-height: 0;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .ctaAction {
+    width: 100%;
+  }
+
+  .ctaButton,
+  .ctaSubButton,
+  .ctaAction > a {
+    width: 100%;
+    justify-content: center;
+  }
+}
