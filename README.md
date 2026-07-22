@@ -22,16 +22,20 @@ Sans JP）は `next/font` でセルフホストしています。
 | `/magazine` | マガジン | |
 | `/contact` | お問い合わせ・無料相談 | 動作フォーム → `/api/contact` |
 | `/download` | 資料ダウンロード | 動作フォーム → `/api/download` |
+| `/recruiting` | 採用情報 | 動作フォーム → `/api/recruiting` |
 
 ## フォーム
 
 `contact` / `download` はクライアントコンポーネントで、Cloudflare Pages Functions
-（`functions/api/*`）へJSONをPOSTします。各Functionは:
+（`functions/api/*`）へJSONをPOSTします。`recruiting` は `multipart/form-data` で添付つき送信です。各Functionは:
 
 1. **社内通知** — Slack または Discord の incoming webhook（`NOTIFY_WEBHOOK_URL`、
    URLで自動判別）へ送信。
 2. **自動返信** — 送信者へ **Resend** で返信（お問い合わせ＝お礼、資料DL＝資料リンク）。
    Resendの環境変数が未設定でもフォームは動作し、通知のみ行います。
+
+採用応募は `multipart/form-data` で送信し、履歴書・職務経歴書を添付できます。  
+`RECRUIT_REVIEW_EMAIL` が設定されていれば、添付つきのレビュー用メールも社内に届きます。
 
 ## 構成
 
@@ -90,18 +94,85 @@ npm run deploy                    # = next build && wrangler pages deploy out
 
 Pages → **Settings → Environment variables**（`.env.example` 参照）:
 
+- `NEXT_PUBLIC_SITE_URL` — canonical URL / sitemap / llms.txt の基準URL
+- `NEXT_PUBLIC_GTM_ID` — Google Tag Manager（優先。GA4はGTM内で配信）
+- `NEXT_PUBLIC_GA4_ID` — GTM未導入時の直接GA4計測
+- `NEXT_PUBLIC_CLARITY_ID` — Microsoft Clarity（ヒートマップ）
+- `NEXT_PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN` — Cloudflare Web Analytics
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — Google Search Console の所有権確認
+- `NEXT_PUBLIC_BING_SITE_VERIFICATION` — Bing Webmaster Tools の所有権確認
 - `NOTIFY_WEBHOOK_URL` — Slack または Discord の incoming webhook（必須）
 - `RESEND_API_KEY` — 自動返信用（任意）
 - `AUTOREPLY_FROM_EMAIL` — Resendで検証済みの送信元（任意）
+- `RECRUIT_REVIEW_EMAIL` — 採用応募の添付ファイルを受け取る社内レビュー先（任意）
 - `ASSETS_BASE_URL` — 配布アセット（`lib/assets.ts`）の相対パスに前置するベースURL（R2等・任意）
 - `DOC_DOWNLOAD_URL` — `service-guide` の後方互換フォールバックリンク（任意）
+
+#### おすすめの導入順
+
+1. **Google Tag Manager**  
+   まず `NEXT_PUBLIC_GTM_ID` を入れる。以後の計測はGTM側に寄せると運用が楽。
+2. **GA4**  
+   GTMに GA4 タグを追加して、ページビューと主要イベントを計測する。
+3. **Search Console / Bing Webmaster Tools**  
+   `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` と `NEXT_PUBLIC_BING_SITE_VERIFICATION` を入れて所有権確認。
+4. **Microsoft Clarity**  
+   `NEXT_PUBLIC_CLARITY_ID` を入れて、ヒートマップと録画で導線を確認する。
+5. **Cloudflare Web Analytics**  
+   すでにCloudflare Pagesを使っているので、軽量な補助計測として足すと便利。
+
+#### まず入れるイベント
+
+- `page_view` — ページ閲覧
+- `cta_click` — CTAクリック
+- `lead_submit` — 問い合わせ / 資料請求の送信結果
+
+主要CTAの `location` は以下を使っています。
+
+- `home_hero`
+- `home_cta_band`
+- `service_cta`
+- `consulting_cta`
+- `aios_cta`
+- `partners_cta`
+- `recruiting_cta`
+- `cases_cta`
+- `company_cta`
+- `roi_simulator`
+- `header_actions`
+- `header_nav`
+- `header_dropdown`
+- `mobile_actions`
+- `mobile_nav`
+
+#### Search Console と Clarity の初期設定
+
+1. **Google Search Console** で `ai-hp.pages.dev`（または独自ドメイン）を追加し、HTMLタグ or DNS で所有権確認する。
+2. `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` を Cloudflare Pages の環境変数に入れる。
+3. **Bing Webmaster Tools** も同様に登録し、`NEXT_PUBLIC_BING_SITE_VERIFICATION` を入れる。
+4. **Microsoft Clarity** でプロジェクトを作成し、`NEXT_PUBLIC_CLARITY_ID` を入れる。
+5. その後、Clarity の録画とヒートマップで、CTAやフォームの詰まりを確認する。
+
+#### GA4 のイベント設計メモ
+
+- 無料相談: `cta_click` → `label=hero_free_consultation` / `home_cta_free_diagnosis`
+- 資料請求: `cta_click` → `label=hero_download` / `home_cta_download`
+- 送信成功: `lead_submit` → `type=contact|download`, `status=success`
+- 送信失敗: `lead_submit` → `type=contact|download`, `status=error`
+- ROI試算から相談: `cta_click` → `label=roi_simulator_contact`
+
+#### X（旧Twitter）からの流入を見るとき
+
+- 投稿ごとに `utm_source=x&utm_medium=social&utm_campaign=...` を付ける
+- GA4 の「集客」→「トラフィック獲得」で確認する
+- リンク短縮やプロフィールリンクも同じUTM設計にそろえる
 
 配布物を増やす場合は `lib/assets.ts` の `ASSETS` に `{ id, label, path }` を追加。
 フォームは `?asset=<id>` を hidden で受け取り、`download.ts` が id を検証して返信メール／通知に載せます。
 
 ### リード保存（D1 ＋ Google Sheets）
 
-問い合わせ・資料DLの送信内容は、通知／自動返信に加えて **Cloudflare D1（正本）** に保存し、
+問い合わせ・資料DL・採用応募の送信内容は、通知／自動返信に加えて **Cloudflare D1（正本）** に保存し、
 **非公開の Google スプレッドシート（運用ビュー）** に1行追記します（`lib/leadStore.ts`）。
 どちらも best-effort（`waitUntil` で非同期・失敗しても送信自体は成功）で、未設定でも通知だけで動作します。
 PII最小化のため IP は保存せず、国（`CF-IPCountry`）のみ記録します。
@@ -110,7 +181,8 @@ PII最小化のため IP は保存せず、国（`CF-IPCountry`）のみ記録�
 
 1. `wrangler d1 create ai-hp-leads`
 2. `wrangler d1 execute ai-hp-leads --file=./db/schema.sql --remote`（スキーマ適用）
-3. Pages → **Settings → Functions → Bindings → D1** で、変数名 **`DB`** として上記DBをバインド
+3. 採用応募の列を既存DBへ追加する場合は `wrangler d1 execute ai-hp-leads --file=./db/migrations/0004_recruiting_application.sql --remote`
+4. Pages → **Settings → Functions → Bindings → D1** で、変数名 **`DB`** として上記DBをバインド
    （または `wrangler.toml` の `[[d1_databases]]` を有効化）
 
 **Google Sheets 同期（任意・安全な繋ぎ方）:**

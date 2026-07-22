@@ -5,6 +5,7 @@ import Icon from "./Icon";
 import Button from "./Button";
 import { isFreeEmail, FREE_EMAIL_MESSAGE } from "@/lib/freeEmail";
 import { PREFECTURES } from "./prefectures";
+import { trackLeadSubmit } from "@/lib/analytics-client";
 import styles from "./form.module.css";
 
 /** Reads any ROI estimate stashed by the simulator into a short summary. */
@@ -69,10 +70,15 @@ export default function ContactForm() {
       const j = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
       if (res.ok && j.ok) {
         try { sessionStorage.removeItem("roiEstimate"); } catch {}
+        trackLeadSubmit("contact", "success");
         setSubmitted(true);
       }
-      else setError(j.error || "送信に失敗しました。時間をおいて再度お試しください。");
+      else {
+        trackLeadSubmit("contact", "error", j.error || "api_error");
+        setError(j.error || "送信に失敗しました。時間をおいて再度お試しください。");
+      }
     } catch {
+      trackLeadSubmit("contact", "error", "network_error");
       setError("通信エラーが発生しました。時間をおいて再度お試しください。");
     } finally {
       setSubmitting(false);
@@ -88,7 +94,7 @@ export default function ContactForm() {
           <p className={styles.successText}>
             内容を確認のうえ、担当者より1〜2営業日以内にご返信いたします。
           </p>
-          <Button href="/" variant="secondary" size="md">トップに戻る</Button>
+          <Button href="/" variant="secondary" size="md" analyticsLabel="contact_top_return" analyticsLocation="contact_form_success">トップに戻る</Button>
         </div>
       </div>
     );

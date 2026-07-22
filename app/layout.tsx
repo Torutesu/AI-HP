@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import { SITE_URL, SITE_NAME, SITE_NAME_EN, SITE_DESCRIPTION } from "@/lib/site";
 import CustomCursor from "@/components/CustomCursor";
+import Analytics from "@/components/Analytics";
+import { SITE_VERIFICATION } from "@/lib/analytics";
 import "./globals.css";
 
 const inter = Inter({
@@ -90,10 +93,15 @@ export default function RootLayout({
         {/* RSS discovery — declared here (not via metadata.alternates) because
             each page's alternates.canonical shallow-replaces the layout's. */}
         <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} マガジン`} href="/feed.xml" />
+        {SITE_VERIFICATION.google ? <meta name="google-site-verification" content={SITE_VERIFICATION.google} /> : null}
+        {SITE_VERIFICATION.bing ? <meta name="msvalidate.01" content={SITE_VERIFICATION.bing} /> : null}
       </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }} />
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
         <CustomCursor />
         {children}
       </body>

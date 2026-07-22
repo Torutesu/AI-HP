@@ -6,6 +6,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./SiteHeader.module.css";
 import logoMark from "@/public/logo-mark.png";
+import { trackCtaClick } from "@/lib/analytics-client";
 
 const NAV = [
   { label: "サービス", href: "/service" },
@@ -62,17 +63,27 @@ export default function SiteHeader({
         <nav className={styles.nav}>
           {NAV.map((item) => item.href === "/service" ? (
             <div key={item.href} className={styles.serviceNav}>
-              <Link className={`navlink ${styles.serviceTrigger}`} href={item.href} aria-haspopup="true">
+              <Link
+                className={`navlink ${styles.serviceTrigger}`}
+                href={item.href}
+                aria-haspopup="true"
+                onClick={() => trackCtaClick("header_service", item.href, "header_nav")}
+              >
                 {item.label}<span className={styles.serviceCaret} aria-hidden="true" />
               </Link>
               <div className={styles.serviceDropdown} aria-label="サービスメニュー">
                 <div className={styles.serviceDropdownHead}>
                   <span>OUR SERVICES</span>
-                  <Link href="/service">サービス一覧</Link>
+                  <Link href="/service" onClick={() => trackCtaClick("header_service_all", "/service", "header_dropdown")}>サービス一覧</Link>
                 </div>
                 <div className={styles.serviceDropdownGrid}>
                   {SERVICE_LINKS.map((service) => (
-                    <Link key={service.href} className={styles.serviceOption} href={service.href}>
+                    <Link
+                      key={service.href}
+                      className={styles.serviceOption}
+                      href={service.href}
+                      onClick={() => trackCtaClick(`header_${service.href.replace("/", "")}`, service.href, "header_dropdown")}
+                    >
                       <span
                         className={styles.serviceOptionImage}
                         style={{ backgroundImage: `url(${service.image})` }}
@@ -97,8 +108,8 @@ export default function SiteHeader({
         </nav>
 
         <div className={styles.actions}>
-          <Link className="navlink" href="/contact">無料相談</Link>
-          <Link className="glassBtn" href="/download">資料ダウンロード</Link>
+          <Link className="navlink" href="/contact" onClick={() => trackCtaClick("header_free_consultation", "/contact", "header_actions")}>無料相談</Link>
+          <Link className="glassBtn" href="/download" onClick={() => trackCtaClick("header_download", "/download", "header_actions")}>資料ダウンロード</Link>
         </div>
 
         <button
@@ -124,7 +135,14 @@ export default function SiteHeader({
             <div className={styles.mobileInner}>
               {NAV.map((item) => item.href === "/service" ? (
                 <div key={item.href} className={styles.mobileServiceGroup}>
-                  <Link className={styles.mobileLink} href={item.href} onClick={() => setOpen(false)}>
+                  <Link
+                    className={styles.mobileLink}
+                    href={item.href}
+                    onClick={() => {
+                      trackCtaClick(`mobile_${item.href.replace("/", "")}`, item.href, "mobile_nav");
+                      setOpen(false);
+                    }}
+                  >
                     {item.label}
                   </Link>
                   <div className={styles.mobileServiceLinks}>
@@ -136,13 +154,39 @@ export default function SiteHeader({
                   </div>
                 </div>
               ) : (
-                <Link key={item.href} className={styles.mobileLink} href={item.href} onClick={() => setOpen(false)}>
-                  {item.label}
-                </Link>
+                  <Link
+                    key={item.href}
+                    className={styles.mobileLink}
+                    href={item.href}
+                    onClick={() => {
+                      trackCtaClick(`mobile_${item.href.replace("/", "")}`, item.href, "mobile_nav");
+                      setOpen(false);
+                    }}
+                  >
+                    {item.label}
+                  </Link>
               ))}
-              <Link className={styles.mobileLink} href="/contact" onClick={() => setOpen(false)}>無料相談</Link>
+              <Link
+                className={styles.mobileLink}
+                href="/contact"
+                onClick={() => {
+                  trackCtaClick("mobile_contact", "/contact", "mobile_actions");
+                  setOpen(false);
+                }}
+              >
+                無料相談
+              </Link>
               <div className={styles.mobileActions}>
-                <Link className="glassBtn" href="/download" onClick={() => setOpen(false)}>資料ダウンロード</Link>
+                <Link
+                  className="glassBtn"
+                  href="/download"
+                  onClick={() => {
+                    trackCtaClick("mobile_download", "/download", "mobile_actions");
+                    setOpen(false);
+                  }}
+                >
+                  資料ダウンロード
+                </Link>
               </div>
             </div>
           </motion.div>

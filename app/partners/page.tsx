@@ -199,11 +199,11 @@ export default function Page() {
                 </p>
               </div>
               <div className={styles.ctaAction}>
-                <Button href="/contact" variant="secondary" size="lg" className={styles.ctaButton}>
+                <Button href="/contact" variant="secondary" size="lg" className={styles.ctaButton} analyticsLabel="partners_contact" analyticsLocation="partners_cta">
                   お問い合わせ
                   <Icon name="arrow-right" size={17} />
                 </Button>
-                <Button href="/download" variant="ghost" size="md" className={styles.ctaSubButton}>
+                <Button href="/download" variant="ghost" size="md" className={styles.ctaSubButton} analyticsLabel="partners_download" analyticsLocation="partners_cta">
                   資料をダウンロード
                 </Button>
                 <span className={styles.ctaNote}>小さなご紹介からでも歓迎です。</span>

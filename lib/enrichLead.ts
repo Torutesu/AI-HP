@@ -59,14 +59,16 @@ export async function enrichLead(env: EnrichEnv, r: LeadRecord): Promise<Enrichm
   if (!env.AI) return null;
 
   const profile = [
-    `種別: ${r.type === "contact" ? "お問い合わせ" : "資料ダウンロード"}`,
+    `種別: ${r.type === "contact" ? "お問い合わせ" : r.type === "download" ? "資料ダウンロード" : "採用応募"}`,
     r.company && `会社名: ${r.company}`,
     r.size && `従業員数: ${r.size}`,
     r.role && `役回り: ${r.role}`,
+    r.position && `応募職種: ${r.position}`,
     r.title && `役職: ${r.title}`,
     r.pref && `所在地: ${r.pref}`,
     r.kind && `種別詳細: ${r.kind}`,
     r.message && `本文: ${r.message}`,
+    r.attachmentName && `添付ファイル: ${r.attachmentName}`,
     r.asset && `請求資料: ${r.asset}`,
     r.themes && `関心テーマ: ${r.themes}`,
     r.roi && `ROI試算: ${r.roi}`,
@@ -81,12 +83,12 @@ export async function enrichLead(env: EnrichEnv, r: LeadRecord): Promise<Enrichm
     `【優先度(priority 1〜5)の採点基準】\n` +
     `1) 予算ポテンシャル＝従業員数が多いほど高い: 1,000名以上 > 300〜1,000名 > 100〜300名 > 50〜100名 > 11〜49名 > 1〜10名\n` +
     `2) 決裁権＝役職が上位ほど高い: 経営者・役員 > 部長クラス > 課長・マネージャー > 担当者\n` +
-    `3) 緊度＝意図が具体的なほど高い: 費用・見積り/無料AI経営診断の希望＝今すぐ客で最高、サービスについて＝中、情報収集/採用＝低\n` +
+      `3) 緊度＝意図が具体的なほど高い: 費用・見積り/無料AI経営診断の希望＝今すぐ客で最高、サービスについて＝中、情報収集/採用・応募＝低\n` +
     `4) 本文に予算・時期・具体的な課題があれば加点。\n` +
     `5=大型かつ上位決裁者かつ具体案件の最優先、3=標準、1=小規模・情報収集・採用など低。\n\n` +
     `次のJSON形式のみで出力してください:\n` +
     `{"summary":"一文要約(60字以内)",` +
-    `"intent":"意図を短く1つ(例: 費用問い合わせ / 導入検討 / 情報収集 / 採用 / 協業 / その他)",` +
+      `"intent":"意図を短く1つ(例: 費用問い合わせ / 導入検討 / 情報収集 / 採用応募 / 協業 / その他)",` +
     `"priority":整数1〜5,` +
     `"priority_reason":"スコアの根拠を企業規模(予算)・役職(決裁権)・緊度の観点で(40字以内)",` +
     `"next_action":"担当者が取るべき次の一手を1つ(例: 24時間以内に電話 / 個別返信で商談打診 / 資料送付のみ / ナーチャリング)",` +

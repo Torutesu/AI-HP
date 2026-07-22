@@ -27,11 +27,12 @@ export interface LeadStoreEnv extends SheetsEnv, EnrichEnv {
 
 export interface LeadRecord {
   createdAt: string; // ISO 8601
-  type: "contact" | "download";
+  type: "contact" | "download" | "recruiting";
   company?: string;
   pref?: string;
   size?: string;
   role?: string;
+  position?: string;
   title?: string;
   lastName?: string;
   firstName?: string;
@@ -43,14 +44,17 @@ export interface LeadRecord {
   themes?: string; // download (joined)
   roi?: string; // contact (simulator)
   country?: string;
+  attachmentName?: string;
+  attachmentType?: string;
+  attachmentSize?: string;
   raw?: string; // full JSON payload
 }
 
 /** Column order shared by D1 and the Sheets row (and the sheet's header row). */
 export const SHEET_HEADER = [
   "受信日時", "種別", "会社名", "所在地", "従業員数", "お役回り", "役職",
-  "姓", "名", "メール", "電話", "種別詳細", "本文", "請求資料", "関心テーマ",
-  "ROI試算", "国",
+  "応募職種", "姓", "名", "メール", "電話", "種別詳細", "本文", "添付ファイル",
+  "添付種別", "添付サイズ", "請求資料", "関心テーマ", "ROI試算", "国",
 ];
 
 function toRow(r: LeadRecord): string[] {
@@ -61,6 +65,7 @@ function toRow(r: LeadRecord): string[] {
     r.pref ?? "",
     r.size ?? "",
     r.role ?? "",
+    r.position ?? "",
     r.title ?? "",
     r.lastName ?? "",
     r.firstName ?? "",
@@ -68,6 +73,9 @@ function toRow(r: LeadRecord): string[] {
     r.phone ?? "",
     r.kind ?? "",
     r.message ?? "",
+    r.attachmentName ?? "",
+    r.attachmentType ?? "",
+    r.attachmentSize ?? "",
     r.asset ?? "",
     r.themes ?? "",
     r.roi ?? "",
@@ -79,15 +87,17 @@ async function insertD1(db: D1Like, r: LeadRecord): Promise<number | null> {
   const row = await db
     .prepare(
       `INSERT INTO leads
-        (created_at, type, company, pref, size, role, title, last_name, first_name,
-         email, phone, kind, message, asset, themes, roi, country, raw)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        (created_at, type, company, pref, size, role, position, title, last_name, first_name,
+         email, phone, kind, message, attachment_name, attachment_type, attachment_size,
+         asset, themes, roi, country, raw)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
        RETURNING id`
     )
     .bind(
       r.createdAt, r.type, r.company ?? null, r.pref ?? null, r.size ?? null,
-      r.role ?? null, r.title ?? null, r.lastName ?? null, r.firstName ?? null,
+      r.role ?? null, r.position ?? null, r.title ?? null, r.lastName ?? null, r.firstName ?? null,
       r.email ?? null, r.phone ?? null, r.kind ?? null, r.message ?? null,
+      r.attachmentName ?? null, r.attachmentType ?? null, r.attachmentSize ?? null,
       r.asset ?? null, r.themes ?? null, r.roi ?? null, r.country ?? null,
       r.raw ?? null
     )

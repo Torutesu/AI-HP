@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Icon from "@/components/Icon";
+import { trackCtaClick } from "@/lib/analytics-client";
 import styles from "./RoiSimulator.module.css";
 
 /**
@@ -104,7 +105,14 @@ export default function RoiSimulator() {
         ※ 一般的な前提に基づく概算であり、効果を保証するものではありません。実際の試算は無料相談で詳細にご提示します。
       </p>
 
-      <a className={styles.btn} href="/contact" onClick={stashEstimate}>
+      <a
+        className={styles.btn}
+        href="/contact"
+        onClick={() => {
+          stashEstimate();
+          trackCtaClick("roi_simulator_contact", "/contact", "roi_simulator");
+        }}
+      >
         この試算をもとに相談する<Icon name="arrow-right" size={17} />
       </a>
     </div>

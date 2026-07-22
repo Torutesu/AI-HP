@@ -6,11 +6,12 @@ import styles from "./admin.module.css";
 type Lead = {
   id: number;
   created_at: string;
-  type: "contact" | "download";
+  type: "contact" | "download" | "recruiting";
   company?: string;
   pref?: string;
   size?: string;
   role?: string;
+  position?: string;
   title?: string;
   last_name?: string;
   first_name?: string;
@@ -18,6 +19,9 @@ type Lead = {
   phone?: string;
   kind?: string;
   message?: string;
+  attachment_name?: string;
+  attachment_type?: string;
+  attachment_size?: string;
   asset?: string;
   themes?: string;
   roi?: string;
@@ -48,9 +52,9 @@ function fmtDate(iso: string): string {
 }
 
 function note(l: Lead): string {
-  return l.type === "contact"
-    ? [l.kind, l.message].filter(Boolean).join("｜")
-    : [l.asset, l.themes].filter(Boolean).join("｜");
+  if (l.type === "contact") return [l.kind, l.message].filter(Boolean).join("｜");
+  if (l.type === "download") return [l.asset, l.themes].filter(Boolean).join("｜");
+  return [l.position, l.attachment_name, l.message].filter(Boolean).join("｜");
 }
 
 const PRIORITY_LABEL = ["", "低", "やや低", "中", "高", "最優先"];
@@ -164,6 +168,7 @@ export default function AdminDashboard() {
           <option value="">すべて</option>
           <option value="contact">お問い合わせ</option>
           <option value="download">資料ダウンロード</option>
+          <option value="recruiting">採用応募</option>
         </select>
         <button className={styles.searchBtn} type="submit">検索</button>
       </form>
@@ -198,8 +203,8 @@ export default function AdminDashboard() {
                     <td className={styles.caret}>{open ? "▾" : "▸"}</td>
                     <td className={styles.nowrap}>{fmtDate(l.created_at)}</td>
                     <td>
-                      <span className={`${styles.badge} ${l.type === "contact" ? styles.bContact : styles.bDownload}`}>
-                        {l.type === "contact" ? "問い合わせ" : "資料DL"}
+                      <span className={`${styles.badge} ${l.type === "contact" ? styles.bContact : l.type === "download" ? styles.bDownload : styles.bRecruiting}`}>
+                        {l.type === "contact" ? "問い合わせ" : l.type === "download" ? "資料DL" : "採用"}
                       </span>
                     </td>
                     <td><PriorityBadge p={l.ai_priority} /></td>
@@ -220,8 +225,11 @@ export default function AdminDashboard() {
                             <div><span className={styles.dl}>所在地</span>{l.pref || "—"}</div>
                             <div><span className={styles.dl}>従業員数</span>{l.size || "—"}</div>
                             <div><span className={styles.dl}>役回り</span>{l.role || "—"}</div>
+                            {l.position ? <div><span className={styles.dl}>応募職種</span>{l.position}</div> : null}
                             <div><span className={styles.dl}>役職</span>{l.title || "—"}</div>
                             <div><span className={styles.dl}>AI意図</span>{l.ai_intent || "—"}</div>
+                            {l.attachment_name ? <div><span className={styles.dl}>添付</span>{l.attachment_name}</div> : null}
+                            {l.attachment_size ? <div><span className={styles.dl}>添付サイズ</span>{l.attachment_size}</div> : null}
                           </div>
                           {l.ai_priority_reason || l.ai_next_action || l.ai_talking_points ? (
                             <div className={styles.aiPanel}>
@@ -242,7 +250,7 @@ export default function AdminDashboard() {
                             </div>
                           ) : null}
                           <div className={styles.detailBlock}>
-                            <span className={styles.dl}>{l.type === "contact" ? "お問い合わせ内容" : "請求資料・関心テーマ"}</span>
+                            <span className={styles.dl}>{l.type === "contact" ? "お問い合わせ内容" : l.type === "download" ? "請求資料・関心テーマ" : "応募メッセージ"}</span>
                             <p className={styles.detailText}>{note(l) || "—"}</p>
                           </div>
                           {l.roi ? (

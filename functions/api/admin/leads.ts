@@ -7,7 +7,7 @@
  *
  * Query params:
  *   q       free-text search (company / email / name / message)
- *   type    'contact' | 'download' (omit for all)
+ *   type    'contact' | 'download' | 'recruiting' (omit for all)
  *   format  'json' (default) | 'csv'
  *   limit   JSON page size (default 100, max 1000)
  *   offset  JSON page offset
@@ -22,7 +22,8 @@ type Ctx = { request: Request; env: Env };
 
 const COLUMNS = [
   "id", "created_at", "type", "company", "pref", "size", "role", "title",
-  "last_name", "first_name", "email", "phone", "kind", "message", "asset",
+  "position", "last_name", "first_name", "email", "phone", "kind", "message",
+  "attachment_name", "attachment_type", "attachment_size", "asset",
   "themes", "roi", "country",
   "ai_summary", "ai_intent", "ai_priority", "ai_priority_reason",
   "ai_next_action", "ai_handling", "ai_talking_points", "ai_reply", "ai_status",
@@ -54,14 +55,14 @@ export const onRequestGet = async ({ request, env }: Ctx): Promise<Response> => 
 
   const where: string[] = [];
   const binds: unknown[] = [];
-  if (type === "contact" || type === "download") {
+  if (type === "contact" || type === "download" || type === "recruiting") {
     where.push("type = ?");
     binds.push(type);
   }
   if (q) {
-    where.push("(company LIKE ? OR email LIKE ? OR last_name LIKE ? OR first_name LIKE ? OR message LIKE ?)");
+    where.push("(company LIKE ? OR email LIKE ? OR last_name LIKE ? OR first_name LIKE ? OR message LIKE ? OR position LIKE ?)");
     const like = `%${q}%`;
-    binds.push(like, like, like, like, like);
+    binds.push(like, like, like, like, like, like);
   }
   const whereSql = where.length ? `WHERE ${where.join(" AND ")}` : "";
   const cols = COLUMNS.join(", ");

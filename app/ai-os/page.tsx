@@ -297,10 +297,10 @@ export default function Page() {
                 </div>
               </div>
               <div className={styles.ctaAction}>
-                <Button href="/contact" variant="secondary" size="lg" className={styles.ctaButton}>
+                <Button href="/contact" variant="secondary" size="lg" className={styles.ctaButton} analyticsLabel="aios_free_consultation" analyticsLocation="aios_cta">
                   無料相談する
                 </Button>
-                <Button href="/download" variant="ghost" size="md" className={styles.ctaSubButton}>
+                <Button href="/download" variant="ghost" size="md" className={styles.ctaSubButton} analyticsLabel="aios_download" analyticsLocation="aios_cta">
                   資料をダウンロード
                 </Button>
                 <span className={styles.ctaNote}>資料だけの確認でも大丈夫です</span>

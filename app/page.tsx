@@ -10,6 +10,7 @@ import RoiSimulator from "@/components/RoiSimulator";
 import MobileCarousel from "@/components/MobileCarousel";
 import AiOsShowcase from "@/components/AiOsShowcase";
 import CostDownShowcase from "@/components/CostDownShowcase";
+import TrackedLink from "@/components/TrackedLink";
 import { HERO_VIDEO_URL, PARTNER_LOGOS as PARTNERS } from "@/lib/site";
 import type { Metadata } from "next";
 import styles from "./page.module.css";
@@ -199,12 +200,12 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal immediate delay={0.52} y={20} className={styles.heroCtas}>
-            <a className="whiteCta" href="/contact">
+            <TrackedLink className="whiteCta" href="/contact" label="hero_free_consultation" location="home_hero">
               無料相談<Icon name="arrow-right" size={17} />
-            </a>
-            <a className="heroOutlineCta" href="/download">
+            </TrackedLink>
+            <TrackedLink className="heroOutlineCta" href="/download" label="hero_download" location="home_hero">
               資料をダウンロード<Icon name="download" size={16} />
-            </a>
+            </TrackedLink>
           </Reveal>
           <Reveal immediate delay={0.62} y={20} className={styles.fvBadges}>
             {STRENGTHS.map((b) => {
@@ -552,10 +553,10 @@ export default function Home() {
               </p>
             </div>
             <div className={styles.ctaActions}>
-              <Button href="/contact" variant="primary" size="lg">
+              <Button href="/contact" variant="primary" size="lg" analyticsLabel="home_cta_free_diagnosis" analyticsLocation="home_cta_band">
                 無料で診断する<Icon name="arrow-right" size={17} />
               </Button>
-              <Button href="/download" variant="secondary" size="lg">サービス資料を見る</Button>
+              <Button href="/download" variant="secondary" size="lg" analyticsLabel="home_cta_download" analyticsLocation="home_cta_band">サービス資料を見る</Button>
             </div>
           </Reveal>
         </div>

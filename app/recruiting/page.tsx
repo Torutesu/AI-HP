@@ -2,9 +2,8 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import Button from "@/components/Button";
-import Icon from "@/components/Icon";
 import SectionHeading from "@/components/SectionHeading";
+import RecruitingForm from "@/components/RecruitingForm";
 import type { Metadata } from "next";
 import styles from "./recruiting.module.css";
 
@@ -143,27 +142,21 @@ export default function Page() {
 
         <section className={styles.sectionBottom}>
           <div className={styles.container}>
-            <Reveal className={styles.cta}>
-              <span className={styles.ctaImage} aria-hidden="true" />
-              <span className={styles.ctaOverlay} aria-hidden="true" />
-              <div className={styles.ctaCopy}>
-                <span className={styles.ctaEyebrow}>JOIN US</span>
-                <h2>まずは、カジュアルに話しましょう。</h2>
+            <Reveal className={styles.applicationBand}>
+              <div className={styles.applicationCopy}>
+                <span className={styles.applicationEyebrow}>JOIN US</span>
+                <h2>まずは、応募から。履歴書や職務経歴書を添えてご連絡ください。</h2>
                 <p>
-                  役割の相談でも、働き方の相談でも大丈夫です。
-                  気になる方は、お気軽にお問い合わせください。
+                  いきなり完璧な応募でなくて大丈夫です。どの職種に関心があるかを選んで、
+                  必要書類を添付していただければ、担当者が確認します。
                 </p>
+                <ul className={styles.applicationList}>
+                  <li>応募職種は「オープンポジション」「その他」も選べます。</li>
+                  <li>履歴書・職務経歴書は1ファイル添付してください。</li>
+                  <li>ご相談ベースでも、そのまま送信いただけます。</li>
+                </ul>
               </div>
-              <div className={styles.ctaAction}>
-                <Button href="/contact" variant="secondary" size="lg" className={styles.ctaButton}>
-                  お問い合わせ
-                  <Icon name="arrow-right" size={17} />
-                </Button>
-                <Button href="/download" variant="ghost" size="md" className={styles.ctaSubButton}>
-                  資料をダウンロード
-                </Button>
-                <span className={styles.ctaNote}>応募前のご相談も歓迎です。</span>
-              </div>
+              <RecruitingForm />
             </Reveal>
           </div>
         </section>

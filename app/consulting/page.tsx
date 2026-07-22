@@ -193,7 +193,7 @@ export default function Page() {
                     貴社の課題に合わせて、最適な第一歩をご提案します。
                   </p>
                 </div>
-                <Button href="/download" variant="primary" size="lg" className={styles.ctaButton}>
+                <Button href="/download" variant="primary" size="lg" className={styles.ctaButton} analyticsLabel="consulting_download" analyticsLocation="consulting_cta">
                   資料をダウンロード
                 </Button>
               </div>

@@ -165,7 +165,7 @@ export default function Page() {
                 </p>
               </div>
               <div className={cx.ctaAction}>
-                <Button href="/download" variant="secondary" size="lg" className={cx.ctaButton}>
+                <Button href="/download" variant="secondary" size="lg" className={cx.ctaButton} analyticsLabel="cases_download" analyticsLocation="cases_cta">
                   資料をダウンロード
                   <Icon name="arrow-right" size={17} />
                 </Button>

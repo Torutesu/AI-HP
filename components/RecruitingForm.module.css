@@ -1,0 +1,120 @@
+.stackTwo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.fileCard {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px dashed rgba(30, 99, 230, 0.28);
+  border-radius: 12px;
+  background: rgba(30, 99, 230, 0.03);
+}
+
+.fileInput {
+  width: 100%;
+  color: var(--fg-1);
+  font-size: 13px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.fileInput::file-selector-button {
+  margin-right: 12px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.fileInput::-webkit-file-upload-button {
+  margin-right: 12px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.fileMeta {
+  font-size: 12px;
+  color: var(--fg-3);
+  line-height: 1.6;
+}
+
+.summary {
+  display: grid;
+  gap: 10px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(30, 99, 230, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 250, 255, 0.98));
+}
+
+.summaryHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summaryBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--blue-tint);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.summaryTitle {
+  margin: 0;
+  color: var(--fg-0);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.summaryList {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--fg-2);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.summaryList li + li {
+  margin-top: 4px;
+}
+
+.privacy {
+  margin: 0;
+  color: var(--fg-3);
+  font-size: 11.5px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.privacy a {
+  color: var(--fg-2);
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .stackTwo {
+    grid-template-columns: 1fr;
+  }
+}

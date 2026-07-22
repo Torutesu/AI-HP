@@ -8,11 +8,12 @@
 CREATE TABLE IF NOT EXISTS leads (
   id          INTEGER PRIMARY KEY AUTOINCREMENT,
   created_at  TEXT NOT NULL,            -- ISO 8601 (UTC)
-  type        TEXT NOT NULL,            -- 'contact' | 'download'
+  type        TEXT NOT NULL,            -- 'contact' | 'download' | 'recruiting'
   company     TEXT,
   pref        TEXT,
   size        TEXT,
   role        TEXT,
+  position    TEXT,
   title       TEXT,
   last_name   TEXT,
   first_name  TEXT,
@@ -20,6 +21,9 @@ CREATE TABLE IF NOT EXISTS leads (
   phone       TEXT,
   kind        TEXT,                     -- contact: お問い合わせ種別
   message     TEXT,                     -- contact: 本文
+  attachment_name TEXT,                 -- recruiting: 添付ファイル名
+  attachment_type TEXT,                 -- recruiting: MIME type
+  attachment_size TEXT,                 -- recruiting: サイズ表示
   asset       TEXT,                     -- download: 請求資料
   themes      TEXT,                     -- download: 関心テーマ（、区切り）
   roi         TEXT,                     -- contact: ROIシミュレーター試算

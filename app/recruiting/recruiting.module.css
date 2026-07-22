@@ -40,9 +40,7 @@
 }
 
 .valueImage,
-.valueOverlay,
-.ctaImage,
-.ctaOverlay {
+.valueOverlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -152,114 +150,69 @@
   box-shadow: 0 16px 40px rgba(18, 41, 78, 0.06);
 }
 
-.cta {
-  position: relative;
-  min-height: 320px;
-  overflow: hidden;
+.applicationBand {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: clamp(32px, 6vw, 96px);
-  padding: clamp(40px, 5vw, 64px);
-  border: 1px solid rgba(117, 161, 232, 0.24);
-  border-radius: 22px;
-  background: #061329;
-  box-shadow: 0 26px 70px rgba(7, 24, 54, 0.2);
-  isolation: isolate;
-}
-
-.ctaImage {
-  z-index: -2;
-  background-image: url("/img/company/position.jpg");
-  background-position: center;
-  background-size: cover;
-  transform: scale(1.03);
-  transition: transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.ctaOverlay {
-  z-index: -1;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 24px;
+  align-items: start;
+  padding: 28px;
+  border: 1px solid rgba(33, 73, 129, 0.14);
+  border-radius: 26px;
   background:
-    linear-gradient(90deg, rgba(4, 14, 34, 0.98) 0%, rgba(5, 25, 58, 0.88) 48%, rgba(5, 25, 58, 0.28) 100%),
-    linear-gradient(0deg, rgba(4, 14, 34, 0.58), transparent 70%);
+    radial-gradient(circle at top right, rgba(42, 107, 255, 0.08), transparent 30%),
+    linear-gradient(180deg, #f8fbff 0%, #ffffff 86%);
+  box-shadow: 0 24px 60px rgba(18, 41, 78, 0.08);
 }
 
-.cta:hover .ctaImage {
-  transform: scale(1.07);
+.applicationCopy {
+  padding: 14px 10px 14px 8px;
 }
 
-.ctaCopy {
-  position: relative;
-  z-index: 1;
-  max-width: 620px;
-}
-
-.ctaEyebrow {
+.applicationEyebrow {
   display: inline-flex;
-  margin-bottom: 18px;
-  color: #82afff;
+  margin-bottom: 16px;
+  color: var(--accent);
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.17em;
+  letter-spacing: 0.18em;
 }
 
-.ctaCopy h2 {
-  margin: 0 0 12px;
-  color: #fff;
-  font-size: clamp(28px, 3vw, 36px);
+.applicationCopy h2 {
+  margin: 0 0 14px;
+  color: var(--fg-0);
+  font-size: clamp(28px, 3vw, 38px);
   font-weight: 700;
+  line-height: 1.28;
   letter-spacing: -0.04em;
 }
 
-.ctaCopy p {
-  margin: 0;
-  color: rgba(235, 242, 255, 0.72);
+.applicationCopy p {
+  margin: 0 0 18px;
+  color: var(--fg-2);
   font-size: 15px;
   line-height: 1.9;
 }
 
-.ctaAction {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-start;
+.applicationList {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--fg-2);
+  font-size: 14px;
+  line-height: 1.85;
 }
 
-.ctaButton {
-  border-color: #fff !important;
-  background: #fff !important;
-  color: #071326 !important;
-}
-
-.ctaButton:hover {
-  border-color: #e8f0ff !important;
-  background: #e8f0ff !important;
-}
-
-.ctaSubButton:global(.btn-ghost) {
-  justify-content: center;
-  border-color: rgba(255, 255, 255, 0.22);
-  color: rgba(255, 255, 255, 0.88);
-}
-
-.ctaSubButton:global(.btn-ghost:hover) {
-  border-color: rgba(255, 255, 255, 0.42);
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
-
-.ctaNote {
-  color: rgba(235, 242, 255, 0.62);
-  font-size: 12px;
+.applicationList li + li {
+  margin-top: 4px;
 }
 
 @media (max-width: 960px) {
-  .valueGrid,
+  .valueGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .roleGrid,
   .processGrid,
-  .cta {
+  .applicationBand {
     grid-template-columns: 1fr;
   }
 
@@ -295,25 +248,14 @@
   .valueCopy p,
   .roleCard p,
   .processCard p,
-  .ctaCopy p {
+  .applicationCopy p {
     font-size: 13px;
   }
 
-  .cta {
-    min-height: 0;
-    gap: 24px;
-    padding: 24px;
-  }
-
-  .ctaAction {
-    width: 100%;
-  }
-
-  .ctaButton,
-  .ctaSubButton,
-  .ctaAction > a {
-    width: 100%;
-    justify-content: center;
+  .applicationBand {
+    gap: 20px;
+    padding: 22px;
+    grid-template-columns: 1fr;
   }
 
   .processGrid {
@@ -322,8 +264,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .valueImage,
-  .ctaImage {
+  .valueImage {
     transition: none;
   }
 }

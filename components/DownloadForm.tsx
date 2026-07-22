@@ -8,6 +8,7 @@ import Button from "./Button";
 import { DEFAULT_ASSET_ID, getAsset } from "@/lib/assets";
 import { isFreeEmail, FREE_EMAIL_MESSAGE } from "@/lib/freeEmail";
 import { PREFECTURES } from "./prefectures";
+import { trackLeadSubmit } from "@/lib/analytics-client";
 import styles from "./form.module.css";
 
 // Same lead fields as the contact form so both capture equivalent information.
@@ -61,9 +62,15 @@ export default function DownloadForm() {
         body: JSON.stringify(data),
       });
       const j = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
-      if (res.ok && j.ok) setSubmitted(true);
-      else setError(j.error || "送信に失敗しました。時間をおいて再度お試しください。");
+      if (res.ok && j.ok) {
+        trackLeadSubmit("download", "success", assetId);
+        setSubmitted(true);
+      } else {
+        trackLeadSubmit("download", "error", j.error || "api_error");
+        setError(j.error || "送信に失敗しました。時間をおいて再度お試しください。");
+      }
     } catch {
+      trackLeadSubmit("download", "error", "network_error");
       setError("通信エラーが発生しました。時間をおいて再度お試しください。");
     } finally {
       setSubmitting(false);
@@ -79,7 +86,7 @@ export default function DownloadForm() {
           <p className={styles.successText}>
             ご入力のメールアドレスへ、ご提案資料（PDF）をお送りしました。ご確認ください。
           </p>
-          <Button href="/contact" variant="primary" size="md">あわせて相談する</Button>
+          <Button href="/contact" variant="primary" size="md" analyticsLabel="download_followup_contact" analyticsLocation="download_form_success">あわせて相談する</Button>
         </div>
       </div>
     );

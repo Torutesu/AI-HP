@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { trackCtaClick } from "@/lib/analytics-client";
 
 type Variant = "primary" | "secondary" | "ghost";
 type Size = "sm" | "md" | "lg";
@@ -20,6 +23,8 @@ export default function Button({
   type = "button",
   className,
   onClick,
+  analyticsLabel,
+  analyticsLocation,
 }: {
   children: ReactNode;
   href?: string;
@@ -29,17 +34,39 @@ export default function Button({
   type?: "button" | "submit" | "reset";
   className?: string;
   onClick?: () => void;
+  analyticsLabel?: string;
+  analyticsLocation?: string;
 }) {
   const style = fullWidth ? { width: "100%" } : undefined;
   if (href) {
     return (
-      <Link href={href} className={cls(variant, size, className)} style={style}>
+      <Link
+        href={href}
+        className={cls(variant, size, className)}
+        style={style}
+        onClick={() => {
+          if (analyticsLabel) {
+            trackCtaClick(analyticsLabel, href, analyticsLocation);
+          }
+          onClick?.();
+        }}
+      >
         {children}
       </Link>
     );
   }
   return (
-    <button type={type} className={cls(variant, size, className)} style={style} onClick={onClick}>
+    <button
+      type={type}
+      className={cls(variant, size, className)}
+      style={style}
+      onClick={() => {
+        if (analyticsLabel) {
+          trackCtaClick(analyticsLabel, undefined, analyticsLocation);
+        }
+        onClick?.();
+      }}
+    >
       {children}
     </button>
   );
