@@ -20,12 +20,14 @@ const SERVICE_LINKS = [
     label: "AI経営基盤",
     description: "業務を置き換え、成果を生むAIを内製",
     href: "/ai-os",
+    image: "/img/service/ai-os-card.jpg",
   },
   {
     eyebrow: "STRATEGY & EXECUTION",
     label: "コンサルティング",
     description: "事業理解から戦略・実装まで伴走",
     href: "/consulting",
+    image: "/img/service/consulting-card.jpg",
   },
 ];
 
@@ -69,9 +71,16 @@ export default function SiteHeader({
                 <div className={styles.serviceDropdownGrid}>
                   {SERVICE_LINKS.map((service) => (
                     <Link key={service.href} className={styles.serviceOption} href={service.href}>
-                      <span className={styles.serviceOptionEyebrow}>{service.eyebrow}</span>
-                      <strong>{service.label}</strong>
-                      <span className={styles.serviceOptionText}>{service.description}</span>
+                      <span
+                        className={styles.serviceOptionImage}
+                        style={{ backgroundImage: `url(${service.image})` }}
+                        aria-hidden="true"
+                      />
+                      <span className={styles.serviceOptionCopy}>
+                        <span className={styles.serviceOptionEyebrow}>{service.eyebrow}</span>
+                        <strong>{service.label}</strong>
+                        <span className={styles.serviceOptionText}>{service.description}</span>
+                      </span>
                       <span className={styles.serviceArrow} aria-hidden="true">→</span>
                     </Link>
                   ))}

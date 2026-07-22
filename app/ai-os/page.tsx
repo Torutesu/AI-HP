@@ -42,13 +42,13 @@ const LAYER1 = [
 ];
 
 const LAYER2 = [
-  { title: "リード獲得AI", text: "見込み客を発掘し、獲得の量と質を引き上げる。", image: "/img/cases/sales.jpg", label: "LEAD GENERATION" },
-  { title: "提案書自動生成", text: "商談準備を高速化。提案の質とスピードを両立。", image: "/img/service/consulting-card.jpg", label: "PROPOSAL" },
-  { title: "顧客分析・ランク付け", text: "優先すべき顧客を見極め、営業の的を絞る。", image: "/img/cases/management.jpg", label: "SCORING" },
+  { title: "リード獲得AI", text: "見込み客を発掘し、獲得の量と質を引き上げる。", image: "/img/magazine/sales-ai-win-rate.webp", label: "LEAD GENERATION" },
+  { title: "提案書自動生成", text: "商談準備を高速化。提案の質とスピードを両立。", image: "/img/magazine/professional-services-ai.webp", label: "PROPOSAL" },
+  { title: "顧客分析・ランク付け", text: "優先すべき顧客を見極め、営業の的を絞る。", image: "/img/magazine/roi-visualization.webp", label: "SCORING" },
   { title: "コンテンツ生成", text: "マーケの制作量を増やし、露出を拡大する。", image: "/img/cases/marketing.jpg", label: "CONTENT" },
-  { title: "営業支援AI", text: "商談を分析し、次の一手を現場に提示する。", image: "/img/cases/sales.jpg", label: "SALES COPILOT" },
+  { title: "営業支援AI", text: "商談を分析し、次の一手を現場に提示する。", image: "/img/magazine/meeting-minutes-ai.webp", label: "SALES COPILOT" },
   { title: "価格最適化", text: "需要に合わせた価格設計で、利益を最大化。", image: "/img/industries/retail.jpg", label: "PRICING" },
-  { title: "マーケ最適化AI", text: "配信と分析を自動化し、獲得効率を上げる。", image: "/img/cases/marketing.jpg", label: "MARKETING" },
+  { title: "マーケ最適化AI", text: "配信と分析を自動化し、獲得効率を上げる。", image: "/img/magazine/application-layer-cases.webp", label: "MARKETING" },
 ];
 
 const WHY = [
@@ -277,48 +277,34 @@ export default function Page() {
         </section>
 
         {/* ===================== CTA ===================== */}
-        <section style={{ padding: "0 0 96px" }}>
-          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-            <Reveal
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                borderRadius: "12px",
-                border: "0.5px solid var(--panel-border)",
-                background: "var(--panel-grad)",
-                padding: "56px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                gap: "32px",
-                flexWrap: "wrap",
-              }}
-            >
-              <div>
-                <h2
-                  style={{
-                    fontSize: "28px",
-                    fontWeight: 700,
-                    color: "var(--fg-0)",
-                    margin: "0 0 10px",
-                  }}
-                >
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaContainer}>
+            <Reveal className={styles.ctaPanel}>
+              <span className={styles.ctaImage} aria-hidden="true" />
+              <span className={styles.ctaOverlay} aria-hidden="true" />
+              <div className={styles.ctaCopy}>
+                <span className={styles.ctaEyebrow}>AI BUSINESS DIAGNOSIS</span>
+                <h2 className={styles.ctaTitle}>
                   まず、貴社の削減余地から。
                 </h2>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: "14.5px",
-                    color: "var(--fg-2)",
-                    lineHeight: "1.8",
-                  }}
-                >
-                  AI経営診断で、コストと売上の伸びしろを数字にします。
+                <p className={styles.ctaText}>
+                  SaaS費・工数・外注費を棚卸しし、どこからAIへ置き換えると回収が早いかを数字で整理します。
                 </p>
+                <div className={styles.ctaMetrics} aria-label="診断で整理する項目">
+                  <span>削減余地</span>
+                  <span>回収期間</span>
+                  <span>優先順位</span>
+                </div>
               </div>
-              <Button href="/download" variant="primary" size="lg">
-                資料をダウンロード
-              </Button>
+              <div className={styles.ctaAction}>
+                <Button href="/contact" variant="secondary" size="lg" className={styles.ctaButton}>
+                  無料相談する
+                </Button>
+                <Button href="/download" variant="ghost" size="md" className={styles.ctaSubButton}>
+                  資料をダウンロード
+                </Button>
+                <span className={styles.ctaNote}>資料だけの確認でも大丈夫です</span>
+              </div>
             </Reveal>
           </div>
         </section>
