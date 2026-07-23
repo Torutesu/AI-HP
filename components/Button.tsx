@@ -21,6 +21,7 @@ export default function Button({
   size = "md",
   fullWidth = false,
   type = "button",
+  form,
   className,
   onClick,
   analyticsLabel,
@@ -32,6 +33,7 @@ export default function Button({
   size?: Size;
   fullWidth?: boolean;
   type?: "button" | "submit" | "reset";
+  form?: string;
   className?: string;
   onClick?: () => void;
   analyticsLabel?: string;
@@ -58,6 +60,7 @@ export default function Button({
   return (
     <button
       type={type}
+      form={form}
       className={cls(variant, size, className)}
       style={style}
       onClick={() => {

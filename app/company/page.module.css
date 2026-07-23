@@ -152,11 +152,13 @@
   }
 
   .ctaTitle {
-    font-size: 28px;
+    font-size: 32px;
+    line-height: 1.22;
   }
 
   .ctaText {
-    font-size: 13px;
+    font-size: 15px;
+    line-height: 1.78;
   }
 
   .ctaAction {
@@ -166,6 +168,10 @@
   .ctaButton:global(.btn-secondary) {
     width: 100%;
     min-width: 0;
+  }
+
+  .ctaNote {
+    font-size: 11px;
   }
 }
 

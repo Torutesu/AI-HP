@@ -357,37 +357,54 @@
   }
 
   .equationCard {
-    min-height: 236px;
+    min-height: 260px;
   }
 
   .equationTopline {
-    padding: 18px 18px 0;
+    padding: 20px 20px 0;
   }
 
   .equationContent {
-    right: 18px;
-    bottom: 18px;
-    left: 18px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
   }
 
   .equationContent h2 {
-    font-size: 22px;
+    font-size: 28px;
+    line-height: 1.18;
   }
 
   .equationContent p {
-    margin-top: 8px;
-    font-size: 11.5px;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.8;
   }
 
   .featureCard,
   .whyCard {
-    min-height: 260px;
+    min-height: 290px;
   }
 
   .featureContent {
-    right: 19px;
-    bottom: 19px;
-    left: 19px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .featureContent > span {
+    font-size: 9px;
+  }
+
+  .featureContent h3 {
+    font-size: 20px;
+  }
+
+  .featureContent p {
+    max-width: 100%;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.8;
   }
 
   .ctaSection {
@@ -422,15 +439,25 @@
   }
 
   .ctaTitle {
-    font-size: 29px;
+    font-size: 32px;
   }
 
   .ctaText {
-    font-size: 13px;
+    font-size: 15px;
+    line-height: 1.78;
   }
 
   .ctaAction {
     width: 100%;
+  }
+
+  .ctaButton,
+  .ctaSubButton {
+    width: 100%;
+  }
+
+  .ctaNote {
+    font-size: 11px;
   }
 }
 

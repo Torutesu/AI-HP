@@ -91,20 +91,23 @@
 
   .introTitle {
     margin-bottom: 12px;
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .introText {
     margin-bottom: 28px;
-    font-size: 13.5px;
+    font-size: 15px;
+    line-height: 1.78;
   }
 
   .checkList {
-    gap: 16px;
-    padding: 24px 22px;
+    gap: 18px;
+    padding: 24px;
   }
 
   .downloadNote {
     margin-top: 24px;
+    font-size: 14px;
+    line-height: 1.85;
   }
 }

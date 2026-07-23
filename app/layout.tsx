@@ -4,6 +4,7 @@ import { Inter, Noto_Sans_JP } from "next/font/google";
 import { SITE_URL, SITE_NAME, SITE_NAME_EN, SITE_DESCRIPTION } from "@/lib/site";
 import CustomCursor from "@/components/CustomCursor";
 import Analytics from "@/components/Analytics";
+import MobileStickyCta from "@/components/MobileStickyCta";
 import { SITE_VERIFICATION } from "@/lib/analytics";
 import "./globals.css";
 
@@ -104,6 +105,7 @@ export default function RootLayout({
         </Suspense>
         <CustomCursor />
         {children}
+        <MobileStickyCta />
       </body>
     </html>
   );

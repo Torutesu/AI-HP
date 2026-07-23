@@ -1,0 +1,30 @@
+.root {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .root {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: flex;
+    justify-content: center;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.78) 26%, rgba(255, 255, 255, 0.96));
+    box-shadow: 0 -12px 34px rgba(12, 21, 36, 0.08);
+    backdrop-filter: blur(10px);
+    pointer-events: none;
+  }
+
+  .shell {
+    width: min(100%, 720px);
+    pointer-events: auto;
+  }
+
+  .shell :global(.btn) {
+    width: 100%;
+  }
+}

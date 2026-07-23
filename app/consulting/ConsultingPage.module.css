@@ -252,22 +252,31 @@
 
 @media (max-width: 640px) {
   .contrastCard {
-    min-height: 94px;
-    padding: 18px;
+    min-height: 112px;
+    padding: 22px;
   }
 
   .contrastCard strong {
-    font-size: 12.5px;
+    font-size: 15px;
   }
 
   .stepCard {
-    min-height: 264px;
+    min-height: 306px;
   }
 
   .stepContent {
-    right: 19px;
-    bottom: 19px;
-    left: 19px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .stepContent h3 {
+    font-size: 20px;
+  }
+
+  .stepContent p {
+    font-size: 14px;
+    line-height: 1.78;
   }
 
   .cta {
@@ -288,11 +297,16 @@
   }
 
   .ctaInner h2 {
-    font-size: 25px;
+    font-size: 32px;
   }
 
   .ctaInner p {
-    font-size: 12.5px;
+    font-size: 15px;
+    line-height: 1.78;
+  }
+
+  .ctaButton {
+    width: 100%;
   }
 }
 

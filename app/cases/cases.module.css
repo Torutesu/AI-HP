@@ -240,7 +240,41 @@
   .grid::-webkit-scrollbar { display: none; }
   .grid > * { flex: 0 0 82%; scroll-snap-align: start; }
   /* unified mobile card padding */
-  .body { padding: 22px; }
+  .body { padding: 24px; }
+  .head {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .badge {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+  .title {
+    font-size: 19px;
+  }
+  .desc {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  .stats {
+    gap: 18px;
+    padding-top: 18px;
+    flex-wrap: wrap;
+  }
+  .stats > div {
+    min-width: 120px;
+  }
+  .statValue {
+    font-size: 28px;
+    line-height: 1.1;
+  }
+  .statLabel {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 1.45;
+  }
 
   .ctaSection { padding-bottom: 58px; }
   .ctaContainer { width: min(100% - 32px, 1200px); }
@@ -258,8 +292,8 @@
       linear-gradient(90deg, rgba(4, 10, 21, 0.35), rgba(4, 10, 21, 0.05));
   }
   .ctaEyebrow { margin-bottom: 14px; }
-  .ctaTitle { font-size: 28px; }
-  .ctaText { font-size: 13px; }
+  .ctaTitle { font-size: 32px; line-height: 1.18; }
+  .ctaText { font-size: 15px; line-height: 1.78; }
   .ctaAction { width: 100%; }
   .ctaButton:global(.btn-secondary) { width: 100%; min-width: 0; }
   .ctaNote { align-self: center; }

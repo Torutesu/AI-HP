@@ -1501,14 +1501,29 @@ a.fvBadge:hover {
   .container { padding: 0 20px; }
 
   .heroBody {
-    padding: 104px 20px 30px;
+    padding: 112px 20px 40px;
     justify-content: flex-start;
     max-width: 100%;
   }
-  .heroTitle { font-size: clamp(28px, 8vw, 36px); }
-  .heroSub { margin-bottom: 16px; }
-  .heroLead { margin-bottom: 22px; max-width: 100%; font-size: 13px; line-height: 1.72; }
-  .heroCtas { gap: 10px; }
+  .heroTitle {
+    max-width: 11ch;
+    font-size: clamp(40px, 10vw, 46px);
+    line-height: 1.18;
+  }
+  .heroSub { margin-bottom: 18px; }
+  .heroLead {
+    margin-bottom: 28px;
+    max-width: 33ch;
+    font-size: 16px;
+    line-height: 1.78;
+  }
+  .heroCtas {
+    gap: 12px;
+    width: 100%;
+  }
+  .heroCtas > * {
+    width: 100%;
+  }
   .partnerRow { margin: 0; padding: 14px 0 18px; gap: 10px; }
   .partnerNote { font-size: 10.5px; }
   .partnerLogoSet { gap: 28px; padding: 0 16px; }
@@ -1534,13 +1549,13 @@ a.fvBadge:hover {
   .fvImg { width: 100%; max-width: none; max-height: none; }
 
   /* ---- Section rhythm: denser vertical spacing ---- */
-  .belief { padding: 58px 20px 66px; }
-  .philosophy { padding: 44px 0 50px; }
-  .strengths { padding: 40px 0 46px; }
-  .os { padding: 46px 0; }
-  .pain, .why, .process, .cases { padding: 42px 0; }
-  .method { padding: 46px 0 50px; }
-  .ctaSection { padding: 10px 0 48px; }
+  .belief { padding: 76px 20px 80px; }
+  .philosophy { padding: 64px 0 72px; }
+  .strengths { padding: 64px 0 72px; }
+  .os { padding: 64px 0; }
+  .pain, .why, .process, .cases { padding: 64px 0; }
+  .method { padding: 64px 0 72px; }
+  .ctaSection { padding: 16px 0 72px; }
   .ctaBand {
     grid-template-columns: minmax(0, 1fr);
     gap: 28px;
@@ -1549,46 +1564,48 @@ a.fvBadge:hover {
   .ctaActions { width: 100%; min-width: 0; }
 
   /* ---- (A) Mobile-native type scale ---- */
-  .beliefEyebrow { margin-bottom: 16px; font-size: 11px; }
-  .beliefTitle { font-size: 22px; line-height: 1.4; margin-bottom: 13px; }
-  .beliefText { font-size: 13px; line-height: 1.72; }
-  .philosophyTitle { font-size: 30px; margin-bottom: 10px; }
-  .philLead { font-size: 13px; }
-  .philosophyText { font-size: 13px; line-height: 1.72; margin-bottom: 12px; }
-  .roiHeading { font-size: 25px; }
-  .roiList { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 22px; }
-  .roiItem { min-height: 188px; padding: 20px; border-radius: 15px; }
+  .beliefEyebrow { margin-bottom: 18px; font-size: 11px; }
+  .beliefTitle { font-size: 28px; line-height: 1.24; margin-bottom: 16px; }
+  .beliefText { font-size: 16px; line-height: 1.78; }
+  .philosophyTitle { font-size: 34px; margin-bottom: 12px; }
+  .philLead { font-size: 16px; line-height: 1.76; }
+  .philosophyText { font-size: 16px; line-height: 1.78; margin-bottom: 14px; }
+  .roiHeading { font-size: 30px; }
+  .roiList { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 24px; }
+  .roiItem { min-height: 204px; padding: 24px; border-radius: 16px; }
   .roiItemContent { max-width: 94%; }
-  .roiItemTitle { font-size: 17px; }
-  .roiItemText { font-size: 12px; line-height: 1.7; }
-  .osTopSub { font-size: 13px; }
-  .osTopText, .osPanelText { font-size: 12.5px; line-height: 1.72; }
-  .osPanelTitle { font-size: 18px; }
-  .featureTitle { font-size: 14px; }
-  .featureText { font-size: 12px; line-height: 1.65; }
-  .stepTitle { font-size: 16.5px; }
-  .stepText { font-size: 13px; line-height: 1.75; }
-  .disclaimer { font-size: 11px; }
+  .roiItemTitle { font-size: 20px; }
+  .roiItemText { font-size: 15px; line-height: 1.72; }
+  .osTopSub { font-size: 14px; }
+  .osTopText, .osPanelText { font-size: 15px; line-height: 1.78; }
+  .osPanelTitle { font-size: 20px; }
+  .featureTitle { font-size: 16px; }
+  .featureText { font-size: 14px; line-height: 1.75; }
+  .stepTitle { font-size: 20px; }
+  .stepText { font-size: 15px; line-height: 1.76; }
+  .disclaimer { font-size: 12px; }
 
   /* tighten the gap between a section heading and its content */
   .processGrid { margin-top: 24px; }
 
   /* ---- Unified mobile card padding: common 22px everywhere ---- */
-  .featureCard, .osTopCard, .osPanel, .rowCard, .stepCard, .statcard { padding: 19px; }
-  .philLeft { min-height: 360px; padding: 24px; }
-  .philCard { min-height: 150px; padding: 20px; }
-  .philCardTitle { font-size: 17px; }
-  .philCardText { margin-top: 6px; font-size: 11.5px; }
+  .featureCard, .osTopCard, .osPanel, .rowCard, .stepCard, .statcard { padding: 24px; }
+  .philLeft { min-height: 380px; padding: 28px; }
+  .philCard { min-height: 162px; padding: 24px; }
+  .philCardTitle { font-size: 20px; }
+  .philCardText { margin-top: 8px; font-size: 14px; }
   .philCardNo { top: 17px; right: 18px; }
-  .cardStack { gap: 10px; }
-  .statcard { min-height: 310px; }
-  .statCat { top: 18px; left: 19px; }
-  .why .featureCard { min-height: 310px; }
+  .cardStack { gap: 12px; }
+  .statcard { min-height: 360px; }
+  .statCat { top: 20px; left: 20px; }
+  .statValue { font-size: 40px; line-height: 0.95; }
+  .statLabel { margin-top: 14px; font-size: 14px; }
+  .why .featureCard { min-height: 330px; }
   .why .featureTitle,
   .why .featureText { min-height: 0; }
-  .painCard { min-height: 300px; padding: 19px; }
-  .pain .featureTitle { font-size: 15.5px; }
-  .pain .featureText { font-size: 12px; line-height: 1.65; }
+  .painCard { min-height: 320px; padding: 24px; }
+  .pain .featureTitle { font-size: 18px; }
+  .pain .featureText { font-size: 14px; line-height: 1.72; }
   .why .featureImage { background-position: 74% 0; background-size: auto 68%; }
   .osTopCard { min-height: 0; }
   .osTopBg { opacity: 0.88; }
@@ -1610,15 +1627,15 @@ a.fvBadge:hover {
 
   .methodHead { margin-bottom: 22px; }
   .methodFeature { margin-bottom: 12px; }
-  .methodTitle { font-size: 24px; line-height: 1.32; }
-  .methodLead { margin-top: 12px; font-size: 12.5px; line-height: 1.72; }
+  .methodTitle { font-size: 32px; line-height: 1.22; }
+  .methodLead { margin-top: 14px; font-size: 16px; line-height: 1.78; }
   .methodGrid { gap: 12px; }
-  .methodTheory, .methodPractice { min-height: 350px; padding: 22px 19px; border-radius: 15px; }
-  .methodTheory h3, .methodPractice h3 { margin: 13px 0 14px; font-size: 21px; }
-  .methodTheory blockquote { font-size: 12.5px; line-height: 1.78; }
-  .methodPractice p { font-size: 12.5px; line-height: 1.72; }
-  .methodSteps { gap: 6px; margin-top: 20px; }
-  .methodSteps span { padding: 7px 9px; font-size: 9.5px; }
+  .methodTheory, .methodPractice { min-height: 360px; padding: 24px 20px; border-radius: 16px; }
+  .methodTheory h3, .methodPractice h3 { margin: 14px 0 16px; font-size: 24px; }
+  .methodTheory blockquote { font-size: 15px; line-height: 1.78; }
+  .methodPractice p { font-size: 15px; line-height: 1.74; }
+  .methodSteps { gap: 8px; margin-top: 22px; }
+  .methodSteps span { padding: 8px 10px; font-size: 10px; }
 
   /* ---- (B) Card rows become swipeable carousels ---- */
   .grid4, .casesGrid, .osTop {
@@ -1657,7 +1674,7 @@ a.fvBadge:hover {
 @media (max-width: 400px) {
   .container { padding: 0 16px; }
   .heroBody { padding: 96px 16px 26px; }
-  .heroTitle { font-size: 29px; }
+  .heroTitle { font-size: 40px; line-height: 1.16; }
   .partnerRow { margin: 0; }
   /* keep the carousel bleed aligned to the 16px container padding */
   .grid4, .casesGrid, .osTop {

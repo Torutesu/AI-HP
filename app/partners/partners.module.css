@@ -367,14 +367,19 @@
 
   .modelCopy {
     min-height: 0;
-    padding: 22px;
+    padding: 24px;
+  }
+
+  .modelCopy h2 {
+    font-size: 24px;
   }
 
   .modelCopy p,
   .recommendCard li,
   .flowCard p,
   .ctaCopy p {
-    font-size: 13px;
+    font-size: 15px;
+    line-height: 1.78;
   }
 
   .modelPills span {
@@ -387,7 +392,7 @@
 
   .cta {
     min-height: 0;
-    gap: 24px;
+    gap: 26px;
     padding: 24px;
   }
 
@@ -400,5 +405,27 @@
   .ctaAction > a {
     width: 100%;
     justify-content: center;
+  }
+
+  .recommendCard,
+  .flowCard {
+    padding: 24px;
+  }
+
+  .recommendCard li {
+    line-height: 1.9;
+  }
+
+  .flowCard h3 {
+    font-size: 20px;
+  }
+
+  .ctaCopy h2 {
+    font-size: 30px;
+    line-height: 1.22;
+  }
+
+  .ctaEyebrow {
+    margin-bottom: 14px;
   }
 }

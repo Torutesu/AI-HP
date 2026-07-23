@@ -95,7 +95,7 @@ export default function DownloadForm() {
   return (
     <div className={styles.card}>
       <div className={styles.cardTitle}>ご提案資料をリクエスト</div>
-      <form className={styles.form} onSubmit={onSubmit} noValidate style={{ gap: "18px" }}>
+      <form id="download-form" className={styles.form} onSubmit={onSubmit} noValidate style={{ gap: "18px" }}>
         <input type="hidden" name="asset" value={assetId} readOnly />
         <div>
           <label className={styles.lbl} htmlFor="company">会社名 <span className={styles.req}>*</span></label>

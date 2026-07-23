@@ -111,13 +111,22 @@
   .bg { left: 28%; opacity: 0.44; }
 }
 @media (max-width: 640px) {
-  .inner { padding: 92px 20px 64px; }
-  .breadcrumb { margin-bottom: 30px; }
-  .eyebrow { margin-bottom: 16px; }
-  .title { font-size: 34px; line-height: 1.25; }
-  .lead { font-size: 14px; line-height: 1.85; }
+  .inner { padding: 104px 20px 74px; }
+  .breadcrumb { margin-bottom: 26px; }
+  .eyebrow { margin-bottom: 18px; }
+  .title {
+    max-width: 11.5ch;
+    font-size: clamp(40px, 10.2vw, 48px);
+    line-height: 1.18;
+    margin-bottom: 22px;
+  }
+  .lead {
+    max-width: 34ch;
+    font-size: 16px;
+    line-height: 1.78;
+  }
   .bg { inset: 0; opacity: 0.3; }
 }
 @media (max-width: 400px) {
-  .inner { padding: 86px 16px 58px; }
+  .inner { padding: 98px 16px 68px; }
 }

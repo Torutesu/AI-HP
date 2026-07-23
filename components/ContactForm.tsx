@@ -102,7 +102,7 @@ export default function ContactForm() {
 
   return (
     <div className={styles.card}>
-      <form className={styles.form} onSubmit={onSubmit} noValidate>
+      <form id="contact-form" className={styles.form} onSubmit={onSubmit} noValidate>
         <div>
           <label className={styles.lbl} htmlFor="company">会社名 <span className={styles.req}>*</span></label>
           <input id="company" name="company" className={styles.fld} type="text" placeholder="例）株式会社〇〇〇〇〇" />

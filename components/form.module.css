@@ -101,7 +101,41 @@ select.fld {
 }
 @media (max-width: 640px) {
   /* unified mobile card padding */
-  .card { padding: 22px; }
+  .card { padding: 24px; border-radius: 18px; }
+  .cardTitle { font-size: 24px; margin-bottom: 20px; }
+  .form { gap: 16px; }
+  .fld {
+    height: 54px;
+    padding: 0 16px;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+  textarea.fld {
+    min-height: 132px;
+    padding: 14px 16px;
+  }
+  .lbl {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .hint {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .error {
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+  .success {
+    padding: 28px 4px;
+  }
+  .successTitle {
+    font-size: 24px;
+  }
+  .successText {
+    font-size: 15px;
+    line-height: 1.8;
+  }
 }
 @media (max-width: 400px) {
   .checks { grid-template-columns: 1fr; }

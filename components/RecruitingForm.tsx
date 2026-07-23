@@ -120,7 +120,7 @@ export default function RecruitingForm() {
   return (
     <div className={styles.card}>
       <div className={styles.cardTitle}>採用応募フォーム</div>
-      <form className={styles.form} onSubmit={onSubmit} noValidate>
+      <form id="recruiting-form" className={styles.form} onSubmit={onSubmit} noValidate>
         <div className={local.stackTwo}>
           <div>
             <label className={styles.lbl} htmlFor="last">姓 <span className={styles.req}>*</span></label>

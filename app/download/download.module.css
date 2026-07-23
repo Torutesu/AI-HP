@@ -209,6 +209,55 @@
   .lead { max-width: none; }
 }
 @media (max-width: 520px) {
+  .section {
+    padding: 104px 18px 72px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 1.22;
+  }
+
+  .lead {
+    margin-bottom: 28px;
+    max-width: 34ch;
+    font-size: 16px;
+    line-height: 1.78;
+  }
+
+  .deck {
+    height: 240px;
+    margin-bottom: 32px;
+  }
+
+  .deckChart,
+  .deckCover {
+    border-radius: 14px;
+  }
+
+  .deckChart {
+    padding: 18px 18px;
+  }
+
+  .deckCover {
+    padding: 18px 18px;
+  }
+
+  .coverTitle {
+    font-size: 20px;
+  }
+
+  .coverSub {
+    font-size: 11px;
+  }
+
   .features { grid-template-columns: 1fr; gap: 16px; }
-  .deck { height: 260px; }
+  .featIcon { width: 44px; height: 44px; }
+  .featTitle { font-size: 15px; }
+  .featText { font-size: 14px; line-height: 1.78; }
+  .trust { padding: 16px 18px; font-size: 13px; line-height: 1.7; }
 }

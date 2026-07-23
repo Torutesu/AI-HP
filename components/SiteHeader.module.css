@@ -256,8 +256,8 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   background: transparent;
   border: 0;
@@ -283,14 +283,15 @@
 .mobileInner {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 18px 22px 24px;
+  gap: 6px;
+  padding: 18px 22px 28px;
 }
 .mobileLink {
   font-size: 16px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.85);
-  padding: 12px 4px;
+  min-height: 56px;
+  padding: 16px 4px;
   transition: color 0.2s ease, padding-left 0.2s ease;
 }
 .mobileLink:hover {
@@ -300,7 +301,7 @@
 .mobileActions {
   display: flex;
   gap: 12px;
-  margin-top: 12px;
+  margin-top: 14px;
   flex-wrap: wrap;
 }
 .mobileServiceGroup {
@@ -316,11 +317,11 @@
 }
 .mobileServiceLinks a {
   display: flex;
-  min-height: 58px;
+  min-height: 56px;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 12px;
+  padding: 14px 12px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.05);
@@ -332,10 +333,10 @@
 
 /* ---- responsive ---- */
 @media (max-width: 880px) {
-  .overlay { padding: 14px 22px; }
-  .overlay.scrolled { padding: 10px 22px; }
-  .solid .inner { padding: 14px 22px; }
-  .solid.scrolled .inner { padding: 10px 22px; }
+  .overlay { padding: 14px 20px; }
+  .overlay.scrolled { padding: 10px 20px; }
+  .solid .inner { padding: 14px 20px; }
+  .solid.scrolled .inner { padding: 10px 20px; }
   .nav, .actions { display: none; }
   .burger { display: flex; }
 }
