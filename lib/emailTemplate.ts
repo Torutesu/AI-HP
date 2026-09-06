@@ -46,7 +46,7 @@ export interface EmailOptions {
 }
 
 const BRAND = "AI総合戦略研究所";
-const BRAND_EN = "AI STRATEGY INSTITUTE";
+const BRAND_EN = "AI STRATEGY RESEARCH INSTITUTE";
 const ADDRESS = "東京都渋谷区恵比寿西1-16-11";
 const NAVY = "#0b1b3a";
 const BLUE = "#1e63e6";

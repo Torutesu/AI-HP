@@ -9,7 +9,16 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "AI総合戦略研究所";
-export const SITE_NAME_EN = "AI Strategy Institute";
+export const SITE_NAME_EN = "AI Strategy Research Institute";
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const PARENT_URL = "https://selectai-group.com";
+export const SOCIAL_PROFILES = [
+  { name: "X", url: "https://x.com/AIsouseiken" },
+  { name: "Instagram", url: "https://www.instagram.com/aisouseiken/" },
+  { name: "Threads", url: "https://www.threads.com/@aisouseiken" },
+  { name: "note", url: "https://note.com/aisouseiken" },
+] as const;
 export const SITE_DESCRIPTION =
   "AIを「試して終わり」にさせません。戦略設計から内製AI開発まで、コスト削減・売上向上・利益率改善という経営の数字が動くところまで伴走する、実装型のAIパートナーです。";
 

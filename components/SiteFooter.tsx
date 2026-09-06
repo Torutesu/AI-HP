@@ -12,7 +12,7 @@ export default function SiteFooter() {
             <Image src={logoMark} alt="AI総合戦略研究所" height={30} className={styles.brandMark} />
             <span className={styles.brandText}>
               <span className={styles.brandName}>AI総合戦略研究所</span>
-              <span className={styles.brandSub}>AI STRATEGY INSTITUTE</span>
+              <span className={styles.brandSub}>AI STRATEGY RESEARCH INSTITUTE</span>
             </span>
           </Link>
           <p className={styles.tagline}>
@@ -49,7 +49,7 @@ export default function SiteFooter() {
             <Link href="/privacy">プライバシーポリシー</Link>
             <Link href="/editorial-policy">編集方針</Link>
           </div>
-          <span className={styles.copy}>© AI Strategy Institute All Rights Reserved.</span>
+          <span className={styles.copy}>© AI Strategy Research Institute All Rights Reserved.</span>
         </div>
       </div>
     </footer>

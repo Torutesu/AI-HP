@@ -56,7 +56,7 @@ export default function SiteHeader({
           <Image src={logoMark} alt="AI総合戦略研究所" className={styles.brandMark} height={32} priority />
           <span className={styles.brandText}>
             <span className={styles.brandName}>AI総合戦略研究所</span>
-            <span className={styles.brandSub}>AI STRATEGY INSTITUTE</span>
+            <span className={styles.brandSub}>AI STRATEGY RESEARCH INSTITUTE</span>
           </span>
         </Link>
 

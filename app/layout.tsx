@@ -53,7 +53,14 @@ const orgJsonLd = {
   "@type": "Organization",
   "@id": ORGANIZATION_ID,
   name: SITE_NAME,
-  alternateName: ["AI総研", "AI Strategy Institute"],
+  alternateName: [
+    "AI総研",
+    "AI Strategy Research Institute",
+    "AI総戦研",
+    "AI総合戦略研",
+    "AISRI",
+    "AI Strategy Institute",
+  ],
   url: SITE_URL,
   logo: `${SITE_URL}/social/icon-1024.png`,
   description: SITE_DESCRIPTION,
@@ -75,6 +82,7 @@ const orgJsonLd = {
   parentOrganization: {
     "@type": "Organization",
     name: "株式会社Select",
+    alternateName: "Select, Inc.",
     url: PARENT_URL,
   },
 };
